@@ -1,0 +1,58 @@
+/* hero.module.css */
+
+.heroContainer {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 250vh;
+    background-image: url('/images/sign.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* Use Flexbox to center content */
+    display: flex;
+    align-items: center;       /* vertically center */
+    justify-content: center;   /* horizontally center */
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 0; /* behind the hero text */
+  }
+  
+  .heroContent {
+    position: relative;
+    color: #fff;
+    text-align: center;
+    z-index: 1; /* above overlay */
+    /* Remove or reduce any old padding-top */
+    /* If you want it slightly lower than center, you can add margin-top here. */
+  }
+  
+  .title {
+    font-family: 'Pacifico', cursive;
+    font-size: 3rem;
+    color: #fff;
+  }
+  
+  .bigNumber {
+    font-size: 4.5rem;
+    margin-right: 0.3rem;
+  }
+  
+  .subTitle {
+    font-size: 2rem;
+    margin: 1rem 0;
+  }
+  
+  .paragraph {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }

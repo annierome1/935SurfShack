@@ -1,0 +1,58 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Shared section styles */
+.section,
+.sectionAlt {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+/* Alternating background for separation */
+.section {
+  background-color: #f9fafb;
+}
+
+.sectionAlt {
+  background-color: #fff;
+}
+
+/* Content and image styles */
+.content {
+  flex: 1;
+  min-width: 300px;
+}
+
+.image {
+  flex: 1;
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* Button styling */
+.button {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  background-color: #f97316;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.button:hover {
+  background-color: #ea580c;
+}
