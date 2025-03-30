@@ -70,7 +70,6 @@ const pacifico = Pacifico({
             <li><Link href="/menu" className={styles.navLink} onClick={closeMenu}>Food & Drink</Link></li>
             <li><Link href="/gallery" className={styles.navLink} onClick={closeMenu}>Gallery</Link></li>
             <li><Link href="/contact" className={styles.navLink} onClick={closeMenu}>Contact Us</Link></li>
-            <li><Link href="/hotel" className={styles.navLink} onClick={closeMenu}>Hotel</Link></li>
           </ul>
         </nav>
   

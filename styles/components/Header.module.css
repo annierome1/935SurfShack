@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2rem;
-  width: 96.8%;
+  width: 96.8%; /*stupid fix */
   max-width: 100%;
   z-index: 1000;
   transition:

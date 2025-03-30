@@ -10,8 +10,8 @@ export default function Home() {
 
       {/* Live Music */}
       <SectionCard
-        image="/images/music.jpg"
-        title="Live Music"
+        image="/images/events.jpg"
+        title="Events"
         description="From beach beats to retro rock to contemporary country, see our live music lineup!"
         buttonLabel="See the Lineup"
         buttonLink="/music"
@@ -20,7 +20,7 @@ export default function Home() {
 
       {/* Food & Drink */}
       <SectionCard
-        image="/images/drinks.jpg"
+        image="/images/food_drink.jpg"
         title="Food & Drink"
         description="From pulled pork sandwiches to buffalo chicken fries, our mouth-watering menu has something for everyone."
         buttonLabel="Our Menus"

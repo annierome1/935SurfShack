@@ -16,13 +16,23 @@ export default function CalendarView({ events }) {
         onChange={setSelectedDate}
         value={selectedDate}
         tileClassName={({ date }) => {
-          const isEventDate = events.some(
-            (event) =>
-              new Date(event.date).toDateString() === date.toDateString()
-          );
-          return isEventDate ? styles.eventDay : null;
+            const isEventDate = events.some(
+            (event) => new Date(event.date).toDateString() === date.toDateString()
+            );
+            return isEventDate ? styles.eventDay : null;
         }}
-      />
+        tileContent={({ date }) => {
+            const event = events.find(
+              (event) => new Date(event.date).toDateString() === date.toDateString()
+            );
+            return event ? (
+              <div className={styles.dot} title={event.title}></div>
+            ) : null;
+          }}
+          
+        />
+
+
 
       <div className={styles.eventList}>
         {eventsOnDate.length > 0 ? (

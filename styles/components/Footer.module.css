@@ -1,0 +1,49 @@
+/* components/Footer.css */
+.footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    background-color: #87cfd8;
+    padding: 2rem;
+    flex-wrap: wrap;
+    text-align: left;
+  }
+  
+  .footer-section {
+    flex: 1;
+    margin: 1rem;
+    min-width: 200px;
+  }
+  
+  .footer-section h4 {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #222;
+  }
+  
+  .footer-section p,
+  .footer-section a {
+    margin: 0.25rem 0;
+    color: #222;
+    font-size: 0.95rem;
+    text-decoration: none;
+  }
+  
+  .footer-logo {
+    max-width: 200px;
+  }
+  
+  .careers-btn {
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .careers-btn:hover {
+    background-color: #222;
+  }
+  
