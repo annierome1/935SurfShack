@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "cdn.sanity.io",
-        pathname: "/**", // matches all image paths
+        pathname: "/**", 
       },
     ],
   },
