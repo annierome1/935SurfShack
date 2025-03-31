@@ -8,11 +8,7 @@ import { FaBars, FaTimes } from 'react-icons/fa';
 import { Pacifico } from 'next/font/google';
 import Image from 'next/image';
 
-const pacifico = Pacifico({
-    weight: '400',
-    subsets: ['latin'],
-    display: 'swap',
-  });
+
   
   export default function Header() {
     const [scrolled, setScrolled] = useState(false);
