@@ -28,7 +28,7 @@
   
   .heroContent {
     position: relative;
-    color: #fff;
+    color: #f4c57f;
     text-align: center;
     z-index: 1; /* above overlay */
     /* Remove or reduce any old padding-top */
@@ -38,7 +38,7 @@
   .title {
     font-family: 'Pacifico', cursive;
     font-size: 3rem;
-    color: #fff;
+    color: #f4c57f;
   }
   
   .bigNumber {
