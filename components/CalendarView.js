@@ -12,7 +12,6 @@ export default function CalendarView({ events }) {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.calendarWrapper}>
       <Calendar
         onChange={setSelectedDate}
         value={selectedDate}
@@ -47,7 +46,6 @@ export default function CalendarView({ events }) {
           <p>No events on this day.</p>
         )}
       </div>
-    </div>
     </div>
   );
 }
