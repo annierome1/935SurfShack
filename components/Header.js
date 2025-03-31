@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import styles from '../styles/components/Header.module.css';
 import { FaBars, FaTimes } from 'react-icons/fa';
-import { Pacifico } from 'next/font/google';
 import Image from 'next/image';
 
 
