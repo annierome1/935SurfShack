@@ -11,7 +11,7 @@ export default function CalendarView({ events }) {
   });
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.calendarWrapper}>
       <Calendar
         onChange={setSelectedDate}
         value={selectedDate}
