@@ -6,7 +6,7 @@
     padding: 0;
     height: 100vh;
     width: 100%;
-    background-image: url('/images/sign.jpeg');
+    background-image: url('/images/surfshack.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -28,7 +28,7 @@
   
   .heroContent {
     position: relative;
-    color: #f4c57f;
+    color: #f5877c;
     text-align: center;
     z-index: 1; /* above overlay */
     /* Remove or reduce any old padding-top */
@@ -38,7 +38,7 @@
   .title {
     font-family: 'Pacifico', cursive;
     font-size: 3rem;
-    color: #f4c57f;
+    color: #f5877c;
   }
   
   .bigNumber {

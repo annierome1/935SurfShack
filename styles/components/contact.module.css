@@ -11,7 +11,7 @@
     font-weight: 700;
     text-align: center;
     margin-bottom: 0.5rem;
-    color: #1e3a8a;
+    color: #f5877c;
   }
   
   .subtitle {
@@ -56,12 +56,12 @@
   
   .socials a {
     text-decoration: none;
-    color: #3b82f6;
+    color: #f5877c;
     transition: color 0.2s ease;
   }
   
   .socials a:hover {
-    color: #1d4ed8;
+    color: #f5877c;
   }
   
   .form {

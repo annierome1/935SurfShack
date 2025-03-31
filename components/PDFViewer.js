@@ -1,4 +1,3 @@
-// components/PDFViewer.js
 import { useEffect, useRef } from 'react';
 import * as pdfjsLib from 'pdfjs-dist';
 
@@ -6,6 +5,7 @@ import * as pdfjsLib from 'pdfjs-dist';
 pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
 
 export default function PDFViewer({ pdfUrl }) {
+  const containerRef = useRef(null);
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -13,14 +13,26 @@ export default function PDFViewer({ pdfUrl }) {
       try {
         const loadingTask = pdfjsLib.getDocument(pdfUrl);
         const pdf = await loadingTask.promise;
-        // For this example, we'll render only the first page.
+        // Render only the first page for this example.
         const page = await pdf.getPage(1);
-        const scale = .25;
+
+        // Get the container's width (fallback to window width if unavailable)
+        const containerWidth = containerRef.current?.clientWidth || window.innerWidth;
+
+        // Get the default viewport at scale = 1 to determine original width.
+        const defaultViewport = page.getViewport({ scale: 1 });
+        // Calculate a new scale so that the page fits the container width.
+        const scale = containerWidth / defaultViewport.width;
         const viewport = page.getViewport({ scale });
+
         const canvas = canvasRef.current;
         const context = canvas.getContext('2d');
+
+        // Set canvas dimensions to match the scaled PDF page
         canvas.width = viewport.width;
         canvas.height = viewport.height;
+        // Clear any previous render
+        context.clearRect(0, 0, canvas.width, canvas.height);
 
         const renderContext = {
           canvasContext: context,
@@ -33,12 +45,22 @@ export default function PDFViewer({ pdfUrl }) {
       }
     };
 
+    // Initial render
     renderPDF();
+
+    // Re-render on window resize to adjust the scale
+    const handleResize = () => {
+      renderPDF();
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, [pdfUrl]);
 
   return (
-    <div style={{ width: '100%', textAlign: 'center' }}>
-      <canvas ref={canvasRef} style={{ border: 'none' }} />
+    <div ref={containerRef} style={{ width: '70%', textAlign: 'center', height: '70%', margin: '0 auto', }}
+>
+      <canvas ref={canvasRef} style={{ border: 'none', maxWidth: '100%' }} />
     </div>
   );
 }
