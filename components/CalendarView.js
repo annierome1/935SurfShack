@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Calendar from 'react-calendar';
-import styles from '../styles/components/calendarView.module.css';
+import styles from '../styles/components/calendarView.module.scss';
 
 export default function CalendarView({ events }) {
   const [selectedDate, setSelectedDate] = useState(new Date());
