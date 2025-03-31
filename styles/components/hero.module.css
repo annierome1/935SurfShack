@@ -30,10 +30,15 @@
     position: relative;
     color: #f5877c;
     text-align: center;
-    z-index: 1; /* above overlay */
-    /* Remove or reduce any old padding-top */
-    /* If you want it slightly lower than center, you can add margin-top here. */
+    background-color: rgba(255, 255, 255, 0.3);
+    z-index: 1; /* above overlay */ 
+    padding: 2rem; /* space inside the background */
+    border-radius: 70px; /* rounded corners */
+    max-width: 80%; /* optional: prevent it from stretching too far */
+    margin: 0 auto; /* center horizontally */
+    
   }
+  
   
   .title {
     font-family: 'Pacifico', cursive;

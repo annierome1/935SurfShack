@@ -26,6 +26,7 @@
   box-shadow: none;
   opacity: 1;
   transform: translateY(0);
+  color: #f5877c;
 }
 
 /* 2) Scrolled OR Not on Homepage => Sticky, solid color */
@@ -145,4 +146,14 @@
   font-size: 1.8rem; /* or whatever you want */
   color: #000;       /* set color if needed */
   margin: 0;
+}
+
+/* Coral navLink text when header is transparent */
+.headerHomeTransparent .navLink {
+  color: #f5877c; /* coral */
+}
+
+/* Black navLink text when header is solid */
+.headerSolid .navLink {
+  color: black;
 }

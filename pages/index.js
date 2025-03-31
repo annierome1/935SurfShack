@@ -22,7 +22,7 @@ export default function Home() {
       <SectionCard
         image="/images/food_drink.jpg"
         title="Food & Drink"
-        description="From pulled pork sandwiches to buffalo chicken fries, our mouth-watering menu has something for everyone."
+        description="..."
         buttonLabel="Our Menus"
         buttonLink="/menu"
         bgColor="#f5f5f5"
