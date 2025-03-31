@@ -7,7 +7,6 @@
 
 .calendarWrapper {
   margin-top: 1rem;
-}
 
 /* === GLOBAL STYLES FOR REACT-CALENDAR === */
 :global(.react-calendar) {
@@ -20,6 +19,7 @@
   font-family: inherit;
   padding: 1rem;
 }
+
 
 :global(.react-calendar__tile) {
   padding: 1.2rem 0;
@@ -59,7 +59,7 @@
   background-color: #fbe2d2;
   cursor: pointer;
 }
-
+}
 /* === LOCAL STYLES === */
 .eventDay {
   background: linear-gradient(to bottom right, #fcd5ce, #ffb4a2) !important;
