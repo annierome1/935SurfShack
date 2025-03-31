@@ -41,7 +41,7 @@ export default function Home() {
 
       {/* Location */}
       <SectionCard
-        image="/images/overview.jpeg"
+        image="/images/overview_sunny.jpg"
         title="935 Ocean BeachSide Inn"
         description="Surf | Play | Stay"
         buttonLabel="Contact Us"

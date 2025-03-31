@@ -26,7 +26,7 @@
   }
   
   :global(.react-calendar__tile--active) {
-    background-color: #e76f51;
+    background-color: #e86c64;
     color: white;
   }
   
@@ -37,14 +37,14 @@
   :global(.react-calendar__navigation button) {
     background: transparent;
     border: none;
-    color: #e76f51;
+    color: #e86c64;
     font-weight: bold;
     font-size: 1.1rem;
     cursor: pointer;
   }
   :global(.react-calendar__tile--now) {
     background: #fff0ec; 
-    border: 1px solid var(--color-primary, #e76f51);
+    border: 1px solid var(--color-primary, #f5877c);
     color: inherit;
   }
   :global(.react-calendar__tile:hover) {
@@ -54,7 +54,7 @@
   
   .eventDay {
     background: linear-gradient(to bottom right, #fcd5ce, #ffb4a2) !important;
-    border: 2px solid #e76f51 !important;
+    border: 2px solid #f5877c !important;
     border-radius: 8px;
     font-weight: bold;
     color: #4a2e2b;
@@ -74,7 +74,7 @@
   
   .eventCard {
     padding: 1rem;
-    border-left: 4px solid #e76f51;
+    border-left: 4px solid #f5877c;
     margin-bottom: 1.5rem;
     background: #fff;
     border-radius: 0.5rem;
@@ -87,7 +87,7 @@
   .dot {
     width: 8px;
     height: 8px;
-    background-color: #e76f51;
+    background-color: #e86c64;
     border-radius: 50%;
     position: absolute;
     bottom: 6px;

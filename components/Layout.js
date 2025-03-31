@@ -13,8 +13,10 @@ export default function Layout({ children }) {
 }
 
 const mainStyle = {
-  minHeight: '80vh',
-  margin: '0 auto',
-  maxWidth: '100%',
-  
+  backgroundColor: '#c2e4e7 ', // set your desired background color
+  width: '100%',             // full width of the viewport
+  minHeight: '100vh',        // ensure it covers the full viewport height
+  margin: '0 auto',  
+  fontFamily: 'Pacifico, cursive', 
+  overflowX: 'hidden'       
 };

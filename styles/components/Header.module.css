@@ -3,14 +3,17 @@
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2rem;
-  width: 96.8%; /*stupid fix */
-  max-width: 100%;
+  width: 100%;
+  max-width: 100vw;       /* ✅ prevent it from exceeding viewport */
+  overflow-x: hidden;     /* optional backup */
+  box-sizing: border-box;
   z-index: 1000;
   transition:
     background-color 0.3s ease,
     box-shadow 0.3s ease,
     opacity 0.5s ease,
     transform 0.5s ease;
+
 }
 
 /* 1) Homepage + Not Scrolled => Transparent, absolute overlay */
@@ -56,22 +59,26 @@
 
 .nav {
   display: flex;
+  
 }
 
 .navList {
   display: flex;
   gap: 1.5rem;
   list-style: none;
+  font-family: 'Source Sans 3';
   margin: 0;
   padding: 0;
+  
 }
 
 .navLink {
-  color: #fff;
+  color: black;
   font-weight: 500;
   text-decoration: none;
   position: relative;
   padding-bottom: 4px;
+  
 }
 
 .navLink::after {
@@ -97,6 +104,8 @@
   font-size: 1.5rem;
   color: white;
   cursor: pointer;
+  
+  
 }
 .logoNumber {
   font-size: 2.75rem;
@@ -137,4 +146,3 @@
   color: #000;       /* set color if needed */
   margin: 0;
 }
-

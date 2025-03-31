@@ -1,13 +1,18 @@
 /* components/Footer.css */
 .footer {
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    background-color: #87cfd8;
-    padding: 2rem;
-    flex-wrap: wrap;
-    text-align: left;
-  }
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  background-color: #f5877c;
+  padding: 2rem;
+  flex-wrap: wrap;
+  text-align: left;
+  width: 100%;
+  max-width: 100vw;       /* ✅ prevent it from exceeding viewport */
+  overflow-x: hidden;     /* optional backup */
+  box-sizing: border-box; /* ✅ make sure padding doesn’t add extra width */
+}
+
   
   .footer-section {
     flex: 1;

@@ -9,7 +9,7 @@ export default function SectionCard({
   buttonLabel,
   buttonLink,
   reverse = false,
-  bgColor = '#f5877c', // Default Tiki-style orange
+  bgColor = '#c2e4e7', // Default Tiki-style orange
 }) {
   return (
     <section
@@ -36,7 +36,7 @@ export default function SectionCard({
                 xmlns="http://www.w3.org/2000/svg"
             >
                 <path
-                fill="#f5877c"
+                fill="#c2e4e7"
                 d="M 100 0 C 60 200, 60 800, 100 1000 L 0 1000 L 0 0 Z"
                 />
             </svg>
