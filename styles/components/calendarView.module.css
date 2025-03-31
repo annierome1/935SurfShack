@@ -4,6 +4,7 @@
     align-items: center;
     padding: 2rem;
   }
+.calendarWrapper{
   :global(.react-calendar) {
     width: 100%;
     max-width: 650px;
@@ -51,7 +52,7 @@
     background-color: #fbe2d2;
     cursor: pointer;
   }
-  
+}
   .eventDay {
     background: linear-gradient(to bottom right, #fcd5ce, #ffb4a2) !important;
     border: 2px solid #f5877c !important;
