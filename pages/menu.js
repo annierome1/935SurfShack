@@ -5,8 +5,6 @@ import PDFViewer from '../components/PDFViewer';
 import styles from '../styles/components/menu.module.css';
 import { client } from '../src/sanity/lib/client';
 
-
-
 function Menu({ menu }) {
   const [activeTab, setActiveTab] = useState('food');
 
@@ -14,7 +12,7 @@ function Menu({ menu }) {
     <Layout>
       <div className={styles.container}>
         <h1 className={styles.title}>Our Menu</h1>
-        
+
         <div className={styles.tabContainer}>
           <button
             className={`${styles.tabButton} ${activeTab === 'food' ? styles.activeTab : ''}`}
@@ -60,18 +58,34 @@ function Menu({ menu }) {
           <div className={styles.specials}>
             <div className={styles.section}>
               <h2>Food Specials</h2>
-              <ul>
+              <ul className={styles.specialList}>
                 {menu.foodSpecials?.map((item, idx) => (
-                  <li key={idx}>{item}</li>
+                  <li key={idx} className={styles.specialItem}>
+                    {item.image?.asset?.url && (
+                      <img src={item.image.asset.url} alt={item.name} className={styles.specialImage} />
+                    )}
+                    <div>
+                      <h3>{item.name}</h3>
+                      <p>${item.price?.toFixed(2)}</p>
+                    </div>
+                  </li>
                 ))}
               </ul>
             </div>
 
             <div className={styles.section}>
               <h2>Drink Specials</h2>
-              <ul>
+              <ul className={styles.specialList}>
                 {menu.drinkSpecials?.map((item, idx) => (
-                  <li key={idx}>{item}</li>
+                  <li key={idx} className={styles.specialItem}>
+                    {item.image?.asset?.url && (
+                      <img src={item.image.asset.url} alt={item.name} className={styles.specialImage} />
+                    )}
+                    <div>
+                      <h3>{item.name}</h3>
+                      <p>${item.price?.toFixed(2)}</p>
+                    </div>
+                  </li>
                 ))}
               </ul>
             </div>
@@ -85,17 +99,25 @@ function Menu({ menu }) {
 export async function getStaticProps() {
   const query = `*[_type == "menu"][0]{
     menuPdf {
-      asset-> {
-        url
-      }
+      asset->{url}
     },
     drinkPdf {
-      asset-> {
-        url
+      asset->{url}
+    },
+    foodSpecials[]{
+      name,
+      price,
+      image {
+        asset->{url}
       }
     },
-    foodSpecials,
-    drinkSpecials
+    drinkSpecials[]{
+      name,
+      price,
+      image {
+        asset->{url}
+      }
+    }
   }`;
 
   const menu = await client.fetch(query);

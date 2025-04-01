@@ -17,7 +17,7 @@ export default function Events({ events }) {
   return (
     <Layout>
       <div className={styles.container}>
-        <h1 className={styles.title}>Live Events & Music</h1>
+        <h1 className={styles.title}>Live Music & Events</h1>
 
         {/* View Toggle */}
         <div className={styles.toggle}>

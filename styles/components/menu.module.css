@@ -1,6 +1,6 @@
 .container {
     width: 100vw; 
-    height: 100vw;/* Full viewport width */
+    height: 70%;/* Full viewport width */
     margin: 0;
     padding: 2rem; /* optional */
     background-color: #d4f1f4; /* or whatever color you want */
@@ -12,7 +12,7 @@
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 2rem;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     color: #2a4d69;
   }
   
@@ -49,6 +49,7 @@
     height: auto;
     display: block;
     margin: 0 auto;
+    font-family: 'Source Sans Pro', sans-serif;
   }
   
 
@@ -67,6 +68,7 @@
     justify-content: space-between;
     gap: 2rem;
     flex-wrap: wrap;
+    font-family: 'Source Sans Pro', sans-serif;
   }
   
   .section {
@@ -79,7 +81,33 @@
   
   .section h2 {
     margin-bottom: 1rem;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     color: #2a4d69;
+  }
+  .specialList {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .specialItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 180px;
+    border: 1px solid #eee;
+    padding: 10px;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+  
+  .specialImage {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 6px;
   }
   

@@ -74,7 +74,7 @@
 }
 
 .navLink {
-  color: black;
+  color: white;
   font-weight: 500;
   text-decoration: none;
   position: relative;
@@ -155,5 +155,5 @@
 
 /* Black navLink text when header is solid */
 .headerSolid .navLink {
-  color: black;
+  color: white;
 }

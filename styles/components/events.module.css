@@ -3,6 +3,7 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 3rem 1rem;
+    font-family: 'Source Sans Pro', sans-serif;
   }
   
   .title {
@@ -17,6 +18,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2rem;
+    font-family: 'Source Sans Pro', sans-serif;
   }
   
   .eventCard {
@@ -29,6 +31,7 @@
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     max-width: 350px;
     margin: 0 auto;
+    font-family: 'Source Sans Pro', sans-serif;
   }
   
   .eventCard:hover {

@@ -14,7 +14,7 @@ export default function Home() {
         title="Events"
         description="From beach beats to retro rock to contemporary country, see our live music lineup!"
         buttonLabel="See the Lineup"
-        buttonLink="/music"
+        buttonLink="/events"
         bgColor="#fff"
       />
 

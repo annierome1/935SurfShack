@@ -8,7 +8,9 @@
   flex-wrap: wrap;
   text-align: left;
   width: 100%;
-  max-width: 100vw;       /* ✅ prevent it from exceeding viewport */
+  max-width: 100vw; 
+  height: 20%;  
+  max-height: 30%;    
   overflow-x: hidden;     /* optional backup */
   box-sizing: border-box; /* ✅ make sure padding doesn’t add extra width */
 }
@@ -50,5 +52,22 @@
   
   .careers-btn:hover {
     background-color: #222;
+  }
+  
+  .social-icon-link {
+    margin-left: 16px; /* space from the logo */
+    display: inline-block;
+    padding-left: 35px;       /* optional: space around the icon */
+  }
+  
+  .social-icon {
+    font-size: 42px;     /* larger size */
+    color: #222;         /* or your theme color */
+    transition: transform 0.2s ease;
+  }
+  
+  .social-icon:hover {
+    transform: scale(1.1);
+    color: #e1306c;       /* Instagram brand color */
   }
   

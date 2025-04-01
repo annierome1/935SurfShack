@@ -1,17 +1,55 @@
 import styles from "../styles/components/Footer.module.css";
+import { FaInstagram, FaFacebook } from 'react-icons/fa';
 
 export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={`${styles['footer-section']} ${styles['logo-section']}`}>
-      <a href="https://www.935ocean.com/" aria-label="Home"><img src="/inn_logo.png" alt="Surf Shack Logo" className={styles['footer-logo']}/></a>
-      </div>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+    <a href="https://www.935ocean.com/" aria-label="Home">
+      <img src="/inn_logo.png" alt="Surf Shack Logo" className={styles['footer-logo']} />
+    </a>
+
+    {/* Social icons stacked vertically */}
+    <div className={styles['socials']}>
+      <a
+        href="https://www.instagram.com/935surfshack/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram"
+        className={styles['social-icon-link']}
+      >
+        <FaInstagram className={styles['social-icon']} />
+      </a>
+
+      <a
+        href="https://www.facebook.com/profile.php?id=61574086841413"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Facebook"
+        className={styles['social-icon-link']}
+      >
+        <FaFacebook className={styles['social-icon']} />
+      </a>
+    </div>
+  </div>
+</div>
+
+
 
       <div className={styles['footer-section']}>
         <h4>LOCATION</h4>
         <p>935 Ocean Boulevard</p>
         <p>Hampton, New Hampshire, 03842</p>
-        <p><a href="https://www.google.com/maps?q=42.942248942322465, -70.79423135919447"  target="_blank" rel="noopener noreferrer">Google Maps</a></p>
+        <p>
+          <a 
+            href="https://www.google.com/maps?q=42.942248942322465,-70.79423135919447" 
+            target="_blank" 
+            rel="noopener noreferrer"
+          >
+            Google Maps
+          </a>
+        </p>
       </div>
 
       <div className={styles['footer-section']}>
