@@ -2,6 +2,9 @@ import Layout from '../components/Layout';
 import Hero from '../components/Hero';
 import SectionCard from '../components/SectionCard';
 
+
+
+
 export default function Home() {
   return (
     <Layout>
@@ -52,3 +55,7 @@ export default function Home() {
     </Layout>
   );
 }
+
+
+
+

@@ -1,63 +1,90 @@
 /* hero.module.css */
 
 .heroContainer {
-    position: relative;
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    width: 100%;
-    background-image: url('/images/surfshack.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    /* Use Flexbox to center content */
-    display: flex;
-    align-items: center;       /* vertically center */
-    justify-content: center;   /* horizontally center */
-  }
-  
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.4);
-    z-index: 0; /* behind the hero text */
-  }
-  
-  .heroContent {
-    position: relative;
-    color: #f5877c;
-    text-align: center;
-    background-color: rgba(255, 255, 255, 0.3);
-    z-index: 1; /* above overlay */ 
-    padding: 2rem; /* space inside the background */
-    border-radius: 70px; /* rounded corners */
-    max-width: 80%; /* optional: prevent it from stretching too far */
-    margin: 0 auto; /* center horizontally */
-    
-  }
-  
-  
-  .title {
-    font-family: 'Pacifico', cursive;
-    font-size: 3rem;
-    color: #f5877c;
-  }
-  
-  .bigNumber {
-    font-size: 4.5rem;
-    margin-right: 0.3rem;
-  }
-  
-  .subTitle {
-    font-size: 2rem;
-    margin: 1rem 0;
-  }
-  
-  .paragraph {
-    font-size: 1.2rem;
-    max-width: 600px;
-    margin: 0 auto;
-  }
+  position: relative;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100%;
+  background-image: url('/images/surfshack.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;       /* vertically center */
+  justify-content: center;   /* horizontally center */
+}
+
+/* Dark overlay with a smooth transition */
+.heroContainer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Darker overlay for better contrast */
+  z-index: 1;
+}
+
+/* Combined heroContent styles for a vibrant, pop-out effect */
+.heroContent {
+  position: relative;
+  z-index: 2;
+  color: #f5877c;
+  text-align: center;
+
+  /* Instead of a solid color, use a very light/transparent layer + blur */
+  background-color: rgba(255, 255, 255, 0.05); /* lower opacity */
+  backdrop-filter: blur(10px);                 /* stronger blur */
+  -webkit-backdrop-filter: blur(10px);
+
+  /* Remove or minimize shape-defining styles */
+  border: none;              /* no border */
+  border-radius: 0.5rem;     /* small radius or remove for no radius */
+  box-shadow: none;          /* no shadow outline */
+
+  padding: 2rem;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+
+
+/* Retained overlay class in case you need additional layered effects */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 0; /* behind the hero text */
+}
+
+.title {
+  font-family: 'Pacifico', cursive;
+  font-size: 3.5rem; /* slightly larger for emphasis */
+  color: #f5877c;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  margin: 0.5rem 0;
+}
+
+.bigNumber {
+  font-size: 4.5rem;
+  margin-right: 0.3rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.subTitle {
+  font-size: 2rem;
+  margin: 1rem 0;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.paragraph {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}

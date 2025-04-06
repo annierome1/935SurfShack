@@ -2,16 +2,16 @@
   display: flex;
   flex-direction: row;
   width: 100%;
-  height: 50vh;
+  height: 300px; /* or 50vh if you prefer */
   overflow: hidden;
   position: relative;
   z-index: 1;
 }
 
-
 .reverse {
   flex-direction: row-reverse;
 }
+
 .wave-wrapper {
   position: fixed;
   top: 0;
@@ -36,54 +36,44 @@
   object-fit: cover;
 }
 
+/* Removed background-color from .content so we can alternate it */
 .content {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 3rem;
+  padding: 2rem;
+  color: #ffffff; /* default text color; can be overridden below */
   font-family: 'Source Sans Pro', sans-serif;
-  background-color: #c2e4e7; /* subtle overlay if needed */
+  /* background-color: #c2e4e7;  <-- removed! */
 }
 
 .title {
-  font-size: 2.00rem;
+  font-size: 2.5rem;
   font-weight: 800;
-  margin-bottom: 1rem;
-  font-family: 'Source Sans Pro', sans-serif;
-  color: #f5877c;
+  margin-bottom: .05rem;
 }
 
 .description {
-  font-size: 1.0rem;
+  font-size: 1.25rem;
   line-height: 1.7;
-  margin-bottom: 2rem;
-  font-family: 'Source Sans Pro', sans-serif;
-  color: #f5877c;
+  margin-bottom: 1rem;
 }
 
 .button {
   padding: 0.85rem 1.75rem;
-  color: white;
   font-weight: 600;
   border-radius: 8px;
   border: none;
   cursor: pointer;
   transition: transform 0.2s ease, background-color 0.2s ease;
-  font-family: 'Source Sans Pro', sans-serif;
 }
 
 .button:hover {
-  background-color: #e5e5e5;
   transform: scale(1.02);
 }
 
-.imageWrapper {
-  position: relative;
-  flex: 1;
-  height: 100%;
-}
-
+/* SVG Wave styling (placement/rotation unchanged) */
 .svgWave {
   position: absolute;
   height: 100%;
@@ -103,19 +93,12 @@
   transform: rotate(180deg) scaleX(-1);
 }
 
-
-
 .hero {
   display: flex;
   align-items: center;
   gap: 2rem;
   padding: 3rem 2rem;
 }
-
-
-
-
-
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -133,134 +116,49 @@
     text-align: center;
   }
 }
-.section {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 300px;
-  overflow: hidden;
-  position: relative;
-  z-index: 1;
+
+/* Alternate background colors for .content */
+.section:nth-of-type(odd) .content {
+  background-color: #c2e4e7; /* teal-ish */
+  color: #2a4d69;
+}
+
+.section:nth-of-type(even) .content {
+  background-color: #f5877c; /* coral */
+  color: #fff;
+}
+
+/* Alternate SVG wave colors by targeting inner path elements */
+.section:nth-of-type(odd) .svgWave path {
+  fill: #c2e4e7 !important; /* matches odd section background */
+}
+
+.section:nth-of-type(even) .svgWave path {
+  fill: #f5877c !important; /* matches even section background */
+}
+
+/* Odd sections: Button is dark blue with teal text */
+.section:nth-of-type(odd) .button {
+  background-color: #2a4d69;
+  color: #c2e4e7;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.section:nth-of-type(odd) .button:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* Even sections: Button is white with coral text */
+.section:nth-of-type(even) .button {
+  background-color: #fff;
+  color: #f5877c;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.section:nth-of-type(even) .button:hover {
+  transform: scale(1.05);
+  filter: brightness(0.95);
 }
 
 
-.reverse {
-  flex-direction: row-reverse;
-}
-.wave-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100px;
-  height: 100%;
-  z-index: 0;
-}
-
-.vertical-wave {
-  height: 100%;
-  width: 100%;
-}
-
-.imageWrapper {
-  position: relative;
-  flex: 1;
-  height: 100%;
-}
-
-.image {
-  object-fit: cover;
-}
-
-.content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 3rem;
-  color: #ffffff;
-  font-family: 'Source Sans Pro', sans-serif;
-  background-color: #c2e4e7; /* subtle overlay if needed */
-}
-
-.title {
-  font-size: 2.00rem;
-  font-weight: 800;
-  margin-bottom: 1rem;
-}
-
-.description {
-  font-size: 1.0rem;
-  line-height: 1.7;
-  margin-bottom: 2rem;
-}
-
-.button {
-  padding: 0.85rem 1.75rem;
-  background-color: #f5877c;
-  font-weight: 600;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.2s ease, background-color 0.2s ease;
-}
-
-.button:hover {
-  background-color: #e86c64;
-  transform: scale(1.02);
-}
-
-.imageWrapper {
-  position: relative;
-  flex: 1;
-  height: 100%;
-}
-
-.svgWave {
-  position: absolute;
-  height: 100%;
-  width: 100px;
-  top: 0;
-  z-index: 3;
-  pointer-events: none;
-}
-
-.waveRight {
-  right: 0;
-  transform: rotate(180deg);
-}
-
-.waveLeft {
-  left: 0;
-  transform: rotate(180deg) scaleX(-1);
-}
-
-
-
-.hero {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  padding: 3rem 2rem;
-}
-
-
-
-
-
-
-/* Responsive */
-@media (max-width: 768px) {
-  .section {
-    flex-direction: column;
-    height: auto;
-  }
-
-  .imageWrapper {
-    height: 300px;
-  }
-
-  .content {
-    padding: 2rem;
-    text-align: center;
-  }
-}

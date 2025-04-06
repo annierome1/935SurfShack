@@ -48,7 +48,7 @@ import Image from 'next/image';
         <div className={styles.logo}>
           <Link href="/" className={styles.logoLink} onClick={closeMenu}>
             <Image
-              src="/logo.png"
+              src="/Logo_transparent.png"
               alt="935 Surf Shack Logo"
               width={160}
               height={0} // Let height auto-size
