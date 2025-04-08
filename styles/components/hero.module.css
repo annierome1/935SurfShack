@@ -33,23 +33,16 @@
   z-index: 2;
   color: #f5877c;
   text-align: center;
-
-  /* Instead of a solid color, use a very light/transparent layer + blur */
   background-color: rgba(255, 255, 255, 0.05); /* lower opacity */
   backdrop-filter: blur(10px);                 /* stronger blur */
   -webkit-backdrop-filter: blur(10px);
-
-  /* Remove or minimize shape-defining styles */
   border: none;              /* no border */
   border-radius: 0.5rem;     /* small radius or remove for no radius */
   box-shadow: none;          /* no shadow outline */
-
   padding: 2rem;
   max-width: 80%;
   margin: 0 auto;
 }
-
-
 
 /* Retained overlay class in case you need additional layered effects */
 .overlay {
@@ -87,4 +80,32 @@
   max-width: 600px;
   margin: 0 auto;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* ============= Mobile Responsiveness ============= */
+@media (max-width: 600px) {
+  .heroContent {
+    padding: 1rem;
+    max-width: 90%;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+    margin: 0.5rem 0;
+  }
+  
+  .bigNumber {
+    font-size: 3.5rem;
+    margin-right: 0.2rem;
+  }
+  
+  .subTitle {
+    font-size: 1.5rem;
+    margin: 0.75rem 0;
+  }
+  
+  .paragraph {
+    font-size: 1rem;
+    max-width: 90%;
+  }
 }

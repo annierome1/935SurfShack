@@ -16,7 +16,7 @@
   flex-wrap: wrap;
 }
 
-/* Alternating background for separation */
+/* Alternating backgrounds */
 .section {
   background-color: #f9fafb;
 }
@@ -25,7 +25,7 @@
   background-color: #fff;
 }
 
-/* Content and image styles */
+/* Content and Image */
 .content {
   flex: 1;
   min-width: 300px;
@@ -55,4 +55,39 @@
 
 .button:hover {
   background-color: #ea580c;
+}
+
+/* ============= Mobile Responsiveness ============= */
+@media (max-width: 768px) {
+  /* Stack sections vertically and center content */
+  .section,
+  .sectionAlt {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .content {
+    margin-bottom: 1rem;
+  }
+
+  .image {
+    max-width: 90%;
+    margin: 0 auto 1rem;
+  }
+
+  .button {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Further adjustments for very small screens */
+  .content,
+  .image {
+    min-width: 100%;
+  }
 }

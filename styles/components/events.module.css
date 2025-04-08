@@ -1,108 +1,154 @@
 /* styles/events.module.css */
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 3rem 1rem;
-    font-family: 'Source Sans Pro', sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  color: #f5877c;
+}
+
+.eventsList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.eventCard {
+  background: #fff;
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  max-width: 350px;
+  margin: 0 auto;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.eventCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.eventImageWrapper {
+  width: 100%;
+  aspect-ratio: 4 / 3; /* less tall than 16:9 */
+  overflow: hidden;
+  position: relative;
+  border-top-left-radius: 1.25rem;
+  border-top-right-radius: 1.25rem;
+}
+
+.eventImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.eventContent {
+  padding: 1.25rem;
+}
+
+.eventTitle {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0;
+  color: #f5877c;
+}
+
+.eventDate {
+  font-size: 0.9rem;
+  color: #888;
+  margin: 0.5rem 0;
+}
+
+.eventDescription {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-top: 0.5rem;
+}
+
+.toggle {
+  text-align: center;
+  margin: 1rem 0 2rem;
+}
+
+.toggle button {
+  background-color: #fff;
+  color: #f5877c;
+  font-weight: bold;
+  border: 2px solid #f5877c;
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.toggle button:hover {
+  background-color: #f5877c;
+  color: #fff;
+}
+
+.toggle .active {
+  background-color: #f5877c;
+  color: #fff;
+}
+
+/* === RESPONSIVE STYLES FOR MOBILE DEVICES === */
+@media screen and (max-width: 600px) {
+  .container {
+    padding: 2rem 0.5rem;
   }
   
   .title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 2.5rem;
-    color: #f5877c;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
   }
   
   .eventsList {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2rem;
-    font-family: 'Source Sans Pro', sans-serif;
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
   
   .eventCard {
-    background: #fff;
-    border-radius: 1.25rem;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    max-width: 350px;
-    margin: 0 auto;
-    font-family: 'Source Sans Pro', sans-serif;
-  }
-  
-  .eventCard:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-  }
-  
-  .eventImageWrapper {
-    width: 100%;
-    aspect-ratio: 4 / 3; /* less tall than 16:9 */
-    overflow: hidden;
-    position: relative;
-    border-top-left-radius: 1.25rem;
-    border-top-right-radius: 1.25rem;
-  }
-  
-  
-  .eventImage {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+    max-width: 100%;
   }
   
   .eventContent {
-    padding: 1.25rem;
+    padding: 1rem;
   }
   
   .eventTitle {
-    font-size: 1.4rem;
-    font-weight: 600;
-    margin: 0;
-    color: #f5877c;
+    font-size: 1.25rem;
   }
   
   .eventDate {
-    font-size: 0.9rem;
-    color: #888;
-    margin: 0.5rem 0;
+    font-size: 0.8rem;
   }
   
   .eventDescription {
-    color: #555;
-    font-size: 1rem;
-    line-height: 1.5;
-    margin-top: 0.5rem;
+    font-size: 0.9rem;
   }
+  
   .toggle {
-    text-align: center;
-    margin: 1rem 0 2rem;
+    margin: 1rem 0 1.5rem;
   }
   
   .toggle button {
-    background-color: #fff;
-    color: #f5877c;
-    font-weight: bold;
-    border: 2px solid #f5877c;
-    padding: 0.5rem 1rem;
-    margin: 0 0.5rem;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    padding: 0.5rem 0.75rem;
+    margin: 0 0.25rem;
+    font-size: 0.9rem;
   }
-  
-  .toggle button:hover {
-    background-color: #f5877c;
-    color: #fff;
-  }
-  
-  .toggle .active {
-    background-color: #f5877c;
-    color: #fff;
-  }
-  
+}
