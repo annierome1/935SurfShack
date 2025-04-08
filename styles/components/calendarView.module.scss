@@ -11,7 +11,6 @@
   flex-direction: column;
   align-items: center;
   padding: 2rem;
-}
 
 /* === GLOBAL STYLES FOR REACT-CALENDAR === */
 :global(.react-calendar) {
@@ -24,6 +23,7 @@
   font-family: inherit;
   padding: 1rem;
 }
+
 
 :global(.react-calendar__tile) {
   padding: 1.2rem 0;
@@ -63,7 +63,7 @@
   background-color: #fbe2d2;
   cursor: pointer;
 }
-
+}
 /* === LOCAL STYLES === */
 .eventDay {
   background: linear-gradient(to bottom right, #fcd5ce, #ffb4a2) !important;
@@ -101,35 +101,4 @@
   bottom: 6px;
   left: 50%;
   transform: translateX(-50%);
-}
-
-/* === RESPONSIVE STYLES FOR MOBILE === */
-@media screen and (max-width: 600px) {
-  .wrapper,
-  .calendarWrapper {
-    padding: 1rem;
-  }
-
-  :global(.react-calendar) {
-    padding: 0.5rem;
-    max-width: 100%;
-  }
-
-  :global(.react-calendar__tile) {
-    font-size: 0.85rem;
-    padding: 1rem 0;
-  }
-
-  :global(.react-calendar__navigation button) {
-    font-size: 1rem;
-  }
-
-  .eventList {
-    padding: 1rem;
-    font-size: 0.95rem;
-  }
-
-  .eventCard {
-    padding: 0.8rem;
-  }
 }
