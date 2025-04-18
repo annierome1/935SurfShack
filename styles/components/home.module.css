@@ -1,93 +1,305 @@
-.main {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+/* 
+  Home.module.css
+  This file provides:
+    - White or Blue-Green backgrounds
+    - Salmon (#f5877c) text for white sections
+    - White text for the teal sections
+    - "Lobster Two" for headings & buttons
+    - "SF Pro" or system fallback for general text
+*/
+
+/* Global resets or base styles, if needed */
+body, html {
   margin: 0;
   padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro", 
+               "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", sans-serif;
 }
 
-/* Shared section styles */
-.section,
-.sectionAlt {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  flex-wrap: wrap;
-}
-
-/* Alternating backgrounds */
-.section {
-  background-color: #f9fafb;
-}
-
-.sectionAlt {
+/* =============== SECTION 1 (White background, Salmon text) =============== */
+.section1 {
   background-color: #fff;
+  color: #f5877c;
+  text-align: center;
+  height: 60vh;
+  padding: 4rem 2rem;
 }
 
-/* Content and Image */
-.content {
-  flex: 1;
-  min-width: 300px;
+.section1Title {
+  font-family: 'Lobster Two', cursive;
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
 }
 
-.image {
-  flex: 1;
-  max-width: 500px;
+.section1Desc {
+  max-width: 700px;
+  margin: 0 auto 1rem;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.section1Hours {
+  font-family: Calibri, sans-serif; /* fallback if Hartwell Medium isn't available */
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 2rem;
+}
+
+.section1Button {
+  font-family: 'Lobster Two', cursive;
+  font-size: 1.125rem;
+  background-color: #f5877c;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.section1Button:hover {
+  background-color: #d76a60;
+  transform: scale(1.03);
+}
+
+/* =============== SECTION 2 (Blue-green background, White text) =============== */
+.section2 {
+  background-color: #c2e4e7; /* or another blueish-green hue */
+  color: #fff;
+  text-align: center;
+  padding: 4rem 2rem;
+  height: 60vh;
+}
+
+.section2Title {
+  font-family: 'Lobster Two', cursive;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.section2Desc {
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.section2Button {
+  font-family: 'Lobster Two', cursive;
+  font-size: 1.125rem;
+  background-color: #fff;
+  color: #c2e4e7;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.section2Button:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.03);
+}
+
+/* =============== SECTION 3 (White background, Salmon text) =============== */
+.section3 {
+  background-color: #fff;
+  color: #f5877c;
+  text-align: center;
+  padding: 4rem 2rem;
+  height: 60vh;
+}
+
+.section3Title {
+  font-family: 'Lobster Two', cursive;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.section3Desc {
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.section3Button {
+  font-family: 'Lobster Two', cursive;
+  font-size: 1.125rem;
+  background-color: #f5877c;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.section3Button:hover {
+  background-color: #d76a60;
+  transform: scale(1.03);
+}
+
+/* =============== SECTION 4 (Blue-green background, White text) =============== */
+.section4 {
+  background-color: #c2e4e7;
+  color: #fff;
+  text-align: center;
+  padding: 4rem 2rem;
+  height: 60vh;
+}
+
+.section4Title {
+  font-family: 'Lobster Two', cursive;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+/* A simple grid for your Instagram feed or placeholders */
+.section4Gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.imagePlaceholder {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  aspect-ratio: 1 / 1;
+}
+
+.section5 {
+  position: relative;
   width: 100%;
-  height: auto;
-  border-radius: 12px;
-  object-fit: cover;
+  height: 100%;               /* pick your ideal viewport height */
+  margin: 0;
+  padding: 0;
+  display: flex;              /* centers the img perfectly */
+  justify-content: center;
+  align-items: center;
+  background-color: #fdfcf4;  /* a subtle fallback behind the map */
+}
+
+.section5Image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;        /* show the whole map, no cropping */
+}
+
+.mapContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.mapImage {
+  width: 100%;
+  height: 90%;
+  display: block;
+}
+
+/* Overlay centered text & button */
+.section5Overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+  pointer-events: auto;
+}
+
+
+
+
+
+/* Title styling */
+.section5Title {
+  font-family: 'Lobster Two', cursive;
+  font-size: 2.75rem;
+  margin-bottom: 1rem;
+}
+
+/* Description styling */
+.section5Desc {
+  font-size: 1.125rem;
+  margin-bottom: 1.5rem;
+  max-width: 600px;
+  line-height: 1.5;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 /* Button styling */
-.button {
-  margin-top: 1rem;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  background-color: #f97316;
+.section5Button {
+  /* inherits pointer-events:auto from the overlay, but you can reinforce it: */
+  pointer-events: auto;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1.125rem;
+  background-color: rgba(245, 135, 124, 0.9);
   color: #fff;
-  border: none;
+  padding: 0.75rem 1.5rem;
   border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
+  text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.section5Button:hover {
+  background-color: #d76a60;
+  
 }
 
-.button:hover {
-  background-color: #ea580c;
-}
 
-/* ============= Mobile Responsiveness ============= */
+
+/* =============== Responsive Tweaks =============== */
 @media (max-width: 768px) {
-  /* Stack sections vertically and center content */
-  .section,
-  .sectionAlt {
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    padding: 1rem;
+  .section1Title,
+  .section2Title,
+  .section3Title,
+  .section4Title,
+  .section5Title {
+    font-size: 2rem;
   }
 
-  .content {
-    margin-bottom: 1rem;
+  .section1Desc,
+  .section2Desc,
+  .section3Desc,
+  .section5Desc {
+    font-size: 1.05rem;
   }
+}
 
-  .image {
-    max-width: 90%;
-    margin: 0 auto 1rem;
+@media (max-width: 768px) {
+  .section5 {
+    height: 300px;
   }
-
-  .button {
-    width: 100%;
-    padding: 0.75rem;
-    font-size: 0.9rem;
+  .section5Title {
+    font-size: 2rem;
+  }
+  .section5Desc {
+    font-size: 1rem;
   }
 }
 
 @media (max-width: 480px) {
-  /* Further adjustments for very small screens */
-  .content,
-  .image {
-    min-width: 100%;
+  .section5 {
+    height: 250px;
+  }
+  .section5Title {
+    font-size: 1.75rem;
+  }
+  .section5Desc {
+    font-size: 0.95rem;
   }
 }

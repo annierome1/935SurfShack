@@ -6,13 +6,9 @@ export default function Hero() {
     <section className={styles.heroContainer}>
       <div className={styles.overlay}></div>
       <div className={styles.heroContent}>
-        <h1 className={styles.title}>
-          <span className={styles.bigNumber}>935</span> Surf Shack
+        <h1 className={styles.title}> North Beaches Newest Beach Bar
         </h1>
-        <h2 className={styles.subTitle}></h2>
-        <p className={styles.paragraph}>
-          Enjoy live music, great food, and the best beachfront vibes.
-        </p>
+
       </div>
     </section>
   );

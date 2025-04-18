@@ -24,13 +24,13 @@
 .footer-section h4 {
   margin-bottom: 0.5rem;
   font-weight: bold;
-  color: #222;
+  color: white;
 }
 
 .footer-section p,
 .footer-section a {
   margin: 0.25rem 0;
-  color: #222;
+  color: white;
   font-size: 0.95rem;
   text-decoration: none;
 }
@@ -42,15 +42,15 @@
 .careers-btn {
   margin-top: 0.5rem;
   padding: 0.5rem 1rem;
-  background-color: #333;
-  color: #fff;
+  background-color: white;
+  color: #f5877c;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
 .careers-btn:hover {
-  background-color: #222;
+  background-color: bisque;
 }
 
 .social-icon-link {
@@ -67,8 +67,21 @@
 
 .social-icon:hover {
   transform: scale(1.1);
-  color: #e1306c;       /* Instagram brand color */
+  color: white;       /* Instagram brand color */
 }
+
+.addressLink {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+  transition: color 0.2s ease;
+}
+
+.addressLink:hover {
+  color: white; /* coral hover color */
+  
+}
+
 
 /* === RESPONSIVE STYLES FOR MOBILE DEVICES === */
 @media screen and (max-width: 600px) {

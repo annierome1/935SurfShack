@@ -13,7 +13,7 @@ export default function Layout({ children }) {
 }
 
 const mainStyle = {
-  backgroundColor: '#c2e4e7 ', // set your desired background color
+  backgroundColor: '#fff', // set your desired background color
   width: '100%',             // full width of the viewport
   minHeight: '100vh',        // ensure it covers the full viewport height
   margin: '0 auto',  

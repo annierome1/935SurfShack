@@ -39,18 +39,17 @@ export default function Footer() {
 
       <div className={styles['footer-section']}>
         <h4>LOCATION</h4>
-        <p>935 Ocean Boulevard</p>
-        <p>Hampton, New Hampshire, 03842</p>
-        <p>
-          <a 
-            href="https://www.google.com/maps?q=42.942248942322465,-70.79423135919447" 
-            target="_blank" 
-            rel="noopener noreferrer"
-          >
-            Google Maps
-          </a>
-        </p>
+        <a 
+          href="https://www.google.com/maps?q=42.942248942322465,-70.79423135919447" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className={styles.addressLink}
+        >
+          <p>935 Ocean Boulevard</p>
+          <p>Hampton, New Hampshire, 03842</p>
+        </a>
       </div>
+
 
       <div className={styles['footer-section']}>
         <h4>CONTACT</h4>
@@ -61,9 +60,9 @@ export default function Footer() {
 
       <div className={styles['footer-section']}>
         <h4>HOURS</h4>
-        <p><strong>Open:</strong> 11:00 AM</p>
-        <p><strong>Close:</strong> 11:00 PM</p>
-        <p><strong>Happy Hour:</strong> 3PM – 5PM</p>
+        <p><strong>Thurs-Sat:</strong> 3-8pm</p>
+        <p><strong>Sun:</strong> 12-6pm</p>
+        <p><strong>Happy Hour:</strong> 3PM – 5PM (Thurs and Fri)</p>
       </div>
     </footer>
   );

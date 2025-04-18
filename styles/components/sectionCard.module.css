@@ -1,121 +1,169 @@
+/* SectionCard.module.css */
+
 .section {
   display: flex;
   flex-direction: row;
   width: 100%;
-  height: 300px; /* or 50vh if you prefer */
   overflow: hidden;
   position: relative;
   z-index: 1;
+  scroll-margin-top: 80px;
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  margin-bottom: 4rem;
+  border-radius: 20px;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .reverse {
   flex-direction: row-reverse;
 }
 
-.wave-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100px;
-  height: 100%;
-  z-index: 0;
-}
-
-.vertical-wave {
-  height: 100%;
-  width: 100%;
-}
-
-.imageWrapper {
-  position: relative;
-  flex: 1;
-  height: 100%;
-}
-
-.image {
-  width: 100%;      /* Ensures the image fills its container */
-  height: 100%;     /* Ensures the image fills its container */
-  object-fit: cover;
-}
-
-/* Removed background-color from .content so we can alternate it */
-.content {
+/* Text Content Column */
+.textContent {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 2rem;
-  color: #ffffff; /* Default text color; can be overridden below */
-  font-family: 'Source Sans Pro', sans-serif;
-  /* background-color: #c2e4e7;  <-- removed! */
+  z-index: 2;
 }
 
 .title {
+  font-family: 'Lobster Two', cursive;
   font-size: 2.5rem;
-  font-weight: 800;
-  margin-bottom: 0.05rem;
-}
-
-.description {
-  font-size: 1.25rem;
-  line-height: 1.7;
   margin-bottom: 1rem;
 }
 
+.description {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.extraText {
+  font-family: Calibri, sans-serif; /* Use Hartwell Medium if available */
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 2rem;
+}
+
 .button {
-  padding: 0.85rem 1.75rem;
-  font-weight: 600;
+  font-family: 'Lobster Two', cursive;
+  font-size: 1.125rem;
+  background-color: inherit; /* If you want the button to stand out, you can set a contrasting color here */
+  color: inherit;
+  padding: 0.75rem 1.5rem;
   border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.2s ease, background-color 0.2s ease;
+  text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  display: inline-block;
 }
 
 .button:hover {
-  transform: scale(1.02);
+  transform: scale(1.03);
 }
 
-/* SVG Wave styling (placement/rotation unchanged) */
-.svgWave {
-  position: absolute;
+/* Image Column */
+.imageWrapper {
+  position: relative;
+  flex: 1;
+  min-height: 300px;
+  margin: 0 1rem;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+  overflow: hidden;
+  transform: translateY(-20px);
+  z-index: 1;
+}
+
+.image {
+  width: 100%;
   height: 100%;
-  width: 100px;
-  top: 0;
-  z-index: 3;
-  pointer-events: none;
+  object-fit: cover;
 }
 
-.waveRight {
-  right: 0;
-  transform: rotate(180deg);
-}
-
-.waveLeft {
+/* Wave Transition at Bottom */
+.waveContainer {
+  position: absolute;
+  bottom: 0;
   left: 0;
-  transform: rotate(180deg) scaleX(-1);
+  width: 100%;
+  line-height: 0;
+  overflow: hidden;
+  z-index: 0;
 }
 
-.hero {
+.bottomWave {
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 100px;
+}
+
+/* Gallery Grid Styles (for Section 4) */
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  width: 100%;
+  height: 100%;
+}
+
+.galleryItem {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Map placeholder (for Section 5) */
+.mapContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.mapPlaceholder {
+  background-color: #f0f0f0;
+  width: 100%;
+  max-width: 800px;
+  height: 300px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
-  gap: 2rem;
-  padding: 3rem 2rem;
+  justify-content: center;
+  color: #666;
 }
 
-/* Responsive adjustments for screens up to 768px */
+/* Responsive Styles */
 @media (max-width: 768px) {
   .section {
     flex-direction: column;
-    height: auto;  /* Let content dictate height on mobile */
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+
+  .reverse {
+    flex-direction: column-reverse;
   }
 
   .imageWrapper {
-    height: 300px;
+    width: 100%;
+    margin: 1rem 0;
+    min-height: 240px;
+    transform: translateY(0);
   }
 
-  .content {
+  .textContent {
     padding: 1.5rem;
-    text-align: center;
   }
 
   .title {
@@ -123,27 +171,16 @@
   }
 
   .description {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   .button {
-    padding: 0.75rem 1.5rem;
-    font-size: 0.9rem;
-  }
-
-  /* Optionally, reduce the width of the wave elements */
-  .wave-wrapper {
-    width: 80px;
-  }
-  
-  .svgWave {
-    width: 80px;
+    padding: 0.8rem 1.5rem;
   }
 }
 
-/* Additional adjustments for very small screens (max-width: 480px) */
 @media (max-width: 480px) {
-  .content {
+  .textContent {
     padding: 1rem;
   }
 
@@ -152,55 +189,11 @@
   }
 
   .description {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 
   .button {
     padding: 0.65rem 1.25rem;
-    font-size: 0.85rem;
+    font-size: 1rem;
   }
-}
-
-/* Alternate background colors for .content */
-.section:nth-of-type(odd) .content {
-  background-color: #c2e4e7; /* teal-ish */
-  color: #2a4d69;
-}
-
-.section:nth-of-type(even) .content {
-  background-color: #f5877c; /* coral */
-  color: #fff;
-}
-
-/* Alternate SVG wave colors by targeting inner path elements */
-.section:nth-of-type(odd) .svgWave path {
-  fill: #c2e4e7 !important; /* matches odd section background */
-}
-
-.section:nth-of-type(even) .svgWave path {
-  fill: #f5877c !important; /* matches even section background */
-}
-
-/* Odd sections: Button is dark blue with teal text */
-.section:nth-of-type(odd) .button {
-  background-color: #2a4d69;
-  color: #c2e4e7;
-  transition: transform 0.2s ease, filter 0.2s ease;
-}
-
-.section:nth-of-type(odd) .button:hover {
-  transform: scale(1.05);
-  filter: brightness(1.1);
-}
-
-/* Even sections: Button is white with coral text */
-.section:nth-of-type(even) .button {
-  background-color: #fff;
-  color: #f5877c;
-  transition: transform 0.2s ease, filter 0.2s ease;
-}
-
-.section:nth-of-type(even) .button:hover {
-  transform: scale(1.05);
-  filter: brightness(0.95);
 }

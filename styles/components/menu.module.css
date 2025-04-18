@@ -15,7 +15,7 @@
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 2rem;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   color: #2a4d69;
 }
 
@@ -58,7 +58,7 @@
   height: auto;
   display: block;
   margin: 0 auto;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 /* The embedded menu or iframe should expand vertically */
@@ -78,7 +78,7 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 /* Optional: style individual special cards if you have them */
@@ -93,7 +93,7 @@
 /* Headings within the specials sections */
 .section h2 {
   margin-bottom: 1rem;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   color: #2a4d69;
 }
 

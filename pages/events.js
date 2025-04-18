@@ -1,3 +1,4 @@
+// pages/events.js
 import { useState } from 'react';
 import Image from 'next/image';
 import Layout from '../components/Layout';
@@ -5,77 +6,202 @@ import CalendarView from '../components/CalendarView';
 import styles from '../styles/components/events.module.css';
 import { client } from '../src/sanity/lib/client';
 import imageUrlBuilder from '@sanity/image-url';
+// Images
+import heroImage from '../public/images/performer.jpg';       // Hero banner up top
+import privateEventImage from '../public/images/event.jpg'; // Private event image
 
 const builder = imageUrlBuilder(client);
+
 function urlFor(source) {
   return builder.image(source);
 }
 
 export default function Events({ events }) {
-  const [view, setView] = useState('list'); // 'calendar' or 'list'
+  // Toggle state for Calendar or List view
+  const [view, setView] = useState('calendar');
 
   return (
     <Layout>
       <div className={styles.container}>
-        <h1 className={styles.title}>Live Music & Events</h1>
-
-        {/* View Toggle */}
-        <div className={styles.toggle}>
-          <button
-            onClick={() => setView('calendar')}
-            className={view === 'calendar' ? styles.active : ''}
-          >
-            View Calendar
-          </button>
-          <span> | </span>
-          <button
-            onClick={() => setView('list')}
-            className={view === 'list' ? styles.active : ''}
-          >
-            View List
-          </button>
-        </div>
-
-        {/* View: Calendar or List */}
-        {view === 'calendar' ? (
-          <CalendarView events={events} />
-        ) : (
-          <div className={styles.eventsList}>
-            {events.map((event) => (
-              <div key={event._id} className={styles.eventCard}>
-                {event.image && (
-                  <div className={styles.eventImageWrapper}>
-                    <Image
-                      src={urlFor(event.image).width(800).height(500).url()}
-                      alt={event.title}
-                      className={styles.eventImage}
-                      width={800}
-                      height={500}
-                      priority
-                    />
-                  </div>
-                )}
-                <div className={styles.eventContent}>
-                  <h2 className={styles.eventTitle}>{event.title}</h2>
-                  <p className={styles.eventDate}>
-                    {new Date(event.date).toLocaleDateString(undefined, {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric',
-                    })}
-                  </p>
-                  <p className={styles.eventDescription}>{event.description}</p>
-                </div>
-              </div>
-            ))}
+        {/* =========================
+            HERO SECTION
+         ========================= */}
+        <section className={styles.heroSection}>
+          <div className={styles.heroImageWrapper}>
+            <Image
+              src={heroImage}
+              alt="Sunset beach bar"
+              layout="fill"
+              objectFit="cover"
+              priority
+            />
+            <div className={styles.heroOverlay}>
+              <h1 className={styles.heroTitle}>Feel The Vibes</h1>
+              <h2 className={styles.heroSubtitle}>What goes better with a lobster roll and cocktail than live music? Join us for
+live music on Thursday &amp; Friday in the spring and fall and Thursday - Sunday in the
+summer. Our artists perform a range of genres from reggae to classics to country and
+you may just discover a hidden gem you’ve never heard before. Fair warning that it may
+be hard to leave once you sit down and enjoy the vibes.</h2>
+            </div>
           </div>
-        )}
+        </section>
+
+        {/* =========================
+            VIEW TOGGLE + EVENTS
+         ========================= */}
+        <section className={styles.eventsSection}>
+          <div className={styles.viewToggle}>
+            <button
+              onClick={() => setView('calendar')}
+              className={view === 'calendar' ? styles.activeToggle : ''}
+            >
+              Calendar View
+            </button>
+            <span> | </span>
+            <button
+              onClick={() => setView('list')}
+              className={view === 'list' ? styles.activeToggle : ''}
+            >
+              List View
+            </button>
+          </div>
+          
+          {/* Render Calendar or List */}
+          {view === 'calendar' ? (
+            // If you already have a CalendarView component, it might
+            // display events in a grid with days of the week, etc.
+            <CalendarView events={events} />
+          ) : (
+            <div className={styles.listContainer}>
+              {events.map((event) => (
+                <div key={event._id} className={styles.eventCard}>
+                  {/* Event Image */}
+                  {event.image && (
+                    <div className={styles.eventImageWrapper}>
+                      <Image
+                        src={urlFor(event.image)
+                          .width(800)
+                          .height(500)
+                          .fit('clip')  // Tells Sanity to scale down without cropping
+                          .url()}
+                        alt={event.title}
+                        className={styles.eventImage}
+                        width={800}
+                        height={500}
+                        objectFit = "cover"
+                        layout='responsive'
+                        objectPosition="top"
+                        priority
+                      />
+                    </div>
+                  )}
+                  {/* Event Text Info */}
+                  <div className={styles.eventContent}>
+                    <h2 className={styles.eventTitle}>{event.title}</h2>
+                    <p className={styles.eventDate}>
+                      {new Date(event.date).toLocaleDateString(undefined, {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                      })}
+                    </p>
+                    <p className={styles.eventDescription}>{event.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </section>
+
+        {/* =========================
+            PRIVATE EVENT INQUIRY
+         ========================= */}
+        <section className={styles.privateEventSection}>
+          <div className={styles.privateEventWrapper}>
+            {/* Left Column: Image & Intro Text */}
+            <div className={styles.privateEventLeft}>
+              <h2 className={styles.privateEventTitle}>Host Your Private Event</h2>
+              <p className={styles.privateEventSubtitle}>
+              From weddings to birthday parties to corporate events, 935 Ocean and the
+Surf Shack can handle it all. We offer rentals of our space for any of your celebrations!
+Whether you want to rent our 30’x40’ tent or the whole venue, we’d love to speak with
+you! Please fill out the form below to inquire about hosting your event with us.
+              </p>
+              <div className={styles.privateEventImageWrapper}>
+                <Image
+                  src={privateEventImage}
+                  alt="Private event at the bar"
+                  layout="responsive"
+                  width={800}
+                  height={500}
+                />
+              </div>
+            </div>
+
+            {/* Right Column: Inquiry Form */}
+            <div className={styles.privateEventFormWrapper}>
+              <h3 className={styles.inquiryFormTitle}>Event Inquiry</h3>
+              <form
+                className={styles.inquiryForm}
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  // Add your form submission logic
+                }}
+              >
+                <div className={styles.formGroup}>
+                  <label htmlFor="name">Name</label>
+                  <input type="text" id="name" name="name" required />
+                </div>
+
+                <div className={styles.formGroup}>
+                  <label htmlFor="email">Email</label>
+                  <input type="email" id="email" name="email" required />
+                </div>
+
+                <div className={styles.formGroup}>
+                  <label htmlFor="eventDate">Event Date</label>
+                  <input type="date" id="eventDate" name="eventDate" required />
+                </div>
+
+                <div className={styles.formGroup}>
+                  <label htmlFor="eventType">Event Type</label>
+                  <select id="eventType" name="eventType" required>
+                    <option value="">Select Type</option>
+                    <option value="Birthday">Birthday</option>
+                    <option value="Wedding">Wedding</option>
+                    <option value="Corporate">Corporate</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+
+                <div className={styles.formGroup}>
+                  <label htmlFor="numberOfGuests">Number of Guests</label>
+                  <input type="number" id="numberOfGuests" name="numberOfGuests" />
+                </div>
+
+                <div className={styles.formGroup}>
+                  <label htmlFor="additionalInfo">Additional Information</label>
+                  <textarea
+                    id="additionalInfo"
+                    name="additionalInfo"
+                    rows="4"
+                    placeholder="Let us know any details..."
+                  />
+                </div>
+
+                <button type="submit" className={styles.formSubmitButton}>
+                  Submit Inquiry
+                </button>
+              </form>
+            </div>
+          </div>
+        </section>
       </div>
     </Layout>
   );
 }
 
-// Fetch from Sanity
+// Fetch events from Sanity
 export async function getStaticProps() {
   const query = `*[_type == "event"] | order(date asc) {
     _id,
@@ -84,11 +210,10 @@ export async function getStaticProps() {
     description,
     image
   }`;
-
   const events = await client.fetch(query);
 
   return {
     props: { events },
-    revalidate: 60, // ISR: refresh every minute
+    revalidate: 60, // refresh every minute (ISR)
   };
 }
