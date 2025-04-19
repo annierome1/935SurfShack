@@ -1,100 +1,124 @@
-/* menu.css */
-
-/* Container for the entire menu page */
 .container {
-  width: 100vw; 
-  height: auto; /* let content dictate height */
-  margin: 0;
-  padding: 2rem;
-  background-color: #d4f1f4;
-  box-sizing: border-box;
+  width:100vw; padding:2rem; background:#fff; box-sizing:border-box; margin:0 auto;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
 }
 
-/* Main title for the menu page */
-.title {
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  color: #2a4d69;
-}
+/* Title + subheading */
+.title { text-align:center; font-size:2.5rem; color:#f5877a; margin-bottom:.25rem; }
+.subheading { text-align:center; color:#90c4ca; margin-bottom:2rem; }
 
-/* Container for tab buttons—stacked vertically */
-.tabContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 2rem;
-}
-
-/* Tab buttons: full-width on small devices */
+/* Tabs */
+.tabContainer { display:flex; justify-content:center; gap:1rem; margin-bottom:2rem; }
 .tabButton {
-  background: none;
-  border: 2px solid #2a4d69;
-  color: #2a4d69;
-  padding: 10px 20px;
-  margin: 5px 0;
-  font-size: 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-  width: 100%;
-  max-width: 300px;
+  border:2px solid #f5877a; color:#f5877a; padding:.5rem 1rem; border-radius:999px;
+  background:none; cursor:pointer; transition:.2s;
+}
+.tabButton:hover, .activeTab { background:#f5877a; color:#fff; }
+
+/* Section header (Food/Drinks) */
+.sectionHeader { display:flex; align-items:center; gap:.5rem; color:#f5877a; margin:2rem 0 1rem; }
+.sectionHeader .icon { font-size:1.5rem; }
+.sectionHeader h2 { font-size:1.75rem; margin:0; }
+
+/* ===== Food Grid ===== */
+.foodGrid {
+  display:grid;
+  grid-template-columns: repeat(4,1fr);
+  gap:1.5rem;
+  margin-bottom:2rem;
 }
 
-.tabButton:hover {
-  background: #2a4d69;
-  color: #fff;
+/* ===== Drink Grid ===== */
+.drinkGrid {
+  display:grid;
+  grid-template-columns: repeat(4,1fr);
+  gap:1.5rem;
+  margin-bottom:2rem;
 }
 
-.activeTab {
-  background: #2a4d69;
-  color: #fff;
+/* Category cards */
+.categoryCard {
+  background:#f7fcfd; border-radius:10px;
+  padding:1rem; box-shadow:0 4px 12px rgba(0,0,0,0.05);
+}
+.categoryTitle { color:#f5877a; font-weight:600; margin-bottom:.75rem; }
+
+/* Item rows in food cards */
+.itemRow {
+  display:flex; justify-content:space-between; margin-bottom:.5rem;
+}
+.itemName { font-weight:500; }
+.itemDesc { font-size:.875rem; color:#555; margin-top:.25rem; }
+.itemPrice { font-weight:600; }
+
+/* Simple list rows in drink cards */
+.itemRowSimple { margin-bottom:.4rem; color:#333; }
+
+/* Hero image cards */
+.imageCard {
+  position:relative; grid-column:span 2; height:300px;
+  border-radius:10px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.05);
 }
 
-/* Content container for the menu's main content */
-.menuContent {
-  width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+/* Beer & Seltzers full width */
+.fullWidthCard {
+  grid-column:1/-1; background:#f7fcfd; border-radius:10px;
+  padding:1rem; box-shadow:0 4px 12px rgba(0,0,0,0.05);
+}
+.twoColumn {
+  display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:1rem;
+}
+.subcategoryTitle { font-weight:600; color:#333; margin-bottom:.5rem; }
+
+/* Download button */
+.downloadButton {
+  display:block; margin:2rem auto; padding:.75rem 1.5rem;
+  background:#2a4d69; color:#fff; border-radius:6px; text-align:center;
+  text-decoration:none; transition:.2s;
+}
+.downloadButton:hover { background:#1f3b52; }
+
+/* Responsive */
+@media(max-width:1024px){
+  .foodGrid,.drinkGrid { grid-template-columns:repeat(2,1fr); }
+  .imageCard { grid-column:span 2; height:200px; }
+}
+@media(max-width:600px){
+  .foodGrid,.drinkGrid { grid-template-columns:1fr; }
+  .imageCard { height:180px; }
+  .twoColumn { grid-template-columns:1fr; }
 }
 
-/* The embedded menu or iframe should expand vertically */
-.menuIframe {
-  display: block;
-  border: none;
-  width: 100%;
-  /* Instead of a fixed 90vh, we use a minimum height with vertical expansion */
-  min-height: 200vh;
-  height: auto;
-  background-color: #fff;
-  margin: 0 auto;
-}
+/* SPECIALS (no changes) */
+.specials { /* your existing specials styles */ }
 
+/* SPECIALS (keep your existing styles here) */
 /* Specials section (if applicable) – stacked vertically on mobile */
 .specials {
   display: flex;
   flex-direction: column;
   gap: 2rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  justify-s: center;
+  width: 90%;
 }
 
 /* Optional: style individual special cards if you have them */
 .section {
-  background: #fffaf3;
+  background: #f7fcfd;
   padding: 1rem 1.5rem;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
   margin-bottom: 1.5rem;
+  justify-items: center;
+  box-shadow:0 4px 12px rgba(0,0,0,0.05);
 }
 
 /* Headings within the specials sections */
 .section h2 {
   margin-bottom: 1rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  color: #2a4d69;
+  color: #f5877a;
 }
 
 /* Special list as a grid – adjust this if needed */
@@ -105,12 +129,15 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 1rem;
+  justify-content: center;
+  box-shadow:0 4px 12px rgba(0,0,0,0.05);
 }
 
 /* Special item “cards” */
 .specialItem {
   display: flex;
   flex-direction: column;
+  flex: 0 1 250px;
   align-items: center;
   background: #fff;
   border-radius: 8px;
@@ -119,6 +146,9 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   text-align: center;
   padding: 1rem;
+  width: 250px;
+  justify-items: center;
+  
 }
 
 .specialItem:hover {
@@ -139,34 +169,26 @@
 .specialItem h3 {
   margin: 0.5rem 0 0.25rem;
   font-size: 1.1rem;
-  color: #2a4d69;
+  color: #f5877a;
 }
 
 .specialItem p {
   margin: 0;
   font-size: 0.95rem;
-  color: #2a4d69;
+  color: #f5877a;
   font-weight: 600;
 }
 
-/* Mobile-specific tweaks if needed */
+
+
+/* MOBILE RESPONSIVENESS */
 @media (max-width: 768px) {
-  .container {
-    padding: 1.5rem;
+  .menuGrid {
+    grid-template-columns: 1fr;
   }
-  
-  .title {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  /* Ensure tabs and iframe take up full width */
-  .tabButton {
-    padding: 10px 16px;
-    font-size: 0.95rem;
-  }
-  
-  .menuIframe {
-    min-height: 300vh; /* Adjust based on content; can be lower than desktop */
+  .sectionHeader {
+    justify-content: center;
   }
 }
+
+

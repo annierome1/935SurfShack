@@ -1,0 +1,158 @@
+{
+    "food": {
+      "Bites": [
+        {
+          "name": "Mini Empanadas",
+          "description": "Beef, chicken or black bean empanadas with chimichurri and aioli",
+          "price": 8.00
+        },
+        {
+          "name": "Pretzel Bites",
+          "description": "Warm, soft pretzel bites with our own beer cheese",
+          "price": 8.00
+        },
+        {
+          "name": "Chips ’n Guac",
+          "description": "Housemade guacamole with tortilla chips and salsa",
+          "price": 10.00
+        }
+      ],
+      "Handhelds & Wraps": [
+        {
+          "name": "Chicken Salad Wrap",
+          "description": "Cranberry chicken salad with romaine on a wrap. Served with chips.",
+          "price": 12.00
+        },
+        {
+          "name": "Lobster Roll (1)",
+          "description": "Fresh, sweet lobster meat served on a buttered roll with chips and liquid butter.",
+          "price": 20.00
+        },
+        {
+          "name": "Lobster Roll (2)",
+          "description": "Fresh, sweet lobster meat served on a buttered roll with chips and liquid butter.",
+          "price": 30.00
+        }
+      ],
+      "Classics & Extras": [
+        {
+          "name": "Hot Dog",
+          "description": "Steamed to perfection. Condiments of your choice. Served on a roll with chips.",
+          "price": 6.00
+        },
+        {
+          "name": "Cheese Quesadilla",
+          "description": "Served with salsa and sour cream. Add Guac + $2",
+          "price": 10.00
+        },
+        {
+          "name": "Chicken Wings",
+          "description": "Tossed in your choice of honey barbecue, garlic parmesan or spicy teriyaki with ranch or blue cheese.",
+          "price": 12.00
+        }
+      ]
+    },
+  
+    "drink": {
+      "Liquor & Wine": {
+        "GIN": [
+          "Barr Hill",
+          "Bombay Sapphire",
+          "Hendrick’s"
+        ],
+        "RUM": [
+          "Appleton Estate 12 Year",
+          "Bacardi Black",
+          "Bacardi Coconut",
+          "Bacardi Superior",
+          "Captain Morgan Spiced Rum",
+          "Denizen Merchant’s Reserve 8 Year",
+          "Pusser’s Blue Label"
+        ],
+        "TEQUILA/MEZCAL": [
+          "Casamigos Blanco",
+          "Casamigos Reposado",
+          "Espolon Blanco",
+          "Hornitos Plata",
+          "Hornitos Reposado",
+          "Illegal Blanco Mezcal",
+          "Illegal Reposado Mezcal",
+          "Patron Silver"
+        ],
+        "VODKA": [
+          "Absolut Peppar",
+          "Effen Cucumber",
+          "Grey Goose",
+          "Ketel One",
+          "Stoli Grapefruit",
+          "Stoli Orange",
+          "Stoli Vanilla",
+          "Tito’s"
+        ],
+        "WHISKEY": [
+          "Angel’s Envy",
+          "Basil Hayden",
+          "Blanton’s",
+          "Buffalo Trace",
+          "Bulleit",
+          "Bulleit Rye",
+          "Crown Royal",
+          "Eagle Rare 10 Year",
+          "E.H. Taylor Small Batch",
+          "Glenlivet 12",
+          "Jack Daniel’s",
+          "Jameson",
+          "Jim Beam",
+          "Johnnie Walker Black",
+          "Maker’s Mark",
+          "Michter’s Straight Rye Single Barrel"
+        ],
+        "LIQUEURS": [
+          "Amaretto Disaronno",
+          "Amarula Cream Liqueur",
+          "Aperol",
+          "Bailey’s",
+          "Campari",
+          "Cointreau",
+          "Grand Marnier",
+          "Kahlua",
+          "Martini & Rossi Dry Vermouth",
+          "Martini & Rossi Sweet Vermouth",
+          "St. Germain"
+        ],
+        "WINE/SPARKLING": [
+          "TBD"
+        ]
+      },
+      "Beer & Beyond": {
+        "BREWS": [
+          "Bud Light",
+          "Coors Light",
+          "Athletic Brewing N/A",
+          "Allagash White",
+          "Corona Extra",
+          "Heineken Zero N/A",
+          "Kona Big Wave",
+          "Landshark Island Lager",
+          "Modelo",
+          "Sam Adams Porch Rocker",
+          "Sam Adams Seasonal",
+          "Housemade Shandy",
+          "Tuckerman Pale Ale (16 fl oz)",
+          "Lawsons Sip of Sunshine IPA (16 fl oz)",
+          "Maine Lunch IPA (16.9 fl oz)"
+        ],
+        "SELTZERS & BEYOND": [
+          "Fresh Squeezed Lemonade",
+          "Fresh Squeezed Orange Juice",
+          "High Noon Passionfruit",
+          "High Noon Peach",
+          "NUTRL Orange",
+          "NUTRL Pineapple",
+          "Suncruiser Iced Tea",
+          "Suncruiser Iced Tea Lemonade"
+        ]
+      }
+    }
+  }
+  

@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem;
+  padding: 2rem 1rem; // add side padding for mobile safety
 }
 
 .calendarWrapper {
@@ -10,60 +10,60 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem;
+  padding: 2rem 1rem;
 
-/* === GLOBAL STYLES FOR REACT-CALENDAR === */
-:global(.react-calendar) {
-  width: 100%;
-  max-width: 650px;
-  background: #fff;
-  border: none;
-  border-radius: 1rem;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  font-family: inherit;
-  padding: 1rem;
+  /* === GLOBAL STYLES FOR REACT-CALENDAR === */
+  :global(.react-calendar) {
+    width: 100%;
+    max-width: 650px;
+    background: #fff;
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: inherit;
+    padding: 1rem;
+  }
+
+  :global(.react-calendar__tile) {
+    padding: 1.2rem 0.5rem;
+    text-align: center;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+    font-size: 1rem;
+    min-height: 60px;
+    position: relative;
+  }
+
+  :global(.react-calendar__tile--active) {
+    background-color: #e86c64;
+    color: white;
+  }
+
+  :global(.react-calendar__navigation) {
+    margin-bottom: 1rem;
+  }
+
+  :global(.react-calendar__navigation button) {
+    background: transparent;
+    border: none;
+    color: #e86c64;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+  }
+
+  :global(.react-calendar__tile--now) {
+    background: #fff0ec;
+    border: 1px solid var(--color-primary, #f5877c);
+    color: inherit;
+  }
+
+  :global(.react-calendar__tile:hover) {
+    background-color: #fbe2d2;
+    cursor: pointer;
+  }
 }
 
-
-:global(.react-calendar__tile) {
-  padding: 1.2rem 0;
-  text-align: center;
-  border-radius: 8px;
-  transition: background-color 0.2s ease;
-  font-size: 1rem;
-  min-height: 60px;
-  position: relative;
-}
-
-:global(.react-calendar__tile--active) {
-  background-color: #e86c64;
-  color: white;
-}
-
-:global(.react-calendar__navigation) {
-  margin-bottom: 1rem;
-}
-
-:global(.react-calendar__navigation button) {
-  background: transparent;
-  border: none;
-  color: #e86c64;
-  font-weight: bold;
-  font-size: 1.1rem;
-  cursor: pointer;
-}
-
-:global(.react-calendar__tile--now) {
-  background: #fff0ec; 
-  border: 1px solid var(--color-primary, #f5877c);
-  color: inherit;
-}
-
-:global(.react-calendar__tile:hover) {
-  background-color: #fbe2d2;
-  cursor: pointer;
-}
-}
 /* === LOCAL STYLES === */
 .eventDay {
   background: linear-gradient(to bottom right, #fcd5ce, #ffb4a2) !important;
@@ -75,12 +75,12 @@
 
 .eventList {
   margin-top: 2rem;
-  background: #fffdf8;
-  padding: 2rem;
+  background: #f8f8f8;
+  padding: 2rem 1rem;
   border-radius: 1rem;
   width: 100%;
   max-width: 600px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
   font-size: 1rem;
 }
 
@@ -101,4 +101,37 @@
   bottom: 6px;
   left: 50%;
   transform: translateX(-50%);
+}
+
+/* ================
+   iPhone/Mobile tweaks
+================ */
+@media screen and (max-width: 480px) {
+  .wrapper {
+    padding: 1.5rem 1rem;
+  }
+
+  .calendarWrapper {
+    padding: 1.5rem 0.5rem;
+    width: 90vw;
+  }
+
+  :global(.react-calendar__tile) {
+    font-size: 0.9rem;
+    width: 90vw;
+    padding: 0.75rem 0.25rem;
+  }
+
+  :global(.react-calendar__navigation button) {
+    font-size: 1rem;
+  }
+
+  .eventList {
+    padding: 1.5rem 1rem;
+    font-size: 0.95rem;
+  }
+
+  .eventCard {
+    padding: 0.75rem;
+  }
 }

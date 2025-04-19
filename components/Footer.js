@@ -1,5 +1,6 @@
 import styles from "../styles/components/Footer.module.css";
 import { FaInstagram, FaFacebook } from 'react-icons/fa';
+import Link from 'next/link';
 
 export default function Footer() {
   return (
@@ -55,7 +56,9 @@ export default function Footer() {
         <h4>CONTACT</h4>
         <p><strong>Phone:</strong> (603)926-2500</p>
         <p><strong>Email:</strong> info@surfshack.com</p>
+        <Link href="/contact" passHref>
         <button className={styles['careers-btn']}>Careers</button>
+      </Link>
       </div>
 
       <div className={styles['footer-section']}>
