@@ -16,17 +16,40 @@
 }
 
 /* Transparent header variant (homepage, not scrolled) */
+/* Transparent header variant (homepage, not scrolled) */
 .headerHomeTransparent {
   position: absolute; /* Over the hero */
   top: 0;
   left: 0;
+  width: 100%;
   background-color: transparent;
   box-shadow: none;
-  opacity: 1;
-  transform: translateY(0);
-  color: #f5877c;
+  color: #f5877c;    /* still your coral for non-link text, if you like */
   padding-top: 2.5rem;
+  transition: color 0.3s;
 }
+
+/* Override all navLink text to white when transparent */
+.headerHomeTransparent .navLink {
+  color: #fff !important;
+}
+
+/* Make the underline animate in white on hover */
+.headerHomeTransparent .navLink::after {
+  background-color: rgba(255,255,255,0.6);
+}
+.headerHomeTransparent .navLink:hover::after {
+  background-color: #fff;
+}
+
+/* If you also want the top-banner link white: */
+.headerHomeTransparent .bannerLink {
+  color: #fff !important;
+}
+.headerHomeTransparent .bannerLink:hover {
+  color: #f0f0f0;    /* or even lighter white on hover */
+}
+
 
 /* Solid header variant (scrolled or non-home) */
 .headerSolid {

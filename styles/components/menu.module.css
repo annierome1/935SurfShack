@@ -1,106 +1,211 @@
+/* ────────────────────────────────────────
+   Base & Layout
+──────────────────────────────────────── */
 .container {
-  width:100vw; padding:2rem; background:#fff; box-sizing:border-box; margin:0 auto;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 2rem;
+  background: #fff;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
-
-/* Title + subheading */
-.title { text-align:center; font-size:2.5rem; color:#f5877a; margin-bottom:.25rem; }
-.subheading { text-align:center; color:#90c4ca; margin-bottom:2rem; }
 
 /* Tabs */
-.tabContainer { display:flex; justify-content:center; gap:1rem; margin-bottom:2rem; }
+.tabContainer {
+  display: flex;
+  margin-top: 2rem;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
 .tabButton {
-  border:2px solid #f5877a; color:#f5877a; padding:.5rem 1rem; border-radius:999px;
-  background:none; cursor:pointer; transition:.2s;
+  border: 2px solid #f5877a;
+  color: #f5877a;
+  padding: 0.75rem 2rem;
+  border-radius: 999px;
+  background: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
 }
-.tabButton:hover, .activeTab { background:#f5877a; color:#fff; }
-
-/* Section header (Food/Drinks) */
-.sectionHeader { display:flex; align-items:center; gap:.5rem; color:#f5877a; margin:2rem 0 1rem; }
-.sectionHeader .icon { font-size:1.5rem; }
-.sectionHeader h2 { font-size:1.75rem; margin:0; }
-
-/* ===== Food Grid ===== */
-.foodGrid {
-  display:grid;
-  grid-template-columns: repeat(4,1fr);
-  gap:1.5rem;
-  margin-bottom:2rem;
+.tabButton:hover,
+.activeTab {
+  background: #f5877a;
+  color: #fff;
 }
 
-/* ===== Drink Grid ===== */
+/* ────────────────────────────────────────
+   Typography
+──────────────────────────────────────── */
+.title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #f5877a;
+  margin-bottom: 0.25rem;
+}
+.subheading {
+  text-align: center;
+  color: #90c4ca;
+  margin-bottom: 2rem;
+}
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #f5877a;
+  margin: 2rem 0 1rem;
+}
+.sectionHeader .icon {
+  font-size: 1.5rem;
+}
+.sectionHeader h2 {
+  font-size: 1.75rem;
+  margin: 0;
+}
+
+/* ────────────────────────────────────────
+   Grids
+──────────────────────────────────────── */
+/* unified grid for both Food & Drinks sections */
+.foodGrid,
 .drinkGrid {
-  display:grid;
-  grid-template-columns: repeat(4,1fr);
-  gap:1.5rem;
-  margin-bottom:2rem;
+  display: grid;
+  /* let columns wrap responsively at 250px min-width */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  align-items: start;        /* all cards start at the top */
+  grid-auto-flow: dense;     /* pack items to fill gaps */
 }
 
-/* Category cards */
-.categoryCard {
-  background:#f7fcfd; border-radius:10px;
-  padding:1rem; box-shadow:0 4px 12px rgba(0,0,0,0.05);
-}
-.categoryTitle { color:#f5877a; font-weight:600; margin-bottom:.75rem; }
-
-/* Item rows in food cards */
-.itemRow {
-  display:flex; justify-content:space-between; margin-bottom:.5rem;
-}
-.itemName { font-weight:500; }
-.itemDesc { font-size:.875rem; color:#555; margin-top:.25rem; }
-.itemPrice { font-weight:600; }
-
-/* Simple list rows in drink cards */
-.itemRowSimple { margin-bottom:.4rem; color:#333; }
-
-/* Hero image cards */
-.imageCard {
-  position:relative; grid-column:span 2; height:300px;
-  border-radius:10px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.05);
-}
-
-/* Beer & Seltzers full width */
+/* Beer & Seltzers full‑width card */
 .fullWidthCard {
-  grid-column:1/-1; background:#f7fcfd; border-radius:10px;
-  padding:1rem; box-shadow:0 4px 12px rgba(0,0,0,0.05);
+  grid-column: 1 / -1;
+  background: #f7fcfd;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 .twoColumn {
-  display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
 }
-.subcategoryTitle { font-weight:600; color:#333; margin-bottom:.5rem; }
 
-/* Download button */
+/* ────────────────────────────────────────
+   Category Cards
+──────────────────────────────────────── */
+.categoryCard {
+  background: #f7fcfd;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.categoryTitle {
+  color: #f5877a;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+.itemRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+.itemName {
+  font-weight: 500;
+}
+.itemDesc {
+  font-size: 0.875rem;
+  color: #555;
+  margin-top: 0.25rem;
+}
+.itemPrice {
+  font-weight: 600;
+}
+.itemRowSimple {
+  margin-bottom: 0.4rem;
+  color: #333;
+}
+
+/* ────────────────────────────────────────
+   Hero / Image Cards
+──────────────────────────────────────── */
+/* Use aspect-ratio so images never crop */
+.imageCard {
+  /* we’ll use a padding hack for a 16:9 frame */
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;       /* 9/16 = .5625 → 56.25% */
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  grid-column: span 2;       /* only on desktop this spans two columns */
+}
+
+/* force images inside to fill that frame without cropping edges */
+.imageCard :global(img) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;       /* or `cover` if you prefer filling completely */
+}
+
+/* ────────────────────────────────────────
+   Download Button
+──────────────────────────────────────── */
+.downloadContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+  gap: 1rem;
+}
 .downloadButton {
-  display:block; margin:2rem auto; padding:.75rem 1.5rem;
-  background:#2a4d69; color:#fff; border-radius:6px; text-align:center;
-  text-decoration:none; transition:.2s;
+  padding: 0.75rem 1.5rem;
+  background: #f5877a;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.2s;
 }
-.downloadButton:hover { background:#1f3b52; }
-
-/* Responsive */
-@media(max-width:1024px){
-  .foodGrid,.drinkGrid { grid-template-columns:repeat(2,1fr); }
-  .imageCard { grid-column:span 2; height:200px; }
-}
-@media(max-width:600px){
-  .foodGrid,.drinkGrid { grid-template-columns:1fr; }
-  .imageCard { height:180px; }
-  .twoColumn { grid-template-columns:1fr; }
+.downloadButton:hover {
+  background: #e17366;
 }
 
-/* SPECIALS (no changes) */
-.specials { /* your existing specials styles */ }
 
-/* SPECIALS (keep your existing styles here) */
-/* Specials section (if applicable) – stacked vertically on mobile */
+/* ────────────────────────────────────────
+   Responsive Tweaks
+──────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .foodGrid,
+  .drinkGrid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+  .fullWidthCard {
+    grid-column: 1 / -1;
+  }
+  .imageCard {
+    grid-column: span 1;
+  }
+}
+@media (max-width: 600px) {
+  .foodGrid,
+  .drinkGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ────────────────────────────────────────
+   Specials 
+──────────────────────────────────────── */
+
 .specials {
   display: flex;
   flex-direction: column;
   gap: 2rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  justify-s: center;
-  width: 90%;
+  justify-self: center;
+  width: 100%;
 }
 
 /* Optional: style individual special cards if you have them */
@@ -112,6 +217,7 @@
   margin-bottom: 1.5rem;
   justify-items: center;
   box-shadow:0 4px 12px rgba(0,0,0,0.05);
+  
 }
 
 /* Headings within the specials sections */
@@ -131,6 +237,7 @@
   gap: 1rem;
   justify-content: center;
   box-shadow:0 4px 12px rgba(0,0,0,0.05);
+  
 }
 
 /* Special item “cards” */
@@ -146,7 +253,7 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   text-align: center;
   padding: 1rem;
-  width: 250px;
+  width: 200px;
   justify-items: center;
   
 }
@@ -181,14 +288,5 @@
 
 
 
-/* MOBILE RESPONSIVENESS */
-@media (max-width: 768px) {
-  .menuGrid {
-    grid-template-columns: 1fr;
-  }
-  .sectionHeader {
-    justify-content: center;
-  }
-}
 
 

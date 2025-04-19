@@ -10,14 +10,15 @@ export default function Menu({ menu }) {
   const [activeTab, setActiveTab] = useState('menu');
 
   // pick PDF based on section
-  const downloadUrl = menu.menuPdf?.asset?.url;
+  const foodDownloadUrl = menu.menuPdf?.asset?.url;
+  const drinkDownloadUrl = menu.drinkPdf?.asset?.url;
 
   return (
     <Layout>
       <div className={styles.container}>
 
         {/* Page Title */}
-        <h1 className={styles.title}>Beach Bar &amp; Grill</h1>
+        <h1 className={styles.title}>Surf Shack Menu</h1>
 
         {/* Tabs */}
         <div className={styles.tabContainer}>
@@ -39,7 +40,7 @@ export default function Menu({ menu }) {
           <>
             {/* FOOD GRID */}
             <div className={styles.sectionHeader}>
-              <span className={styles.icon}>🍴</span>
+              <span className={styles.icon}></span>
               <h2>Food</h2>
             </div>
             <div className={styles.foodGrid}>
@@ -86,7 +87,7 @@ export default function Menu({ menu }) {
 
             {/* DRINKS GRID */}
             <div className={styles.sectionHeader}>
-              <span className={styles.icon}>🍹</span>
+              <span className={styles.icon}></span>
               <h2>Drinks</h2>
             </div>
             <div className={styles.drinkGrid}>
@@ -143,9 +144,28 @@ export default function Menu({ menu }) {
               </div>
             </div>
 
-            <a href={downloadUrl} className={styles.downloadButton}>
-              Download Full Menu
-            </a>
+            <div className={styles.downloadContainer}>
+              {foodDownloadUrl && (
+                <a
+                  href={foodDownloadUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.downloadButton}
+                >
+                  Download Full Food Menu
+                </a>
+              )}
+              {drinkDownloadUrl && (
+                <a
+                  href={drinkDownloadUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.downloadButton}
+                >
+                  Download Full Drink Menu
+                </a>
+              )}
+            </div>
           </>
         )}
         {activeTab === 'specials' && (

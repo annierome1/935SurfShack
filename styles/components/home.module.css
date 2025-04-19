@@ -1,254 +1,295 @@
-/* 
-  Home.module.css
-  This file provides:
-    - White or Blue-Green backgrounds
-    - Salmon (#f5877c) text for white sections
-    - White text for the teal sections
-    - "Lobster Two" for headings & buttons
-    - "SF Pro" or system fallback for general text
-*/
+/* ─────────────────────────────────────────────────────────────────────────
+   Global & Reset
+───────────────────────────────────────────────────────────────────────── */
+:root {
+  /* CTA color variables */
+  --cta-bg:           #f5877a;
+  --cta-hover:        #d76a60;
+  --cta-text-color:   #fff;
+}
 
-/* Global resets or base styles, if needed */
-body, html {
+html, body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro", 
-               "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "Segoe UI", Roboto, sans-serif;
 }
 
-/* =============== SECTION 1 (White background, Salmon text) =============== */
-.section1 {
-  background-color: #fff;
-  color: #f5877c;
+/* ─────────────────────────────────────────────────────────────────────────
+   Common CTA button style
+───────────────────────────────────────────────────────────────────────── */
+.ctaButton {
+  background:       var(--cta-bg);
+  color:            var(--cta-text-color);
+  padding:          0.75rem 1.5rem;
+  border-radius:    8px;
+  text-decoration:  none;
+  transition:       transform 0.2s, background 0.2s;
+  cursor:           pointer;
+  font-family: 'Lobster Two', cursive;
+}
+.ctaButton:hover {
+  transform:        scale(1.05);
+  background:       var(--cta-hover);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Centering helpers
+───────────────────────────────────────────────────────────────────────── */
+.section1Content,
+.section2Content {
+  justify-items: center;
+  
+}
+.section1Text,
+.section2Text {
+  max-width: 500px;
   text-align: center;
-  height: 60vh;
+}
+.section1Text .ctaButton,
+.section2Text .ctaButton,
+.section3 .ctaButton, .feature {
+  display: inline-block;
+  margin: 2rem auto 0;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   SECTION‑SPECIFIC CTA OVERRIDES
+───────────────────────────────────────────────────────────────────────── */
+.section1 { --cta-bg: #f5877a; --cta-hover: #d76a60; --cta-text-color: #fff; }
+.section2 { --cta-bg: #fff;   --cta-hover: #f0f0f0; --cta-text-color: #c2e4e7; }
+.section3 { --cta-bg: #f5877a; --cta-hover: #d76a60; --cta-text-color: #fff; }
+
+/* ─────────────────────────────────────────────────────────────────────────
+   SECTION 1
+───────────────────────────────────────────────────────────────────────── */
+.section1 {
+  background: #fff;
   padding: 4rem 2rem;
 }
-
+.section1Content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+.section1Image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.section1Text {
+  color: #f5877a;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "Segoe UI", Roboto, sans-serif;
+}
 .section1Title {
   font-family: 'Lobster Two', cursive;
-  font-size: 3rem;
-  margin-bottom: 1.5rem;
+  font-size: 2.75rem;
+  margin-bottom: 1rem;
 }
-
 .section1Desc {
-  max-width: 700px;
-  margin: 0 auto 1rem;
   font-size: 1.125rem;
   line-height: 1.6;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin-bottom: 1rem;
+}
+.hoursList {
+  list-style: none;
+  margin: 1rem 0;
+  padding: 0;
+}
+.hoursList li {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
 }
 
-.section1Hours {
-  font-family: Calibri, sans-serif; /* fallback if Hartwell Medium isn't available */
-  font-size: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 2rem;
-}
-
-.section1Button {
-  font-family: 'Lobster Two', cursive;
-  font-size: 1.125rem;
-  background-color: #f5877c;
-  color: #fff;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background-color 0.2s ease, transform 0.2s ease;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-}
-
-.section1Button:hover {
-  background-color: #d76a60;
-  transform: scale(1.03);
-}
-
-/* =============== SECTION 2 (Blue-green background, White text) =============== */
+/* ─────────────────────────────────────────────────────────────────────────
+   SECTION 2
+───────────────────────────────────────────────────────────────────────── */
 .section2 {
-  background-color: #c2e4e7; /* or another blueish-green hue */
-  color: #fff;
-  text-align: center;
+  background: #c2e4e7;
   padding: 4rem 2rem;
-  height: 60vh;
+  /* desktop “hero” height */
+  height: 50vh;
+  min-height: 300px;
 }
-
+.section2Content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+.section2Text {
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "Segoe UI", Roboto, sans-serif;
+}
 .section2Title {
   font-family: 'Lobster Two', cursive;
   font-size: 2.5rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
-
 .section2Desc {
-  max-width: 700px;
-  margin: 0 auto 2rem;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "Segoe UI", Roboto, sans-serif;
   font-size: 1.125rem;
   line-height: 1.6;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin-bottom: 1.5rem;
+}
+.features {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+.featureIcon {
+  color: #fff;
+  font-size: 1.25rem;
+}
+.section2Image {
+  position: relative;
+  width: 60vh;
+  aspect-ratio: 4/3;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.liveTag {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
 }
 
-.section2Button {
-  font-family: 'Lobster Two', cursive;
-  font-size: 1.125rem;
-  background-color: #fff;
-  color: #c2e4e7;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background-color 0.2s ease, transform 0.2s ease;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-}
-
-.section2Button:hover {
-  background-color: #f0f0f0;
-  transform: scale(1.03);
-}
-
-/* =============== SECTION 3 (White background, Salmon text) =============== */
+/* ─────────────────────────────────────────────────────────────────────────
+   SECTION 3
+───────────────────────────────────────────────────────────────────────── */
 .section3 {
-  background-color: #fff;
-  color: #f5877c;
-  text-align: center;
+  background: #fff;
   padding: 4rem 2rem;
-  height: 60vh;
+  text-align: center;
 }
-
 .section3Title {
   font-family: 'Lobster Two', cursive;
   font-size: 2.5rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
+  color: #f5877a;
 }
-
 .section3Desc {
-  max-width: 700px;
-  margin: 0 auto 2rem;
   font-size: 1.125rem;
   line-height: 1.6;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin-bottom: 2rem;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "Segoe UI", Roboto, sans-serif;
 }
-
-.section3Button {
-  font-family: 'Lobster Two', cursive;
-  font-size: 1.125rem;
-  background-color: #f5877c;
+.cards3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+.card3 {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.card3Overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.5);
   color: #fff;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background-color 0.2s ease, transform 0.2s ease;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  padding: 1rem;
+}
+.card3Overlay h3 {
+  margin: 0 0 0.5rem;
 }
 
-.section3Button:hover {
-  background-color: #d76a60;
-  transform: scale(1.03);
-}
-
-/* =============== SECTION 4 (Blue-green background, White text) =============== */
+/* ─────────────────────────────────────────────────────────────────────────
+   SECTION 4
+───────────────────────────────────────────────────────────────────────── */
 .section4 {
-  background-color: #c2e4e7;
-  color: #fff;
-  text-align: center;
+  background: #c2e4e7;
   padding: 4rem 2rem;
-  height: 60vh;
+  text-align: center;
 }
-
 .section4Title {
   font-family: 'Lobster Two', cursive;
   font-size: 2.5rem;
-  margin-bottom: 2rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
 }
-
-/* A simple grid for your Instagram feed or placeholders */
-.section4Gallery {
+.gallery4 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 1rem;
   max-width: 800px;
   margin: 0 auto;
 }
-
-.imagePlaceholder {
-  background-color: rgba(255, 255, 255, 0.3);
-  border-radius: 8px;
-  aspect-ratio: 1 / 1;
-}
-
-.section5 {
+.imageWrapper {
   position: relative;
   width: 100%;
-  height: 100%;               /* pick your ideal viewport height */
-  margin: 0;
-  padding: 0;
-  display: flex;              /* centers the img perfectly */
-  justify-content: center;
-  align-items: center;
-  background-color: #fdfcf4;  /* a subtle fallback behind the map */
+  aspect-ratio: 1/1;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
+/* ─────────────────────────────────────────────────────────────────────────
+   SECTION 5
+───────────────────────────────────────────────────────────────────────── */
+.section5 {
+  position: relative;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fdfcf4;
+  overflow: hidden;
+}
 .section5Image {
   width: 100%;
   height: 100%;
-  object-fit: contain;        /* show the whole map, no cropping */
+  object-fit: cover;
 }
-
-.mapContainer {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.mapImage {
-  width: 100%;
-  height: 90%;
-  display: block;
-}
-
-/* Overlay centered text & button */
 .section5Overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: #ffffff;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
-  pointer-events: auto;
+  color: #fff;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.7);
 }
-
-
-
-
-
-/* Title styling */
 .section5Title {
   font-family: 'Lobster Two', cursive;
   font-size: 2.75rem;
   margin-bottom: 1rem;
 }
-
-/* Description styling */
 .section5Desc {
   font-size: 1.125rem;
   margin-bottom: 1.5rem;
   max-width: 600px;
   line-height: 1.5;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
-
-/* Button styling */
 .section5Button {
-  /* inherits pointer-events:auto from the overlay, but you can reinforce it: */
-  pointer-events: auto;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  font-size: 1.125rem;
-  background-color: rgba(245, 135, 124, 0.9);
+  background-color: rgba(245,135,124,0.9);
   color: #fff;
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
@@ -257,49 +298,55 @@ body, html {
 }
 .section5Button:hover {
   background-color: #d76a60;
-  
 }
 
+/* ─────────────────────────────────────────────────────────────────────────
+   Responsive Breakpoints
+───────────────────────────────────────────────────────────────────────── */
+/* Medium tablets / small desktops */
+@media (max-width: 1024px) {
+  .section1Content,
+  .section2Content {
+    grid-template-columns: 1fr;
+  }
+  .section2 {
+    height: auto;
+    padding: 3rem 1.5rem;
+  }
+  .section2Image {
+    width: 100%;
+    min-height: 200px;
+  }
+  .cards3 {
+    grid-template-columns: 1fr 1fr;
+  }
+  .gallery4 {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+}
 
-
-/* =============== Responsive Tweaks =============== */
+/* Portrait tablets / large phones */
 @media (max-width: 768px) {
-  .section1Title,
-  .section2Title,
-  .section3Title,
-  .section4Title,
-  .section5Title {
-    font-size: 2rem;
-  }
-
-  .section1Desc,
-  .section2Desc,
-  .section3Desc,
-  .section5Desc {
-    font-size: 1.05rem;
-  }
+  .section1 { padding: 3rem 1rem; }
+  .section1Title { font-size: 2.25rem; }
+  .section2Title { font-size: 1.75rem; }
+  .features { flex-direction: column; gap: 1rem; }
+  .featureIcon { font-size: 1.1rem; }
+  .section3Desc { font-size: 1rem; }
+  .section5Title { font-size: 2rem; }
+  .section5Desc { font-size: 1rem; max-width: 90%; }
+  .section5Button { font-size: 1rem; padding: 0.65rem 1.2rem; }
 }
 
-@media (max-width: 768px) {
-  .section5 {
-    height: 300px;
-  }
-  .section5Title {
-    font-size: 2rem;
-  }
-  .section5Desc {
-    font-size: 1rem;
-  }
-}
-
+/* Small phones */
 @media (max-width: 480px) {
-  .section5 {
-    height: 250px;
-  }
-  .section5Title {
-    font-size: 1.75rem;
-  }
-  .section5Desc {
-    font-size: 0.95rem;
-  }
+  .section2 { padding: 2rem 1rem; }
+  .section2Desc { font-size: 1rem; }
+  .section2Image { min-height: 150px; }
+  .section3Title { font-size: 2rem; }
+  .cards3 { grid-template-columns: 1fr; }
+  .section5 { flex-direction: column; align-items: stretch; }
+  .section5Title { font-size: 1.5rem; }
+  .section5Desc { font-size: 0.85rem; }
+  .section5Button { font-size: 0.9rem; padding: 0.5rem 1rem; }
 }
