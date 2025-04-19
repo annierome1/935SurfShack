@@ -137,7 +137,7 @@ html, body {
 }
 .features {
   display: flex;
-  gap: 2rem;
+  gap: 0rem;
   margin-bottom: 1.5rem;
 }
 .feature {

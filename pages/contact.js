@@ -2,7 +2,9 @@ import Layout from '../components/Layout';
 import styles from '../styles/components/contact.module.css';
 import { FaInstagram, FaFacebook } from 'react-icons/fa';
 import { useState } from 'react';
+import Image from 'next/image'; 
 
+import careersImg from '../public/images/careers-hero.jpg';
 
 export default function Contact() {
   const [resumeFile, setResumeFile] = useState(null);
@@ -96,95 +98,91 @@ export default function Contact() {
           </div>
         </div>
                 {/* ===== CAREERS SECTION ===== */}
-      <div className={styles.careersSection}>
-        <h2 className={styles.careersTitle}>Join Our Team</h2>
-        <p className={styles.careersSubtitle}>
-          We’re always looking for friendly, reliable people to join the 935 Surf Shack family. Fill out the form below and we’ll be in touch!
-        </p>
-        <form
-          className={styles.careersForm}
-          action="https://formspree.io/f/YOUR_CAREERS_FORM_ID"
-          method="POST"
-          encType="multipart/form-data"
-        >
-          <div className={styles.formRow}>
-            <input
-              name="fullName"
-              className={styles.input}
-              type="text"
-              placeholder="Full Name"
-              required
-            />
-            <input
-              name="email"
-              className={styles.input}
-              type="email"
-              placeholder="Email Address"
-              required
-            />
-          </div>
+        <div className={styles.careersSection}>
+          <h2 className={styles.careersTitle}>Join Our Team</h2>
+          <p className={styles.careersSubtitle}>
+            We’re always looking for friendly, reliable people to join the 935 Surf Shack family…
+          </p>
 
-          <div className={styles.formRow}>
-            <input
-              name="phone"
-              className={styles.input}
-              type="tel"
-              placeholder="Phone Number"
-            />
-            {/* we no longer need the free‐form position input here */}
-          </div>
+          <div className={styles.careersContent}>
+            {/* ← FORM COLUMN */}
+            <form
+              className={styles.careersForm}
+              action="https://formspree.io/f/YOUR_CAREERS_FORM_ID"
+              method="POST"
+              encType="multipart/form-data"
+            >
+              <div className={styles.formRow}>
+                <input name="fullName" className={styles.input} type="text" placeholder="Full Name" required />
+                <input name="email"    className={styles.input} type="email"    placeholder="Email Address" required />
+              </div>
+              <div className={styles.formRow}>
+                <input name="phone" className={styles.input} type="tel" placeholder="Phone Number" />
+              </div>
 
-          {/* NEW: Checkbox grid for Positions */}
-          <fieldset className={styles.positionFieldset}>
-            <legend className={styles.positionLegend}>
-              Position applying for <span className={styles.required}>*</span>
-            </legend>
-            <div className={styles.positionsGrid}>
-              {positions.map((pos) => (
-                <label key={pos} className={styles.positionLabel}>
-                  <input
-                    type="checkbox"
-                    name="positions"
-                    value={pos}
-                    checked={selectedPositions.includes(pos)}
-                    onChange={handlePositionChange}
-                    required={selectedPositions.length === 0}
-                  />
-                  {pos}
-                </label>
-              ))}
+              <fieldset className={styles.positionFieldset}>
+                <legend className={styles.positionLegend}>
+                  Position applying for <span className={styles.required}>*</span>
+                </legend>
+                <div className={styles.positionsGrid}>
+                  {positions.map((pos) => (
+                    <label key={pos} className={styles.positionLabel}>
+                      <input
+                        type="checkbox"
+                        name="positions"
+                        value={pos}
+                        checked={selectedPositions.includes(pos)}
+                        onChange={handlePositionChange}
+                        required={selectedPositions.length === 0}
+                      />
+                      {pos}
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
+
+              <textarea
+                name="coverLetter"
+                className={styles.textarea}
+                rows={4}
+                onInput={autoResize}
+                placeholder="Tell us why you'd be a great fit…"
+              />
+
+              <label className={styles.fileLabel}>
+                Upload Résumé (PDF, DOC)
+                <input
+                  name="resume"
+                  className={styles.fileInput}
+                  type="file"
+                  accept=".pdf,.doc,.docx"
+                  onChange={handleFileChange}
+                />
+              </label>
+              {resumeFile && (
+                <div className={styles.filePreview}>
+                  <strong>Selected file:</strong> {resumeFile.name}
+                </div>
+              )}
+
+              <button className={styles.button} type="submit">
+                Submit Application
+              </button>
+            </form>
+
+            {/* ← IMAGE COLUMN */}
+            <div className={styles.careersImageBox}>
+            <div className={styles.careersImage}>
+              <Image
+                src={careersImg}
+                alt="Join our team"
+                layout="responsive"
+                objectFit="cover"
+                priority
+              />
+              </div>
             </div>
-          </fieldset>
-
-          <textarea
-            name="coverLetter"
-            className={styles.textarea}
-            rows={4}
-            onInput={autoResize}
-            placeholder="Tell us why you'd be a great fit…"
-          />
-
-          {/* résumé upload */}
-          <label className={styles.fileLabel}>
-            Upload Résumé (PDF, DOC)
-            <input
-              name="resume"
-              className={styles.fileInput}
-              type="file"
-              accept=".pdf,.doc,.docx"
-              onChange={handleFileChange}
-            />
-          </label>
-
-          {/* display only the file name */}
-          {resumeFile && (
-            <div className={styles.filePreview}>
-              <strong>Selected file:</strong> {resumeFile.name}
-            </div>
-          )}
-
-            <button className={styles.button} type="submit">Submit Application</button>
-          </form>
+          </div>
         </div>
       </div>
     </Layout>
