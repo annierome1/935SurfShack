@@ -6,6 +6,7 @@ import CalendarView from '../components/CalendarView';
 import styles from '../styles/components/events.module.css';
 import { client } from '../src/sanity/lib/client';
 import imageUrlBuilder from '@sanity/image-url';
+import FormSubmit from '../components/FormSubmit';
 // Images
 import heroImage from '../public/images/performer.jpg';       // Hero banner up top
 import privateEventImage from '../public/images/event.jpg'; // Private event image
@@ -185,11 +186,14 @@ export default function Events({ events }) {
             </div>
 
             {/* Right Column: Inquiry Form */}
+            {/* Right Column: Inquiry Form */}
             <div className={styles.privateEventFormWrapper}>
               <h3 className={styles.inquiryFormTitle}>Event Inquiry</h3>
-              <form
+
+              <FormSubmit
+                to=" chris@935ocean.com"
+                subject="New Event Inquiry"
                 className={styles.inquiryForm}
-                onSubmit={handleInquirySubmit}
               >
                 <div className={styles.formGroup}>
                   <label htmlFor="name">Name</label>
@@ -235,11 +239,10 @@ export default function Events({ events }) {
                 <button
                   type="submit"
                   className={styles.formSubmitButton}
-                  disabled={submitting}
                 >
-                  {submitting ? 'Sending…' : 'Submit Inquiry'}
+                  Submit Inquiry
                 </button>
-              </form>
+              </FormSubmit>
             </div>
           </div>
         </section>

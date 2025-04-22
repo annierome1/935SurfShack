@@ -124,25 +124,27 @@ export default function Menu({ menu }) {
                 ))}
               </div>
 
-              {/* Beer & Seltzers full‑width */}
-              <div className={styles.fullWidthCard}>
-                <h3 className={styles.categoryTitle}>Beer &amp; Seltzers</h3>
-                <div className={styles.twoColumn}>
-                  <div>
-                    <div className={styles.subcategoryTitle}>BREWS</div>
-                    {menuData.drink["Beer & Beyond"].BREWS.map((b,i) => (
-                      <div key={i} className={styles.itemRowSimple}>{b}</div>
-                    ))}
+              {/* Brews */}
+              <div className={styles.categoryCard}>
+                <h3 className={styles.categoryTitle}>Brews</h3>
+                {(menuData.drink["Beer & Beyond"]?.BREWS || []).map((brew, idx) => (
+                  <div key={idx} className={styles.itemRowSimple}>
+                    {brew}
                   </div>
-                  <div>
-                    <div className={styles.subcategoryTitle}>SELTZERS &amp; BEYOND</div>
-                    {menuData.drink["Beer & Beyond"]["SELTZERS & BEYOND"].map((b,i) => (
-                      <div key={i} className={styles.itemRowSimple}>{b}</div>
-                    ))}
-                  </div>
-                </div>
+                ))}
               </div>
-            </div>
+
+              {/* Seltzers & Beyond */}
+              <div className={styles.categoryCard}>
+                <h3 className={styles.categoryTitle}>Seltzers &amp; Beyond</h3>
+                {(menuData.drink["Beer & Beyond"]?.["SELTZERS & BEYOND"] || []).map((s, idx) => (
+                  <div key={idx} className={styles.itemRowSimple}>
+                    {s}
+                  </div>
+                ))}
+              </div>
+
+              </div>
 
             <div className={styles.downloadContainer}>
               {foodDownloadUrl && (

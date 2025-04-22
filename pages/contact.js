@@ -2,8 +2,9 @@ import Layout from '../components/Layout';
 import styles from '../styles/components/contact.module.css';
 import { FaInstagram, FaFacebook } from 'react-icons/fa';
 import { useState } from 'react';
-import Image from 'next/image'; 
+import Image from 'next/image';
 
+import FormSubmit from '../components/FormSubmit';
 import careersImg from '../public/images/careers-hero.jpg';
 
 export default function Contact() {
@@ -14,7 +15,6 @@ export default function Contact() {
     'Bartender',
     'Prep-Cook',
     'Musician',
-    
   ];
 
   const autoResize = (e) => {
@@ -41,7 +41,7 @@ export default function Contact() {
       <div className={styles.container}>
         <h1 className={styles.title}>Contact Us!</h1>
         <p className={styles.subtitle}>
-          Have a question? Want to book a private event? 
+          Have a question? Want to book a private event?
         </p>
 
         <div className={styles.grid}>
@@ -49,75 +49,111 @@ export default function Contact() {
           <div className={styles.infoBox}>
             <h2>Visit Us</h2>
             <div className={styles.mapWrapper}>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2949.616197882931!2d-70.81102238454497!3d42.90968737915406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e2b3ffdfce4a6b%3A0xe34f1b2e3aaeb4e9!2s935%20Ocean%20Blvd%2C%20Hampton%2C%20NH%2003842!5e0!3m2!1sen!2sus!4v1711826200891!5m2!1sen!2sus"
-              width="100%"
-              height="200"
-              style={{ border: 0 }}
-              allowFullScreen=""
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
-          </div>
-
-
-
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2949.616197882931!2d-70.81102238454497!3d42.90968737915406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e2b3ffdfce4a6b%3A0xe34f1b2e3aaeb4e9!2s935%20Ocean%20Blvd%2C%20Hampton%2C%20NH%2003842!5e0!3m2!1sen!2sus!4v1711826200891!5m2!1sen!2sus"
+                width="100%"
+                height="200"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
             <div className={styles.socials}>
-            <a
-        href="https://www.instagram.com/935surfshack/"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Instagram"
-        className={styles['social-icon-link']}
-      >
-        <FaInstagram className={styles['social-icon']} />
-      </a>
-
-      <a
-        href="https://www.facebook.com/profile.php?id=61574086841413"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Facebook"
-        className={styles['social-icon-link']}
-      >
-        <FaFacebook className={styles['social-icon']} />
-      </a>
+              <a
+                href="https://www.instagram.com/935surfshack/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className={styles['social-icon-link']}
+              >
+                <FaInstagram className={styles['social-icon']} />
+              </a>
+              <a
+                href="https://www.facebook.com/profile.php?id=61574086841413"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className={styles['social-icon-link']}
+              >
+                <FaFacebook className={styles['social-icon']} />
+              </a>
             </div>
           </div>
-
 
           {/* Contact Form */}
           <div className={styles.formBox}>
             <h2>Send Us a Message</h2>
-            <form className={styles.form}>
-              <input className={styles.input} type="text" placeholder="Your Name" required />
-              <input className={styles.input} type="email" placeholder="Your Email" required />
-              <textarea className={styles.textarea} rows="5" placeholder="Your Message" required></textarea>
-              <button className={styles.button} type="submit">Send Message </button>
-            </form>
+            <FormSubmit
+              formType="contact"
+              thankYouUrl= "chris@935ocean.com"
+              subject="New Contact Inquiry"
+              className={styles.form}
+            >
+              <input
+                name="name"
+                className={styles.input}
+                type="text"
+                placeholder="Your Name"
+                required
+              />
+              <input
+                name="email"
+                className={styles.input}
+                type="email"
+                placeholder="Your Email"
+                required
+              />
+              <textarea
+                name="message"
+                className={styles.textarea}
+                rows="5"
+                placeholder="Your Message"
+                required
+              ></textarea>
+            </FormSubmit>
           </div>
         </div>
-                {/* ===== CAREERS SECTION ===== */}
+
+        {/* ===== CAREERS SECTION ===== */}
         <div className={styles.careersSection}>
           <h2 className={styles.careersTitle}>Join Our Team</h2>
           <p className={styles.careersSubtitle}>
-            We’re always looking for friendly, reliable people to join the 935 Surf Shack family…
+            We’re always looking for friendly, reliable people to join the 935 Surf Shack family…
           </p>
 
           <div className={styles.careersContent}>
             {/* ← FORM COLUMN */}
-            <form
+            <FormSubmit
+              formType="careers"
+              thankYouUrl=" chris@935ocean.com"
+              subject="Career Application"
               className={styles.careersForm}
-              action="https://formspree.io/f/YOUR_CAREERS_FORM_ID"
-              method="POST"
-              encType="multipart/form-data"
             >
               <div className={styles.formRow}>
-                <input name="fullName" className={styles.input} type="text" placeholder="Full Name" required />
-                <input name="email"    className={styles.input} type="email"    placeholder="Email Address" required />
+                <input
+                  name="fullName"
+                  className={styles.input}
+                  type="text"
+                  placeholder="Full Name"
+                  required
+                />
+                <input
+                  name="email"
+                  className={styles.input}
+                  type="email"
+                  placeholder="Email Address"
+                  required
+                />
               </div>
+
               <div className={styles.formRow}>
-                <input name="phone" className={styles.input} type="tel" placeholder="Phone Number" />
+                <input
+                  name="phone"
+                  className={styles.input}
+                  type="tel"
+                  placeholder="Phone Number"
+                />
               </div>
 
               <fieldset className={styles.positionFieldset}>
@@ -159,27 +195,25 @@ export default function Contact() {
                   onChange={handleFileChange}
                 />
               </label>
+
               {resumeFile && (
                 <div className={styles.filePreview}>
                   <strong>Selected file:</strong> {resumeFile.name}
                 </div>
               )}
-
-              <button className={styles.button} type="submit">
-                Submit Application
-              </button>
-            </form>
+        
+            </FormSubmit>
 
             {/* ← IMAGE COLUMN */}
             <div className={styles.careersImageBox}>
-            <div className={styles.careersImage}>
-              <Image
-                src={careersImg}
-                alt="Join our team"
-                layout="responsive"
-                objectFit="cover"
-                priority
-              />
+              <div className={styles.careersImage}>
+                <Image
+                  src={careersImg}
+                  alt="Join our team"
+                  layout="responsive"
+                  objectFit="cover"
+                  priority
+                />
               </div>
             </div>
           </div>

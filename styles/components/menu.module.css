@@ -76,20 +76,6 @@
   grid-auto-flow: dense;     /* pack items to fill gaps */
 }
 
-/* Beer & Seltzers full‑width card */
-.fullWidthCard {
-  grid-column: 1 / -1;
-  background: #f7fcfd;
-  border-radius: 10px;
-  padding: 1rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-}
-.twoColumn {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-top: 1rem;
-}
 
 /* ────────────────────────────────────────
    Category Cards
