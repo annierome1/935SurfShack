@@ -191,7 +191,7 @@ export default function Events({ events }) {
               <h3 className={styles.inquiryFormTitle}>Event Inquiry</h3>
 
               <FormSubmit
-                to=" chris@935ocean.com"
+                to="chris@935ocean.com"
                 subject="New Event Inquiry"
                 className={styles.inquiryForm}
               >

@@ -3,7 +3,7 @@
 /* =========================
    VARIABLES & RESET
 ========================= */
-:root {
+:global(:root) {
   --card-bg:       #f9fafb;
   --card-radius:   12px;
   --card-shadow:   0 4px 12px rgba(0,0,0,0.05);
