@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem 1rem; /* add side padding for mobile safety */
+  padding: 2rem 1rem; // add side padding for mobile safety
 }
 
 .calendarWrapper {
@@ -11,11 +11,9 @@
   flex-direction: column;
   align-items: center;
   padding: 2rem 1rem;
-}
 
-/* === GLOBAL OVERRIDES FOR REACT-CALENDAR === */
-:global {
-  .calendarWrapper .react-calendar {
+  /* === GLOBAL STYLES FOR REACT-CALENDAR === */
+  & :global(.react-calendar) {
     width: 100%;
     max-width: 650px;
     background: #fff;
@@ -26,7 +24,7 @@
     padding: 1rem;
   }
 
-  .calendarWrapper .react-calendar__tile {
+  & :global(.react-calendar__tile) {
     padding: 1.2rem 0.5rem;
     text-align: center;
     border-radius: 8px;
@@ -36,16 +34,16 @@
     position: relative;
   }
 
-  .calendarWrapper .react-calendar__tile--active {
+  & :global(.react-calendar__tile--active) {
     background-color: #e86c64;
     color: white;
   }
 
-  .calendarWrapper .react-calendar__navigation {
+  & :global(.react-calendar__navigation) {
     margin-bottom: 1rem;
   }
 
-  .calendarWrapper .react-calendar__navigation button {
+  & :global(.react-calendar__navigation button) {
     background: transparent;
     border: none;
     color: #e86c64;
@@ -54,13 +52,13 @@
     cursor: pointer;
   }
 
-  .calendarWrapper .react-calendar__tile--now {
+  & :global(.react-calendar__tile--now) {
     background: #fff0ec;
     border: 1px solid var(--color-primary, #f5877c);
     color: inherit;
   }
 
-  .calendarWrapper .react-calendar__tile:hover {
+  & :global(.react-calendar__tile:hover) {
     background-color: #fbe2d2;
     cursor: pointer;
   }
@@ -118,16 +116,14 @@
     width: 90vw;
   }
 
-  :global {
-    .calendarWrapper .react-calendar__tile {
-      font-size: 0.9rem;
-      width: 90vw;
-      padding: 0.75rem 0.25rem;
-    }
+  .calendarWrapper :global(.react-calendar__tile) {
+    font-size: 0.9rem;
+    width: 90vw;
+    padding: 0.75rem 0.25rem;
+  }
 
-    .calendarWrapper .react-calendar__navigation button {
-      font-size: 1rem;
-    }
+  .calendarWrapper :global(.react-calendar__navigation button) {
+    font-size: 1rem;
   }
 
   .eventList {
