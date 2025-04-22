@@ -1,5 +1,5 @@
 // pages/events.js
-import { use, useState } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import Layout from '../components/Layout';
 import CalendarView from '../components/CalendarView';
