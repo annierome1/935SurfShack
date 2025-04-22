@@ -24,12 +24,9 @@ export default function Events({ events }) {
   const [view, setView] = useState('calendar');
 
   //Submission state for event inquiry form
-  const [submitting, setSubmitting] = useState(false);
+  const [setSubmitting] = useState(false);
 
-  // Handler for the Inquiry form
-  const handleInquirySubmit = async (e) => {
-    e.preventDefault();
-    setSubmitting(true);
+
 
     const formData = Object.fromEntries(new FormData(e.target).entries());
 
