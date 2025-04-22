@@ -3,16 +3,7 @@
 /* =========================
    VARIABLES & RESET
 ========================= */
-:global{:root {
-  --card-bg:       #f9fafb;
-  --card-radius:   12px;
-  --card-shadow:   0 4px 12px rgba(0,0,0,0.05);
-  --primary:       #f5877c;
-  --primary-dark:  #e17366;
-  --text-dark:     #222;
-  --text-muted:    #555;
-}
-}
+
 
 
 body, html {
