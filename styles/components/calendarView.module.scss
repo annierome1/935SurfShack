@@ -5,7 +5,7 @@
   padding: 2rem 1rem; // add side padding for mobile safety
 }
 
-.calendarWrapper {
+:local(.calendarWrapper) {
   margin-top: 1rem;
   display: flex;
   flex-direction: column;
@@ -13,7 +13,7 @@
   padding: 2rem 1rem;
 
   /* === GLOBAL STYLES FOR REACT-CALENDAR === */
-  :global(.react-calendar) {
+  & :global(.react-calendar) {
     width: 100%;
     max-width: 650px;
     background: #fff;
@@ -24,7 +24,7 @@
     padding: 1rem;
   }
 
-  :global(.react-calendar__tile) {
+  & :global(.react-calendar__tile) {
     padding: 1.2rem 0.5rem;
     text-align: center;
     border-radius: 8px;
@@ -34,16 +34,16 @@
     position: relative;
   }
 
-  :global(.react-calendar__tile--active) {
+  & :global(.react-calendar__tile--active) {
     background-color: #e86c64;
     color: white;
   }
 
-  :global(.react-calendar__navigation) {
+  & :global(.react-calendar__navigation) {
     margin-bottom: 1rem;
   }
 
-  :global(.react-calendar__navigation button) {
+  & :global(.react-calendar__navigation button) {
     background: transparent;
     border: none;
     color: #e86c64;
@@ -52,13 +52,13 @@
     cursor: pointer;
   }
 
-  :global(.react-calendar__tile--now) {
+  & :global(.react-calendar__tile--now) {
     background: #fff0ec;
     border: 1px solid var(--color-primary, #f5877c);
     color: inherit;
   }
 
-  :global(.react-calendar__tile:hover) {
+  & :global(.react-calendar__tile:hover) {
     background-color: #fbe2d2;
     cursor: pointer;
   }
@@ -111,18 +111,18 @@
     padding: 1.5rem 1rem;
   }
 
-  .calendarWrapper {
+  :local(.calendarWrapper) {
     padding: 1.5rem 0.5rem;
     width: 90vw;
   }
 
-  :global(.react-calendar__tile) {
+  :local(.calendarWrapper) :global(.react-calendar__tile) {
     font-size: 0.9rem;
     width: 90vw;
     padding: 0.75rem 0.25rem;
   }
 
-  :global(.react-calendar__navigation button) {
+  :local(.calendarWrapper) :global(.react-calendar__navigation button) {
     font-size: 1rem;
   }
 
