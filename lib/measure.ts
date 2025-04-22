@@ -7,4 +7,3 @@ export function measureImage(src: string): Promise<{ width: number, height: numb
       img.onerror = reject
     })
   }
-  
