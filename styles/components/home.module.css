@@ -1,12 +1,12 @@
 /* ─────────────────────────────────────────────────────────────────────────
    Global & Reset
 ───────────────────────────────────────────────────────────────────────── */
-:global(:root) {
+:global {:root {
   /* CTA color variables */
   --cta-bg:           #f5877a;
   --cta-hover:        #d76a60;
   --cta-text-color:   #fff;
-}
+}}
 
 html, body {
   margin: 0;
