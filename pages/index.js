@@ -174,30 +174,26 @@ export default function Home({ nextEvent }) {
           </div>
         </section>
 
-        {/* SECTION 5 */}
-        <section className={styles.section5}>
-          <div className={styles.section5Image}>
-            <Image
-              src="/images/map1.png"
-              alt="Map to 935 Surf Shack"
-              layout="fill"
-              objectFit="cover"
-              priority
-            />
-          </div>
-          <div className={styles.section5Overlay}>
-            <h2 className={styles.section5Title}>Steer Your Ship to North Beach</h2>
-            <p className={styles.section5Desc}>
-              Play at the Surf Shack, Stay at 935 Ocean!
-            </p>
-            <a
-              href="https://www.935ocean.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.section5Button}
-            >
-              Book Now
-            </a>
+        {/* SECTION 5 (Unchanged) */}
+      <section className={styles.section5}>
+        <img
+          src="/images/map1.png"
+          alt="Map to 935 Surf Shack"
+          className={styles.section5Image}
+        />
+        <div className={styles.section5Overlay}>
+          <h2 className={styles.section5Title}>Steer Your Ship to North Beach</h2>
+          <p className={styles.section5Desc}>
+            Play at the Surf Shack, Stay at 935 Ocean!
+          </p>
+          <a
+            href="https://www.935ocean.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.section5Button}
+          >
+            Book Now
+          </a>
           </div>
         </section>
       </main>
