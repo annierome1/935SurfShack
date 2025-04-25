@@ -69,13 +69,11 @@
 .foodGrid,
 .drinkGrid {
   display: grid;
-  /* let columns wrap responsively at 250px min-width */
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
-  align-items: start;        /* all cards start at the top */
-  grid-auto-flow: dense;     /* pack items to fill gaps */
+  align-items: start;
+  grid-auto-flow: dense;
 }
-
 
 /* ────────────────────────────────────────
    Category Cards
@@ -85,6 +83,8 @@
   border-radius: 10px;
   padding: 1rem;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
 }
 .categoryTitle {
   color: #f5877a;
@@ -115,26 +115,99 @@
 /* ────────────────────────────────────────
    Hero / Image Cards
 ──────────────────────────────────────── */
-/* Use aspect-ratio so images never crop */
 .imageCard {
-  /* we’ll use a padding hack for a 16:9 frame */
   position: relative;
   width: 100%;
-  padding-top: 56.25%;       /* 9/16 = .5625 → 56.25% */
+  padding-top: 56.25%;       /* 16:9 aspect */
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  grid-column: span 2;       /* only on desktop this spans two columns */
+  grid-column: span 2;
 }
-
-/* force images inside to fill that frame without cropping edges */
 .imageCard :global(img) {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;       /* or `cover` if you prefer filling completely */
+  object-fit: contain;
+}
+/* make the gallery cells smaller */
+.imageGallery {
+  /* each column is at least 120px instead of 150px */
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.5rem;           /* less gutter */
+  margin-top: 1rem;
+}
+
+/* limit each thumbnail’s max width & height */
+.galleryItem {
+  /* remove the aspect‐ratio padding */
+  padding-top: 0;
+  max-width: 20vw;
+  max-height: 20vh;
+  /* let the box size to the image inside */
+  display: inline-block;
+  max-height: 10px;    /* shrink to at most 20% of viewport height */     /* keep roughly square max bounds—adjust as needed */
+  margin: 0.5rem;      /* optional gutter around each thumb */
+  overflow: hidden;
+  text-align: center;  /* center inline‐block content */
+}
+
+.galleryItem :global(img) {
+  /* respect the image’s natural ratio */
+  height: auto;
+  width: auto;
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  display: inline;
+  margin: 0 auto;      /* center horizontally */
+}
+
+.thumbCard {
+  position: relative;
+  width: 100%;
+  /* keep height in check (e.g. at most 200px) */
+  max-height: 200px;
+  /* aspect ratio roughly 4:3 if you like */
+  aspect-ratio: 4 / 3;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* make the <Image> fill that frame without distortion */
+.thumbCard :global(img) {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+
+/* ────────────────────────────────────────
+   Image Gallery (extra photos)
+──────────────────────────────────────── */
+.imageGallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.galleryItem {
+  position: relative;
+  width: 100%;
+  padding-top: 75%;          /* 4:3 aspect */
+  border-radius: 8px;
+  overflow: hidden;
+}
+.galleryItem :global(img) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* ────────────────────────────────────────
@@ -158,6 +231,70 @@
   background: #e17366;
 }
 
+/* ────────────────────────────────────────
+   Specials 
+──────────────────────────────────────── */
+.specials {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
+.section {
+  background: #f7fcfd;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  margin-bottom: 1.5rem;
+}
+.section h2 {
+  margin-bottom: 1rem;
+  color: #f5877a;
+}
+.specialList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+  justify-content: center;
+}
+.specialItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-align: center;
+  padding: 1rem;
+  width: 200px;
+}
+.specialItem:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+.specialImage {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+}
+.specialItem h3 {
+  margin: 0.5rem 0 0.25rem;
+  font-size: 1.1rem;
+  color: #f5877a;
+}
+.specialItem p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #f5877a;
+  font-weight: 600;
+}
 
 /* ────────────────────────────────────────
    Responsive Tweaks
@@ -180,99 +317,3 @@
     grid-template-columns: 1fr;
   }
 }
-
-/* ────────────────────────────────────────
-   Specials 
-──────────────────────────────────────── */
-
-.specials {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  justify-self: center;
-  width: 100%;
-}
-
-/* Optional: style individual special cards if you have them */
-.section {
-  background: #f7fcfd;
-  padding: 1rem 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-  margin-bottom: 1.5rem;
-  justify-items: center;
-  box-shadow:0 4px 12px rgba(0,0,0,0.05);
-  
-}
-
-/* Headings within the specials sections */
-.section h2 {
-  margin-bottom: 1rem;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  color: #f5877a;
-}
-
-/* Special list as a grid – adjust this if needed */
-.specialList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 1rem;
-  justify-content: center;
-  box-shadow:0 4px 12px rgba(0,0,0,0.05);
-  
-}
-
-/* Special item “cards” */
-.specialItem {
-  display: flex;
-  flex-direction: column;
-  flex: 0 1 250px;
-  align-items: center;
-  background: #fff;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  text-align: center;
-  padding: 1rem;
-  width: 200px;
-  justify-items: center;
-  
-}
-
-.specialItem:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-}
-
-/* Make images responsive within the specials cards */
-.specialImage {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 6px;
-  margin-bottom: 0.5rem;
-}
-
-/* Headings and text within each special card */
-.specialItem h3 {
-  margin: 0.5rem 0 0.25rem;
-  font-size: 1.1rem;
-  color: #f5877a;
-}
-
-.specialItem p {
-  margin: 0;
-  font-size: 0.95rem;
-  color: #f5877a;
-  font-weight: 600;
-}
-
-
-
-
-

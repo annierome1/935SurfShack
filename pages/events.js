@@ -126,7 +126,7 @@ export default function Events({ events }) {
                   We offer rentals of our space for any of your celebrations! Whether you want to rent our 30’x40’ tent or the whole venue, we’d love to speak with you! 
                   Please fill out the form below to inquire about hosting your event with us.
                 </p>
-              </div>
+              
               <div className={styles.privateEventImageWrapper}>
                 <Image
                   src={privateEventImage}
@@ -135,6 +135,7 @@ export default function Events({ events }) {
                   width={800}
                   height={500}
                 />
+              </div>
               </div>
             </div>
 

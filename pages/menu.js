@@ -1,10 +1,15 @@
+// pages/menu.js
+
 import { useState } from 'react';
 import Image from 'next/image';
 import Layout from '../components/Layout';
 import styles from '../styles/components/menu.module.css';
 import menuData from '../public/data/menu.json';
-import foodHero from '../public/images/food-hero.jpg';     // replace with your real path
-import drinkHero from '../public/images/drink-hero.jpg';   // replace with your real path
+import foodHero from '../public/images/food-hero.jpg';
+import drinkHero from '../public/images/drink-hero.jpg';
+import drink1 from '../public/images/drink1.jpeg';
+import drink2 from '../public/images/drink2.jpeg';
+import { client } from '../src/sanity/lib/client';
 
 export default function Menu({ menu }) {
   const [activeTab, setActiveTab] = useState('menu');
@@ -35,10 +40,10 @@ export default function Menu({ menu }) {
           ))}
         </div>
 
-        {/* ====== MENU GRID (Food + Drinks) ====== */}
+        {/* ====== MENU VIEW ====== */}
         {activeTab === 'menu' && (
           <>
-            {/* FOOD GRID */}
+            {/* ===== FOOD SECTION ===== */}
             <div className={styles.sectionHeader}>
               <span className={styles.icon}></span>
               <h2>Food</h2>
@@ -85,13 +90,13 @@ export default function Menu({ menu }) {
               ))}
             </div>
 
-            {/* DRINKS GRID */}
+            {/* ===== DRINKS SECTION ===== */}
+
             <div className={styles.sectionHeader}>
               <span className={styles.icon}></span>
               <h2>Drinks</h2>
             </div>
             <div className={styles.drinkGrid}>
-              {/* Gin & Vodka */}
               <div className={styles.categoryCard}>
                 <h3 className={styles.categoryTitle}>Gin &amp; Vodka</h3>
                 {menuData.drink["Liquor & Wine"].GIN.map((name,i) => (
@@ -102,7 +107,6 @@ export default function Menu({ menu }) {
                 ))}
               </div>
 
-              {/* Hero image */}
               <div className={styles.imageCard}>
                 <Image
                   src={drinkHero}
@@ -113,7 +117,6 @@ export default function Menu({ menu }) {
                 />
               </div>
 
-              {/* Rum & Tequila */}
               <div className={styles.categoryCard}>
                 <h3 className={styles.categoryTitle}>Rum &amp; Tequila</h3>
                 {menuData.drink["Liquor & Wine"].RUM.map((name,i) => (
@@ -124,28 +127,37 @@ export default function Menu({ menu }) {
                 ))}
               </div>
 
-              {/* Brews */}
               <div className={styles.categoryCard}>
                 <h3 className={styles.categoryTitle}>Brews</h3>
                 {(menuData.drink["Beer & Beyond"]?.BREWS || []).map((brew, idx) => (
-                  <div key={idx} className={styles.itemRowSimple}>
-                    {brew}
-                  </div>
+                  <div key={idx} className={styles.itemRowSimple}>{brew}</div>
                 ))}
               </div>
 
-              {/* Seltzers & Beyond */}
               <div className={styles.categoryCard}>
                 <h3 className={styles.categoryTitle}>Seltzers &amp; Beyond</h3>
                 {(menuData.drink["Beer & Beyond"]?.["SELTZERS & BEYOND"] || []).map((s, idx) => (
-                  <div key={idx} className={styles.itemRowSimple}>
-                    {s}
-                  </div>
+                  <div key={idx} className={styles.itemRowSimple}>{s}</div>
                 ))}
               </div>
+            </div>
 
-              </div>
+             {/* ===== DRINK IMAGE GALLERY ===== */}
+             <div className={styles.imageGallery}>
+              {[drink1, drink2].map((imgSrc, idx) => (
+                <div key={idx} className={styles.galleryItem}>
+                  <Image
+                    src={imgSrc}
+                    alt={`Drink ${idx+1}`}
+                    layout="fill"
+                    objectFit="cover"
+                    priority
+                  />
+                </div>
+              ))}
+            </div>
 
+            {/* ===== DOWNLOAD LINKS ===== */}
             <div className={styles.downloadContainer}>
               {foodDownloadUrl && (
                 <a
@@ -170,6 +182,8 @@ export default function Menu({ menu }) {
             </div>
           </>
         )}
+
+        {/* ===== SPECIALS VIEW ===== */}
         {activeTab === 'specials' && (
           <div className={styles.specials}>
             <div className={styles.section}>
@@ -219,9 +233,7 @@ export default function Menu({ menu }) {
   );
 }
 
-// 3️⃣ Fix getStaticProps so it actually fetches and returns `menu`
-import { client } from '../src/sanity/lib/client';
-
+// fetch menu data from Sanity
 export async function getStaticProps() {
   const query = `*[_type == "menu"][0]{
     menuPdf { asset->{ url } },
@@ -229,7 +241,6 @@ export async function getStaticProps() {
     foodSpecials[]{ name, price, image{ asset->{ url } } },
     drinkSpecials[]{ name, price, image{ asset->{ url } } }
   }`;
-
   const menu = await client.fetch(query);
 
   return {
@@ -237,5 +248,3 @@ export async function getStaticProps() {
     revalidate: 60,
   };
 }
-
-

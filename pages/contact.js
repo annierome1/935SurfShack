@@ -42,7 +42,7 @@ export default function Contact() {
       <div className={styles.container}>
       <h1 className={styles.pageHeader}>Contact Us</h1>
       <p className={styles.headerSubtitle}>
-        
+        We'll get back you as soon as we can!
       </p>
         {/* ===== CONTACT SECTION ===== */}
         <section className={styles.contactSection}>
@@ -112,7 +112,7 @@ your past experience. We’ll get in touch with you soon!
 
             {/* Careers Form Card */}
             <div className={styles.card}>
-              <h3 className={styles.sectionTitle}>Career Opportunities</h3>
+              <h3 className={styles.sectionTitle}>Careers</h3>
               <FormSubmit
                 formType="careers"
                 thankYouUrl="chris@935ocean.com"
