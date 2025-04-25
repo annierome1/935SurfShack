@@ -9,7 +9,9 @@ import careersImg from '../public/images/careers-hero.jpg';
 
 export default function Contact() {
   const [resumeFile, setResumeFile] = useState(null);
-  const [selectedPositions, setSelectedPositions] = useState([]);
+  const [selectedPosition, setSelectedPositions] = useState([]);
+  const [experience, setExperience] = useState('');
+
 
   const positions = [
     'Bartender',
@@ -22,9 +24,8 @@ export default function Contact() {
     e.target.style.height = `${e.target.scrollHeight}px`;
   };
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    setResumeFile(file || null);
+  const handleResumeChange = (e) => {
+    setResumeFile(e.target.files[0] || null);
   };
 
   const handlePositionChange = (e) => {
@@ -39,186 +40,141 @@ export default function Contact() {
   return (
     <Layout>
       <div className={styles.container}>
-        <h1 className={styles.title}>Contact Us!</h1>
-        <p className={styles.subtitle}>
-          Have a question? Want to book a private event?
-        </p>
-
-        <div className={styles.grid}>
-          {/* Contact Info */}
-          <div className={styles.infoBox}>
-            <h2>Visit Us</h2>
-            <div className={styles.mapWrapper}>
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2949.616197882931!2d-70.81102238454497!3d42.90968737915406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e2b3ffdfce4a6b%3A0xe34f1b2e3aaeb4e9!2s935%20Ocean%20Blvd%2C%20Hampton%2C%20NH%2003842!5e0!3m2!1sen!2sus!4v1711826200891!5m2!1sen!2sus"
-                width="100%"
-                height="200"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
-            </div>
-            <div className={styles.socials}>
-              <a
-                href="https://www.instagram.com/935surfshack/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className={styles['social-icon-link']}
-              >
-                <FaInstagram className={styles['social-icon']} />
-              </a>
-              <a
-                href="https://www.facebook.com/profile.php?id=61574086841413"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook"
-                className={styles['social-icon-link']}
-              >
-                <FaFacebook className={styles['social-icon']} />
-              </a>
-            </div>
+      <h1 className={styles.pageHeader}>Contact Us</h1>
+      <p className={styles.headerSubtitle}>
+        
+      </p>
+        {/* ===== CONTACT SECTION ===== */}
+        <section className={styles.contactSection}>
+          {/* Map Card */}
+          <div className={styles.card}>
+            <iframe
+              className={styles.map}
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2949.616197882931!2d-70.81102238454497!3d42.90968737915406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e2b3ffdfce4a6b%3A0xe34f1b2e3aaeb4e9!2s935%20Ocean%20Blvd%2C%20Hampton%2C%20NH%2003842!5e0!3m2!1sen!2sus!4v1711826200891!5m2!1sen!2sus"
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
           </div>
 
-          {/* Contact Form */}
-          <div className={styles.formBox}>
-            <h2>Send Us a Message</h2>
+          {/* Message Form Card */}
+          <div className={styles.card}>
+            <h2 className={styles.sectionTitle}>Send us a Message</h2>
             <FormSubmit
               formType="contact"
-              thankYouUrl= "chris@935ocean.com"
+              thankYouUrl="chris@935ocean.com"
               subject="New Contact Inquiry"
-              className={styles.form}
             >
-              <input
-                name="name"
-                className={styles.input}
-                type="text"
-                placeholder="Your Name"
-                required
-              />
-              <input
-                name="email"
-                className={styles.input}
-                type="email"
-                placeholder="Your Email"
-                required
-              />
-              <textarea
-                name="message"
-                className={styles.textarea}
-                rows="5"
-                placeholder="Your Message"
-                required
-              ></textarea>
+              <div className={styles.field}>
+                <label htmlFor="name">Name</label>
+                <input id="name" name="name" type="text" required />
+              </div>
+              <div className={styles.field}>
+                <label htmlFor="email">Email</label>
+                <input id="email" name="email" type="email" required />
+              </div>
+              <div className={styles.field}>
+                <label htmlFor="message">Message</label>
+                <textarea id="message" name="message" rows="5" required />
+              </div>
+              <div className = {styles.buttonGroup}>
+              <button type="submit" className={styles.primaryButton}>
+                Send Message
+              </button>
+              </div>
             </FormSubmit>
           </div>
-        </div>
+        </section>
 
         {/* ===== CAREERS SECTION ===== */}
-        <div className={styles.careersSection}>
-          <h2 className={styles.careersTitle}>Join Our Team</h2>
-          <p className={styles.careersSubtitle}>
-            We’re always looking for friendly, reliable people to join the 935 Surf Shack family…
-          </p>
-
+        <section className={styles.careersSection}>
+          <h2 className={styles.careersHeading}>Let's Work Together!</h2>
+          <p className={styles.headerSubtitle}>
+          Thank you for your interest in working with us! We appreciate you reaching
+out. Could you please fill out the form below with your contact information, brief
+description of what you’re interested in working with us on and a resume or history of
+your past experience. We’ll get in touch with you soon!
+      </p>
           <div className={styles.careersContent}>
-            {/* ← FORM COLUMN */}
-            <FormSubmit
-              formType="careers"
-              thankYouUrl=" chris@935ocean.com"
-              subject="Career Application"
-              className={styles.careersForm}
-            >
-              <div className={styles.formRow}>
-                <input
-                  name="fullName"
-                  className={styles.input}
-                  type="text"
-                  placeholder="Full Name"
-                  required
-                />
-                <input
-                  name="email"
-                  className={styles.input}
-                  type="email"
-                  placeholder="Email Address"
-                  required
-                />
-              </div>
-
-              <div className={styles.formRow}>
-                <input
-                  name="phone"
-                  className={styles.input}
-                  type="tel"
-                  placeholder="Phone Number"
-                />
-              </div>
-
-              <fieldset className={styles.positionFieldset}>
-                <legend className={styles.positionLegend}>
-                  Position applying for <span className={styles.required}>*</span>
-                </legend>
-                <div className={styles.positionsGrid}>
-                  {positions.map((pos) => (
-                    <label key={pos} className={styles.positionLabel}>
-                      <input
-                        type="checkbox"
-                        name="positions"
-                        value={pos}
-                        checked={selectedPositions.includes(pos)}
-                        onChange={handlePositionChange}
-                        required={selectedPositions.length === 0}
-                      />
-                      {pos}
-                    </label>
-                  ))}
-                </div>
-              </fieldset>
-
-              <textarea
-                name="coverLetter"
-                className={styles.textarea}
-                rows={4}
-                onInput={autoResize}
-                placeholder="Tell us why you'd be a great fit…"
+            {/* Image Card */}
+            <div className={styles.card}>
+              <div className={styles.imageHolder}>
+              <Image
+                src={careersImg}
+                alt="Join our team"
+                layout="responsive"
+                objectFit="cover"
+                className={styles.careerImage}
+                priority
               />
+            </div>
+            </div>
 
-              <label className={styles.fileLabel}>
-                Upload Résumé (PDF, DOC)
-                <input
-                  name="resume"
-                  className={styles.fileInput}
-                  type="file"
-                  accept=".pdf,.doc,.docx"
-                  onChange={handleFileChange}
-                />
-              </label>
-
-              {resumeFile && (
-                <div className={styles.filePreview}>
-                  <strong>Selected file:</strong> {resumeFile.name}
+            {/* Careers Form Card */}
+            <div className={styles.card}>
+              <h3 className={styles.sectionTitle}>Career Opportunities</h3>
+              <FormSubmit
+                formType="careers"
+                thankYouUrl="chris@935ocean.com"
+                subject="Career Application"
+              >
+                <div className={styles.field}>
+                  <label htmlFor="fullName">Full Name</label>
+                  <input id="fullName" name="fullName" type="text" required />
                 </div>
-              )}
-        
-            </FormSubmit>
-
-            {/* ← IMAGE COLUMN */}
-            <div className={styles.careersImageBox}>
-              <div className={styles.careersImage}>
-                <Image
-                  src={careersImg}
-                  alt="Join our team"
-                  layout="responsive"
-                  objectFit="cover"
-                  priority
-                />
-              </div>
+                <div className={styles.field}>
+                  <label htmlFor="email2">Email Address</label>
+                  <input id="email2" name="email" type="email" required />
+                </div>
+                <div className={styles.field}>
+                  <label htmlFor="position">Position Interested In</label>
+                  <select
+                    id="position"
+                    name="positions"
+                    value={selectedPosition}
+                    onChange={(e) => setSelectedPosition(e.target.value)}
+                    required
+                  >
+                    <option value="" disabled>
+                      Select…
+                    </option>
+                    {positions.map((pos) => (
+                      <option key={pos} value={pos}>
+                        {pos}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className={styles.field}>
+                  <label htmlFor="experience">Experience</label>
+                  <textarea
+                    id="experience"
+                    name="experience"
+                    rows="4"
+                    value={experience}
+                    onChange={(e) => setExperience(e.target.value)}
+                  />
+                </div>
+                <div className={styles.buttonGroup}>
+                  <button type="submit" className={styles.primaryButton}>
+                    Submit Application
+                  </button>
+                  <label className={styles.secondaryButton}>
+                    Upload Resume
+                    <input
+                      type="file"
+                      accept=".pdf,.doc,.docx"
+                      onChange={handleResumeChange}
+                      hidden
+                    />
+                  </label>
+                </div>
+              </FormSubmit>
             </div>
           </div>
-        </div>
+        </section>
       </div>
     </Layout>
   );
 }
+

@@ -209,32 +209,28 @@
 /* ─────────────────────────────────────────────────────────────────────────
    SECTION 4
 ───────────────────────────────────────────────────────────────────────── */
-.section4 {
-  background: #c2e4e7;
-  padding: 4rem 2rem;
-  text-align: center;
-}
-.section4Title {
-  font-family: 'Lobster Two', cursive;
-  font-size: 2.5rem;
-  color: #fff;
-  margin-bottom: 0.5rem;
-}
-.gallery4 {
+/* Section 4 Gallery */
+.section4Gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1rem;
-  max-width: 800px;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.5rem;
+  max-width: 1000px;
   margin: 0 auto;
 }
-.imageWrapper {
-  position: relative;
+
+.galleryImage {
   width: 100%;
-  aspect-ratio: 1/1;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 6px;
+  transition: transform 0.2s ease;
 }
+
+.instaLink:hover .galleryImage {
+  transform: scale(1.05);
+}
+
 
 /* ─────────────────────────────────────────────────────────────────────────
    SECTION 5

@@ -17,10 +17,13 @@ import brewsImg from '../public/images/local-brews.jpg';
 const builder = imageUrlBuilder(client);
 function urlFor(source) {
   if (!source) return null;
-  return builder.image(source).url();
+  return builder.image(source);
+
 }
 
-export default function Home({ nextEvent }) {
+
+
+export default function Home({ nextEvent, instaPosts = [] }) {
   const eventImageUrl = nextEvent?.image
     ? urlFor(nextEvent.image).width(800).height(600).url()
     : section2Img;
@@ -162,17 +165,29 @@ export default function Home({ nextEvent }) {
 
         {/* SECTION 4 */}
         <section className={styles.section4}>
-          <h2 className={styles.section4Title}>Our Instagram Feed</h2>
-          {/* Replace this with your actual Instagram embed / photos */}
-          <div className={styles.section4Gallery}>
-            <div className={styles.imagePlaceholder} />
-            <div className={styles.imagePlaceholder} />
-            <div className={styles.imagePlaceholder} />
-            <div className={styles.imagePlaceholder} />
-            <div className={styles.imagePlaceholder} />
-            <div className={styles.imagePlaceholder} />
-          </div>
-        </section>
+        <h2 className={styles.section4Title}>Our Instagram Feed</h2>
+        <div className={styles.section4Gallery}>
+          {instaPosts.length > 0 ? (
+            instaPosts.map(post => (
+              <Link
+                key={post.id}
+                href={post.permalink}
+                passHref
+              >
+                <a target="_blank" rel="noopener noreferrer" className={styles.instaLink}>
+                  <img
+                    src={post.media_url}
+                    alt={post.caption?.slice(0, 80) || 'Instagram post'}
+                    className={styles.galleryImage}
+                  />
+                </a>
+              </Link>
+            ))
+          ) : (
+            <p>No posts found. Check back soon!</p>
+          )}
+        </div>
+      </section>
 
         {/* SECTION 5 (Unchanged) */}
       <section className={styles.section5}>
@@ -202,15 +217,33 @@ export default function Home({ nextEvent }) {
 }
 
 export async function getStaticProps() {
-  const query = `*[_type=="event" && date >= now()] | order(date asc){
+  // 1) Fetch next upcoming event from Sanity
+  const eventQuery = `*[_type=="event" && date >= now()] | order(date asc){
     _id, title, date, artist, image
   }`;
-  const events = await client.fetch(query);
+  const events = await client.fetch(eventQuery);
+  const nextEvent = events.length > 0 ? events[0] : null;
+
+  // 2) Fetch your Instagram feed
+  const { INSTAGRAM_ACCESS_TOKEN, INSTAGRAM_USER_ID } = process.env;
+  const fields = ['id','caption','media_url','permalink'].join(',');
+  let instaPosts = [];
+  try {
+    const res = await fetch(
+      `https://graph.instagram.com/${INSTAGRAM_USER_ID}/media?fields=${fields}&access_token=${INSTAGRAM_ACCESS_TOKEN}`
+    );
+    if (res.ok) {
+      const json = await res.json();
+      instaPosts = json.data || [];
+    } else {
+      console.error('Instagram API error:', await res.text());
+    }
+  } catch (err) {
+    console.error('Instagram fetch failed:', err);
+  }
 
   return {
-    props: {
-      nextEvent: events.length > 0 ? events[0] : null
-    },
-    revalidate: 60,
+    props: { nextEvent, instaPosts },
+    revalidate: 300,  // or 60
   };
 }
