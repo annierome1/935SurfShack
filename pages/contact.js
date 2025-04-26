@@ -1,6 +1,6 @@
 import Layout from '../components/Layout';
 import styles from '../styles/components/contact.module.css';
-import { FaInstagram, FaFacebook } from 'react-icons/fa';
+//import { FaInstagram, FaFacebook } from 'react-icons/fa';
 import { useState } from 'react';
 import Image from 'next/image';
 
@@ -8,7 +8,7 @@ import FormSubmit from '../components/FormSubmit';
 import careersImg from '../public/images/careers-hero.jpg';
 
 export default function Contact() {
-  const [resumeFile, setResumeFile] = useState(null);
+  const [setResumeFile] = useState(null);
   const [selectedPosition, setSelectedPositions] = useState([]);
   const [experience, setExperience] = useState('');
 
@@ -19,23 +19,12 @@ export default function Contact() {
     'Musician',
   ];
 
-  const autoResize = (e) => {
-    e.target.style.height = 'auto';
-    e.target.style.height = `${e.target.scrollHeight}px`;
-  };
-
+ 
   const handleResumeChange = (e) => {
     setResumeFile(e.target.files[0] || null);
   };
 
-  const handlePositionChange = (e) => {
-    const { value, checked } = e.target;
-    setSelectedPositions((prev) =>
-      checked
-        ? [...prev, value]
-        : prev.filter((pos) => pos !== value)
-    );
-  };
+
 
   return (
     <Layout>
