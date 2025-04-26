@@ -77,7 +77,7 @@ export default function Contact() {
 
         {/* ===== CAREERS SECTION ===== */}
         <section className={styles.careersSection}>
-          <h2 className={styles.careersHeading}>Let's Work Together!</h2>
+        <h2 className={styles.careersHeading}>Let&apos;s Work Together!</h2>
           <p className={styles.headerSubtitle}>
   Thank you for your interest in working with us! We appreciate you reaching out.
   Could you please fill out the form below with your contact information, a brief
