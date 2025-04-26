@@ -7,13 +7,18 @@
  * https://github.com/sanity-io/next-sanity
  */
 
-import { NextStudio } from 'next-sanity/studio'
-import config from '../../../sanity/sanity.config'
+'use client'
 
-export const dynamic = 'force-static'
+import dynamic from 'next/dynamic'
+import config from '../../../sanity/sanity.config'  // adjust path if needed
 
-export { metadata, viewport } from 'next-sanity/studio'
+// Dynamically load the Studio, client-only
+const NextStudio = dynamic(
+  () => import('next-sanity/studio').then(mod => mod.NextStudio),
+  { ssr: false }
+)
 
 export default function StudioPage() {
   return <NextStudio config={config} />
 }
+
