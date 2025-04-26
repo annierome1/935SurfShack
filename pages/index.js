@@ -18,10 +18,7 @@ const builder = imageUrlBuilder(client);
 function urlFor(source) {
   if (!source) return null;
   return builder.image(source);
-
 }
-
-
 
 export default function Home({ nextEvent, instaPosts = [] }) {
   const eventImageUrl = nextEvent?.image
@@ -35,7 +32,9 @@ export default function Home({ nextEvent, instaPosts = [] }) {
       </Head>
 
       {/* Hero */}
-      <Hero />
+      <div id="hero">
+        <Hero />
+      </div>
 
       <main>
         {/* SECTION 1 */}
@@ -68,12 +67,12 @@ export default function Home({ nextEvent, instaPosts = [] }) {
           </div>
         </section>
 
-        {/* SECTION 2: Next Upcoming Event */}
+        {/* SECTION 2: Next Upcoming Event */}
         <section className={styles.section2}>
           <div className={styles.section2Content}>
             {/* TEXT COLUMN */}
             <div className={styles.section2Text}>
-              <h2 className={styles.section2Title}>Your Go‑to For Live Music</h2>
+              <h2 className={styles.section2Title}>Your Go-to For Live Music</h2>
 
               {nextEvent ? (
                 <>
@@ -165,50 +164,50 @@ export default function Home({ nextEvent, instaPosts = [] }) {
 
         {/* SECTION 4 */}
         <section className={styles.section4}>
-        <h2 className={styles.section4Title}>Our Instagram Feed</h2>
-        <div className={styles.section4Gallery}>
-          {instaPosts.length > 0 ? (
-            instaPosts.map(post => (
-              <Link
-                key={post.id}
-                href={post.permalink}
-                passHref
-              >
-                <a target="_blank" rel="noopener noreferrer" className={styles.instaLink}>
-                  <img
-                    src={post.media_url}
-                    alt={post.caption?.slice(0, 80) || 'Instagram post'}
-                    className={styles.galleryImage}
-                  />
-                </a>
-              </Link>
-            ))
-          ) : (
-            <p>No posts found. Check back soon!</p>
-          )}
-        </div>
-      </section>
+          <h2 className={styles.section4Title}>Our Instagram Feed</h2>
+          <div className={styles.section4Gallery}>
+            {instaPosts.length > 0 ? (
+              instaPosts.map(post => (
+                <Link
+                  key={post.id}
+                  href={post.permalink}
+                  passHref
+                >
+                  <a target="_blank" rel="noopener noreferrer" className={styles.instaLink}>
+                    <img
+                      src={post.media_url}
+                      alt={post.caption?.slice(0, 80) || 'Instagram post'}
+                      className={styles.galleryImage}
+                    />
+                  </a>
+                </Link>
+              ))
+            ) : (
+              <p>No posts found. Check back soon!</p>
+            )}
+          </div>
+        </section>
 
-        {/* SECTION 5 (Unchanged) */}
-      <section className={styles.section5}>
-        <img
-          src="/images/map1.png"
-          alt="Map to 935 Surf Shack"
-          className={styles.section5Image}
-        />
-        <div className={styles.section5Overlay}>
-          <h2 className={styles.section5Title}>Steer Your Ship to North Beach</h2>
-          <p className={styles.section5Desc}>
-            Play at the Surf Shack, Stay at 935 Ocean!
-          </p>
-          <a
-            href="https://www.935ocean.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.section5Button}
-          >
-            Book Now
-          </a>
+        {/* SECTION 5 */}
+        <section className={styles.section5}>
+          <img
+            src="/images/map1.png"
+            alt="Map to 935 Surf Shack"
+            className={styles.section5Image}
+          />
+          <div className={styles.section5Overlay}>
+            <h2 className={styles.section5Title}>Steer Your Ship to North Beach</h2>
+            <p className={styles.section5Desc}>
+              Play at the Surf Shack, Stay at 935 Ocean!
+            </p>
+            <a
+              href="https://www.935ocean.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.section5Button}
+            >
+              Book Now
+            </a>
           </div>
         </section>
       </main>
@@ -217,14 +216,12 @@ export default function Home({ nextEvent, instaPosts = [] }) {
 }
 
 export async function getStaticProps() {
-  // 1) Fetch next upcoming event from Sanity
   const eventQuery = `*[_type=="event" && date >= now()] | order(date asc){
     _id, title, date, artist, image
   }`;
   const events = await client.fetch(eventQuery);
   const nextEvent = events.length > 0 ? events[0] : null;
 
-  // 2) Fetch your Instagram feed
   const { INSTAGRAM_ACCESS_TOKEN, INSTAGRAM_USER_ID } = process.env;
   const fields = ['id','caption','media_url','permalink'].join(',');
   let instaPosts = [];
@@ -244,6 +241,6 @@ export async function getStaticProps() {
 
   return {
     props: { nextEvent, instaPosts },
-    revalidate: 300,  // or 60
+    revalidate: 300,
   };
 }
