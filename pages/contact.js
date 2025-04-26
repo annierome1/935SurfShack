@@ -31,8 +31,8 @@ export default function Contact() {
       <div className={styles.container}>
       <h1 className={styles.pageHeader}>Contact Us</h1>
       <p className={styles.headerSubtitle}>
-        We'll get back you as soon as we can!
-      </p>
+  We&apos;ll get back to you as soon as we can!
+</p>
         {/* ===== CONTACT SECTION ===== */}
         <section className={styles.contactSection}>
           {/* Map Card */}
@@ -79,11 +79,12 @@ export default function Contact() {
         <section className={styles.careersSection}>
           <h2 className={styles.careersHeading}>Let's Work Together!</h2>
           <p className={styles.headerSubtitle}>
-          Thank you for your interest in working with us! We appreciate you reaching
-out. Could you please fill out the form below with your contact information, brief
-description of what you’re interested in working with us on and a resume or history of
-your past experience. We’ll get in touch with you soon!
-      </p>
+  Thank you for your interest in working with us! We appreciate you reaching out.
+  Could you please fill out the form below with your contact information, a brief
+  description of what you&apos;re interested in working on, and your resume or a summary of
+  your past experience? We&apos;ll get in touch with you soon!
+</p>
+
           <div className={styles.careersContent}>
             {/* Image Card */}
             <div className={styles.card}>
