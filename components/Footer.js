@@ -1,7 +1,7 @@
 // components/Footer.js
 import styles from "../styles/components/Footer.module.css";
 import { FaInstagram, FaFacebook } from 'react-icons/fa';
-import Link from 'next/link';
+
 
 export default function Footer() {
   return (

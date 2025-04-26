@@ -17,7 +17,7 @@
 }
 .footerSection h4 {
   font-family: 'Pacifico', cursive;
-  font-size: clamp(1rem);
+  font-size: 1rem;
   font-weight: normal;  /* or 400, 700, etc. */
   letter-spacing: 0.05em;
   color: black;
@@ -89,11 +89,59 @@
 }
 
 /* Tweak margins on very small screens */
+/* Footer.module.css */
+
+/* Mobile footer: stack sections, center text */
 @media (max-width: 600px) {
   .footer {
-    padding: clamp(0.5rem, 4vw, 1rem);
+    flex-direction: column;      /* stack each .footerSection */
+    align-items: center;         /* center them horizontally */
+    padding: 1rem;
   }
+
   .footerSection {
-    margin: clamp(0.25rem, 1vw, 0.5rem);
+    width: 100%;                 /* take full width */
+    max-width: 320px;            /* and cap it so it doesn’t stretch too far */
+    margin: 0.25rem 0;           /* vertical spacing between sections */
+    text-align: center;          /* center all text */
+  }
+
+  /* shrink headings */
+  .footerSection h4 {
+    font-size: 1.rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* shrink body text */
+  .footerSection span {
+    font-size: 0.8rem;
+    display: block;              /* one item per line now */
+    margin: 0.1rem 0;
+    white-space: normal;         /* allow wrapping if needed */
+  }
+
+  /* shrink logo & icons */
+  .logoSection {
+    gap: 0rem;
+  }
+  .footerLogo {
+    width: 160px;
+    height: auto;
+  }
+  .socials {
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  .socialIcon {
+    font-size: 1.5rem;
+  }
+
+  /* career button full-width and smaller */
+  .careersBtn {
+    width: auto;
+    font-size: 0.85rem;
+    padding: 0.4rem 1rem;
+    margin-top: 0.5rem;
   }
 }
+
