@@ -1,0 +1,11 @@
+name: Build & Deploy Sanity to Cloud Run
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # … your steps here …
