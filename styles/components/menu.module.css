@@ -191,7 +191,7 @@
 .imageGallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1rem;
+  gap: 0rem;
   margin-top: 2rem;
 }
 .galleryItem {
