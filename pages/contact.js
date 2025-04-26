@@ -9,7 +9,7 @@ import careersImg from '../public/images/careers-hero.jpg';
 
 export default function Contact() {
   const [setResumeFile] = useState(null);
-  const [selectedPosition, setSelectedPositions] = useState([]);
+  const [selectedPosition] = useState([]);
   const [experience, setExperience] = useState('');
 
 
