@@ -11,11 +11,12 @@ export default function Layout({ children }) {
     </>
   );
 }
+
 const mainStyle = {
   backgroundColor: '#fff', // set your desired background color
   width: '100%',             // full width of the viewport
-  minHeight: '100vh',        // ensure it covers the full viewport height
+  minHeight: '100vh',        
   margin: '0 auto',  
-  fontFamily: 'Lobster2, cursive', 
+  fontFamily: 'Pacifico, cursive', 
   overflowX: 'hidden'       
 };
