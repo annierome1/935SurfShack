@@ -140,22 +140,21 @@ export default function Menu({ menu }) {
                   <div key={idx} className={styles.itemRowSimple}>{s}</div>
                 ))}
               </div>
-            </div>
-
-             {/* ===== DRINK IMAGE GALLERY ===== */}
-             <div className={styles.imageGallery}>
+              {/* — inline drink images — */}
               {[drink1, drink2].map((imgSrc, idx) => (
-                <div key={idx} className={styles.galleryItem}>
+                <div key={idx} className={styles.imageCard}>
                   <Image
                     src={imgSrc}
-                    alt={`Drink ${idx+1}`}
+                    alt={`Drink ${idx + 1}`}
                     layout="fill"
                     objectFit="cover"
                     priority
                   />
-                </div>
+               </div>
               ))}
             </div>
+
+             
 
             {/* ===== DOWNLOAD LINKS ===== */}
             <div className={styles.downloadContainer}>

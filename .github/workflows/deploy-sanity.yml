@@ -33,7 +33,7 @@ jobs:
     - name: Build & Push Docker image
       run: |
         IMAGE="${{ secrets.GCP_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/sanity-repo/sanity-studio:${{ github.sha }}"
-        docker build -t $IMAGE ./sanity
+        docker build -t $IMAGE ./src/sanity
         docker push $IMAGE
 
     - name: Deploy to Cloud Run

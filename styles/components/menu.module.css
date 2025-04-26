@@ -66,13 +66,36 @@
    Grids
 ──────────────────────────────────────── */
 /* unified grid for both Food & Drinks sections */
-.foodGrid,
-.drinkGrid {
+.foodGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
   align-items: start;
   grid-auto-flow: dense;
+}
+.drinkGrid {
+  display: grid;
+  /* on desktop: 3 or 4 across, on narrow: collapse to 1 or 2 */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  align-items: start;
+}
+
+/* You already have .imageCard, but just verify: */
+.imageCard {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* On mobile, collapse to one column */
+@media (max-width: 600px) {
+  .drinkGrid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ────────────────────────────────────────
@@ -115,15 +138,7 @@
 /* ────────────────────────────────────────
    Hero / Image Cards
 ──────────────────────────────────────── */
-.imageCard {
-  position: relative;
-  width: 100%;
-  padding-top: 56.25%;       /* 16:9 aspect */
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  grid-column: span 2;
-}
+
 .imageCard :global(img) {
   position: absolute;
   top: 0;
