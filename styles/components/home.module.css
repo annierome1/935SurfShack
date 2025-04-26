@@ -100,15 +100,15 @@
 .section2 {
   background: #c2e4e7;
   padding: 4rem 2rem;
-  /* desktop “hero” height */
-  height: 50vh;
-  min-height: 300px;
+  
 }
 .section2Content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 .section2Text {
   color: #fff;
@@ -326,9 +326,20 @@
 
 /* Small phones */
 @media (max-width: 480px) {
-  .section2 { padding: 2rem 1rem; }
-  .section2Desc { font-size: 1rem; }
+  .section2 { padding: 1.5rem 1rem; }
+  .section2Content{ gap: 1.5rem;}
+  .section2Desc { margin-bottom: 0; }
+  .section2Title { margin-bottom: 0.5rem;}
   .section2Image { min-height: 150px; }
+  .features {
+    flex-direction: column;
+    gap: 0rem;       /* was 1rem */
+    margin-bottom: 0.75rem; /* add if you didn’t already */
+  }
+  .ctaButton {
+    margin-top: 0.5rem; /* add a small top margin if needed */
+    padding: 0.6rem 1rem; /* optional: slightly smaller button */
+  }
   .section3Title { font-size: 2rem; }
   .cards3 { grid-template-columns: 1fr; }
   .section5 { flex-direction: column; align-items: stretch; }
