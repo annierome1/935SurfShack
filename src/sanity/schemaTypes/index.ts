@@ -1,12 +1,18 @@
-import { type SchemaTypeDefinition } from 'sanity'
+import {type SchemaTypeDefinition} from 'sanity'
 
 import {blockContentType} from './blockContentType'
 import {categoryType} from './categoryType'
 import {postType} from './postType'
 import {authorType} from './authorType'
-import event from './eventType';
-import menu from './menuType';
+import {eventType} from './eventType'
+import {menuType} from './menuType'
 
-export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [blockContentType, categoryType, postType, authorType, event, menu],
-}
+// Export an array of all schema types for easy import in sanity.config.ts
+export const schemaTypes: SchemaTypeDefinition[] = [
+  blockContentType,
+  categoryType,
+  postType,
+  authorType,
+  eventType,
+  menuType,
+];
