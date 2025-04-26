@@ -1,5 +1,6 @@
 /* Container */
 .container {
+  
   width: 100vw;
   margin: 0 auto;
   box-sizing: border-box;
@@ -15,6 +16,7 @@
   flex-direction: column;    /* stack vertically */
   gap: 1rem;
   margin-bottom: 2rem;
+  margin-top: 4rem;
 }
 
 /* The 4‑image grid */
@@ -41,7 +43,7 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 1.5rem;
-  background: #fff;
+  background: #f8f8f8;
   border-radius: 8px;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0,0,0,0.05);

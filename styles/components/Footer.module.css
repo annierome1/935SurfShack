@@ -20,7 +20,7 @@
   font-size: 1rem;
   font-weight: normal;  /* or 400, 700, etc. */
   letter-spacing: 0.05em;
-  color: black;
+  color: white;
   margin-bottom: 0;
 }
 .footerSection span {
@@ -28,7 +28,7 @@
   font-size: 0.8rem;
   font-style: italic;   /* if you like */
   line-height: 1.4;
-  color: black;
+  color: white;
   
 }
 /* force that one to be a block */

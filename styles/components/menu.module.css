@@ -1,22 +1,17 @@
-/* ────────────────────────────────────────
-   Base & Layout
-──────────────────────────────────────── */
 .container {
   max-width: 80%;
   margin: 0 auto;
+  margin-top: 3.5rem;
   padding: 2rem;
   background: #fff;
-  box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-/* Tabs */
 .tabContainer {
   display: flex;
-  margin-top: 2rem;
   justify-content: center;
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin: 2rem 0;
 }
 .tabButton {
   border: 2px solid #f5877a;
@@ -33,9 +28,6 @@
   color: #fff;
 }
 
-/* ────────────────────────────────────────
-   Typography
-──────────────────────────────────────── */
 .title {
   text-align: center;
   font-size: 2.5rem;
@@ -47,192 +39,84 @@
   color: #90c4ca;
   margin-bottom: 2rem;
 }
-.sectionHeader {
+
+.menuSection {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.categoryBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.categoryTitle {
+  color: #f5877a;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border-bottom: 2px solid #f5877a33;
+  padding-bottom: 0.5rem;
+}
+
+.itemList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.menuItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f7fcfd;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.menuItemText {
+  flex: 1;
+}
+
+.menuItemDetails {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: #f5877a;
-  margin: 2rem 0 1rem;
-}
-.sectionHeader .icon {
-  font-size: 1.5rem;
-}
-.sectionHeader h2 {
-  font-size: 1.75rem;
-  margin: 0;
 }
 
-/* ────────────────────────────────────────
-   Grids
-──────────────────────────────────────── */
-/* unified grid for both Food & Drinks sections */
-.foodGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  align-items: start;
-  grid-auto-flow: dense;
-}
-.drinkGrid {
-  display: grid;
-  /* on desktop: 3 or 4 across, on narrow: collapse to 1 or 2 */
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-  align-items: start;
-}
-
-/* You already have .imageCard, but just verify: */
-.imageCard {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 4/3;
-  border-radius: 10px;
+.menuItemImage {
+  width: 60px;
+  height: 60px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* On mobile, collapse to one column */
-@media (max-width: 600px) {
-  .drinkGrid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ────────────────────────────────────────
-   Category Cards
-──────────────────────────────────────── */
-.categoryCard {
-  background: #f7fcfd;
-  border-radius: 10px;
-  padding: 1rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  display: flex;
-  flex-direction: column;
-}
-.categoryTitle {
-  color: #f5877a;
-  font-weight: 600;
-  margin-bottom: 0.75rem;
-}
-.itemRow {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
-}
 .itemName {
-  font-weight: 500;
-}
-.itemDesc {
-  font-size: 0.875rem;
-  color: #555;
-  margin-top: 0.25rem;
-}
-.itemPrice {
   font-weight: 600;
-}
-.itemRowSimple {
-  margin-bottom: 0.4rem;
+  font-size: 1rem;
+  margin: 0;
   color: #333;
 }
 
-/* ────────────────────────────────────────
-   Hero / Image Cards
-──────────────────────────────────────── */
-
-.imageCard :global(img) {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-/* make the gallery cells smaller */
-.imageGallery {
-  /* each column is at least 120px instead of 150px */
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 0.5rem;           /* less gutter */
-  margin-top: 1rem;
+.itemDesc {
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+  color: #555;
 }
 
-/* limit each thumbnail’s max width & height */
-.galleryItem {
-  /* remove the aspect‐ratio padding */
-  padding-top: 0;
-  max-width: 20vw;
-  max-height: 20vh;
-  /* let the box size to the image inside */
-  display: inline-block;
-  max-height: 10px;    /* shrink to at most 20% of viewport height */     /* keep roughly square max bounds—adjust as needed */
-  margin: 0.5rem;      /* optional gutter around each thumb */
-  overflow: hidden;
-  text-align: center;  /* center inline‐block content */
+.itemPrice {
+  font-weight: 600;
+  color: #f5877a;
+  font-size: 1rem;
 }
 
-.galleryItem :global(img) {
-  /* respect the image’s natural ratio */
-  height: auto;
-  width: auto;
-  height: 100%;
-  width: 100%;
-  object-fit: contain;
-  display: inline;
-  margin: 0 auto;      /* center horizontally */
-}
-
-.thumbCard {
-  position: relative;
-  width: 100%;
-  /* keep height in check (e.g. at most 200px) */
-  max-height: 200px;
-  /* aspect ratio roughly 4:3 if you like */
-  aspect-ratio: 4 / 3;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-}
-
-/* make the <Image> fill that frame without distortion */
-.thumbCard :global(img) {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  object-fit: cover;
-}
-
-/* ────────────────────────────────────────
-   Image Gallery (extra photos)
-──────────────────────────────────────── */
-.imageGallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 0rem;
-  margin-top: 2rem;
-}
-.galleryItem {
-  position: relative;
-  width: 100%;
-  padding-top: 75%;          /* 4:3 aspect */
-  border-radius: 8px;
-  overflow: hidden;
-}
-.galleryItem :global(img) {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* ────────────────────────────────────────
-   Download Button
-──────────────────────────────────────── */
 .downloadContainer {
   display: flex;
   justify-content: center;
-  margin-top: 1.5rem;
-  gap: 1rem;
+  margin-top: 2rem;
 }
 .downloadButton {
   padding: 0.75rem 1.5rem;
@@ -246,8 +130,10 @@
   background: #e17366;
 }
 
+/* specials, drink grid etc remain the same */
+
 /* ────────────────────────────────────────
-   Specials 
+   Specials
 ──────────────────────────────────────── */
 .specials {
   display: flex;
@@ -260,7 +146,6 @@
   padding: 1rem 1.5rem;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  margin-bottom: 1.5rem;
 }
 .section h2 {
   margin-bottom: 1rem;
@@ -269,24 +154,19 @@
 .specialList {
   list-style: none;
   padding: 0;
-  margin: 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 1rem;
   justify-content: center;
 }
 .specialItem {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   background: #fff;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
   text-align: center;
   padding: 1rem;
-  width: 200px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .specialItem:hover {
   transform: translateY(-3px);
@@ -310,6 +190,56 @@
   color: #f5877a;
   font-weight: 600;
 }
+.subcategoryBlock {
+  margin-top: 1rem;
+}
+
+.subcategoryTitle {
+  color: #90c4ca;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.categoryGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.drinkCard {
+  flex: 1 1 300px;
+  background: #f7fcfd;
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.subcategoryTitle {
+  color: #90c4ca;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #90c4ca55;
+  padding-bottom: 0.5rem;
+}
+
+.drinkList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.drinkListItem {
+  font-size: 1rem;
+  color: #333;
+}
+
+
 
 /* ────────────────────────────────────────
    Responsive Tweaks
@@ -319,16 +249,13 @@
   .drinkGrid {
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   }
-  .fullWidthCard {
-    grid-column: 1 / -1;
-  }
-  .imageCard {
-    grid-column: span 1;
-  }
 }
 @media (max-width: 600px) {
   .foodGrid,
   .drinkGrid {
     grid-template-columns: 1fr;
+  }
+  .container{
+    margin-top: 6rem;
   }
 }
