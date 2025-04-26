@@ -1,3 +1,4 @@
+// components/Footer.js
 import styles from "../styles/components/Footer.module.css";
 import { FaInstagram, FaFacebook } from 'react-icons/fa';
 import Link from 'next/link';
@@ -5,67 +6,65 @@ import Link from 'next/link';
 export default function Footer() {
   return (
     <footer className={styles.footer}>
-      <div className={`${styles['footer-section']} ${styles['logo-section']}`}>
-  <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-    <a href="https://www.935ocean.com/" aria-label="Home">
-      <img src="/inn_logo.png" alt="Surf Shack Logo" className={styles['footer-logo']} />
-    </a>
-
-    {/* Social icons stacked vertically */}
-    <div className={styles['socials']}>
-      <a
-        href="https://www.instagram.com/935surfshack/"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Instagram"
-        className={styles['social-icon-link']}
-      >
-        <FaInstagram className={styles['social-icon']} />
-      </a>
-
-      <a
-        href="https://www.facebook.com/profile.php?id=61574086841413"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Facebook"
-        className={styles['social-icon-link']}
-      >
-        <FaFacebook className={styles['social-icon']} />
-      </a>
-    </div>
-  </div>
-</div>
-
-
-
-      <div className={styles['footer-section']}>
-        <h4>LOCATION</h4>
-        <a 
-          href="https://www.google.com/maps?q=42.942248942322465,-70.79423135919447" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className={styles.addressLink}
+      {/* Logo + Socials */}
+      <div className={`${styles.footerSection} ${styles.logoSection}`}>
+        <a
+          href="https://www.935ocean.com/"
+          aria-label="Home"
+          className={styles.logoLink}
         >
-          <p>935 Ocean Boulevard</p>
-          <p>Hampton, New Hampshire, 03842</p>
+          <img
+            src="/inn_logo.png"
+            alt="935 Surf Shack Logo"
+            className={styles.footerLogo}
+          />
         </a>
+        <div className={styles.socials}>
+          <a
+            href="https://www.instagram.com/935surfshack/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            className={styles.socialIconLink}
+          >
+            <FaInstagram className={styles.socialIcon} />
+          </a>
+          <a
+            href="https://www.facebook.com/profile.php?id=61574086841413"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook"
+            className={styles.socialIconLink}
+          >
+            <FaFacebook className={styles.socialIcon} />
+          </a>
+        </div>
       </div>
 
+      {/* Location */}
+      <div className={`${styles.footerSection} ${styles.locationSection}`}>
+        <h4>LOCATION</h4>
+        <span className={styles.addressText}>
+          935 Ocean Boulevard, Hampton, NH 03842
+        </span>
+      </div>
 
-      <div className={styles['footer-section']}>
+      {/* Contact */}
+      <div className={`${styles.footerSection} ${styles.contactSection}`}>
         <h4>CONTACT</h4>
-        <p><strong>Phone:</strong> (603)926-2500</p>
-        <p><strong>Email:</strong> info@surfshack.com</p>
-        <Link href="/contact" passHref>
-        <button className={styles['careers-btn']}>Careers</button>
-      </Link>
+        <span><strong>Phone:</strong> (603) 926-2500</span>
+        <span><strong>Email:</strong> info@surfshack.com</span>
+        <Link href="/contact">
+          <button className={styles.careersBtn}>Careers</button>
+        </Link>
       </div>
 
-      <div className={styles['footer-section']}>
+      {/* Hours */}
+      <div className={`${styles.footerSection} ${styles.hoursSection}`}>
         <h4>HOURS</h4>
-        <p><strong>Thurs-Sat:</strong> 3-8pm</p>
-        <p><strong>Sun:</strong> 12-6pm</p>
-        <p><strong>Happy Hour:</strong> 3PM – 5PM (Thurs and Fri)</p>
+        <span><strong>Thurs–Sat:</strong> 3–8 pm</span>
+        <span><strong>Sun:</strong> 12–6 pm</span>
+        <span><strong>Happy Hour:</strong> 3–5 pm (Thurs & Fri)</span>
       </div>
     </footer>
   );
