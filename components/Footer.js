@@ -52,19 +52,21 @@ export default function Footer() {
       {/* Contact */}
       <div className={`${styles.footerSection} ${styles.contactSection}`}>
         <h4>CONTACT</h4>
-        <span><strong>Phone:</strong> (603) 926-2500</span>
-        <span><strong>Email:</strong> info@surfshack.com</span>
-        <Link href="/contact">
+        <span className={styles.breakLine}><strong>Phone:</strong> (603) 926-2500</span>
+        <span className={styles.breakLine}><strong>Email:</strong> info@surfshack.com</span>
+        
+      { /* <Link href="/contact">
           <button className={styles.careersBtn}>Careers</button>
-        </Link>
+        </Link> */}
       </div>
 
       {/* Hours */}
       <div className={`${styles.footerSection} ${styles.hoursSection}`}>
         <h4>HOURS</h4>
-        <span><strong>Thurs–Sat:</strong> 3–8 pm</span>
-        <span><strong>Sun:</strong> 12–6 pm</span>
-        <span><strong>Happy Hour:</strong> 3–5 pm (Thurs & Fri)</span>
+
+        <span className={styles.breakLine}><strong>Thurs–Sat:</strong> 3–8 pm</span>
+        <span className={styles.breakLine}><strong>Sun:</strong> 12–6 pm</span>
+        <span className={styles.breakLine}><strong>Happy Hour:</strong> 3–5 pm (Thurs & Fri)</span>
       </div>
     </footer>
   );

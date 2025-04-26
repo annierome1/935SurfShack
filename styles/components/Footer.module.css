@@ -7,7 +7,7 @@
   padding: clamp(1rem, 2vw, 2rem);
   background-color: #f5877c;
   box-sizing: border-box;
-  /* no overflow-x: auto—flex-shrink will pull things in */
+
 }
 
 .footerSection {
@@ -15,15 +15,40 @@
   margin: 0 clamp(0.5rem, 2vw, 1rem);
   min-width: 0;                    /* allow true shrinking */
 }
+.footerSection h4 {
+  font-family: 'Pacifico', cursive;
+  font-size: clamp(1rem);
+  font-weight: normal;  /* or 400, 700, etc. */
+  letter-spacing: 0.05em;
+  color: black;
+  margin-bottom: 0;
+}
+.footerSection span {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.8rem;
+  font-style: italic;   /* if you like */
+  line-height: 1.4;
+  color: black;
+  
+}
+/* force that one to be a block */
+.breakLine {
+  display: block;
+  margin-top: clamp(0.5rem, 1vw, 1rem); /* optional spacing */
+}
+
+
 
 /* Logo + socials */
 .logoSection {
   display: flex;
+  flex-direction: column;
   align-items: center;
+
   gap: clamp(0.5rem, 2vw, 1rem);
 }
 .footerLogo {
-  width: clamp(80px, 15vw, 150px);
+  width: clamp(100px, 25vw, 175px);
   height: auto;
 }
 .socials {
@@ -41,20 +66,7 @@
 }
 
 /* Section headings */
-.footerSection h4 {
-  font-size: clamp(1rem, 2vw, 1.25rem);
-  margin-bottom: clamp(0.25rem, 1vw, 0.5rem);
-  color: white;
-}
 
-/* Inline items that never wrap */
-.footerSection span {
-  display: inline-block;
-  white-space: nowrap;
-  font-size: clamp(0.75rem, 1.5vw, 1rem);
-  color: white;
-  margin-right: clamp(0.5rem, 1vw, 1rem);
-}
 .footerSection span:last-child {
   margin-right: 0;
 }
