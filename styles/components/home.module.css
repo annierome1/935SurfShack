@@ -99,7 +99,7 @@
 ───────────────────────────────────────────────────────────────────────── */
 .section2 {
   background: #c2e4e7;
-  padding: 4rem 2rem;
+  padding: 7rem 2rem;
   
 }
 .section2Content {
@@ -164,7 +164,7 @@
 ───────────────────────────────────────────────────────────────────────── */
 .section3 {
   background: #fff;
-  padding: 4rem 2rem;
+  padding: 6rem 2rem;
   text-align: center;
 }
 .section3Title {
@@ -213,7 +213,7 @@
 /* SECTION 4 */
 .section4 {
   background: #c2e4e7;        /* same light-blue as Section 2 */
-  padding: 4rem 2rem;
+  padding: 6rem 2rem;
   text-align: center;
 }
 
