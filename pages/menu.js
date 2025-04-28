@@ -28,6 +28,17 @@ export default function Menu({ menu }) {
               {item.description && <p className={styles.itemDesc}>{item.description}</p>}
             </div>
             <div className={styles.menuItemDetails}>
+              {isImageItems && item.image?.asset?.url && (
+                <div className={styles.menuItemImage}>
+                  <Image
+                    src={item.image.asset.url}
+                    alt={item.name}
+                    width={60}
+                    height={60}
+                    objectFit="cover"
+                  />
+                </div>
+              )}
               <span className={styles.itemPrice}>
                 ${item.price.toFixed(isImageItems ? 2 : 0)}
               </span>
@@ -78,29 +89,69 @@ export default function Menu({ menu }) {
             )}
           </>
         )}
+{/* DRINKS */}
+{activeTab === 'drinks' && (
+  <div className={`${styles.menuSection} ${styles.drinkSection}`}>
+    {Object.entries(menuData.drink).map(([section, drinks]) => (
+      <div key={section} className={styles.categoryBlock}>
+        <h3 className={styles.categoryTitle}>{section}</h3>
 
-        {/* DRINKS */}
-        {activeTab === 'drinks' && (
-          <>
-            <div className={`${styles.menuSection} ${styles.drinkSection}`}>
-              {Object.entries(menuData.drink).map(([section, drinks]) =>
-                renderSection(section, drinks, false, true)
-              )}
-            </div>
-            {drinkDownloadUrl && (
-              <div className={styles.downloadContainer}>
-                <a
-                  href={drinkDownloadUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.downloadButton}
-                >
-                  Download Full Drink Menu
-                </a>
+        <div className={styles.itemGrid}>
+          {drinks.map((drink, idx) => {
+            const hasImage = Boolean(drink.image);
+            if (hasImage) {
+              return (
+                <div key={idx} className={styles.drinkCardWithImage}>
+                  {/* 1. photo column */}
+                  <div className={styles.drinkImgBlock}>
+                    <Image
+                      src={drink.image}
+                      alt={drink.name}
+                      layout="fill"
+                      objectFit="cover"
+                    />
+                  </div>
+
+                  {/* 2. content column */}
+                  <div className={styles.drinkCardContent}>
+                    <div className={styles.drinkCardHeader}>
+                      <h4 className={styles.itemName}>{drink.name}</h4>
+                      <span className={styles.itemPrice}>
+                        ${drink.price.toFixed()}
+                      </span>
+                    </div>
+                    {drink.description && (
+                      <p className={styles.itemDesc}>{drink.description}</p>
+                    )}
+                  </div>
+                </div>
+              );
+            }
+
+            // no-image fallback
+            return (
+              <div key={idx} className={styles.menuItem}>
+                <div className={styles.menuItemText}>
+                  <h4 className={styles.itemName}>{drink.name}</h4>
+                  {drink.description && (
+                    <p className={styles.itemDesc}>{drink.description}</p>
+                  )}
+                </div>
+                <div className={styles.menuItemDetails}>
+                  <span className={styles.itemPrice}>
+                    ${drink.price.toFixed()}
+                  </span>
+                </div>
               </div>
-            )}
-          </>
-        )}
+            );
+          })}
+        </div>
+      </div>
+    ))}
+  </div>
+)}
+
+
 
 {/* SPECIALS */}
 {activeTab === 'specials' && (

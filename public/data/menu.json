@@ -64,7 +64,8 @@
         "name": "Orange Crush",
         "description": "Maryland style! Orange Vodka, triple sec, fresh squeezed OJ, topped with Sprite",
         "price": 15.00,
-        "note": "Sub for a Grapefruit Crush"
+        "note": "Sub for a Grapefruit Crush",
+        "image": "/images/orangedrink.jpeg"
       },
       {
         "name": "Margarita",
@@ -76,7 +77,9 @@
         "name": "Paloma",
         "description": "Hornitos Plata, fresh squeezed grapefruit juice, fresh squeezed lime juice, agave",
         "price": 15.00,
-        "note": "Make it a Spicy Paloma with Fiero habanero tequila. Tajin rim available."
+        "note": "Make it a Spicy Paloma with Fiero habanero tequila. Tajin rim available.",
+        "image": "/images/paloma.jpeg"
+
       },
       {
         "name": "Mojito",
@@ -99,12 +102,14 @@
       {
         "name": "Cinnamon Rainbows Blueberry Lemonade",
         "description": "Absolut Citron, blueberry syrup, fresh squeezed lemonade",
-        "price": 15.00
+        "price": 15.00,
+        "image": "/images/berrydrink.jpeg"
       },
       {
         "name": "Claudia’s Peach Sangria",
         "description": "Pinot Grigio, peach puree, elderflower liqueur, fresh basil, soda water",
         "price": 15.00
+        
       },
       {
         "name": "Cucumber Watermelon Fizz",
