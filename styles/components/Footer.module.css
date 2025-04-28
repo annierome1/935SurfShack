@@ -16,9 +16,8 @@
   min-width: 0;                    /* allow true shrinking */
 }
 .footerSection h4 {
-  font-family: 'Pacifico', cursive;
+  font-family: 'Lobster 2', cursive;
   font-size: 1rem;
-  font-weight: normal;  /* or 400, 700, etc. */
   letter-spacing: 0.05em;
   color: white;
   margin-bottom: 0;

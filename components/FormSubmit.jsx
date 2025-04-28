@@ -1,26 +1,68 @@
-// components/FormSubmit.jsx
+'use client';
+
 import React from 'react';
+import styles from '../styles/components/FormSubmit.module.css'
 
 export default function FormSubmit({
   to,
   subject = '',
   children,
+  formType = 'inquiry',    // 'privateEvent', 'careers', or 'inquiry'
   className = '',
+  buttonText = 'Send Message',
 }) {
-  // build a mailto: URL with an optional subject
-  const href = `mailto:${to}${subject ? `?subject=${encodeURIComponent(subject)}` : ''}`;
+  // Turn keys like "eventDate" or "additional_info" into "Event Date" / "Additional info"
+  const humanize = (key) =>
+    key
+      .replace(/([A-Z])/g, ' $1')
+      .replace(/[_-]/g, ' ')
+      .replace(/^./, (s) => s.toUpperCase());
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(e.target).entries());
+    const { name, email, message, ...others } = data;
+
+    // Build friendly body
+    const lines = [`Hi! My name is ${name}.`, ''];
+
+    if (formType === 'privateEvent') {
+      lines.push("I'm interested in booking a private event for:", '');
+    } else if (formType === 'careers') {
+      lines.push("I'd like to submit my application for:", '');
+    } else {
+      lines.push('I have a question regarding:', '');
+    }
+
+    // Add any other fields
+    Object.entries(others).forEach(([key, val]) => {
+      if (val) lines.push(`${humanize(key)}: ${val}`);
+    });
+
+    // Add the main message last
+    if (message) {
+      lines.push('', message);
+    }
+
+    lines.push('', 'Thanks!', name);
+
+    const body = encodeURIComponent(lines.join('\r\n'));
+    const mailto =
+      `mailto:${to}` +
+      (subject ? `?subject=${encodeURIComponent(subject)}` : '') +
+      `&body=${body}`;
+
+    window.location.href = mailto;
+  };
+
+  // Build CSS class list: core form + type-specific + any external overrides
+  const formClass = [styles.form, styles[`${formType}Form`], className]
+    .filter(Boolean)
+    .join(' ');
 
   return (
-    <form
-      action={href}
-      method="POST"
-      encType="text/plain"
-      className={className}
-    >
-      {/* your inputs */}
+    <form onSubmit={handleSubmit} className={formClass}>
       {children}
-
-      {/* submit button */}
       
     </form>
   );

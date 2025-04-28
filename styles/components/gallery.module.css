@@ -47,5 +47,12 @@
     .myMasonryGridColumn {
       flex: 1;
     }
+
   }
-  
+  @media (max-width: 1100px) {
+    /* e.g. enforce each column to be ~30% wide */
+    .masonryContainer {
+      margin-top: 7rem;
+    }
+
+  }

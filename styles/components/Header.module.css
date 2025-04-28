@@ -36,6 +36,8 @@
   color: #fff !important;
 }
 
+
+
 /* Make the underline animate in white on hover */
 .headerHomeTransparent .navLink::after {
   background-color: rgba(255,255,255,0.6);
@@ -43,11 +45,16 @@
 .headerHomeTransparent .navLink:hover::after {
   background-color: #fff;
 }
+.headerSolid .navLink:hover::after {
+  background-color: #fff;
+}
+
 
 /* If you also want the top-banner link white: */
 .headerHomeTransparent .bannerLink {
   color: #fff !important;
 }
+
 .headerHomeTransparent .bannerLink:hover {
   color: #f0f0f0;    /* or even lighter white on hover */
 }

@@ -4,7 +4,7 @@
     max-width: 900px;
     margin: 0 auto;
     color: #333;
-    margin-top: 2rem;
+
   }
   
   .faqTitle {
@@ -56,4 +56,13 @@
   .active {
     background-color: rgba(245, 135, 124, 0.15);
   }
-  
+  @media (max-width: 1024px) {
+
+    .faqSection{
+      margin-top: 7.5rem;
+    }
+
+    .faqTitle{
+      font-size: 2rem;
+    }
+  }

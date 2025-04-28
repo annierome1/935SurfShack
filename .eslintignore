@@ -1,0 +1,5 @@
+# don’t lint Sanity’s vendored bundles
+src/sanity/dist/**
+
+# if you also have a custom Sanity ESLint config in the repo
+src/sanity/eslint.config.mjs

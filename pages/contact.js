@@ -1,17 +1,17 @@
+// pages/contact.js
+
 import Layout from '../components/Layout';
 import styles from '../styles/components/contact.module.css';
-//import { FaInstagram, FaFacebook } from 'react-icons/fa';
 import { useState } from 'react';
 import Image from 'next/image';
-
 import FormSubmit from '../components/FormSubmit';
 import careersImg from '../public/images/careers-hero.jpg';
 
 export default function Contact() {
-  const [setResumeFile] = useState(null);
-  const [selectedPosition] = useState([]);
+  // State hooks
+  const [resumeFile, setResumeFile] = useState(null);
+  const [selectedPosition, setSelectedPosition] = useState('');
   const [experience, setExperience] = useState('');
-
 
   const positions = [
     'Bartender',
@@ -19,20 +19,20 @@ export default function Contact() {
     'Musician',
   ];
 
- 
+  // Handle file input
   const handleResumeChange = (e) => {
-    setResumeFile(e.target.files[0] || null);
+    const file = e.target.files[0] || null;
+    setResumeFile(file);
   };
-
-
 
   return (
     <Layout>
       <div className={styles.container}>
-      <h1 className={styles.pageHeader}>Contact Us</h1>
-      <p className={styles.headerSubtitle}>
-  We&apos;ll get back to you as soon as we can!
-</p>
+        <h1 className={styles.pageHeader}>Contact Us</h1>
+        <p className={styles.headerSubtitle}>
+          We&apos;ll get back to you as soon as we can!
+        </p>
+
         {/* ===== CONTACT SECTION ===== */}
         <section className={styles.contactSection}>
           {/* Map Card */}
@@ -40,7 +40,7 @@ export default function Contact() {
             <iframe
               className={styles.map}
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2949.616197882931!2d-70.81102238454497!3d42.90968737915406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e2b3ffdfce4a6b%3A0xe34f1b2e3aaeb4e9!2s935%20Ocean%20Blvd%2C%20Hampton%2C%20NH%2003842!5e0!3m2!1sen!2sus!4v1711826200891!5m2!1sen!2sus"
-              allowFullScreen=""
+              allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
@@ -50,8 +50,8 @@ export default function Contact() {
           <div className={styles.card}>
             <h2 className={styles.sectionTitle}>Send us a Message</h2>
             <FormSubmit
-              formType="contact"
-              thankYouUrl="chris@935ocean.com"
+              formType="inquiry"
+              to="chris@935ocean.com"
               subject="New Contact Inquiry"
             >
               <div className={styles.field}>
@@ -66,10 +66,10 @@ export default function Contact() {
                 <label htmlFor="message">Message</label>
                 <textarea id="message" name="message" rows="5" required />
               </div>
-              <div className = {styles.buttonGroup}>
-              <button type="submit" className={styles.primaryButton}>
-                Send Message
-              </button>
+              <div className={styles.buttonGroup}>
+                <button type="submit" className={styles.primaryButton}>
+                  Send Message
+                </button>
               </div>
             </FormSubmit>
           </div>
@@ -77,27 +77,25 @@ export default function Contact() {
 
         {/* ===== CAREERS SECTION ===== */}
         <section className={styles.careersSection}>
-        <h2 className={styles.careersHeading}>Let&apos;s Work Together!</h2>
+          <h2 className={styles.careersHeading}>Let&apos;s Work Together!</h2>
           <p className={styles.headerSubtitle}>
-  Thank you for your interest in working with us! We appreciate you reaching out.
-  Could you please fill out the form below with your contact information, a brief
-  description of what you&apos;re interested in working on, and your resume or a summary of
-  your past experience? We&apos;ll get in touch with you soon!
-</p>
+            Thank you for your interest in working with us! We appreciate you reaching out.
+            Please fill out the form below and attach your resume; we&apos;ll be in touch soon.
+          </p>
 
           <div className={styles.careersContent}>
             {/* Image Card */}
             <div className={styles.card}>
               <div className={styles.imageHolder}>
-              <Image
-                src={careersImg}
-                alt="Join our team"
-                layout="responsive"
-                objectFit="cover"
-                className={styles.careerImage}
-                priority
-              />
-            </div>
+                <Image
+                  src={careersImg}
+                  alt="Join our team"
+                  layout="responsive"
+                  objectFit="cover"
+                  className={styles.careerImage}
+                  priority
+                />
+              </div>
             </div>
 
             {/* Careers Form Card */}
@@ -105,12 +103,12 @@ export default function Contact() {
               <h3 className={styles.sectionTitle}>Careers</h3>
               <FormSubmit
                 formType="careers"
-                thankYouUrl="chris@935ocean.com"
+                to="chris@935ocean.com"
                 subject="Career Application"
               >
                 <div className={styles.field}>
-                  <label htmlFor="fullName">Full Name</label>
-                  <input id="fullName" name="fullName" type="text" required />
+                  <label htmlFor="name">Full Name</label>
+                  <input id="name" name="name" type="text" required />
                 </div>
                 <div className={styles.field}>
                   <label htmlFor="email2">Email Address</label>
@@ -120,18 +118,14 @@ export default function Contact() {
                   <label htmlFor="position">Position Interested In</label>
                   <select
                     id="position"
-                    name="positions"
+                    name="position"
                     value={selectedPosition}
                     onChange={(e) => setSelectedPosition(e.target.value)}
                     required
                   >
-                    <option value="" disabled>
-                      Select…
-                    </option>
+                    <option value="" disabled>Select…</option>
                     {positions.map((pos) => (
-                      <option key={pos} value={pos}>
-                        {pos}
-                      </option>
+                      <option key={pos} value={pos}>{pos}</option>
                     ))}
                   </select>
                 </div>
@@ -145,19 +139,32 @@ export default function Contact() {
                     onChange={(e) => setExperience(e.target.value)}
                   />
                 </div>
+                <div className={styles.field}>
+                  <label className={styles.fileLabel} htmlFor="resume">Upload Resume (PDF/DOC)</label>
+                  <input
+                    id="resume"
+                    name="resumeFileName"
+                    type="file"
+                    accept=".pdf,.doc,.docx"
+                    onChange={handleResumeChange}
+                    className={styles.fileInput}
+                  />
+                  {resumeFile && (
+                    <div className={styles.filePreview}>
+                      Selected file: {resumeFile.name}
+                    </div>
+                  )}
+                </div>
+                {/* hidden field to include filename in email */}
+                <input
+                  type="hidden"
+                  name="resumeFilename"
+                  value={resumeFile ? resumeFile.name : ''}
+                />
                 <div className={styles.buttonGroup}>
                   <button type="submit" className={styles.primaryButton}>
                     Submit Application
                   </button>
-                  <label className={styles.secondaryButton}>
-                    Upload Resume
-                    <input
-                      type="file"
-                      accept=".pdf,.doc,.docx"
-                      onChange={handleResumeChange}
-                      hidden
-                    />
-                  </label>
                 </div>
               </FormSubmit>
             </div>
@@ -167,4 +174,3 @@ export default function Contact() {
     </Layout>
   );
 }
-

@@ -191,6 +191,7 @@
   border-radius: 8px;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  
 }
 
 .privateEventText h1 {
@@ -260,6 +261,7 @@
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 4px;
+  resize: vertical;
 }
 
 .formSubmitButton {
@@ -295,5 +297,8 @@
   }
   .heroGallery {
     grid-template-columns: 1fr;
+  }
+  .container{
+    margin-top: 6rem;
   }
 }

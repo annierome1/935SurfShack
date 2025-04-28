@@ -1,19 +1,25 @@
 import Layout from '../components/Layout';
 import Head from 'next/head';
 import Link from 'next/link';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Hero from '../components/Hero';
 import { FaMusic, FaCalendarAlt } from 'react-icons/fa';
 import styles from '../styles/components/home.module.css';
 import { client } from '../src/sanity/lib/client';
 import imageUrlBuilder from '@sanity/image-url';
+import SwiperCore, {Pagination } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/autoplay';
 // Replace these with your actual image imports
 import section1Img from '../public/images/section1.jpg';
 import section2Img from '../public/images/section2.jpg';
 import coastalImg from '../public/images/coastal-cuisine.jpg';
 import cocktailsImg from '../public/images/craft-cocktails.jpg';
 import brewsImg from '../public/images/local-brews.jpg';
-
+SwiperCore.use([Pagination]);
 const builder = imageUrlBuilder(client);
 function urlFor(source) {
   if (!source) return null;
@@ -24,6 +30,11 @@ export default function Home({ nextEvent, instaPosts = [] }) {
   const eventImageUrl = nextEvent?.image
     ? urlFor(nextEvent.image).width(800).height(600).url()
     : section2Img;
+
+    const [isMounted, setIsMounted] = useState(false);
+      useEffect(() => {
+        setIsMounted(true);
+      }, []);
 
   return (
     <Layout>
@@ -162,31 +173,85 @@ export default function Home({ nextEvent, instaPosts = [] }) {
           </Link>
         </section>
 
-        {/* SECTION 4 */}
-        <section className={styles.section4}>
-          <h2 className={styles.section4Title}>Our Instagram Feed</h2>
-          <div className={styles.section4Gallery}>
-            {instaPosts.length > 0 ? (
-              instaPosts.map(post => (
-                <Link
-                  key={post.id}
+        {/* SECTION 4: Instagram */}
+{/* SECTION 4: Instagram */}
+{/* SECTION 4: Instagram */}
+<section className={styles.section4}>
+        <h2 className={styles.section4Title}>Our Instagram Feed</h2>
+
+        {/* 2) Only render Swiper (and its <img>) after hydration */}
+        {isMounted && (
+          <Swiper
+            spaceBetween={12}
+            slidesPerView={1.2}
+            centeredSlides
+            loop
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
+            pagination={{ clickable: true }}
+            breakpoints={{
+              640: { slidesPerView: 2.2 },
+              1024: { slidesPerView: 3.2 },
+            }}
+            className={styles.swiperContainer}
+            onSlideChange={(swiper) => {
+              document
+                .querySelectorAll('video')
+                .forEach((vid) => {
+                  if (swiper.slides[swiper.activeIndex].contains(vid)) {
+                    vid.play().catch(() => {});
+                  } else {
+                    vid.pause();
+                  }
+                });
+            }}
+            onInit={(swiper) => {
+              swiper.slides[0].querySelector('video')?.play().catch(() => {});
+            }}
+          >
+            {instaPosts.map((post) => (
+              <SwiperSlide key={post.id}>
+                <a
                   href={post.permalink}
-                  passHref
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.instaLink}
                 >
-                  <a target="_blank" rel="noopener noreferrer" className={styles.instaLink}>
-                    <img
-                      src={post.media_url}
-                      alt={post.caption?.slice(0, 80) || 'Instagram post'}
-                      className={styles.galleryImage}
-                    />
-                  </a>
-                </Link>
-              ))
-            ) : (
-              <p>No posts found. Check back soon!</p>
-            )}
-          </div>
-        </section>
+                  <div className={styles.mediaWrapper}>
+                    {post.media_type === 'VIDEO' ? (
+                      <video
+                        src={post.media_url}
+                        muted
+                        playsInline
+                        loop
+                        className={styles.video}
+                      />
+                    ) : (
+                      <Image
+                        src={post.media_url}
+                        alt={post.caption?.slice(0, 80) || 'Instagram post'}
+                        width={300}
+                        height={300}
+                        objectFit="cover"
+                        unoptimized
+                        className={styles.galleryImage}
+                      />
+                    )}
+
+                    {post.caption && (
+                      <div className={styles.captionOverlay}>
+                        {post.caption}
+                      </div>
+                    )}
+                  </div>
+                </a>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        )}
+      </section>
+
+
+
 
         {/* SECTION 5 */}
         <section className={styles.section5}>
@@ -216,24 +281,36 @@ export default function Home({ nextEvent, instaPosts = [] }) {
 }
 
 export async function getStaticProps() {
-  const eventQuery = `*[_type=="event" && date >= now()] | order(date asc){
-    _id, title, date, artist, image
-  }`;
+  // fetch next upcoming event
+  const eventQuery = `
+    *[_type=="event" && date >= now()] | order(date asc){
+      _id, title, date, artist, image
+    }
+  `;
   const events = await client.fetch(eventQuery);
-  const nextEvent = events.length > 0 ? events[0] : null;
+  const nextEvent = events[0] || null;
 
-  const { INSTAGRAM_ACCESS_TOKEN, INSTAGRAM_USER_ID } = process.env;
-  const fields = ['id','caption','media_url','permalink'].join(',');
+  // Instagram Basic Display API call
+  const accessToken = process.env.INSTAGRAM_ACCESS_TOKEN;
   let instaPosts = [];
   try {
+    const fields = ['id','caption','media_url','permalink','media_type','timestamp']
+      .join(',');
     const res = await fetch(
-      `https://graph.instagram.com/${INSTAGRAM_USER_ID}/media?fields=${fields}&access_token=${INSTAGRAM_ACCESS_TOKEN}`
+      `https://graph.instagram.com/me/media?fields=${fields}&access_token=${accessToken}`
     );
-    if (res.ok) {
-      const json = await res.json();
-      instaPosts = json.data || [];
+
+    if (!res.ok) {
+      const errText = await res.text();
+      console.error('Instagram API error:', errText);
     } else {
-      console.error('Instagram API error:', await res.text());
+      const { data } = await res.json();
+      instaPosts = data
+      .filter(p =>
+        ['IMAGE','CAROUSEL_ALBUM','VIDEO'].includes(p.media_type)
+      )
+      .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
+      .slice(0, 6);
     }
   } catch (err) {
     console.error('Instagram fetch failed:', err);
@@ -241,6 +318,6 @@ export async function getStaticProps() {
 
   return {
     props: { nextEvent, instaPosts },
-    revalidate: 300,
+    revalidate: 300, // ISR: refresh every 5min
   };
 }

@@ -249,6 +249,9 @@
   .drinkGrid {
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   }
+  .container{
+    margin-top: 6rem;
+  }
 }
 @media (max-width: 600px) {
   .foodGrid,

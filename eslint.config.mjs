@@ -9,8 +9,15 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
 });
 
-const eslintConfig = [
+export default [
+  // 1) Skip linting for Sanity's dist folder + config
+  {
+    ignores: ["src/sanity/dist/**", "src/sanity/eslint.config.mjs"],
+    rules: {
+      // 2) Turn off that rule globally
+      "@typescript-eslint/no-unused-expressions": "off",
+    },
+  },
+  // Load Next.js recommended configs
   ...compat.extends("next/core-web-vitals", "next/typescript"),
 ];
-
-export default eslintConfig;

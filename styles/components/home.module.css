@@ -210,26 +210,107 @@
    SECTION 4
 ───────────────────────────────────────────────────────────────────────── */
 /* Section 4 Gallery */
+/* SECTION 4 */
+.section4 {
+  background: #c2e4e7;        /* same light-blue as Section 2 */
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.section4Title {
+  font-family: 'Lobster Two', cursive;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #fff;               /* white text for contrast */
+}
+
 .section4Gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 0.5rem;
-  max-width: 1000px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  max-width: 1200px;
   margin: 0 auto;
+}
+
+.instaLink {
+  display: block;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
 }
 
 .galleryImage {
   width: 100%;
   height: auto;
   display: block;
-  object-fit: cover;
-  border-radius: 6px;
-  transition: transform 0.2s ease;
 }
 
-.instaLink:hover .galleryImage {
-  transform: scale(1.05);
+.instaLink:hover {
+  transform: scale(1.03);
 }
+/* home.module.css */
+.swiperContainer {
+  padding-bottom: 1rem;
+}
+
+/* wrap each tile so we can position overlays */
+.mediaWrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 100%;      /* 1:1 aspect ratio */
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.mediaWrapper video,
+.mediaWrapper .galleryImage {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* caption hidden by default */
+.captionOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  max-height: 100%;
+  overflow-y: auto;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  line-height: 1.3;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "Segoe UI", Roboto, sans-serif;
+}
+
+/* reveal caption on hover/tap */
+.instaLink:hover .captionOverlay,
+.instaLink:focus .captionOverlay {
+  opacity: 1;
+}
+
+/* ensure the video itself has no default controls */
+.mediaWrapper video {
+  /* controls: none by default; we'll autoplay/pause in JS */
+}
+
+/* optionally style the Swiper pagination dots */
+.swiper-pagination-bullet {
+  background: rgba(255,255,255,0.8) !important;
+}
+.swiper-pagination-bullet-active {
+  background: #f5877a !important;
+}
+
 
 
 /* ─────────────────────────────────────────────────────────────────────────
@@ -260,8 +341,9 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: #fff;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+
+  color: black;
+  
 }
 .section5Title {
   font-family: 'Lobster Two', cursive;
@@ -276,7 +358,7 @@
 }
 .section5Button {
   background-color: rgba(245,135,124,0.9);
-  color: #fff;
+  color: black;
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
   text-decoration: none;
@@ -303,6 +385,7 @@
     width: 100%;
     min-height: 200px;
   }
+  
   .cards3 {
     grid-template-columns: 1fr 1fr;
   }
@@ -320,8 +403,26 @@
   .featureIcon { font-size: 1.1rem; }
   .section3Desc { font-size: 1rem; }
   .section5Title { font-size: 2rem; }
-  .section5Desc { font-size: 1rem; max-width: 90%; }
-  .section5Button { font-size: 1rem; padding: 0.65rem 1.2rem; }
+  .section5Desc { font-size: 1rem; max-width: 90%; color:#f5877a; text-shadow: 0 0px 0px rgba(0,0,0,0.7); }
+  
+  .section5Title { font-size: 1.5rem; color:#f5877a; text-shadow: 0 0px 0px rgba(0,0,0,0.7);}
+  .section5Image{
+    margin-top: 8rem;
+  }
+  .section5Button {
+    font-size: 0.8rem !important;  
+    padding: 0.2rem 0.8rem;  
+    border-radius: 6px;       
+    line-height: 1; 
+    
+    
+ 
+  }
+  .section5Overlay{
+    justify-content: right;
+    
+  }
+
 }
 
 /* Small phones */
@@ -343,7 +444,9 @@
   .section3Title { font-size: 2rem; }
   .cards3 { grid-template-columns: 1fr; }
   .section5 { flex-direction: column; align-items: stretch; }
-  .section5Title { font-size: 1.5rem; }
+  
   .section5Desc { font-size: 0.85rem; }
-  .section5Button { font-size: 0.9rem; padding: 0.5rem 1rem; }
+  .section5Button { font-size: 0.9rem; padding: 0.5rem 1rem; margin: 4rem; }
+ 
+
 }
