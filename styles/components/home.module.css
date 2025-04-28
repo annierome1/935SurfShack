@@ -83,11 +83,13 @@
   font-size: 1.125rem;
   line-height: 1.6;
   margin-bottom: 1rem;
+  color: black;
 }
 .hoursList {
   list-style: none;
   margin: 1rem 0;
   padding: 0;
+  color: black;
 }
 .hoursList li {
   margin-bottom: 0.5rem;

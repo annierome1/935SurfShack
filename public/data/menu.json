@@ -53,106 +53,84 @@
       ]
     },
   
-    "drink": {
-      "Liquor & Wine": {
-        "GIN": [
-          "Barr Hill",
-          "Bombay Sapphire",
-          "Hendrick’s"
-        ],
-        "RUM": [
-          "Appleton Estate 12 Year",
-          "Bacardi Black",
-          "Bacardi Coconut",
-          "Bacardi Superior",
-          "Captain Morgan Spiced Rum",
-          "Denizen Merchant’s Reserve 8 Year",
-          "Pusser’s Blue Label"
-        ],
-        "TEQUILA/MEZCAL": [
-          "Casamigos Blanco",
-          "Casamigos Reposado",
-          "Espolon Blanco",
-          "Hornitos Plata",
-          "Hornitos Reposado",
-          "Illegal Blanco Mezcal",
-          "Illegal Reposado Mezcal",
-          "Patron Silver"
-        ],
-        "VODKA": [
-          "Absolut Peppar",
-          "Effen Cucumber",
-          "Grey Goose",
-          "Ketel One",
-          "Stoli Grapefruit",
-          "Stoli Orange",
-          "Stoli Vanilla",
-          "Tito’s"
-        ],
-        "WHISKEY": [
-          "Angel’s Envy",
-          "Basil Hayden",
-          "Blanton’s",
-          "Buffalo Trace",
-          "Bulleit",
-          "Bulleit Rye",
-          "Crown Royal",
-          "Eagle Rare 10 Year",
-          "E.H. Taylor Small Batch",
-          "Glenlivet 12",
-          "Jack Daniel’s",
-          "Jameson",
-          "Jim Beam",
-          "Johnnie Walker Black",
-          "Maker’s Mark",
-          "Michter’s Straight Rye Single Barrel"
-        ],
-        "LIQUEURS": [
-          "Amaretto Disaronno",
-          "Amarula Cream Liqueur",
-          "Aperol",
-          "Bailey’s",
-          "Campari",
-          "Cointreau",
-          "Grand Marnier",
-          "Kahlua",
-          "Martini & Rossi Dry Vermouth",
-          "Martini & Rossi Sweet Vermouth",
-          "St. Germain"
-        ],
-        "WINE/SPARKLING": [
-          "TBD"
-        ]
+   "drink": {
+    "Classic Cocktails": [
+      {
+        "name": "Aperol Spritz",
+        "description": "Prosecco, Aperol, soda water and an orange wedge",
+        "price": 15.00
       },
-      "Beer & Beyond": {
-        "BREWS": [
-          "Bud Light",
-          "Coors Light",
-          "Athletic Brewing N/A",
-          "Allagash White",
-          "Corona Extra",
-          "Heineken Zero N/A",
-          "Kona Big Wave",
-          "Landshark Island Lager",
-          "Modelo",
-          "Sam Adams Porch Rocker",
-          "Sam Adams Seasonal",
-          "Housemade Shandy",
-          "Tuckerman Pale Ale (16 fl oz)",
-          "Lawsons Sip of Sunshine IPA (16 fl oz)",
-          "Maine Lunch IPA (16.9 fl oz)"
-        ],
-        "SELTZERS & BEYOND": [
-          "Fresh Squeezed Lemonade",
-          "Fresh Squeezed Orange Juice",
-          "High Noon Passionfruit",
-          "High Noon Peach",
-          "NUTRL Orange",
-          "NUTRL Pineapple",
-          "Suncruiser Iced Tea",
-          "Suncruiser Iced Tea Lemonade"
-        ]
+      {
+        "name": "Orange Crush",
+        "description": "Maryland style! Orange Vodka, triple sec, fresh squeezed OJ, topped with Sprite",
+        "price": 15.00,
+        "note": "Sub for a Grapefruit Crush"
+      },
+      {
+        "name": "Margarita",
+        "description": "Hornitos Plata, orange liqueur, fresh squeezed lime juice and agave",
+        "price": 15.00,
+        "note": "Make it a Spicy Marg with Fiero habanero tequila. Tajin rim available."
+      },
+      {
+        "name": "Paloma",
+        "description": "Hornitos Plata, fresh squeezed grapefruit juice, fresh squeezed lime juice, agave",
+        "price": 15.00,
+        "note": "Make it a Spicy Paloma with Fiero habanero tequila. Tajin rim available."
+      },
+      {
+        "name": "Mojito",
+        "description": "Bacardi Superior, fresh lime juice, mint, simple syrup, topped with club soda",
+        "price": 15.00,
+        "note": "Sub for a Coconut Mojito"
+      },
+      {
+        "name": "Painkiller",
+        "description": "Pusser’s Navy Rum, cream of coconut, fresh squeezed OJ, pineapple juice",
+        "price": 15.00
       }
-    }
+    ],
+    "Signature Cocktails": [
+      {
+        "name": "935 Espresso Martini",
+        "description": "Vanilla Vodka, fresh brewed espresso, Amarula, Kahlua",
+        "price": 15.00
+      },
+      {
+        "name": "Cinnamon Rainbows Blueberry Lemonade",
+        "description": "Absolut Citron, blueberry syrup, fresh squeezed lemonade",
+        "price": 15.00
+      },
+      {
+        "name": "Claudia’s Peach Sangria",
+        "description": "Pinot Grigio, peach puree, elderflower liqueur, fresh basil, soda water",
+        "price": 15.00
+      },
+      {
+        "name": "Cucumber Watermelon Fizz",
+        "description": "Effen Cucumber, watermelon puree, fresh squeezed lime juice, soda water",
+        "price": 15.00
+      },
+      {
+        "name": "High Street Punch",
+        "description": "White, dark, and coconut rums mixed with pineapple, fresh squeezed OJ and a splash of grenadine",
+        "price": 15.00
+      },
+      {
+        "name": "North Beach Zinger",
+        "description": "Prosecco, coconut rum, fresh squeezed lime juice, agave",
+        "price": 15.00
+      },
+      {
+        "name": "Smoke on the Water",
+        "description": "Vida Mezcal, orange liqueur, pineapple juice, fresh lime juice, demerara syrup",
+        "price": 15.00
+      },
+      {
+        "name": "Strawberry Fields",
+        "description": "Maker’s Mark, strawberry puree, fresh lemon juice, simple syrup and mint",
+        "price": 15.00
+      }
+    ]
   }
-  
+}

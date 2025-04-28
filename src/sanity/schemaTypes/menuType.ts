@@ -26,6 +26,7 @@ export const menuType = defineType({
           type: 'object',
           fields: [
             defineField({ name: 'name', title: 'Name', type: 'string' }),
+            defineField({ name: 'description', title:'Description', type: 'string'}),
             defineField({ name: 'price', title: 'Price', type: 'number' }),
             defineField({ name: 'image', title: 'Image', type: 'image' }),
           ],
@@ -41,6 +42,7 @@ export const menuType = defineType({
           type: 'object',
           fields: [
             defineField({ name: 'name', title: 'Name', type: 'string' }),
+            defineField({ name: 'description', title:'Description', type: 'string'}),
             defineField({ name: 'price', title: 'Price', type: 'number' }),
             defineField({ name: 'image', title: 'Image', type: 'image' }),
           ],
