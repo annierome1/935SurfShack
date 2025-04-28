@@ -99,12 +99,18 @@ export default function Events({ events }) {
                   <div className={styles.eventContent}>
                     <h2 className={styles.eventTitle}>{event.title}</h2>
                     <p className={styles.eventDate}>
-                      {new Date(event.date).toLocaleDateString(undefined, {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                      })}
-                    </p>
+                    {new Date(event.date).toLocaleDateString(undefined, {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                    })}
+                    {' at '}
+                    {new Date(event.date).toLocaleTimeString(undefined, {
+                      hour:   'numeric',
+                      minute: '2-digit',
+                    })}
+                  </p>
+
                     <p className={styles.eventDescription}>{event.description}</p>
                   </div>
                 </div>
