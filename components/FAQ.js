@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import styles from '../styles/components/faq.module.css';
 
 const faqs = [
@@ -22,11 +23,31 @@ const faqs = [
   },
   {
     question: "How can I book a room at 935 Ocean?",
-    answer: "You can book a room here [attach link to 935 Ocean website]"
+    answer: (
+      <>
+        You can book a room at 935 Ocean Inn{' '}
+        <a
+          href="https://www.935ocean.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          here
+        </a>
+        .
+      </>
+    )
   },
   {
     question: "Do you have a Happy Hour?",
-    answer: "Our happy hour is from 3-5pm on weekdays. Happy hour specials change so be sure to check our menu [insert link to Food & Drink page] for the most up-to-date specials!"
+    answer: (
+      <>
+        Our happy hour is from 3-5pm on weekdays. Happy hour specials change so be sure to check our{' '}
+        <Link href="/menu">
+          menu
+        </Link>{' '}
+        for the most up-to-date specials!
+      </>
+    )
   },
   {
     question: "What months is the Surf Shack open?",
@@ -34,18 +55,41 @@ const faqs = [
   },
   {
     question: "Where can I find the Live Music schedule?",
-    answer: "View our Music & Event calendar here [insert link to Music & Events page]"
+    answer: (
+      <>
+        View our Music &amp; Event calendar{' '}
+        <Link href="/events">
+          here
+        </Link>
+        .
+      </>
+    )
   },
   {
     question: "How can I book a private event?",
-    answer: "Please fill out the form here [insert link to Private Events page] and someone will be in touch with you shortly! Thank you for your interest!"
+    answer: (
+      <>
+        Please fill out the form{' '}
+        <Link href="/events">
+          here
+        </Link>{' '}
+        and someone will be in touch with you shortly! Thank you for your interest!
+      </>
+    )
   },
   {
     question: "I’m a vendor/live musician/bartender/prep cook and want to work with the Surf Shack, how do I get in touch with you?",
-    answer: "Please fill out the form here [insert link to Work With Us page] and someone will be in touch with you shortly! Thank you for your interest!"
+    answer: (
+      <>
+        Please fill out the form{' '}
+        <Link href="/events">
+          here
+        </Link>{' '}
+        and someone will be in touch with you shortly! Thank you for your interest!
+      </>
+    )
   }
 ];
-
 export default function Faq() {
   const [activeIndex, setActiveIndex] = useState(null);
 
