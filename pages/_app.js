@@ -1,14 +1,58 @@
-// pages/_app.js
 import '../styles/global.css'
 import { Lobster_Two, Pacifico } from 'next/font/google'
+import Script from 'next/script'
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 const lobster = Lobster_Two({ subsets: ['latin'], weight: ['400'] })
 const pacifico = Pacifico({ subsets: ['latin'], weight: ['400'] })
 
+const GA_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS
+
 export default function MyApp({ Component, pageProps }) {
+  const router = useRouter()
+
+  useEffect(() => {
+    const handleRouteChange = (url) => {
+      if (window.gtag) {
+        window.gtag('config', GA_ID, {
+          page_path: url,
+        })
+      }
+    }
+    router.events.on('routeChangeComplete', handleRouteChange)
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [router.events])
+
   return (
-    <main className={`${lobster.className} ${pacifico.className}`}>
-      <Component {...pageProps} />
-    </main>
+    <>
+      {GA_ID && (
+        <>
+          <Script
+            strategy="afterInteractive"
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+          />
+          <Script
+            id="google-analytics"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GA_ID}', {
+                  page_path: window.location.pathname,
+                });
+              `,
+            }}
+          />
+        </>
+      )}
+      <main className={`${lobster.className} ${pacifico.className}`}>
+        <Component {...pageProps} />
+      </main>
+    </>
   )
 }

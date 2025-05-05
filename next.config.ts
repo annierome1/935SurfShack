@@ -10,10 +10,8 @@ const nextConfig: NextConfig = {
     ],
   },
 
-  // skip all ESLint errors during build
   eslint: {
     ignoreDuringBuilds: true,
-    // only lint these folders — vendor code under `src/sanity/dist` will be skipped
     dirs: ["pages", "app", "components", "lib"],
   },
 };
