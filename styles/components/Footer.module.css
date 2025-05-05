@@ -16,7 +16,7 @@
   min-width: 0;                    /* allow true shrinking */
 }
 .footerSection h4 {
-  font-family: 'Lobster Two', cursive;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
   font-size: 1rem;
   letter-spacing: 0.05em;
   color: white;

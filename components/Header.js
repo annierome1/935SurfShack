@@ -6,12 +6,15 @@ import { usePathname } from 'next/navigation';
 import styles from '../styles/components/Header.module.css';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import Image from 'next/image';
+import { FaClock, FaChevronDown, FaChevronUp } from 'react-icons/fa';
+
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === '/';
+  const [showMoreHours, setShowMoreHours] = useState(false);
 
   useEffect(() => {
     // Always solid off-home
@@ -87,13 +90,32 @@ export default function Header() {
             >
               935 Ocean Boulevard, Hampton, NH 03842
             </a>
+
             <p className={styles.hours}>
-              Thurs–Sat: 3–8pm · Sun: 12–6pm<br/>
-              <span className={styles.subHours}>
-                Happy Hour: 3–5pm (Thurs &amp; Fri)
-              </span>
+              Thurs–Sat: 3–8pm · Sun: 12–6pm
             </p>
-          </div>
+            <span className={styles.nowOpen}>Now Open!</span>
+
+            <div className={styles.hoursToggleWrapper}>
+            <button onClick={() => setShowMoreHours(!showMoreHours)} className={styles.hoursToggle}>
+          <FaClock style={{ marginRight: '0.3rem' }} />
+          {showMoreHours ? 'Hide Hours Info' : 'See Full Hours'} 
+          {showMoreHours ? <FaChevronUp style={{ marginLeft: '0.3rem' }} /> : <FaChevronDown style={{ marginLeft: '0.3rem' }} />}
+        </button>
+
+
+              {showMoreHours && (
+                <div className={styles.hoursPopover}>
+                  <p className={styles.subHours}>
+                    Happy Hour: 3–5pm (Thurs &amp; Fri)<br />
+                    Expanded hours after Memorial Day!
+                  </p>
+                </div>
+              )}
+            </div>
+
+            
+        </div>
         </div>
 
         <nav className={`${styles.nav} ${isOpen ? styles.navOpen : ''}`}>

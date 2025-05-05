@@ -5,6 +5,7 @@ export default defineCliConfig({
     projectId: 'igpp6z91',
     dataset: 'events'
   },
+  studioHost: 'surfshack',
   /**
    * Enable auto-updates for studios.
    * Learn more at https://www.sanity.io/docs/cli#auto-updates

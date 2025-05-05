@@ -201,16 +201,66 @@
 
 .hours {
   margin-top: 0.25rem;
-  font-weight: semi-bold;
+  font-weight: 300;
+  margin-bottom: 0;
+  font-size: 0.95rem;
+  color: white;
+  margin: 0.2rem 0;
+  
+}
+
+.hoursToggleWrapper {
+  position: relative;
+  margin-top: 0.4rem;
+  display: flex;
+  align-items: center;
+}
+
+
+.hoursToggle {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: color 0.2s ease;
+  margin-left: 3rem;
+}
+
+.hoursToggle:hover {
+  color: #f9d3cb;
+}
+
+
+.hoursPopover {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 0.25rem;
+  background-color: rgba(0, 0, 0, 0.85);
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  z-index: 999;
+  width: max-content;
+  white-space: nowrap;
 }
 
 .subHours {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-style: italic;
-  color: white; /* lighter coral for subtext */
+  color: #fff;
+  margin: 0;
 }
-
-
+.nowOpen{
+  margin-bottom: 0.2rem;
+  font-weight: bold;
+  margin-left: 4rem;
+}
 
 
 
@@ -282,5 +332,41 @@
   }
   .navLink {
     font-size: 1.1rem;
+  }
+}
+@media (max-width: 768px) {
+  .headerLeft {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+  }
+  .logoImage {
+    max-width: 140px;
+  }
+
+  .logoDetails {
+    align-items: center;
+  }
+
+  .location {
+    font-size: 0.9rem;
+  }
+
+  .hours {
+    font-size: 0.85rem;
+  }
+
+  .nowOpen {
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-left: 0;
+  }
+
+  .hoursToggleWrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-left: 0 !important;
   }
 }
