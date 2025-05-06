@@ -305,13 +305,37 @@
   /* controls: none by default; we'll autoplay/pause in JS */
 }
 
-/* optionally style the Swiper pagination dots */
+/* Step 1: Ensure space for the pagination below */
+.swiperWrapper {
+  position: relative;
+  padding-bottom: 2rem; /* enough room for the dots */
+}
+
+/* Step 2: Move the pagination BELOW the swiper (default it's inside the swiperContainer) */
+.swiper-pagination {
+  position: relative !important;
+  bottom: auto !important;
+  margin-top: 1rem;
+  text-align: center;
+  z-index: 1;
+}
+
+
+/* Optional: Clean style for the dots */
 .swiper-pagination-bullet {
-  background: rgba(255,255,255,0.8) !important;
+  background: #fff;
+  opacity: 0.6;
+  width: 10px;
+  height: 10px;
+  margin: 0 4px;
 }
+
 .swiper-pagination-bullet-active {
-  background: #f5877a !important;
+  background: #f5877c;
+  opacity: 1;
 }
+
+
 
 
 

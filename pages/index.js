@@ -8,10 +8,11 @@ import { FaMusic, FaCalendarAlt } from 'react-icons/fa';
 import styles from '../styles/components/home.module.css';
 import { client } from '../src/sanity/lib/client';
 import imageUrlBuilder from '@sanity/image-url';
-import SwiperCore, {Pagination } from 'swiper';
+import SwiperCore, { Navigation, Autoplay, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
 // Replace these with your actual image imports
 import section1Img from '../public/images/section1.jpg';
@@ -19,7 +20,7 @@ import section2Img from '../public/images/section2.jpg';
 import coastalImg from '../public/images/coastal-cuisine.jpg';
 import cocktailsImg from '../public/images/craft-cocktails.jpg';
 import brewsImg from '../public/images/local-brews.jpg';
-SwiperCore.use([Pagination]);
+SwiperCore.use([Pagination, Autoplay, Navigation]);
 const builder = imageUrlBuilder(client);
 function urlFor(source) {
   if (!source) return null;
@@ -174,35 +175,39 @@ export default function Home({ nextEvent, instaPosts = [] }) {
         </section>
 
         {/* SECTION 4: Instagram */}
-{/* SECTION 4: Instagram */}
-{/* SECTION 4: Instagram */}
-<section className={styles.section4}>
-        <h2 className={styles.section4Title}>Our Instagram Feed</h2>
+        <section className={styles.section4}>
+      <h2 className={styles.section4Title}>Our Instagram Feed</h2>
 
-        {/* 2) Only render Swiper (and its <img>) after hydration */}
-        {isMounted && (
+      {isMounted && (
+        <div className={styles.swiperWrapper}>
+
           <Swiper
             spaceBetween={12}
             slidesPerView={1.2}
             centeredSlides
             loop
             autoplay={{ delay: 3000, disableOnInteraction: false }}
-            pagination={{ clickable: true }}
+            pagination={{
+              el: '#insta-pagination',
+              clickable: true,
+            }}
+            navigation={{
+              prevEl: '#insta-prev',
+              nextEl: '#insta-next',
+            }}
             breakpoints={{
               640: { slidesPerView: 2.2 },
               1024: { slidesPerView: 3.2 },
             }}
             className={styles.swiperContainer}
             onSlideChange={(swiper) => {
-              document
-                .querySelectorAll('video')
-                .forEach((vid) => {
-                  if (swiper.slides[swiper.activeIndex].contains(vid)) {
-                    vid.play().catch(() => {});
-                  } else {
-                    vid.pause();
-                  }
-                });
+              document.querySelectorAll('video').forEach((vid) => {
+                if (swiper.slides[swiper.activeIndex].contains(vid)) {
+                  vid.play().catch(() => {});
+                } else {
+                  vid.pause();
+                }
+              });
             }}
             onInit={(swiper) => {
               swiper.slides[0].querySelector('video')?.play().catch(() => {});
@@ -236,7 +241,6 @@ export default function Home({ nextEvent, instaPosts = [] }) {
                         className={styles.galleryImage}
                       />
                     )}
-
                     {post.caption && (
                       <div className={styles.captionOverlay}>
                         {post.caption}
@@ -247,8 +251,13 @@ export default function Home({ nextEvent, instaPosts = [] }) {
               </SwiperSlide>
             ))}
           </Swiper>
-        )}
-      </section>
+
+          {/* Custom pagination container */}
+          <div id="insta-pagination" className={styles.customPagination} />
+        </div>
+      )}
+    </section>
+
 
 
 
