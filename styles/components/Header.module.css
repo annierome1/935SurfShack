@@ -1,7 +1,6 @@
 /* Header.module.css */
 
-/* Base header styling */
-/* base */
+
 .header {
   display: flex;
   align-items: center;
@@ -15,7 +14,7 @@
   margin-top: 1.5rem;
   transition: background-color 0.3s ease,
               box-shadow 0.3s ease;
-  /* remove position from the base */
+
 }
 
 /* transparent over hero */
@@ -50,26 +49,26 @@
 }
 
 
-/* If you also want the top-banner link white: */
+
 .headerHomeTransparent .bannerLink {
   color: #fff !important;
 }
 
 .headerHomeTransparent .bannerLink:hover {
-  color: #f0f0f0;    /* or even lighter white on hover */
+  color: #f0f0f0;    
 }
 
 
-/* Solid header variant (scrolled or non-home) */
+
 .headerSolid {
-  position: fixed;         /* FIXED, not sticky */
+  position: fixed;         
   top: 0;
   left: 0;
   width: 100%;
   background-color: #f5877c;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  z-index: 1200;           /* above your topBanner’s 1100 */
-  color: white;            /* ensure your navLink .navLink (white) still shows */
+  z-index: 1200;          
+  color: white;            
 }
 
 /* Logo link */

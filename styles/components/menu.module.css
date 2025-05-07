@@ -153,14 +153,14 @@
    Drinks Section (fully horizontal cards)
 ──────────────────────────────────────── */
 
-/* 1) Grid container for cards */
+
 .drinkSection .itemGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   gap: 1.5rem;
 }
 
-/* 2) Text-only cards keep their original layout and price positioning */
+
 .drinkSection .menuItem {
   position: relative;
 }
@@ -170,12 +170,12 @@
   right: 1rem;
 }
 
-/* 3) Image-augmented cards: flex row */
+
 .drinkSection .drinkCardWithImage {
   display: flex;
-  flex-direction: row;       /* force horizontal */
-  position: relative;        /* for absolute price */
-  align-items: flex-start;   /* align all items at top */
+  flex-direction: row;       
+  position: relative;        
+  align-items: flex-start;  
   gap: 1rem;
   background: #f7fcfd;
   border-radius: 8px;
@@ -184,18 +184,18 @@
   grid-column: span 1.75;
 }
 
-/* 3a) Fixed-size photo tile */
+
 .drinkSection .drinkImgBlock {
   position: relative;
-  width: 150px;              /* fixed width */
-  height: 150px;             /* must match width for square */
+  width: 150px;             
+  height: 150px;           
   border-radius: 6px;
   overflow: hidden;
   background: #ddd;
-  flex-shrink: 0;            /* never shrink or grow */
+  flex-shrink: 0;           
 }
 
-/* 3b) Content column: fills remaining space */
+
 .drinkSection .drinkCardContent {
   display: flex;
   flex-direction: column;
@@ -203,7 +203,6 @@
   padding-right: 3rem;       /* room for the price */
 }
 
-/* 3c) Header row in content: title + price */
 .drinkSection .drinkCardHeader {
   display: flex;
   justify-content: space-between;
@@ -211,7 +210,7 @@
   margin-bottom: 0.5rem;
 }
 
-/* 4) Absolute price for image cards */
+
 .drinkSection .drinkCardWithImage .itemPrice {
   position: absolute;
   top: 1rem;
@@ -222,7 +221,7 @@
   color: #f5877a;
 }
 
-/* 5) Text styles */
+
 .drinkSection .itemName {
   margin: 0;
   font-size: 1.1rem;
@@ -241,32 +240,31 @@
 ──────────────────────────────────────── */
 @media (max-width: 800px) {
 
-  /* 1) One-col grid on phones */
+
   .drinkSection .itemGrid {
     grid-template-columns: 1fr !important;
   }
 
-  /* 2) Image-cards stack vertically */
+
   .drinkSection .drinkCardWithImage {
     flex-direction: column-reverse !important;
     padding: 0.75rem !important;
   }
 
-  /* 2a) Photo tile becomes full-width, fixed-height bar */
+
   .drinkSection .drinkImgBlock {
     width: 180px !important;
-    height: 180px !important;        /* pick a good mobile height */
+    height: 180px !important;        
     aspect-ratio: auto !important;   /* let height control width */
     margin-bottom: 0.75rem;
     align-self: center;
   }
 
-  /* 2b) Content resets padding (no more right-hand price squeeze) */
+
   .drinkSection .drinkCardContent {
     padding-right: 0 !important;
   }
 
-  /* 3) Price stays in top-right of each card */
   .drinkSection .drinkCardWithImage .itemPrice,
   .drinkSection .menuItemDetails {
     top: 0.75rem !important;
@@ -334,32 +332,30 @@
 ──────────────────────────────────────── */
 @media (max-width: 600px) {
 
-  /* 1) Stack cards full-width */
+
   .specialsSection .itemGrid {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
 
-  /* 2) Reduce card padding and let height grow naturally */
+
   .specialsSection .menuItem {
     padding: 1rem;
     min-height: auto;
   }
 
-  /* 3) Make the image wrapper full width */
   .specialsSection .specialImageWrapper {
     width: 100%;
     max-width: none;
     margin-bottom: 0.75rem;
   }
 
-  /* 4) Less bottom-margin on text before price */
+
   .specialsSection .menuItemText {
     margin-bottom: 1.5rem;
     padding: 0 0.5rem;
   }
 
-  /* 5) Tweak font-sizes so they fit nicely */
   .specialsSection .itemName {
     font-size: 1.25rem;
   }

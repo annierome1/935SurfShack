@@ -38,7 +38,7 @@
 
 /* Next/Image will automatically fill & cover */
 
-/* Your white text card below */
+
 .heroText {
   max-width: 800px;
   margin: 0 auto;
@@ -160,13 +160,13 @@
    PRIVATE EVENT SECTION
 ========================= */
 .privateEventSection {
-  width: 100vw;                    /* Full viewport width */
-  margin-left: calc(50% - 50vw);     /* Center the section */
-  margin-right: calc(50% - 50vw);    /* Center the section */
+  width: 100vw;           
+  margin-left: calc(50% - 50vw);  
+  margin-right: calc(50% - 50vw);    
   background-color: #f8f8f8;
   padding: 2rem 1rem;
   box-sizing: border-box;
-  border-radius: 0;                /* Remove any border radius if needed */
+  border-radius: 0;                
 }
 
 .privateEventWrapper {
@@ -282,7 +282,7 @@
 }
 .privateEventLeft,
 .privateEventFormWrapper {
-  margin: 0 0.5rem;  /* This adds 0.5rem on the left and right */
+  margin: 0 0.5rem;  
 }
 .formSubmitButton:hover {
   background-color: #e17366;

@@ -28,7 +28,7 @@ export default function Header() {
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // When less than half of #hero is visible, set scrolled = true
+       
         setScrolled(entry.intersectionRatio < 0.5);
       },
       { threshold: [0.5] }

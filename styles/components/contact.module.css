@@ -13,11 +13,11 @@
   margin-bottom: 0rem;
 }
 .headerSubtitle {
-  font-size: 1.125rem;           /* slightly smaller than headers */
-  color: var(--text-muted);      /* match your existing muted color */
-  margin-top: 0;           /* small gap under the header */
-  margin-bottom: 2rem;           /* space before the next section */
-  text-align: center;            /* center under the header */
+  font-size: 1.125rem;           
+  color: var(--text-muted);     
+  margin-top: 0;       
+  margin-bottom: 2rem;           
+  text-align: center;          
   line-height: 1.4;
   color: gray;
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "Segoe UI", Roboto, sans-serif;
@@ -142,7 +142,7 @@
   background: rgba(226, 149, 122, 0.1);
 }
 
-/* For the file-upload label inside buttonGroup */
+
 .secondaryButton input {
   display: none;
 }

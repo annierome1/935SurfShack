@@ -22,8 +22,8 @@ const MenuCard = ({ title, description, price, imageUrl }) => {
     overflow: 'hidden',
     marginBottom: '20px',
     maxWidth: '300px',
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', // Subtle shadow for depth
-    backgroundColor: '#fffaf3', // A light sandy tone
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', 
+    backgroundColor: '#fffaf3', 
   };
   
   const imageStyle = {
@@ -38,8 +38,8 @@ const MenuCard = ({ title, description, price, imageUrl }) => {
   
   const titleStyle = {
     margin: '0 0 10px 0',
-    fontFamily: "'Montserrat', sans-serif", // Coastal heading font
-    color: '#2a4d69', // Deep ocean blue for contrast
+    fontFamily: "'Montserrat', sans-serif", 
+    color: '#2a4d69', 
   };
   
   const descriptionStyle = {

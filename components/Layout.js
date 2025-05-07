@@ -15,7 +15,7 @@ export default function Layout({ children }) {
     margin: '0 auto',
     fontFamily: 'Pacifico, cursive',
     overflowX: 'hidden',
-    paddingTop: isHomePage ? '0' : '80px' // <-- Only add padding if NOT home
+    paddingTop: isHomePage ? '0' : '80px' 
   };
 
   return (

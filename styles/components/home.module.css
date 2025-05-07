@@ -321,7 +321,7 @@
 }
 
 
-/* Optional: Clean style for the dots */
+
 .swiper-pagination-bullet {
   background: #fff;
   opacity: 0.6;
@@ -460,12 +460,12 @@
   .section2Image { min-height: 150px; }
   .features {
     flex-direction: column;
-    gap: 0rem;       /* was 1rem */
-    margin-bottom: 0.75rem; /* add if you didn’t already */
+    gap: 0rem;      
+    margin-bottom: 0.75rem; 
   }
   .ctaButton {
-    margin-top: 0.5rem; /* add a small top margin if needed */
-    padding: 0.6rem 1rem; /* optional: slightly smaller button */
+    margin-top: 0.5rem;
+    padding: 0.6rem 1rem; 
   }
   .section3Title { font-size: 2rem; }
   .cards3 { grid-template-columns: 1fr; }
