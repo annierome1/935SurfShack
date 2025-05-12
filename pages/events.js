@@ -7,8 +7,8 @@ import { client } from '../src/sanity/lib/client';
 import imageUrlBuilder from '@sanity/image-url';
 import FormSubmit from '../components/FormSubmit';
 // Images
-import heroImage from '../public/images/performer.jpg';       // Hero banner up top
-import privateEventImage from '../public/images/event.jpg'; // Private event image
+import heroImage from '../public/images/performer.jpg';      
+import privateEventImage from '../public/images/event.jpg'; 
 import altImage1 from '../public/images/party1.jpg';
 import altImage2 from '../public/images/party2.jpg';
 import altImage3 from '../public/images/party3.jpg';

@@ -14,17 +14,16 @@ export async function getStaticProps() {
 }
 
 export default function Gallery({ images }) {
-  // 1️⃣ define your breakpoints once
+
   const breakpointColumnsObj = useMemo(() => ({
     default: 3,
     1100: 2,
     700: 1,
   }), [])
 
-  // 2️⃣ state for current column count
   const [columns, setColumns] = useState(breakpointColumnsObj.default)
 
-  // 3️⃣ update columns on resize
+
   useEffect(() => {
     const updateColumns = () => {
       const w = window.innerWidth
@@ -39,13 +38,13 @@ export default function Gallery({ images }) {
     return () => window.removeEventListener('resize', updateColumns)
   }, [breakpointColumnsObj])
 
-  // 4️⃣ shuffle once on mount
+
   const [shuffled, setShuffled] = useState(images)
   useEffect(() => {
     setShuffled((imgs) => [...imgs].sort(() => Math.random() - 0.5))
   }, [])
 
-  // 5️⃣ compute number of fillers needed to pad last row
+
   const fillerCount = useMemo(() => {
     const rem = shuffled.length % columns
     return rem === 0 ? 0 : columns - rem
@@ -65,7 +64,7 @@ export default function Gallery({ images }) {
             </div>
           ))}
 
-          {/* 6️⃣ Add invisible fillers to pad out last row */}
+
           {Array.from({ length: fillerCount }).map((_, i) => (
             <div
               key={`filler-${i}`}

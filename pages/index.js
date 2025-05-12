@@ -14,7 +14,6 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
-// Replace these with your actual image imports
 import section1Img from '../public/images/section1.jpg';
 import section2Img from '../public/images/section2.jpg';
 import coastalImg from '../public/images/coastal-cuisine.jpg';

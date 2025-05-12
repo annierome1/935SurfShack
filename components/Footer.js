@@ -53,7 +53,7 @@ export default function Footer() {
       <div className={`${styles.footerSection} ${styles.contactSection}`}>
         <h4>CONTACT</h4>
         <span className={styles.breakLine}><strong>Phone:</strong> (603) 926-2500</span>
-        <span className={styles.breakLine}><strong>Email:</strong> info@surfshack.com</span>
+        <span className={styles.breakLine}><strong>Email:</strong> info@935surfshack.com</span>
         
       { /* <Link href="/contact">
           <button className={styles.careersBtn}>Careers</button>
