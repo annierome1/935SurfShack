@@ -28,8 +28,14 @@ function urlFor(source) {
 
 export default function Home({ nextEvent, instaPosts = [] }) {
   const eventImageUrl = nextEvent?.image
-    ? urlFor(nextEvent.image).width(800).height(600).url()
-    : section2Img;
+  ? urlFor(nextEvent.image)
+      .width(600)
+      .height(500)
+      .fit('crop')       
+      .crop('top')      
+      .url()
+  : section2Img;
+
 
     const [isMounted, setIsMounted] = useState(false);
       useEffect(() => {
