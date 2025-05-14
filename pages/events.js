@@ -109,7 +109,7 @@ export default function Events({ events }) {
                 autoplay={{ delay: 5000 }}
                 autoHeight={true}
                 breakpoints={{
-                  320:  { slidesPerView: 1 },
+                  320:  { slidesPerView: 1, centeredSlides: true },
                   640:  { slidesPerView: 2 },
                   1024: { slidesPerView: 3 },
                   1440: { slidesPerView: 4 },

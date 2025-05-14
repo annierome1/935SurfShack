@@ -46,6 +46,10 @@
   padding-bottom: 0;
 }
 
+.eventsSection{
+  padding-top: 1.5rem !important;
+}
+
 .carouselWrapper {
   padding-top: 0;
   max-width: 90vw;
@@ -58,6 +62,7 @@
 }
 .contentWrapper {
   height: 450px;
+  justify-self: center;
 }
 
 
@@ -173,7 +178,8 @@
 .eventsSection {
   margin-bottom: 3rem;
   text-align: center;
-  padding-top: 10rem;
+  justify-self: center !important;
+  
 }
 
 .viewToggle {
@@ -359,6 +365,12 @@
   }
   .eventCard {
     width: 100%;
+  }
+  .eventsSection{
+    justify-self: center;
+  }
+  .carouselWrapper{
+    align-items: center;
   }
   .heroGallery {
     grid-template-columns: 1fr;
