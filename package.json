@@ -28,7 +28,7 @@
     "react-pdf": "^5.7.2",
     "sass": "^1.86.3",
     "styled-components": "^6.1.16",
-    "swiper": "^8.4.4"
+    "swiper": "^8.4.7"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

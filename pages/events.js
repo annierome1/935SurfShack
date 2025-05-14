@@ -6,12 +6,22 @@ import styles from '../styles/components/events.module.css';
 import { client } from '../src/sanity/lib/client';
 import imageUrlBuilder from '@sanity/image-url';
 import FormSubmit from '../components/FormSubmit';
+import { useMemo } from 'react'
+import { addWeeks } from 'date-fns' 
 // Images
 import heroImage from '../public/images/performer.jpg';      
 import privateEventImage from '../public/images/event.jpg'; 
 import altImage1 from '../public/images/party1.jpg';
 import altImage2 from '../public/images/party2.jpg';
 import altImage3 from '../public/images/party3.jpg';
+
+// Swiper imports
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
+import { Pagination, Autoplay, Mousewheel, Keyboard } from 'swiper';
 
 const builder = imageUrlBuilder(client);
 function urlFor(source) {
@@ -21,10 +31,22 @@ function urlFor(source) {
 export default function Events({ events }) {
   // Toggle state for Calendar or List view
   const [view, setView] = useState('calendar');
+  const now = useMemo(() => new Date (), []);
+  const twoWeeksOut = useMemo (() => addWeeks(now, 2), [now]);
+  const futureEvents = useMemo(
+    () => events.filter(e => new Date(e.date) >= now),
+    [events, now]
+  );
 
+  // subset of those within the next two weeks
+  const nextTwoWeeks = useMemo(
+    () => futureEvents.filter(e => new Date(e.date) <= twoWeeksOut),
+    [futureEvents, twoWeeksOut]
+  );
   return (
     <Layout>
       <div className={styles.container}>
+        
         {/* =========================
             HERO SECTION
          ========================= */}
@@ -52,10 +74,6 @@ export default function Events({ events }) {
             </p>
           </div>
         </section>
-
-        {/* =========================
-            VIEW TOGGLE + EVENTS
-         ========================= */}
         <section className={styles.eventsSection}>
           <div className={styles.viewToggle}>
             <button
@@ -69,52 +87,87 @@ export default function Events({ events }) {
               onClick={() => setView('list')}
               className={view === 'list' ? styles.activeToggle : ''}
             >
-              List View
+            List View
             </button>
           </div>
-          {view === 'calendar' ? (
-            <CalendarView events={events} />
-          ) : (
-            <div className={styles.listContainer}>
-              {events.map((event) => (
-                <div key={event._id} className={styles.eventCard}>
-                  {event.image && (
-                    <div className={styles.eventImageWrapper}>
-                      <Image
-                        src={urlFor(event.image)
-                          .width(800)
-                          .height(500)
-                          .fit('clip')
-                          .url()}
-                        alt={event.title}
-                        width={800}
-                        height={500}
-                        layout='responsive'
-                        objectFit='cover'
-                        objectPosition='top'
-                        priority
-                      />
-                    </div>
-                  )}
-                  <div className={styles.eventContent}>
-                    <h2 className={styles.eventTitle}>{event.title}</h2>
-                    <p className={styles.eventDate}>
-                    {new Date(event.date).toLocaleDateString(undefined, {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric',
-                    })}
-                    {' at '}
-                    {new Date(event.date).toLocaleTimeString(undefined, {
-                      hour:   'numeric',
-                      minute: '2-digit',
-                    })}
-                  </p>
 
-                    <p className={styles.eventDescription}>{event.description}</p>
-                  </div>
-                </div>
-              ))}
+          {view === 'calendar' ? (
+            <CalendarView
+              events={nextTwoWeeks}
+              minDate={now}
+              maxDate={twoWeeksOut}
+            />
+          ) : (
+            <div className={styles.carouselWrapper}>
+              <Swiper
+                modules={[Pagination, Mousewheel, Keyboard, Autoplay]}
+                spaceBetween={8}
+                pagination={{ el: '#swiper-pagination', clickable: true }}
+                navigation={{ prevEl: '#insta-prev', nextEl: '#insta-next' }}    
+                mousewheel={true}                   
+                keyboard={{ enabled: true }}        
+                autoplay={{ delay: 5000 }}
+                autoHeight={true}
+                breakpoints={{
+                  320:  { slidesPerView: 1 },
+                  640:  { slidesPerView: 2 },
+                  1024: { slidesPerView: 3 },
+                  1440: { slidesPerView: 4 },
+                }}
+              >
+                {futureEvents.map(event => {
+                  let src = '/images/placeholder.jpg';
+                  let targetHeight = 250;
+                  let targetWidth = 300;
+
+                  if (event.image?.asset) {
+                    const { url } = event.image.asset;
+                    const { width: origW, height: origH } = event.image.asset.metadata.dimensions;
+                    src = url;
+                    targetWidth = Math.round((origW / origH) * targetHeight);
+                  }
+
+                  return (
+                    <SwiperSlide key={event._id}>
+                      <div className={styles.contentWrapper}>
+                      <div className={styles.eventCard}>
+                        <div className={styles.eventImageWrapper}>
+                          <Image
+                            src={src}
+                            alt={event.title}
+                            width={targetWidth}
+                            height={targetHeight}
+                            style={{
+                              objectFit: 'cover',
+                              objectPosition: 'top',
+                              width: '100%',
+                              height: 'auto',
+                            }}
+                            priority
+                          />
+                        </div>
+                        <div className={styles.eventContent}>
+                          <h3 className={styles.eventTitle}>{event.title}</h3>
+                          <time className={styles.eventDate}>
+                            {new Date(event.date).toLocaleDateString(undefined, {
+                              month: 'short',
+                              day: 'numeric',
+                              hour: 'numeric',
+                              minute: '2-digit',
+                            })}
+                          </time>
+                          <p className={styles.eventDescription}>
+                            {event.description}
+                          </p>
+                        </div>
+                      </div>
+                      </div>
+                    </SwiperSlide>
+                  );
+                })}
+                </Swiper>
+                <div id="swiper-pagination" className={styles.customPagination} />
+              
             </div>
           )}
         </section>
@@ -216,12 +269,16 @@ export async function getStaticProps() {
     title,
     date,
     description,
-    image
+    image {
+      asset->{
+        url,
+        metadata{ dimensions{ width, height } }
+      }
+    }
   }`;
   const events = await client.fetch(query);
-
   return {
     props: { events },
-    revalidate: 60, // refresh every minute (ISR)
+    revalidate: 60,
   };
 }

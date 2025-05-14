@@ -115,14 +115,18 @@ export default function Home({ nextEvent, instaPosts = [] }) {
 
             {/* IMAGE COLUMN (event or fallback) */}
             <div className={styles.section2Image}>
+
               <Image
                 src={eventImageUrl}
                 alt={nextEvent?.title ?? 'No upcoming shows'}
-                layout="fill"
-                objectFit="cover"
+                fill
+                style={{
+                  objectFit: 'cover',
+                  objectPosition: 'top',
+                }}
                 priority
               />
-              <div className={styles.liveTag}>
+                          <div className={styles.liveTag}>
                 {nextEvent ? (
                   <>
                     <strong>Next Up:</strong>{' '}

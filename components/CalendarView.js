@@ -1,36 +1,53 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import Calendar from 'react-calendar';
 import styles from '../styles/components/calendarView.module.scss';
 
 export default function CalendarView({ events }) {
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  // 1) Today at midnight
+  const today = useMemo(() => {
+    const d = new Date();
+    d.setHours(0,0,0,0);
+    return d;
+  }, []);
 
-  // Filter events matching the selected date
-  const eventsOnDate = events.filter(event => {
-    return new Date(event.date).toDateString() === new Date(selectedDate).toDateString();
-  });
+  // 2) Only future (and today’s) events
+  const futureEvents = useMemo(
+    () => events.filter(evt => new Date(evt.date) >= today),
+    [events, today]
+  );
+
+  // 3) Events on the selected date
+  const [selectedDate, setSelectedDate] = useState(today);
+  const eventsOnDate = futureEvents.filter(evt =>
+    new Date(evt.date).toDateString() === selectedDate.toDateString()
+  );
 
   return (
     <div className={styles.calendarWrapper}>
       <Calendar
         onChange={setSelectedDate}
         value={selectedDate}
-        // Highlight days with events
+
+        // disable any day before today
+        minDate={today}
+        tileDisabled={({ date }) => date < today}
+
+        // highlight days that have a future event
         tileClassName={({ date }) => {
-          const isEventDate = events.some(
-            evt => new Date(evt.date).toDateString() === date.toDateString()
-          );
-          return isEventDate ? styles.eventDay : null;
+          return futureEvents.some(
+            e => new Date(e.date).toDateString() === date.toDateString()
+          ) ? styles.eventDay : null;
         }}
-        // Add a dot indicator with tooltip including time
+
+        // render a dot (with tooltip) for the first matching future event
         tileContent={({ date }) => {
-          const event = events.find(
-            evt => new Date(evt.date).toDateString() === date.toDateString()
+          const ev = futureEvents.find(
+            e => new Date(e.date).toDateString() === date.toDateString()
           );
-          return event ? (
+          return ev ? (
             <div
               className={styles.dot}
-              title={`${event.title} at ${new Date(event.date).toLocaleTimeString(undefined, {
+              title={`${ev.title} at ${new Date(ev.date).toLocaleTimeString(undefined, {
                 hour: 'numeric',
                 minute: '2-digit'
               })}`}
@@ -41,22 +58,19 @@ export default function CalendarView({ events }) {
 
       <div className={styles.eventList}>
         {eventsOnDate.length > 0 ? (
-          eventsOnDate.map(event => (
-            <div key={event._id} className={styles.eventCard}>
-              <h3>{event.title}</h3>
+          eventsOnDate.map(ev => (
+            <div key={ev._id} className={styles.eventCard}>
+              <h3>{ev.title}</h3>
               <p>
-                {new Date(event.date).toLocaleDateString(undefined, {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric'
-                })}
-                {' at '}
-                {new Date(event.date).toLocaleTimeString(undefined, {
-                  hour: 'numeric',
-                  minute: '2-digit'
+                {new Date(ev.date).toLocaleDateString(undefined, {
+                  year: 'numeric', month: 'long', day: 'numeric'
+                })}{' '}
+                at{' '}
+                {new Date(ev.date).toLocaleTimeString(undefined, {
+                  hour: 'numeric', minute: '2-digit'
                 })}
               </p>
-              <p>{event.description}</p>
+              <p>{ev.description}</p>
             </div>
           ))
         ) : (

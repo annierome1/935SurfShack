@@ -69,7 +69,10 @@
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  object-position: top;
 }
+
+
 .section1Text {
   color: #f5877a;
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "Segoe UI", Roboto, sans-serif;
@@ -143,13 +146,28 @@
   font-size: 1.25rem;
 }
 .section2Image {
-  position: relative;
-  width: 60vh;
-  aspect-ratio: 4/3;
+  position: relative;       /* parent for the fill-mode image */
+  width: 100%;
+  aspect-ratio: 4 / 3;      /* keeps your 4:3 box */
+  overflow: hidden;         /* crop anything outside */
   border-radius: 10px;
-  overflow: hidden;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
+
+/* force the Next/Image wrapper to cover the box */
+.section2Image > span {
+  position: absolute !important;
+  inset: 0 !important;
+}
+
+/* force the actual <img> inside it to cover from the top */
+.section2Image > span > img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: top !important;
+}
+
 .liveTag {
   position: absolute;
   bottom: 1rem;
