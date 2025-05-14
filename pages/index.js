@@ -30,8 +30,8 @@ export default function Home({ nextEvent, instaPosts = [] }) {
   const eventImageUrl = nextEvent?.image
   ? urlFor(nextEvent.image)
       .width(600)
-      .height(500)
-      .fit('crop')       
+      .height(400)
+      .fit('fill')       
       .crop('top')      
       .url()
   : section2Img;
@@ -122,16 +122,19 @@ export default function Home({ nextEvent, instaPosts = [] }) {
             {/* IMAGE COLUMN (event or fallback) */}
             <div className={styles.section2Image}>
 
-              <Image
-                src={eventImageUrl}
-                alt={nextEvent?.title ?? 'No upcoming shows'}
-                fill
-                style={{
-                  objectFit: 'cover',
-                  objectPosition: 'top',
-                }}
-                priority
-              />
+            <Image
+              src={eventImageUrl}
+              alt={nextEvent?.title ?? 'No upcoming shows'}
+              width={600}                // any “default” you like
+              height={400}
+              style={{
+                width: '100%',          // full-width of container
+                height: 'auto',         // height follows the intrinsic ratio
+                objectFit: 'cover',
+                objectPosition: 'top',
+              }}
+              priority
+            />
                           <div className={styles.liveTag}>
                 {nextEvent ? (
                   <>
