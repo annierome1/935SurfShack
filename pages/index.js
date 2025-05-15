@@ -91,8 +91,7 @@ export default function Home({ nextEvent, instaPosts = [] }) {
             <div className={styles.section2Text}>
               <h2 className={styles.section2Title}>Your Go-to For Live Music</h2>
 
-              {nextEvent ? (
-                <>
+              
                   <p className={styles.section2Desc}>
                     Join us for live music on Friday & Saturday in the spring and fall
                     and Thursday–Sunday in the summer!
@@ -107,12 +106,8 @@ export default function Home({ nextEvent, instaPosts = [] }) {
                       <span>Weekly Events</span>
                     </div>
                   </div>
-                </>
-              ) : (
-                <p className={styles.section2Desc}>
-                  We don’t have any upcoming shows scheduled just yet. Check back soon!
-                </p>
-              )}
+         
+           
 
               <Link href="/events" className={styles.ctaButton}>
                 See The Full Lineup
