@@ -1,149 +1,62 @@
 /* Header.module.css */
 
-
+/*──────────────────────────────────────────────────────────────────────────
+  Base Header Styles
+──────────────────────────────────────────────────────────────────────────*/
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2rem;
-  z-index: 1999;
-  width: 100%;
-  position: fixed; 
-  max-width: 100vw;
-  box-sizing: border-box;
   margin-top: 1.5rem;
-  transition: background-color 0.3s ease,
-              box-shadow 0.3s ease;
-
+  width: 100%;
+  max-width: 100vw;
+  position: fixed;
+  box-sizing: border-box;
+  z-index: 1999;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-/* transparent over hero */
 .headerHomeTransparent {
   position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
   background: transparent;
   box-shadow: none;
-  z-index: 1000;           /* keep it below the top banner */
-  color: #f5877c; 
-  padding-top: 2.5rem;         /* coral text on transparent */
+  color: #f5877c;
+  padding-top: 2.5rem;
+  z-index: 1000;
 }
-
-
-/* Override all navLink text to white when transparent */
-.headerHomeTransparent .navLink {
-  color: #fff !important;
-}
-
-
-
-/* Make the underline animate in white on hover */
-.headerHomeTransparent .navLink::after {
-  background-color: rgba(255,255,255,0.6);
-}
-.headerHomeTransparent .navLink:hover::after {
-  background-color: #fff;
-}
-.headerSolid .navLink:hover::after {
-  background-color: #fff;
-}
-
-
-
-.headerHomeTransparent .bannerLink {
-  color: #fff !important;
-}
-
-.headerHomeTransparent .bannerLink:hover {
-  color: #f0f0f0;    
-}
-
-
 
 .headerSolid {
-  position: fixed;         
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   background-color: #f5877c;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  z-index: 1200;          
-  color: white;            
-}
-
-/* Logo link */
-.logoLink {
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: #fff;
-  text-decoration: none;
-}
-
-/* Desktop Navigation */
-.nav {
-  display: flex;
-  align-items: center;
-}
-
-/* Navigation List */
-.navList {
-  display: flex;
-  gap: 1.5rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-/* Navigation Links */
-.navLink {
-  color: #fff;
-  font-weight: 500;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  text-decoration: none;
-  position: relative;
-  padding-bottom: 4px;
-}
-
-.navLink::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  left: 0;
-  bottom: 0;
-  background-color: #f5877c;
-  transition: width 0.3s ease;
-}
-
-.navLink:hover::after {
-  width: 100%;
-}
-
-/* Hamburger menu button (hidden on desktop) */
-.menuButton {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
   color: white;
-  cursor: pointer;
+  z-index: 1200;
 }
 
-/* Top Banner Style */
+/*──────────────────────────────────────────────────────────────────────────
+  Top Banner
+──────────────────────────────────────────────────────────────────────────*/
 .topBanner {
+  position: fixed;
+  top: 0;
   width: 100%;
-  background-color: #c1e3e7; 
-  text-align: center;
+  max-width: 100vw;
+  background-color: #c1e3e7;
   padding: 0.5rem 1rem;
   font-size: 0.85rem;
   font-weight: 600;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  text-align: center;
   z-index: 2000;
-  position: fixed;
-  top: 0;
-  max-width: 100vw;
   box-sizing: border-box;
-
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 .bannerLink {
@@ -152,69 +65,72 @@
   letter-spacing: 0.5px;
   transition: color 0.2s ease;
 }
-
 .bannerLink:hover {
-  text-decoration: underline;
   color: #f0f0f0;
+  text-decoration: underline;
 }
 
-.logoImage {
-  max-width: 170px;
-  height: auto;
+@media (min-width: 769px) {
+  .mobileAddress,.mobileMainRowAP,
+  .mobileStatus {
+    display: none !important;
+  }
 }
-/* Container for logo + info */
+/*──────────────────────────────────────────────────────────────────────────
+  Logo & Info Container
+──────────────────────────────────────────────────────────────────────────*/
 .headerLeft {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
-/* Location & hours styling */
-.logoDetails {
-  display: flex;
-  flex-direction: column;
-  font-size: 0.9rem;
-  color: white;
-  line-height: 1.2;
+/* Logo */
+.logoLink {
+  text-decoration: none;
 }
+.logoImage {
+  max-width: 170px;
+  height: auto;
+}
+
+/* Desktop details block */
 .logoDetails {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   font-size: 0.9rem;
-  color: white;
   line-height: 1.4;
+  color: white;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
+/*──────────────────────────────────────────────────────────────────────────
+  Location & Hours Toggle (Desktop)
+──────────────────────────────────────────────────────────────────────────*/
 .location {
   color: white;
-  text-decoration: none;
   font-weight: 500;
+  text-decoration: none;
+  padding-bottom: 0.5rem;
   transition: color 0.2s ease;
+  margin: 0rem !important;
 }
-
 .location:hover {
+  color: #f9d3cb;
   text-decoration: underline;
-  color: #f9d3cb; /* subtle hover tone */
 }
 
-.hours {
-  margin-top: 0.25rem;
-  font-weight: 300;
-  margin-bottom: 0;
-  font-size: 0.95rem;
-  color: white;
-  margin: 0.2rem 0;
-  
+.nowOpen {
+  font-weight: bold;
+  margin-bottom: 0.2rem;
 }
 
 .hoursToggleWrapper {
   position: relative;
   margin-top: 0.4rem;
   display: flex;
-  align-items: center;
 }
-
 
 .hoursToggle {
   background: transparent;
@@ -227,13 +143,10 @@
   align-items: center;
   gap: 0.3rem;
   transition: color 0.2s ease;
-  margin-left: 3rem;
 }
-
 .hoursToggle:hover {
   color: #f9d3cb;
 }
-
 
 .hoursPopover {
   position: absolute;
@@ -245,83 +158,187 @@
   border-radius: 6px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.3);
   z-index: 999;
-  width: max-content;
   white-space: nowrap;
 }
 
 .subHours {
+  margin: 0;
   font-size: 0.85rem;
   font-style: italic;
   color: #fff;
+}
+
+/*──────────────────────────────────────────────────────────────────────────
+  Navigation (Desktop)
+──────────────────────────────────────────────────────────────────────────*/
+.nav {
+  display: flex;
+  align-items: center;
+}
+.navList {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
   margin: 0;
+  padding: 0;
 }
-.nowOpen{
-  margin-bottom: 0.2rem;
-  font-weight: bold;
-  margin-left: 4rem;
+.navLink {
+  color: #fff;
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 4px;
+}
+.navLink::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  left: 0;
+  bottom: 0;
+  background-color: #f5877c;
+  transition: width 0.3s ease;
+}
+.navLink:hover::after {
+  width: 100%;
 }
 
+/* Hamburger (hidden on desktop) */
+.menuButton {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
 
-
-/* ==================== MOBILE STYLES (max-width: 768px) ==================== */
+/*──────────────────────────────────────────────────────────────────────────
+  Mobile Styles
+──────────────────────────────────────────────────────────────────────────*/
 @media (max-width: 768px) {
-  /* Override transparent header on mobile so header is always solid */
+  /* Header always solid on mobile */
   .headerHomeTransparent {
-    position: sticky; /* Force solid header */
+    position: absolute;
     top: 0;
-    background-color: #f5877c !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
-    color: white !important;
+    left: 0;
+    width: 100%;
+    background-color: #f5877c;
+    box-shadow: none;
+    color: white;
+    margin-top: 0;           /* cancel out your desktop’s 1.5rem margin */
+    z-index: 999; 
   }
+
+  /* Shrink logo */
   .logoImage {
     max-width: 130px;
   }
-  /* Mobile Navigation: Drop-down that expands below header */
+  .nowOpen{
+    font-size: 14px;
+    margin-left: 1rem;
+    
+  }
+  /* Mobile nav dropdown */
   .nav {
     position: absolute;
-    top: 100%; /* Immediately below header */
+    top: 100%;
     left: 0;
     right: 0;
-    background-color: #f5877c;
     flex-direction: column;
     align-items: center;
-    max-height: 0; /* Collapsed by default */
+    background-color: #f5877c;
+    max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
-    z-index: 900; /* Keeps header visible */
+    z-index: 900;
   }
-  .topBanner {
-    font-size: 0.75rem;
-    padding: 0.4rem 0.75rem;
-  }
-
-  .bannerLink {
-    display: block;
-    white-space: normal; /* allows wrapping on small screens */
-    font-size: 0.75rem;
-    line-height: 1.2;
-  }
-  /* Expanded nav (when open) */
   .navOpen {
-    max-height: 500px; /* Adjust as needed for the menu items */
+    max-height: 500px;
   }
-
-  /* Stack nav items vertically */
   .navList {
     flex-direction: column;
     gap: 1rem;
     padding: 1rem;
   }
-
-  /* Show mobile hamburger button */
   .menuButton {
     display: block;
   }
+
+  /* Tweak top banner */
+  .topBanner {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.75rem;
+  }
+  .bannerLink {
+    font-size: 0.75rem;
+    line-height: 1.2;
+    white-space: normal;
+  }
+
+  /* Stack headerLeft vertically */
+
+    /* Stack everything under headerLeft */
+    .headerLeft {
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      width: 100%;
+    }
   
-}
+    /* hide your desktop-only details */
+    .logoDetails {
+      display: none;
+    }
+  
+    /* show the address bar at top */
+    .mobileAddress {
+      display: block;
+      width: 100%;
+      text-align: center;
+      margin-left: 2rem;
+      font-size: 0.9rem;
+      color: white;
+      padding: 0.5rem 0;
+      margin-top: 0rem;
+      box-sizing: border-box;
+    }
+  
+    /* wrap logo + status in one row */
+    .mobileMainRow {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      
+    }
+  .mobileMainRowAP{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 0 1rem;
+      box-sizing: border-box;
+    }
+  
+    /* show your Now Open! + toggle */
+    .mobileStatus {
+      display: flex;
+      align-items: center;
+      gap: 0rem;
+    }
+  
+    /* make sure the popover still lines up */
+    .hoursPopover {
+      right: 0;
+      left: auto;
+    }
+  }
 
 
-/* Additional tweaks for very small screens (optional) */
+/*──────────────────────────────────────────────────────────────────────────
+  Small‐screen tweaks (≤500px)
+──────────────────────────────────────────────────────────────────────────*/
 @media (max-width: 500px) {
   .logoLink {
     font-size: 1.4rem;
@@ -331,41 +348,5 @@
   }
   .navLink {
     font-size: 1.1rem;
-  }
-}
-@media (max-width: 768px) {
-  .headerLeft {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 0.5rem;
-  }
-  .logoImage {
-    max-width: 140px;
-  }
-
-  .logoDetails {
-    align-items: center;
-  }
-
-  .location {
-    font-size: 0.9rem;
-  }
-
-  .hours {
-    font-size: 0.85rem;
-  }
-
-  .nowOpen {
-    font-size: 0.8rem;
-    font-weight: bold;
-    margin-left: 0;
-  }
-
-  .hoursToggleWrapper {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-left: 0 !important;
   }
 }

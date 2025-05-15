@@ -83,7 +83,7 @@ export default function Menu({ menu }) {
                   rel="noopener noreferrer"
                   className={styles.downloadButton}
                 >
-                  Download Full Food Menu
+                  Download Full Menu
                 </a>
               </div>
             )}
