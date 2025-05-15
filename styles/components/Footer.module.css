@@ -113,6 +113,15 @@
     margin: 0.25rem 0;      
     text-align: center;          
   }
+  .rightsRes {
+    position: absolute;
+    bottom: 0.2rem;        /* adjust up/down as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    color: white;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+  }
 
   /* shrink headings */
   .footerSection h4 {
