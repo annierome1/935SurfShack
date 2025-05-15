@@ -376,7 +376,7 @@
     grid-template-columns: 1fr;
   }
   .container{
-    margin-top: 7rem;
+    margin-top: 0rem;
   }
   .galleryItem:not(:first-child) {
     display: none;
