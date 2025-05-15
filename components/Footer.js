@@ -68,6 +68,8 @@ export default function Footer() {
         <span className={styles.breakLine}><strong>Sun:</strong> 12–6 pm</span>
         <span className={styles.breakLine}><strong>Happy Hour:</strong> 3–5 pm (Thurs & Fri)</span>
       </div>
+
+      <div className={styles.rightsRes}>© 2025 935 Surf Shack. All rights reserved.</div>
     </footer>
   );
 }
