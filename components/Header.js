@@ -70,16 +70,10 @@ export default function Header() {
 
       <header className={headerClass}>
   <div className={styles.headerLeft}>
-
-    {/* ─── Mobile‐only address bar ─────────────────────────── */}
     <div className={styles.mobileAddress}>
       935 Ocean Boulevard, Hampton, NH 03842
-    </div>
-
-    {/* ─── Mobile‐only main row: logo + status/toggle ────────── */}
-      
+    </div>   
     <div className={styles.mobileMainRow}>
-    {/* Logo always shown */}
     <Link href="/" onClick={closeMenu} className={styles.logoLink}>
       <Image
         src="/Logo_transparent.png"
@@ -93,7 +87,6 @@ export default function Header() {
     </Link>
     <div className={styles.mobileMainRowAP}>
     {/* Now Open + See Hours */}
-   
     <div className={styles.mobileStatus}>
       <span className={styles.nowOpen}>Now Open!</span>
       <button
@@ -111,7 +104,7 @@ export default function Header() {
           <p className={styles.subHours}>
             Thurs–Sat: 3–8 pm · Sun: 12–6 pm<br/>
             Happy Hour: 3–5 pm (Thurs & Fri)<br/>
-            Expanded after Memorial Day!
+            Expanded hours after Memorial Day!
           </p>
         </div>
       )}
