@@ -17,7 +17,7 @@ import 'swiper/css/autoplay';
 import section1Img from '../public/images/section1.jpg';
 import section2Img from '../public/images/section2.jpg';
 import coastalImg from '../public/images/coastal-cuisine.jpg';
-import cocktailsImg from '../public/images/craft-cocktails.jpg';
+import cocktailsImg from '../public/images/berrydrink.jpeg';
 import brewsImg from '../public/images/local-brews.jpg';
 SwiperCore.use([Pagination, Autoplay, Navigation]);
 const builder = imageUrlBuilder(client);
@@ -69,7 +69,7 @@ export default function Home({ nextEvent, instaPosts = [] }) {
             <div className={styles.section1Text}>
               <h2 className={styles.section1Title}>Welcome to 935 Surf Shack</h2>
               <p className={styles.section1Desc}>
-                North Beach’s newest beach bar is here. Located in the backyard of the historic 935 Ocean Inn,
+                North Beach’s newest beach bar is here. Located in the backyard of the historic 935 Ocean Hotel,
                 935 Surf Shack is your go-to for live music, fresh lobster rolls, and amazing cocktails.
               </p>
               <ul className={styles.hoursList}>

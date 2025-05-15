@@ -6,7 +6,7 @@ export default function Hero() {
       <div className={styles.overlay}></div>
       <div className={styles.heroContent}>
         <h1 className={styles.title}>
-          Beach Bar
+          Now Open!
         </h1>
       </div>
     </section>

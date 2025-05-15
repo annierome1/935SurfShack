@@ -64,90 +64,24 @@ export default function Header() {
           rel="noopener noreferrer"
           className={styles.bannerLink}
         >
-          Go to 935 Ocean BeachSide Inn
+          Go to 935 Ocean, a Beachside Inn
         </a>
       </div>
 
       <header className={headerClass}>
   <div className={styles.headerLeft}>
-    <div className={styles.mobileAddress}>
-      935 Ocean Boulevard, Hampton, NH 03842
-    </div>   
-    <div className={styles.mobileMainRow}>
     <Link href="/" onClick={closeMenu} className={styles.logoLink}>
       <Image
         src="/Logo_transparent.png"
         alt="935 Surf Shack Logo"
-        width={160}
+        width={180}
         height={0}
         priority
         className={styles.logoImage}
         style={{ height: 'auto', objectFit: 'contain' }}
       />
     </Link>
-    <div className={styles.mobileMainRowAP}>
-    {/* Now Open + See Hours */}
-    <div className={styles.mobileStatus}>
-      <span className={styles.nowOpen}>Now Open!</span>
-      <button
-        onClick={() => setShowMoreHours(v => !v)}
-        className={styles.hoursToggle}
-      >
-        {showMoreHours ? 'Hide Hours' : 'See Hours'}
-        {showMoreHours
-          ? <FaChevronUp style={{ marginLeft: '0.3rem' }} />
-          : <FaChevronDown style={{ marginLeft: '0.3rem' }} />
-        }
-      </button>
-      {showMoreHours && (
-        <div className={styles.hoursPopover}>
-          <p className={styles.subHours}>
-            Thurs–Sat: 3–8 pm · Sun: 12–6 pm<br/>
-            Happy Hour: 3–5 pm (Thurs & Fri)<br/>
-            Expanded hours after Memorial Day!
-          </p>
-        </div>
-      )}
-      </div>
     
-      </div>
-    </div>
-
-    {/* ─── Desktop‐only full details (unchanged) ────────────── */}
-    <div className={styles.logoDetails}>
-      <a
-        href="https://www.google.com/maps/dir/?api=1&destination=935+Ocean+Boulevard,+Hampton,+NH+03842"
-        target="_blank"
-        rel="noopener noreferrer"
-        className={styles.location}
-      >
-        935 Ocean Boulevard, Hampton, NH 03842
-      </a>
-      <span className={styles.nowOpen}>Now Open!</span>
-
-      <div className={styles.hoursToggleWrapper}>
-        <button
-          onClick={() => setShowMoreHours(v => !v)}
-          className={styles.hoursToggle}
-        >
-          {showMoreHours ? 'Hide Hours' : 'See Hours'}
-          {showMoreHours
-            ? <FaChevronUp style={{ marginLeft: '0.3rem' }} />
-            : <FaChevronDown style={{ marginLeft: '0.3rem' }} />
-          }
-        </button>
-
-        {showMoreHours && (
-          <div className={styles.hoursPopover}>
-            <p className={styles.subHours}>
-              Thurs–Sat: 3–8 pm · Sun: 12–6 pm<br/>
-              Happy Hour: 3–5 pm (Thurs &amp; Fri)<br/>
-              Expanded after Memorial Day!
-            </p>
-          </div>
-        )}
-      </div>
-    </div>
   </div>
 
 

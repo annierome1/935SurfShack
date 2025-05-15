@@ -56,12 +56,12 @@
 }
 .socialIcon {
   font-size: clamp(1.5rem, 3vw, 2rem);
-  color: #222;
+  color: white;
   transition: transform 0.2s ease, color 0.2s ease;
 }
 .socialIcon:hover {
   transform: scale(1.1);
-  color: #fff;
+  color: black;
 }
 
 /* Section headings */

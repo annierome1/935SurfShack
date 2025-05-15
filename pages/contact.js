@@ -6,6 +6,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import FormSubmit from '../components/FormSubmit';
 import careersImg from '../public/images/careers-hero.jpg';
+import { FaFacebookF, FaInstagram, FaTwitter} from 'react-icons/fa'
 
 export default function Contact() {
   // State hooks
@@ -32,6 +33,37 @@ export default function Contact() {
         <p className={styles.headerSubtitle}>
           We&apos;ll get back to you as soon as we can!
         </p>
+        <section className={styles.infoSection}>
+  <div className={styles.infoGrid}>
+    {/* ─── Hours Card ─────────────────────────── */}
+    <div className={styles.hoursCard}>
+      <h3 className={styles.infoTitle}>Hours</h3>
+      <ul className={styles.hoursList}>
+        <li>Thurs–Sat: 3–8 pm</li>
+        <li>Sun: 12–6 pm</li>
+        <li>Happy Hour: 3–5 pm (Mon & Fri)</li>
+      </ul>
+      <p className={styles.hoursNote}>
+        Expanded hours after Memorial Day!
+      </p>
+    </div>
+
+    {/* ─── Social Media Card ──────────────────── */}
+    <div className={styles.socialCard}>
+      <h3 className={styles.infoTitle}>Follow Us</h3>
+      <div className={styles.socialLinks}>
+        <a href="https://www.facebook.com/profile.php?id=61574086841413" className={styles.socialLink}>
+          <FaFacebookF />
+        </a>
+        <a href="https://www.instagram.com/935surfshack/" className={styles.socialLink}>
+          <FaInstagram />
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 
         {/* ===== CONTACT SECTION ===== */}
         <section className={styles.contactSection}>
