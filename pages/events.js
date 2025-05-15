@@ -91,6 +91,7 @@ export default function Events({ events }) {
             </button>
           </div>
 
+          
           {view === 'calendar' ? (
             <CalendarView
               events={nextTwoWeeks}
@@ -98,6 +99,7 @@ export default function Events({ events }) {
               maxDate={twoWeeksOut}
             />
           ) : (
+            <div className={styles.mobileCenter}>
             <div className={styles.carouselWrapper}>
               <Swiper
                 modules={[Pagination, Mousewheel, Keyboard, Autoplay]}
@@ -162,12 +164,14 @@ export default function Events({ events }) {
                         </div>
                       </div>
                       </div>
+                      
                     </SwiperSlide>
                   );
                 })}
                 </Swiper>
                 <div id="swiper-pagination" className={styles.customPagination} />
-              
+                
+                </div>
             </div>
           )}
         </section>

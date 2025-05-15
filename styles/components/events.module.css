@@ -206,10 +206,6 @@
 }
 
 
-
-
-
-
 /* =========================
    PRIVATE EVENT SECTION
 ========================= */
@@ -364,8 +360,15 @@
   .eventCard {
     width: 100%;
   }
-  .eventsSection{
-    justify-self: center;
+  .mobileCenter{
+    align-items: center !important;
+  }
+  .eventsSection {
+    display: grid !important;
+    grid-template-columns: 1fr;      
+    justify-content: center;        
+    justify-items: center;           
+    gap: 1.5rem;                     
   }
   .carouselWrapper{
     align-items: center;
