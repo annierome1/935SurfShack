@@ -201,13 +201,11 @@
 }
 
 .viewToggle button:hover {
-  background-color: #ccc;
-}
-
-.activeToggle {
   background-color: #f5877a;
   color: #fff;
 }
+
+
 
 
 
