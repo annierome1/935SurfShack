@@ -131,22 +131,23 @@ export default function Events({ events }) {
 
                   return (
                     <SwiperSlide key={event._id}>
-                      <div className={styles.contentWrapper}>
+                    <div className={styles.contentWrapper}>
                       <div className={styles.eventCard}>
                         <div className={styles.eventImageWrapper}>
-                          <Image
-                            src={src}
-                            alt={event.title}
-                            width={targetWidth}
-                            height={targetHeight}
-                            style={{
-                              objectFit: 'cover',
-                              objectPosition: 'top',
-                              width: '100%',
-                              height: 'auto',
-                            }}
-                            priority
-                          />
+                          {event.image?.asset ? (
+                            <Image
+                              src={event.image.asset.url}
+                              alt={event.title}
+                              fill
+                              style={{
+                                objectFit: 'cover',
+                                objectPosition: 'top',
+                              }}
+                              priority
+                            />
+                          ) : (
+                            <div className={styles.noImage} />
+                          )}
                         </div>
                         <div className={styles.eventContent}>
                           <h3 className={styles.eventTitle}>{event.title}</h3>
