@@ -12,12 +12,6 @@ export const menuType = defineType({
       options: { accept: '.pdf' },
     }),
     defineField({
-      name: 'drinkPdf',
-      title: 'Drink Menu PDF',
-      type: 'file',
-      options: { accept: '.pdf' },
-    }),
-    defineField({
       name: 'foodSpecials',
       title: 'Food Specials',
       type: 'array',
