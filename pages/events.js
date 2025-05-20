@@ -110,6 +110,7 @@ export default function Events({ events }) {
                 keyboard={{ enabled: true }}        
                 autoplay={{ delay: 5000 }}
                 autoHeight={true}
+                slidesPerGroup={1}
                 breakpoints={{
                   320:  { slidesPerView: 1, centeredSlides: true },
                   640:  { slidesPerView: 2 },
