@@ -112,10 +112,10 @@ export default function Events({ events }) {
                 autoHeight={true}
                 slidesPerGroup={1}
                 breakpoints={{
-                  320:  { slidesPerView: 1, centeredSlides: true },
-                  640:  { slidesPerView: 2 },
-                  1024: { slidesPerView: 3 },
-                  1440: { slidesPerView: 4 },
+                  320:  { slidesPerView: 1, slidesPerGroup: 1, centeredSlides: true },
+                  640:  { slidesPerView: 2, slidesPerGroup: 1 },
+                  1024: { slidesPerView: 3, slidesPerGroup: 1 },
+                  1440: { slidesPerView: 4, slidesPerGroup: 1 },
                 }}
               >
                 {futureEvents.map(event => {
