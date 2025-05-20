@@ -120,11 +120,11 @@ export default function Home({ nextEvent, instaPosts = [] }) {
             <Image
               src={eventImageUrl}
               alt={nextEvent?.title ?? 'No upcoming shows'}
-              width={600}                // any “default” you like
+              width={600}                
               height={400}
               style={{
-                width: '100%',          // full-width of container
-                height: 'auto',         // height follows the intrinsic ratio
+                width: '100%',        
+                height: 'auto',       
                 objectFit: 'cover',
                 objectPosition: 'top',
               }}
@@ -228,7 +228,6 @@ export default function Home({ nextEvent, instaPosts = [] }) {
             video?.play().catch(() => {});
           });
 
-          // Play video on first slide (after DOM is rendered)
           setTimeout(() => {
             const firstSlide = swiper.slides[0];
             const video = firstSlide?.querySelector('video');
@@ -349,6 +348,6 @@ export async function getStaticProps() {
 
   return {
     props: { nextEvent, instaPosts },
-    revalidate: 300, // ISR: refresh every 5min
+    revalidate: 300, // refresh every 5min
   };
 }

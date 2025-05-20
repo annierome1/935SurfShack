@@ -200,7 +200,7 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding-right: 3rem;       /* room for the price */
+  padding-right: 3rem;      
 }
 
 .drinkSection .drinkCardHeader {
@@ -255,7 +255,7 @@
   .drinkSection .drinkImgBlock {
     width: 180px !important;
     height: 180px !important;        
-    aspect-ratio: auto !important;   /* let height control width */
+    aspect-ratio: auto !important;   
     margin-bottom: 0.75rem;
     align-self: center;
   }
@@ -278,7 +278,6 @@
    Specials Section Overrides
 ──────────────────────────────────────── */
 
-/* Scope everything to the specialsSection wrapper */
 .specialsSection .itemGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -286,7 +285,6 @@
 }
 
 .specialsSection .menuItem {
-  /* card container: flex-column + positioning context */
   position: relative;
   display: flex;
   flex-direction: column;
@@ -296,11 +294,10 @@
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   padding: 1.5rem;
-  min-height: 350px; /* ensure enough room for price at bottom */
+  min-height: 350px; 
 }
 
 .specialsSection .specialImageWrapper {
-  /* responsive image wrapper */
   position: relative;
   width: 80%;
   max-width: 300px;
@@ -310,7 +307,7 @@
 }
 
 .specialsSection .menuItemText {
-  /* give space under text so price never overlaps */
+
   margin-bottom: 2.5rem;
   padding: 0 1rem;
 }

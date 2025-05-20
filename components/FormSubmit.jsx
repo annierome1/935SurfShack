@@ -7,11 +7,11 @@ export default function FormSubmit({
   to,
   subject = '',
   children,
-  formType = 'inquiry',    // 'privateEvent', 'careers', or 'inquiry'
+  formType = 'inquiry',    
   className = '',
   buttonText = 'Send Message',
 }) {
-  // Turn keys like "eventDate" or "additional_info" into "Event Date" / "Additional info"
+
   const humanize = (key) =>
     key
       .replace(/([A-Z])/g, ' $1')
@@ -34,7 +34,6 @@ export default function FormSubmit({
       lines.push('I have a question regarding:', '');
     }
 
-    // Add any other fields
     Object.entries(others).forEach(([key, val]) => {
       if (val) lines.push(`${humanize(key)}: ${val}`);
     });
@@ -55,7 +54,7 @@ export default function FormSubmit({
     window.location.href = mailto;
   };
 
-  // Build CSS class list: core form + type-specific + any external overrides
+
   const formClass = [styles.form, styles[`${formType}Form`], className]
     .filter(Boolean)
     .join(' ');

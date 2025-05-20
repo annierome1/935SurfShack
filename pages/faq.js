@@ -3,7 +3,7 @@
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Faq from '../components/FAQ';
-import styles from '../styles/components/faq.module.css'; // create this for page-specific tweaks
+import styles from '../styles/components/faq.module.css'; 
 
 export default function FAQPage() {
   return (

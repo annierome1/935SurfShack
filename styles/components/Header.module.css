@@ -204,7 +204,7 @@
   width: 100%;
 }
 
-/* Hamburger (hidden on desktop) */
+
 .menuButton {
   display: none;
   background: none;
@@ -227,7 +227,7 @@
     background-color: #f5877c;
     box-shadow: none;
     color: white;
-    margin-top: 0;           /* cancel out your desktop’s 1.5rem margin */
+    margin-top: 0;           
     z-index: 999; 
   }
 
@@ -266,7 +266,7 @@
     display: block;
   }
 
-  /* Tweak top banner */
+
   .topBanner {
     font-size: 0.75rem;
     padding: 0.4rem 0.75rem;
@@ -277,22 +277,17 @@
     white-space: normal;
   }
 
-  /* Stack headerLeft vertically */
-
-    /* Stack everything under headerLeft */
     .headerLeft {
       flex-direction: column;
       align-items: center;
       gap: 0.5rem;
       width: 100%;
     }
-  
-    /* hide your desktop-only details */
+
     .logoDetails {
       display: none;
     }
   
-    /* show the address bar at top */
     .mobileAddress {
       display: block;
       width: 100%;
@@ -305,7 +300,6 @@
       box-sizing: border-box;
     }
   
-    /* wrap logo + status in one row */
     .mobileMainRow {
       display: flex;
       align-items: center;
@@ -320,15 +314,13 @@
       padding: 0 1rem;
       box-sizing: border-box;
     }
-  
-    /* show your Now Open! + toggle */
+
     .mobileStatus {
       display: flex;
       align-items: center;
       gap: 0rem;
     }
   
-    /* make sure the popover still lines up */
     .hoursPopover {
       right: 0;
       left: auto;

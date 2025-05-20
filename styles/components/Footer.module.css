@@ -3,7 +3,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  flex-wrap: nowrap;               /* never wrap */
+  flex-wrap: nowrap;               
   padding: clamp(1rem, 2vw, 2rem);
   background-color: #f5877c;
   box-sizing: border-box;
@@ -90,7 +90,7 @@
 
 .rightsRes {
   position: absolute;
-  bottom: 1rem;        /* adjust up/down as needed */
+  bottom: 1rem;       
   left: 50%;
   transform: translateX(-50%);
   font-size: 10px;
@@ -115,7 +115,7 @@
   }
   .rightsRes {
     position: absolute;
-    bottom: 0.2rem;        /* adjust up/down as needed */
+    bottom: 0.2rem;        
     left: 50%;
     transform: translateX(-50%);
     font-size: 10px;

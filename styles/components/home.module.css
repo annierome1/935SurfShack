@@ -1,12 +1,4 @@
-/* ─────────────────────────────────────────────────────────────────────────
-   Global & Reset
-───────────────────────────────────────────────────────────────────────── */
 
-
-
-/* ─────────────────────────────────────────────────────────────────────────
-   Common CTA button style
-───────────────────────────────────────────────────────────────────────── */
 .ctaButton {
   background:       var(--cta-bg);
   color:            var(--cta-text-color);
@@ -222,7 +214,7 @@
 /* Section 4 Gallery */
 /* SECTION 4 */
 .section4 {
-  background: #c2e4e7;        /* same light-blue as Section 2 */
+  background: #c2e4e7;     
   padding: 6rem 2rem;
   text-align: center;
 }
@@ -231,7 +223,7 @@
   font-family: 'Lobster Two', cursive;
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
-  color: #fff;               /* white text for contrast */
+  color: #fff;               
 }
 
 .section4Gallery {
@@ -259,16 +251,14 @@
 .instaLink:hover {
   transform: scale(1.03);
 }
-/* home.module.css */
+
 .swiperContainer {
   padding-bottom: 1rem;
 }
-
-/* wrap each tile so we can position overlays */
 .mediaWrapper {
   position: relative;
   width: 100%;
-  padding-top: 100%;      /* 1:1 aspect ratio */
+  padding-top: 100%;      
   overflow: hidden;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -284,7 +274,7 @@
   display: block;
 }
 
-/* caption hidden by default */
+
 .captionOverlay {
   position: absolute;
   bottom: 0;
@@ -302,24 +292,22 @@
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "Segoe UI", Roboto, sans-serif;
 }
 
-/* reveal caption on hover/tap */
+
 .instaLink:hover .captionOverlay,
 .instaLink:focus .captionOverlay {
   opacity: 1;
 }
 
-/* ensure the video itself has no default controls */
 .mediaWrapper video {
   /* controls: none by default; we'll autoplay/pause in JS */
 }
 
-/* Step 1: Ensure space for the pagination below */
 .swiperWrapper {
   position: relative;
-  padding-bottom: 2rem; /* enough room for the dots */
+  padding-bottom: 2rem; 
 }
 
-/* Step 2: Move the pagination BELOW the swiper (default it's inside the swiperContainer) */
+
 .swiper-pagination {
   position: relative !important;
   bottom: auto !important;

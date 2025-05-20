@@ -49,7 +49,7 @@
 }
 
 .extraText {
-  font-family: Calibri, sans-serif; /* Use Hartwell Medium if available */
+  font-family: Calibri, sans-serif; 
   font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -59,7 +59,7 @@
 .button {
   font-family: 'Lobster Two', cursive;
   font-size: 1.125rem;
-  background-color: inherit; /* If you want the button to stand out, you can set a contrasting color here */
+  background-color: inherit; 
   color: inherit;
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
@@ -108,7 +108,7 @@
   height: 100px;
 }
 
-/* Gallery Grid Styles (for Section 4) */
+
 .galleryGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -123,7 +123,7 @@
   overflow: hidden;
 }
 
-/* Map placeholder (for Section 5) */
+
 .mapContainer {
   width: 100%;
   display: flex;

@@ -102,7 +102,7 @@ export default function Menu({ menu }) {
             if (hasImage) {
               return (
                 <div key={idx} className={styles.drinkCardWithImage}>
-                  {/* 1. photo column */}
+                  {/* photo column */}
                   <div className={styles.drinkImgBlock}>
                     <Image
                       src={drink.image}
@@ -112,7 +112,7 @@ export default function Menu({ menu }) {
                     />
                   </div>
 
-                  {/* 2. content column */}
+                  {/* content column */}
                   <div className={styles.drinkCardContent}>
                     <div className={styles.drinkCardHeader}>
                       <h4 className={styles.itemName}>{drink.name}</h4>
@@ -166,7 +166,6 @@ export default function Menu({ menu }) {
         {items && items.length > 0 ? (
           <div className={styles.itemGrid}>
             {items.map((item, idx) => {
-              // Grab the asset metadata so we can preserve aspect ratio
               const dims = item.image?.asset?.metadata?.dimensions || {};
               return (
                 <div key={idx} className={styles.menuItem}>

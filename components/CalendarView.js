@@ -3,20 +3,17 @@ import Calendar from 'react-calendar';
 import styles from '../styles/components/calendarView.module.scss';
 
 export default function CalendarView({ events }) {
-  // 1) Today at midnight
   const today = useMemo(() => {
     const d = new Date();
     d.setHours(0,0,0,0);
     return d;
   }, []);
 
-  // 2) Only future (and today’s) events
   const futureEvents = useMemo(
     () => events.filter(evt => new Date(evt.date) >= today),
     [events, today]
   );
 
-  // 3) Events on the selected date
   const [selectedDate, setSelectedDate] = useState(today);
   const eventsOnDate = futureEvents.filter(evt =>
     new Date(evt.date).toDateString() === selectedDate.toDateString()

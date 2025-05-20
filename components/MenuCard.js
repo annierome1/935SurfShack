@@ -44,7 +44,7 @@ const MenuCard = ({ title, description, price, imageUrl }) => {
   
   const descriptionStyle = {
     margin: '0',
-    fontFamily: "'Open Sans', sans-serif", // Clean, readable body text
+    fontFamily: "'Open Sans', sans-serif", 
     color: '#333',
   };
   
