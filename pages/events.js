@@ -21,7 +21,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-import { Pagination, Autoplay, Mousewheel, Keyboard } from 'swiper';
+import { Pagination, Navigation, Autoplay, Keyboard  } from 'swiper';
 
 const builder = imageUrlBuilder(client);
 function urlFor(source) {
@@ -102,11 +102,11 @@ export default function Events({ events }) {
             <div className={styles.mobileCenter}>
             <div className={styles.carouselWrapper}>
               <Swiper
-                modules={[Pagination, Mousewheel, Keyboard, Autoplay]}
+                modules={[Pagination, Navigation, Keyboard, Autoplay]}
                 spaceBetween={8}
                 pagination={{ el: '#swiper-pagination', clickable: true }}
-                navigation={{ prevEl: '#insta-prev', nextEl: '#insta-next' }}    
-                mousewheel={true}                   
+               /* navigation={{ prevEl: '#insta-prev', nextEl: '#insta-next' }}   */
+                navigation={{prevEl: '#list-prev', nextEl: '#list-next'}}                   
                 keyboard={{ enabled: true }}        
                 autoplay={{ delay: 5000 }}
                 autoHeight={true}
@@ -170,10 +170,13 @@ export default function Events({ events }) {
                   );
                 })}
                 </Swiper>
-                <div id="swiper-pagination" className={styles.customPagination} />
-                
-                </div>
+            <div className={styles.paginationWrapper}>
+              <button id="list-prev" className={styles.arrowButton}>‹</button>
+              <div id="swiper-pagination" className={`${styles.customPagination} swiper-pagination`}/>
+              <button id="list-next" className={styles.arrowButton}>›</button>
             </div>
+          </div>
+        </div>
           )}
         </section>
 
