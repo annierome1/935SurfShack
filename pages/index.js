@@ -207,6 +207,7 @@ export default function Home({ nextEvent, instaPosts = [] }) {
               1024: { slidesPerView: 3.2 },
             }}
             className={styles.swiperContainer}
+            /*
             onSlideChange={(swiper) => {
               document.querySelectorAll('video').forEach((vid) => {
                 if (swiper.slides[swiper.activeIndex].contains(vid)) {
@@ -219,7 +220,21 @@ export default function Home({ nextEvent, instaPosts = [] }) {
             onInit={(swiper) => {
               swiper.slides[0].querySelector('video')?.play().catch(() => {});
             }}
-          >
+          > */
+          onSwiper={(swiper) => {
+          swiper.on('slideChange', () => {
+            const activeSlide = swiper.slides[swiper.activeIndex];
+            const video = activeSlide?.querySelector('video');
+            video?.play().catch(() => {});
+          });
+
+          // Play video on first slide (after DOM is rendered)
+          setTimeout(() => {
+            const firstSlide = swiper.slides[0];
+            const video = firstSlide?.querySelector('video');
+            video?.play().catch(() => {});
+          }, 0);
+        }}>
             {instaPosts.map((post) => (
               <SwiperSlide key={post.id}>
                 <a
