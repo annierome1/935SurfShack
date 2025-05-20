@@ -367,9 +367,7 @@
   .heroText h1 {
     font-size: 1.5rem;
   }
-  .eventCard {
-    width: 100%;
-  }
+
   
   .viewToggle button {
     padding: 0.5rem 1.25rem;
@@ -391,13 +389,7 @@
     justify-items: center;           
     gap: 1.5rem;                     
   }
-  .carouselWrapper{
-    display: grid !important;
-    grid-template-columns: 1fr;      
-    justify-content: center;        
-    justify-items: center;           
-    gap: 1.5rem;
-  }
+
   .heroGallery {
     grid-template-columns: 1fr;
   }
@@ -406,5 +398,36 @@
   }
   .galleryItem:not(:first-child) {
     display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  /* ─ Undo the full-width override ───────── */
+  .eventCard {
+    width: auto !important;       /* allow it to size itself */
+    max-width: 350px;             /* or whatever looks good */
+    margin: 0 auto;               /* center in the column */
+  }
+
+  /* ─ Let the wrapper grow to fit the card ──── */
+  .contentWrapper {
+    height: auto !important;      /* remove the 450px clamp */
+  }
+
+  /* ─ Grow/swiper to fit their contents ─────── */
+  .carouselWrapper,
+  .swiper,
+  .swiper-wrapper,
+  .swiper-slide {
+    height: auto !important;      /* kill the 500px/autoHeight issue */
+  }
+
+  /* ─ Make sure the grid is one column and centered ─ */
+  .eventsSection {
+    display: grid !important;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    justify-items: center;
+    gap: 1.5rem;
   }
 }
