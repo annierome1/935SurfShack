@@ -2,7 +2,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
-/**/
+
 :root {
   /* CTA color variables */
   --cta-bg:           #f5877a;
@@ -10,7 +10,7 @@
   --cta-text-color:   #fff;
   --card-bg:       #f9fafb;
   --card-radius:   12px;
-  --card-shadow:   0 4px 12px rgba(0,0,0,0.05);
+  --card-shadow:   0 4px 12px rgba(0,0,0,0.04);
   --primary:       #f5877c;
   --primary-dark:  #e17366;
   --text-dark:     #222;
