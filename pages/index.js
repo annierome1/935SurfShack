@@ -73,8 +73,8 @@ export default function Home({ nextEvent, instaPosts = [] }) {
                 935 Surf Shack is your go-to for live music, fresh lobster rolls, and amazing cocktails.
               </p>
               <ul className={styles.hoursList}>
-                <li><strong>Thu–Sat:</strong> 3–8 pm</li>
-                <li><strong>Sun:</strong> 12–6 pm</li>
+                <li><strong>Mon–Fri:</strong> 3–8 pm</li>
+                <li><strong>Sat & Sun:</strong> 12–8 pm</li>
                 <li><strong>Happy Hour:</strong> 3–5 pm (Thu & Fri)</li>
               </ul>
               <Link href="/menu" className={styles.ctaButton}>
