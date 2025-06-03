@@ -136,6 +136,42 @@
         "description": "Maker’s Mark, strawberry puree, fresh lemon juice, simple syrup and mint",
         "price": 15.00
       }
-    ]
+    ],
+    "Brews": [
+  { "name": "Budweiser", "price": 5.00 },
+  { "name": "Bud Light", "price": 5.00 },
+  { "name": "Coors Light", "price": 5.00 },
+  { "name": "Michelob Ultra", "price": 5.00 },
+  { "name": "Athletic Brewing N/A Cerveza", "price": 6.00 },
+  { "name": "Allagash White", "price": 6.00 },
+  { "name": "Corona Extra", "price": 6.00 },
+  { "name": "Kona Big Wave", "price": 6.00 },
+  { "name": "Landshark Island Lager", "price": 6.00 },
+  { "name": "Modelo", "price": 6.00 },
+  { "name": "Sam Adams Seasonal", "price": 6.00 },
+  { "name": "Tuckerman Pale Ale", "price": 8.00 },
+  { "name": "Lawsons Sip of Sunshine IPA", "price": 8.00 },
+  { "name": "Maine Lunch IPA", "price": 14.00 }
+],
+
+"Wine": [
+  { "name": "Prosecco", "price": 11.00, "type": "Sparkling" },
+  { "name": "Rosé", "price": 11.00, "type": "Rosé" },
+  { "name": "Pinot Grigio", "price": 11.00, "type": "White" },
+  { "name": "Sauvignon Blanc", "price": 12.00, "type": "White" },
+  { "name": "Chardonnay", "price": 12.00, "type": "White" },
+  { "name": "Pinot Noir", "price": 12.00, "type": "Red" },
+  { "name": "Cabernet Sauvignon", "price": 12.00, "type": "Red" }
+],
+
+"Seltzers & Beyond": [
+  { "name": "Fresh Squeezed Lemonade", "price": 6.00 },
+  { "name": "NUTRL Orange", "price": 7.00 },
+  { "name": "NUTRL Pineapple", "price": 7.00 },
+  { "name": "Suncruiser Iced Tea", "price": 7.00 },
+  { "name": "Suncruiser Iced Tea Lemonade", "price": 7.00 },
+  { "name": "Suncruiser Pink Lemonade", "price": 7.00 }
+]
+
   }
 }
