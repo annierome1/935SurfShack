@@ -59,6 +59,7 @@
   padding: 1rem 0;
   box-sizing: border-box;
   overflow: visible;
+  align-self: center;
 }
 .contentWrapper {
   height: 450px;
@@ -188,6 +189,7 @@
 .eventsSection {
   margin-bottom: 3rem;
   text-align: center;
+  width: 100%;
   justify-self: center !important;
   
 }
