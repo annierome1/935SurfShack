@@ -59,11 +59,10 @@
   padding: 1rem 0;
   box-sizing: border-box;
   overflow: visible;
-  align-self: center;
 }
 .contentWrapper {
   height: 450px;
-  justify-self: center;
+  justify-self: center !important;
 }
 
 

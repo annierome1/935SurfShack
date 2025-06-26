@@ -6,7 +6,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import FormSubmit from '../components/FormSubmit';
 import careersImg from '../public/images/careers-hero.jpg';
-import { FaFacebookF, FaInstagram, FaTwitter} from 'react-icons/fa'
+import { FaFacebookF, FaInstagram } from 'react-icons/fa'
 
 export default function Contact() {
   // State hooks
@@ -85,23 +85,22 @@ export default function Contact() {
               formType="inquiry"
               to="chris@935ocean.com"
               subject="New Contact Inquiry"
+              buttonText="Send Message"
+              className={styles.inquiryForm}
             >
               <div className={styles.field}>
                 <label htmlFor="name">Name</label>
                 <input id="name" name="name" type="text" required />
               </div>
+
               <div className={styles.field}>
                 <label htmlFor="email">Email</label>
                 <input id="email" name="email" type="email" required />
               </div>
+
               <div className={styles.field}>
                 <label htmlFor="message">Message</label>
                 <textarea id="message" name="message" rows="5" required />
-              </div>
-              <div className={styles.buttonGroup}>
-                <button type="submit" className={styles.primaryButton}>
-                  Send Message
-                </button>
               </div>
             </FormSubmit>
           </div>
@@ -134,71 +133,79 @@ export default function Contact() {
             <div className={styles.card}>
               <h3 className={styles.sectionTitle}>Careers</h3>
               <FormSubmit
-                formType="careers"
-                to="chris@935ocean.com"
-                subject="Career Application"
-              >
-                <div className={styles.field}>
-                  <label htmlFor="name">Full Name</label>
-                  <input id="name" name="name" type="text" required />
-                </div>
-                <div className={styles.field}>
-                  <label htmlFor="email2">Email Address</label>
-                  <input id="email2" name="email" type="email" required />
-                </div>
-                <div className={styles.field}>
-                  <label htmlFor="position">Position Interested In</label>
-                  <select
-                    id="position"
-                    name="position"
-                    value={selectedPosition}
-                    onChange={(e) => setSelectedPosition(e.target.value)}
-                    required
-                  >
-                    <option value="" disabled>Select…</option>
-                    {positions.map((pos) => (
-                      <option key={pos} value={pos}>{pos}</option>
-                    ))}
-                  </select>
-                </div>
-                <div className={styles.field}>
-                  <label htmlFor="experience">Experience</label>
-                  <textarea
-                    id="experience"
-                    name="experience"
-                    rows="4"
-                    value={experience}
-                    onChange={(e) => setExperience(e.target.value)}
-                  />
-                </div>
-                <div className={styles.field}>
-                  <label className={styles.fileLabel} htmlFor="resume">Upload Resume (PDF/DOC)</label>
+                  formType="careers"
+                  to="chris@935ocean.com"
+                  subject="Career Application"
+                  buttonText="Submit Application"
+                  className={styles.careerForm}
+                >
+                  <div className={styles.field}>
+                    <label htmlFor="name">Full Name</label>
+                    <input id="name" name="name" type="text" required />
+                  </div>
+
+                  <div className={styles.field}>
+                    <label htmlFor="email">Email Address</label>
+                    <input id="email" name="email" type="email" required />
+                  </div>
+
+                  <div className={styles.field}>
+                    <label htmlFor="position">Position Interested In</label>
+                    <select
+                      id="position"
+                      name="position"
+                      value={selectedPosition}
+                      onChange={(e) => setSelectedPosition(e.target.value)}
+                      required
+                    >
+                      <option value="" disabled>
+                        Select…
+                      </option>
+                      {positions.map((pos) => (
+                        <option key={pos} value={pos}>
+                          {pos}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div className={styles.field}>
+                    <label htmlFor="experience">Experience</label>
+                    <textarea
+                      id="experience"
+                      name="experience"
+                      rows="4"
+                      value={experience}
+                      onChange={(e) => setExperience(e.target.value)}
+                    />
+                  </div>
+
+                  <div className={styles.field}>
+                    <label className={styles.fileLabel} htmlFor="resume">
+                      Upload Resume (PDF/DOC)
+                    </label>
+                    <input
+                      id="resume"
+                      name="resumeFileName"
+                      type="file"
+                      accept=".pdf,.doc,.docx"
+                      onChange={handleResumeChange}
+                      className={styles.fileInput}
+                    />
+                    {resumeFile && (
+                      <div className={styles.filePreview}>
+                        Selected file: {resumeFile.name}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* hidden field so FormData includes the filename */}
                   <input
-                    id="resume"
-                    name="resumeFileName"
-                    type="file"
-                    accept=".pdf,.doc,.docx"
-                    onChange={handleResumeChange}
-                    className={styles.fileInput}
+                    type="hidden"
+                    name="resumeFilename"
+                    value={resumeFile ? resumeFile.name : ''}
                   />
-                  {resumeFile && (
-                    <div className={styles.filePreview}>
-                      Selected file: {resumeFile.name}
-                    </div>
-                  )}
-                </div>
-                {/* hidden field to include filename in email */}
-                <input
-                  type="hidden"
-                  name="resumeFilename"
-                  value={resumeFile ? resumeFile.name : ''}
-                />
-                <div className={styles.buttonGroup}>
-                  <button type="submit" className={styles.primaryButton}>
-                    Submit Application
-                  </button>
-                </div>
-              </FormSubmit>
+                </FormSubmit>
             </div>
           </div>
         </section>

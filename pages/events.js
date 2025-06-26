@@ -211,41 +211,38 @@ export default function Events({ events }) {
               <h3 className={styles.inquiryFormTitle}>Event Inquiry</h3>
 
               <FormSubmit
+                formType="eventInquiry"
                 to="chris@935ocean.com"
                 subject="New Event Inquiry"
+                buttonText="Submit Inquiry"
                 className={styles.inquiryForm}
               >
                 <div className={styles.formGroup}>
                   <label htmlFor="name">Name</label>
-                  <input type="text" id="name" name="name" required />
+                  <input id="name" name="name" type="text" required />
                 </div>
-
                 <div className={styles.formGroup}>
                   <label htmlFor="email">Email</label>
-                  <input type="email" id="email" name="email" required />
+                  <input id="email" name="email" type="email" required />
                 </div>
-
                 <div className={styles.formGroup}>
                   <label htmlFor="eventDate">Event Date</label>
-                  <input type="date" id="eventDate" name="eventDate" required />
+                  <input id="eventDate" name="eventDate" type="date" required />
                 </div>
-
                 <div className={styles.formGroup}>
                   <label htmlFor="eventType">Event Type</label>
                   <select id="eventType" name="eventType" required>
                     <option value="">Select Type</option>
-                    <option value="Birthday">Birthday</option>
-                    <option value="Wedding">Wedding</option>
-                    <option value="Corporate">Corporate</option>
-                    <option value="Other">Other</option>
+                    <option>Birthday</option>
+                    <option>Wedding</option>
+                    <option>Corporate</option>
+                    <option>Other</option>
                   </select>
                 </div>
-
                 <div className={styles.formGroup}>
                   <label htmlFor="numberOfGuests">Number of Guests</label>
-                  <input type="number" id="numberOfGuests" name="numberOfGuests" />
+                  <input id="numberOfGuests" name="numberOfGuests" type="number" />
                 </div>
-
                 <div className={styles.formGroup}>
                   <label htmlFor="additionalInfo">Additional Information</label>
                   <textarea
@@ -255,14 +252,8 @@ export default function Events({ events }) {
                     placeholder="Let us know any details..."
                   />
                 </div>
-
-                <button
-                  type="submit"
-                  className={styles.formSubmitButton}
-                >
-                  Submit Inquiry
-                </button>
               </FormSubmit>
+
             </div>
           </div>
         </section>
