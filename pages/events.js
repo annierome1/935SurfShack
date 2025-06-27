@@ -20,8 +20,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
-import { Pagination, Navigation, Autoplay, Keyboard  } from 'swiper';
+import { Pagination, Navigation, Autoplay, Keyboard, Scrollbar  } from 'swiper';
 
 const builder = imageUrlBuilder(client);
 function urlFor(source) {
@@ -94,18 +95,24 @@ export default function Events({ events }) {
           
           {view === 'calendar' ? (
             <CalendarView
-              events={nextTwoWeeks}
+              events={futureEvents}
               minDate={now}
-              maxDate={twoWeeksOut}
+              maxDate={
+                futureEvents.length > 0
+                  ? new Date(futureEvents[futureEvents.length - 1].date)
+                  : now
+              }
             />
           ) : (
             <div className={styles.mobileCenter}>
             <div className={styles.carouselWrapper}>
               <Swiper
-                modules={[Pagination, Navigation, Keyboard, Autoplay]}
+                modules={[Scrollbar, Navigation, Keyboard, Autoplay]}
                 spaceBetween={8}
                 pagination={{ el: '#swiper-pagination', clickable: true }}
                /* navigation={{ prevEl: '#insta-prev', nextEl: '#insta-next' }}   */
+                scrollbar={{el: '.swiper-scrollbar', draggable: true, dragSize: 'auto'}}
+
                 navigation={{prevEl: '#list-prev', nextEl: '#list-next'}}                   
                 keyboard={{ enabled: true }}        
                 autoplay={{ delay: 5000 }}
@@ -265,7 +272,7 @@ export default function Events({ events }) {
 // Fetch events from Sanity
 export async function getStaticProps() {
   const query = `*[_type == "event" && date >= now()] 
-| order(date asc)[0...20] {
+| order(date asc)[0...100] {
     _id,
     title,
     date,
