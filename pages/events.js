@@ -264,7 +264,8 @@ export default function Events({ events }) {
 
 // Fetch events from Sanity
 export async function getStaticProps() {
-  const query = `*[_type == "event"] | order(date asc) {
+  const query = `*[_type == "event" && date >= now()] 
+| order(date asc)[0...20] {
     _id,
     title,
     date,
