@@ -1,4 +1,6 @@
-import { useState } from 'react';
+// pages/events.js
+
+import { useState, useMemo } from 'react';
 import Image from 'next/image';
 import Layout from '../components/Layout';
 import CalendarView from '../components/CalendarView';
@@ -6,11 +8,11 @@ import styles from '../styles/components/events.module.css';
 import { client } from '../src/sanity/lib/client';
 import imageUrlBuilder from '@sanity/image-url';
 import FormSubmit from '../components/FormSubmit';
-import { useMemo } from 'react'
-import { addWeeks } from 'date-fns' 
+import { addWeeks } from 'date-fns';
+
 // Images
-import heroImage from '../public/images/performer.jpg';      
-import privateEventImage from '../public/images/event.jpg'; 
+import heroImage from '../public/images/performer.jpg';
+import privateEventImage from '../public/images/event.jpg';
 import altImage1 from '../public/images/party1.jpg';
 import altImage2 from '../public/images/party2.jpg';
 import altImage3 from '../public/images/party3.jpg';
@@ -19,10 +21,9 @@ import altImage3 from '../public/images/party3.jpg';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
+// (no more pagination CSS import)
 
-import { Pagination, Navigation, Autoplay, Keyboard, Scrollbar  } from 'swiper';
+import { Navigation, Autoplay, Keyboard, Mousewheel } from 'swiper';
 
 const builder = imageUrlBuilder(client);
 function urlFor(source) {
@@ -30,27 +31,22 @@ function urlFor(source) {
 }
 
 export default function Events({ events }) {
-  // Toggle state for Calendar or List view
+  // toggle between calendar/list
   const [view, setView] = useState('calendar');
-  const now = useMemo(() => new Date (), []);
-  const twoWeeksOut = useMemo (() => addWeeks(now, 2), [now]);
+  const now = useMemo(() => new Date(), []);
+  const twoWeeksOut = useMemo(() => addWeeks(now, 2), [now]);
+
+  // upcoming events
   const futureEvents = useMemo(
     () => events.filter(e => new Date(e.date) >= now),
     [events, now]
   );
 
-  // subset of those within the next two weeks
-  const nextTwoWeeks = useMemo(
-    () => futureEvents.filter(e => new Date(e.date) <= twoWeeksOut),
-    [futureEvents, twoWeeksOut]
-  );
   return (
     <Layout>
       <div className={styles.container}>
-        
-        {/* =========================
-            HERO SECTION
-         ========================= */}
+
+        {/* HERO */}
         <section className={styles.heroSection}>
           <div className={styles.heroGallery}>
             {[heroImage, altImage1, altImage2, altImage3].map((src, i) => (
@@ -75,6 +71,8 @@ export default function Events({ events }) {
             </p>
           </div>
         </section>
+
+        {/* EVENTS */}
         <section className={styles.eventsSection}>
           <div className={styles.viewToggle}>
             <button
@@ -88,11 +86,10 @@ export default function Events({ events }) {
               onClick={() => setView('list')}
               className={view === 'list' ? styles.activeToggle : ''}
             >
-            List View
+              List View
             </button>
           </div>
 
-          
           {view === 'calendar' ? (
             <CalendarView
               events={futureEvents}
@@ -105,92 +102,85 @@ export default function Events({ events }) {
             />
           ) : (
             <div className={styles.mobileCenter}>
-            <div className={styles.carouselWrapper}>
-              <Swiper
-                modules={[Scrollbar, Navigation, Keyboard, Autoplay]}
-                spaceBetween={8}
-                pagination={{ el: '#swiper-pagination', clickable: true }}
-               /* navigation={{ prevEl: '#insta-prev', nextEl: '#insta-next' }}   */
-                scrollbar={{el: '.swiper-scrollbar', draggable: true, dragSize: 'auto'}}
-
-                navigation={{prevEl: '#list-prev', nextEl: '#list-next'}}                   
-                keyboard={{ enabled: true }}        
-                autoplay={{ delay: 5000 }}
-                autoHeight={true}
-                slidesPerGroup={1}
-                breakpoints={{
-                  320:  { slidesPerView: 1, slidesPerGroup: 1, centeredSlides: true },
-                  640:  { slidesPerView: 2, slidesPerGroup: 1 },
-                  1024: { slidesPerView: 3, slidesPerGroup: 1 },
-                  1440: { slidesPerView: 4, slidesPerGroup: 1 },
-                }}
-              >
-                {futureEvents.map(event => {
-                  let src = '/images/placeholder.jpg';
-                  let targetHeight = 250;
-                  let targetWidth = 300;
-
-                  if (event.image?.asset) {
-                    const { url } = event.image.asset;
-                    const { width: origW, height: origH } = event.image.asset.metadata.dimensions;
-                    src = url;
-                    targetWidth = Math.round((origW / origH) * targetHeight);
-                  }
-
-                  return (
-                    <SwiperSlide key={event._id}>
-                    <div className={styles.contentWrapper}>
-                      <div className={styles.eventCard}>
-                        <div className={styles.eventImageWrapper}>
-                          {event.image?.asset ? (
-                            <Image
-                              src={event.image.asset.url}
-                              alt={event.title}
-                              fill
-                              style={{
-                                objectFit: 'cover',
-                                objectPosition: 'top',
-                              }}
-                              priority
-                            />
-                          ) : (
-                            <div className={styles.noImage} />
-                          )}
+              <div className={styles.carouselWrapper}>
+                <Swiper
+                  modules={[Navigation, Keyboard, Autoplay, Mousewheel]}
+                  spaceBetween={8}
+                  navigation={{ prevEl: '#list-prev', nextEl: '#list-next' }}
+                  mousewheel={{ forceToAxis: true }}
+                  keyboard={{ enabled: true }}
+                  autoplay={{ delay: 5000 }}
+                  autoHeight={true}
+                  slidesPerGroup={1}
+                  breakpoints={{
+                    320:  { slidesPerView: 1, slidesPerGroup: 1, centeredSlides: true },
+                    640:  { slidesPerView: 2, slidesPerGroup: 1 },
+                    1024: { slidesPerView: 3, slidesPerGroup: 1 },
+                    1440: { slidesPerView: 4, slidesPerGroup: 1 },
+                  }}
+                >
+                  {futureEvents.map(event => {
+                    let src = '/images/placeholder.jpg';
+                    let targetHeight = 250;
+                    let targetWidth = 300;
+                    if (event.image?.asset) {
+                      const { url } = event.image.asset;
+                      const {
+                        width: origW,
+                        height: origH
+                      } = event.image.asset.metadata.dimensions;
+                      src = url;
+                      targetWidth = Math.round((origW / origH) * targetHeight);
+                    }
+                    return (
+                      <SwiperSlide key={event._id}>
+                        <div className={styles.contentWrapper}>
+                          <div className={styles.eventCard}>
+                            <div className={styles.eventImageWrapper}>
+                              {event.image?.asset ? (
+                                <Image
+                                  src={event.image.asset.url}
+                                  alt={event.title}
+                                  fill
+                                  style={{ objectFit: 'cover', objectPosition: 'top' }}
+                                  priority
+                                />
+                              ) : (
+                                <div className={styles.noImage} />
+                              )}
+                            </div>
+                            <div className={styles.eventContent}>
+                              <h3 className={styles.eventTitle}>{event.title}</h3>
+                              <time className={styles.eventDate}>
+                                {new Date(event.date).toLocaleDateString(undefined, {
+                                  month: 'short',
+                                  day: 'numeric',
+                                  hour: 'numeric',
+                                  minute: '2-digit',
+                                })}
+                              </time>
+                              <p className={styles.eventDescription}>
+                                {event.description}
+                              </p>
+                            </div>
+                          </div>
                         </div>
-                        <div className={styles.eventContent}>
-                          <h3 className={styles.eventTitle}>{event.title}</h3>
-                          <time className={styles.eventDate}>
-                            {new Date(event.date).toLocaleDateString(undefined, {
-                              month: 'short',
-                              day: 'numeric',
-                              hour: 'numeric',
-                              minute: '2-digit',
-                            })}
-                          </time>
-                          <p className={styles.eventDescription}>
-                            {event.description}
-                          </p>
-                        </div>
-                      </div>
-                      </div>
-                      
-                    </SwiperSlide>
-                  );
-                })}
+                      </SwiperSlide>
+                    );
+                  })}
                 </Swiper>
-            <div className={styles.paginationWrapper}>
-              <button id="list-prev" className={styles.arrowButton}>‹</button>
-              <div id="swiper-pagination" className={`${styles.customPagination} swiper-pagination`}/>
-              <button id="list-next" className={styles.arrowButton}>›</button>
+
+                {/* Arrow Buttons Only (no bullets) */}
+                <div className={styles.paginationWrapper}>
+                  <button id="list-prev" className={styles.arrowButton}>‹</button>
+                  <button id="list-next" className={styles.arrowButton}>›</button>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
           )}
         </section>
 
-        {/* =========================
-            PRIVATE EVENT INQUIRY
-         ========================= */}
+        {/* PRIVATE EVENT INQUIRY */}
         <section className={styles.privateEventSection}>
           <div className={styles.privateEventWrapper}>
             <div className={styles.privateEventLeft}>
@@ -213,8 +203,7 @@ export default function Events({ events }) {
               </div>
               </div>
             </div>
-
-            <div className={styles.privateEventFormWrapper}>
+        <div className={styles.privateEventFormWrapper}>
               <h3 className={styles.inquiryFormTitle}>Event Inquiry</h3>
 
               <FormSubmit
@@ -272,18 +261,18 @@ export default function Events({ events }) {
 // Fetch events from Sanity
 export async function getStaticProps() {
   const query = `*[_type == "event" && date >= now()] 
-| order(date asc)[0...100] {
-    _id,
-    title,
-    date,
-    description,
-    image {
-      asset->{
-        url,
-        metadata{ dimensions{ width, height } }
+  | order(date asc)[0...100] {
+      _id,
+      title,
+      date,
+      description,
+      image {
+        asset->{
+          url,
+          metadata{ dimensions{ width, height } }
+        }
       }
-    }
-  }`;
+    }`;
   const events = await client.fetch(query);
   return {
     props: { events },
