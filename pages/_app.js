@@ -7,7 +7,7 @@ import { useRouter } from 'next/router'
 const lobster = Lobster_Two({ subsets: ['latin'], weight: ['400'] })
 const pacifico = Pacifico({ subsets: ['latin'], weight: ['400'] })
 
-const GA_ID = process.env.GOOGLE_ANALYTICS
+const GA_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS
 
 export default function MyApp({ Component, pageProps }) {
   const router = useRouter()
