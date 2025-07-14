@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Hero from '../components/Hero';
 import { FaMusic, FaCalendarAlt } from 'react-icons/fa';
 import styles from '../styles/components/home.module.css';
-import { client } from '../src/sanity/lib/client';
+import { client } from '../sanity/lib/client';
 import imageUrlBuilder from '@sanity/image-url';
 import SwiperCore, { Navigation, Autoplay, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -19,6 +19,8 @@ import section2Img from '../public/images/section2.jpg';
 import coastalImg from '../public/images/coastal-cuisine.jpg';
 import cocktailsImg from '../public/images/berrydrink.jpeg';
 import brewsImg from '../public/images/local-brews.jpg';
+
+
 SwiperCore.use([Pagination, Autoplay, Navigation]);
 const builder = imageUrlBuilder(client);
 function urlFor(source) {

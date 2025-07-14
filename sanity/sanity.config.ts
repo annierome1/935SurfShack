@@ -12,7 +12,7 @@ export default defineConfig({
   dataset: 'events',
 
   plugins: [
-    deskTool({ structure: deskStructure }),
+    deskTool({ structure: deskStructure }), // ✅ Now works
     visionTool(),
   ],
 

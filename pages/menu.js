@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Layout from '../components/Layout';
 import styles from '../styles/components/menu.module.css';
 import menuData from '../public/data/menu.json';
-import { client } from '../src/sanity/lib/client';
+import { client } from '../sanity/lib/client';
 
 export default function Menu({ menu }) {
   const [activeTab, setActiveTab] = useState('food');

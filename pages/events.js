@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Layout from '../components/Layout';
 import CalendarView from '../components/CalendarView';
 import styles from '../styles/components/events.module.css';
-import { client } from '../src/sanity/lib/client';
+import { client } from '../sanity/lib/client';
 import imageUrlBuilder from '@sanity/image-url';
 import FormSubmit from '../components/FormSubmit';
 import { addWeeks } from 'date-fns';
