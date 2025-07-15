@@ -68,24 +68,91 @@
   flex-direction: column;
   gap: 1.5rem;
 }
-/* grid layout for item lists */
 .itemGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
 }
-
+.menuItemImage img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 6px;
+}
 .menuItem {
-  display: flex;
   position: relative;
-  justify-content: space-between;
-  align-items: center;
+  display: flex;
   background: #f7fcfd;
   border-radius: 8px;
   padding: 1rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  margin-bottom: 1.5rem;
+  overflow: visible;  
   
 }
+
+.DrinkMenuItem {
+  position: relative;
+  display: flex;
+  background: #f7fcfd;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  overflow: visible;    
+}
+
+
+.outsideImageWrapper {
+  position: relative;
+  width: 180px;
+  height: 180px;
+
+  flex-shrink: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+
+.outsideImageWrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.menuItemContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+  padding-left: 2rem;    
+}
+
+.menuItemPrice {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;     
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #f5877c;
+  margin-right: 1rem; 
+  margin-bottom: 5rem;
+}
+
+.priceOptions {
+  display: flex;
+  flex-direction: column;  
+  
+
+}
+
+.priceOptions .option {
+  font-weight: 600;
+  color: #f5877c;
+  font-size: 0.95rem;
+}
+
+
+
 
 .menuItemText {
   flex: 1;
@@ -132,6 +199,8 @@
 }
 
 
+
+
 .downloadContainer {
   display: flex;
   justify-content: center;
@@ -152,6 +221,49 @@
 /* ────────────────────────────────────────
    Drinks Section (fully horizontal cards)
 ──────────────────────────────────────── */
+
+.listWrapper {
+  background: #f7fcfd;      
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.listWrapper .menuItem {
+  background: transparent;  
+  box-shadow: none;           
+  padding: 0.75rem 0;    
+  height:auto !important;
+  margin-bottom: 0 !important;
+  padding: 0.5rem 0 !important;    
+}
+
+/* draw a rule under every item except the last */
+.listWrapper .menuItem:not(:last-child) {
+  border-bottom: 1px solid rgba(245, 135, 122, 0.3);
+  margin-bottom: 0.5rem !important;
+}
+
+/* ───────────────────────────────────────
+   3) Tweak thumbnails and price in list mode
+──────────────────────────────────────── */
+.listWrapper .menuItemImage {
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-right: 1rem;
+  position: relative;          /* for next/image */
+}
+
+.listWrapper .menuItemDetails {
+  position: static;            /* drop absolute positioning */
+  margin-left: auto;
+  gap: 0.5rem;
+}
 
 
 .drinkSection .itemGrid {
@@ -235,14 +347,32 @@
   color: #555;
   line-height: 1.4;
 }
+.drinkCardHeader span{
+    color: #f5877a;
+
+}
 /* ────────────────────────────────────────
    Drinks Section: Mobile Responsiveness
 ──────────────────────────────────────── */
 @media (max-width: 800px) {
 
+  .container {
+  max-width: 80%;
+  margin: 0 auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding: 0rem;
+  background: #fff;
+}
+
+.categoryBlock{
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
 
   .drinkSection .itemGrid {
     grid-template-columns: 1fr !important;
+    margin-bottom: 0rem;
   }
 
 
@@ -250,7 +380,10 @@
     flex-direction: column-reverse !important;
     padding: 0.75rem !important;
   }
+  .drinkCardHeader span{
+    color: #f5877a;
 
+}
 
   .drinkSection .drinkImgBlock {
     width: 180px !important;
@@ -330,10 +463,7 @@
 @media (max-width: 600px) {
 
 
-  .specialsSection .itemGrid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
+
 
 
   .specialsSection .menuItem {
@@ -391,5 +521,41 @@
   }
   .container{
     margin-top: 6rem;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .menuItem {
+    flex-direction: column;        
+    align-items: flex-start;      
+    height: auto;                 
+    padding: 1rem 0.5rem;    
+  }
+
+  .outsideImageWrapper {
+    width: 100%;                   
+    height: auto;             
+    aspect-ratio: 1 / 1;         
+    margin-left: 0;                
+    margin-bottom: 1rem;          
+  }
+
+  .outsideImageWrapper img {
+    object-fit: cover;             
+  }
+
+  .menuItemContent {
+    padding-left: 0;             
+    width: 100%;                   
+    display: flex;
+    flex-direction: column;    
+    text-align: center;   
+    gap: 0.75rem;
+  }
+
+  .menuItemPrice {
+    margin-right: 0;            
+    margin-bottom: 0;              
   }
 }

@@ -67,87 +67,154 @@ export default function Menu({ menu }) {
           ))}
         </div>
 
-        {/* FOOD */}
-        {activeTab === 'food' && (
-          <>
-            <div className={styles.menuSection}>
-              {Object.entries(menuData.food).map(([cat, items]) =>
-                renderSection(cat, items, false, false)
-              )}
+{/* FOOD */}
+{activeTab === 'food' && (
+  <>
+    <div className={styles.menuSection}>
+      {Object.entries(menuData.food).map(([cat, items]) => {
+        const hasImages = items.some(item => Boolean(item.image));
+        const useGrid   = hasImages && cat !== 'Handhelds & Wraps';
+
+        return (
+          <div key={cat} className={styles.categoryBlock}>
+            <h3 className={styles.categoryTitle}>{cat}</h3>
+
+            <div className={useGrid ? styles.itemGrid : styles.itemList}>
+              {items.map((item, idx) => (
+                <div key={idx} className={styles.menuItem}>
+                  {/* always render the image if present */}
+                  {item.image?.asset?.url && (
+                    <div className={styles.outsideImageWrapper}>
+                      <Image
+                        src={item.image.asset.url}
+                        alt={item.name}
+                        layout="fill"
+                        objectFit="cover"
+                      />
+                    </div>
+                  )}
+
+                  {/* text + price inside */}
+                  <div className={styles.menuItemContent}>
+                    <div className={styles.menuItemText}>
+                      <h4 className={styles.itemName}>{item.name}</h4>
+                      {item.description && (
+                        <p className={styles.itemDesc}>{item.description}</p>
+                      )}
+                    </div>
+
+                    <div className={styles.menuItemPrice}>
+                      {item.priceOptions ? (
+                        item.priceOptions.map((opt, i) => (
+                          <div key={i} className={styles.priceOption}>
+                            {opt.label}: ${opt.price.toFixed(2)}
+                          </div>
+                        ))
+                      ) : (
+                        <>${item.price.toFixed(2)}</>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
-            {foodDownloadUrl && (
-              <div className={styles.downloadContainer}>
-                <a
-                  href={foodDownloadUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.downloadButton}
-                >
-                  Download Full Menu
-                </a>
-              </div>
-            )}
-          </>
-        )}
+          </div>
+        );
+      })}
+    </div>
+
+    {foodDownloadUrl && (
+      <div className={styles.downloadContainer}>
+        <a
+          href={foodDownloadUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.downloadButton}
+        >
+          Download Full Menu
+        </a>
+      </div>
+    )}
+  </>
+)}
+
 {/* DRINKS */}
 {activeTab === 'drinks' && (
   <div className={`${styles.menuSection} ${styles.drinkSection}`}>
-    {Object.entries(menuData.drink).map(([section, drinks]) => (
-      <div key={section} className={styles.categoryBlock}>
-        <h3 className={styles.categoryTitle}>{section}</h3>
+    {Object.entries(menuData.drink).map(([section, drinks]) => {
+      const isListSection = ['Brews', 'Wine', 'Seltzers & Beyond'].includes(section);
+      const containerClass = isListSection
+        ? styles.listWrapper
+        : styles.itemGrid;
 
-        <div className={styles.itemGrid}>
-          {drinks.map((drink, idx) => {
-            const hasImage = Boolean(drink.image);
-            if (hasImage) {
-              return (
-                <div key={idx} className={styles.drinkCardWithImage}>
-                  {/* photo column */}
-                  <div className={styles.drinkImgBlock}>
-                    <Image
-                      src={drink.image}
-                      alt={drink.name}
-                      layout="fill"
-                      objectFit="cover"
-                    />
-                  </div>
+      return (
+        <div key={section} className={styles.categoryBlock}>
+          <h3 className={styles.categoryTitle}>{section}</h3>
 
-                  {/* content column */}
-                  <div className={styles.drinkCardContent}>
-                    <div className={styles.drinkCardHeader}>
-                      <h4 className={styles.itemName}>{drink.name}</h4>
-                      <span className={styles.itemPrice}>
-                        ${drink.price.toFixed()}
-                      </span>
+          <div className={containerClass}>
+            {drinks.map((drink, idx) => {
+              const hasImage = Boolean(drink.image);
+
+              // Grid mode with photo-cards
+              if (!isListSection && hasImage) {
+                return (
+                  <div key={idx} className={styles.drinkCardWithImage}>
+                    {/* photo column */}
+                    <div className={styles.drinkImgBlock}>
+                      <Image
+                        src={drink.image}
+                        alt={drink.name}
+                        layout="fill"
+                        objectFit="cover"
+                      />
                     </div>
+                    {/* content column */}
+                    <div className={styles.drinkCardContent}>
+                      <div className={styles.drinkCardHeader}>
+                        <h4 className={styles.itemName}>{drink.name}</h4>
+                        <span className={styles.itemPriceHigh}>
+                          ${drink.price.toFixed()}
+                        </span>
+                      </div>
+                      {drink.description && (
+                        <p className={styles.itemDesc}>{drink.description}</p>
+                      )}
+                    </div>
+                  </div>
+                );
+              }
+
+              // List mode (or no-image fallback)
+              return (
+                <div key={idx} className={styles.menuItem}>
+                  {hasImage && (
+                    <div className={styles.menuItemImage}>
+                      <Image
+                        src={drink.image}
+                        alt={drink.name}
+                        layout="fill"
+                        objectFit="cover"
+                      />
+                    </div>
+                  )}
+                  <div className={styles.menuItemText}>
+                    <h4 className={styles.itemName}>{drink.name}</h4>
                     {drink.description && (
                       <p className={styles.itemDesc}>{drink.description}</p>
                     )}
                   </div>
+                  <div className={styles.menuItemDetails}>
+                    <span className={styles.itemPrice}>
+                      ${drink.price.toFixed()}
+                    </span>
+                  </div>
                 </div>
               );
-            }
-
-            // no-image fallback
-            return (
-              <div key={idx} className={styles.menuItem}>
-                <div className={styles.menuItemText}>
-                  <h4 className={styles.itemName}>{drink.name}</h4>
-                  {drink.description && (
-                    <p className={styles.itemDesc}>{drink.description}</p>
-                  )}
-                </div>
-                <div className={styles.menuItemDetails}>
-                  <span className={styles.itemPrice}>
-                    ${drink.price.toFixed()}
-                  </span>
-                </div>
-              </div>
-            );
-          })}
+            })}
+          </div>
         </div>
-      </div>
-    ))}
+      );
+    })}
   </div>
 )}
 

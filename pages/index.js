@@ -16,9 +16,9 @@ import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
 import section1Img from '../public/images/section1.jpg';
 import section2Img from '../public/images/section2.jpg';
-import coastalImg from '../public/images/coastal-cuisine.jpg';
-import cocktailsImg from '../public/images/berrydrink.jpeg';
-import brewsImg from '../public/images/local-brews.jpg';
+import coastalImg from '../public/images/cuisine.jpg';
+import cocktailsImg from '../public/images/craft.jpg';
+import brewsImg from '../public/images/brews.jpg';
 
 
 SwiperCore.use([Pagination, Autoplay, Navigation]);
