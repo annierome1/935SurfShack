@@ -1,7 +1,16 @@
 // pages/api/send-email.js
-import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+import nodemailer from 'nodemailer';
+
+const transporter = nodemailer.createTransport({
+  host: process.env.SMTP_HOST,               // e.g. 'smtp.gmail.com'
+  port: Number(process.env.SMTP_PORT),       // e.g. 465
+  secure: true,                              // true for 465, false for other ports
+  auth: {
+    user: process.env.SMTP_USER,             // your SMTP username
+    pass: process.env.SMTP_PASS,             // your SMTP password or app-specific password
+  },
+});
 
 function humanize(key) {
   return key
@@ -43,20 +52,23 @@ export default async function handler(req, res) {
 
     lines.push('', 'Thanks!', name);
 
-    // 4. Turn into simple HTML
+    // 4. Build HTML and plain-text bodies
     const html = lines.map((l) => `<p>${l}</p>`).join('');
+    const text = lines.join('\n');
 
-    // 5. Send via Resend
-    await resend.emails.send({
-      from: process.env.EMAIL_FROM,
+    // 5. Send via SMTP
+    await transporter.sendMail({
+      from: `"${data.name}" <${data.email}>`,
       to,
       subject,
+      text,
       html,
+      replyTo: data.email
     });
 
     return res.status(200).json({ success: true });
   } catch (err) {
-    console.error(err);
-    return res.status(500).json({ error: err.message });
+    console.error('Mail send error:', err);
+    return res.status(500).json({ error: 'Failed to send email.' });
   }
 }
