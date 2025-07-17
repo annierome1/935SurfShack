@@ -3,6 +3,7 @@ import { Lobster_Two, Pacifico } from 'next/font/google'
 import Script from 'next/script'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 const lobster = Lobster_Two({ subsets: ['latin'], weight: ['400'] })
 const pacifico = Pacifico({ subsets: ['latin'], weight: ['400'] })
@@ -30,6 +31,9 @@ export default function MyApp({ Component, pageProps }) {
     <>
       {GA_ID && (
         <>
+        <Head>
+        <link rel="icon" href="/Logo_transparent.png" />
+      </Head>
           <Script
             strategy="afterInteractive"
             src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}

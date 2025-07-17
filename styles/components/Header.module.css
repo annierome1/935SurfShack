@@ -64,10 +64,15 @@
   text-decoration: none;
   letter-spacing: 0.5px;
   transition: color 0.2s ease;
+   transition: 
+    transform 0.2s ease-in-out,
+    color 0.2s ease-in-out;
 }
 .bannerLink:hover {
-  color: #f0f0f0;
+  color: white;
   text-decoration: underline;
+  /* scale up slightly */
+  transform: scale(1.05);
 }
 
 @media (min-width: 769px) {
