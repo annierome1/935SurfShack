@@ -95,7 +95,7 @@
   text-decoration: none;
 }
 .logoImage {
-  max-width: 170px;
+  max-width: 500px;
   height: auto;
 }
 
@@ -238,7 +238,7 @@
 
   /* Shrink logo */
   .logoImage {
-    max-width: 130px;
+    max-width: 300px;
   }
   .nowOpen{
     font-size: 14px;
@@ -341,7 +341,7 @@
     font-size: 1.4rem;
   }
   .logoImage {
-    max-width: 110px;
+    max-width: 250px;
   }
   .navLink {
     font-size: 1.1rem;

@@ -69,7 +69,7 @@ export default function Home({ nextEvent, instaPosts = [] }) {
               />
             </div>
             <div className={styles.section1Text}>
-              <h2 className={styles.section1Title}>Welcome to 935 Surf Shack</h2>
+              <h2 className={styles.section1Title}>Welcome to the Surf Shack at 935 Ocean Beachside Inn</h2>
               <p className={styles.section1Desc}>
                 North Beach’s newest beach bar is here. Located in the backyard of the historic 935 Ocean Hotel,
                 935 Surf Shack is your go-to for live music, fresh lobster rolls, and amazing cocktails.

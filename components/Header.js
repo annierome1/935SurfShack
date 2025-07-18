@@ -72,10 +72,10 @@ export default function Header() {
   <div className={styles.headerLeft}>
     <Link href="/" onClick={closeMenu} className={styles.logoLink}>
       <Image
-        src="/Logo_transparent.png"
+        src="/combined_logos_transparent_bg.png"
         alt="935 Surf Shack Logo"
-        width={180}
-        height={0}
+        width={300}
+        height={200}
         priority
         className={styles.logoImage}
         style={{ height: 'auto', objectFit: 'contain' }}
