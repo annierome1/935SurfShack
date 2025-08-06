@@ -48,6 +48,7 @@
 
 .eventsSection{
   padding-top: 1.5rem !important;
+  gap: 0.75rem; 
 }
 
 .carouselWrapper {
@@ -445,7 +446,7 @@
     grid-template-columns: 1fr;      
     justify-content: center;        
     justify-items: center;           
-    gap: 1.5rem;                     
+    gap: 1rem;                     
   }
 
   .heroGallery {
@@ -486,5 +487,10 @@
     justify-content: center;
     justify-items: center;
     gap: 1.5rem;
+  }
+}
+@media (max-width: 768px) {
+  .arrowButton {
+    display: none !important;
   }
 }

@@ -4,6 +4,7 @@ import Script from 'next/script'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
+import ReviewsWidget from '../components/ReviewsWidget'
 
 const lobster = Lobster_Two({ subsets: ['latin'], weight: ['400'] })
 const pacifico = Pacifico({ subsets: ['latin'], weight: ['400'] })
@@ -56,6 +57,7 @@ export default function MyApp({ Component, pageProps }) {
       )}
       <main className={`${lobster.className} ${pacifico.className}`}>
         <Component {...pageProps} />
+        <ReviewsWidget />
       </main>
     </>
   )

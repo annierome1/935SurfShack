@@ -51,11 +51,10 @@ export default function Home({ nextEvent, instaPosts = [] }) {
       </Head>
 
       {/* Hero */}
+      <main className="scrollContainer">
       <div id="hero">
         <Hero />
       </div>
-
-      <main>
         {/* SECTION 1 */}
         <section className={styles.section1}>
           <div className={styles.section1Content}>
@@ -205,9 +204,12 @@ export default function Home({ nextEvent, instaPosts = [] }) {
               nextEl: '#insta-next',
             }}
             breakpoints={{
-              640: { slidesPerView: 2.2 },
-              1024: { slidesPerView: 3.2 },
-            }}
+    // super-small phones
+    0:   { slidesPerView: 1, spaceBetween: 8 },  
+    320: { slidesPerView: 1.5,  spaceBetween: 8 },  
+    640: { slidesPerView: 2.2 },
+    1024:{ slidesPerView: 3.2 },
+  }}
             className={styles.swiperContainer}
             /*
             onSlideChange={(swiper) => {
@@ -258,7 +260,7 @@ export default function Home({ nextEvent, instaPosts = [] }) {
                         src={post.media_url}
                         alt={post.caption?.slice(0, 80) || 'Instagram post'}
                         width={300}
-                        height={300}
+                        height={250}
                         objectFit="cover"
                         unoptimized
                         className={styles.galleryImage}

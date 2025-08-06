@@ -38,3 +38,42 @@ main {
   box-sizing: inherit;
 }
 
+.swiper {
+  overflow: visible !important;
+  justify-content: center !important;
+  justify-items: center !important;
+}
+.swiper-slide {
+  display: flex !important;
+  align-items: center !important;      /* vertical centering */
+  justify-content: center !important;  /* horizontal centering */
+}
+.swiper-slide .instaLink {
+  margin: auto; /* top/bottom and left/right */
+}
+
+.swiper-wrapper {
+  align-items: center !important;
+}
+
+
+html, body, #__next {
+  height: 100%;
+  margin: 0;
+}
+
+
+/* global.css */
+.fixed-reviews {
+  position: fixed;
+  bottom: 1rem;            /* distance from the bottom of the viewport */
+  right: 1rem;             /* distance from the right edge */
+  width: 300px;            /* or whatever width you need */
+  max-height: 80vh;        /* never grow taller than 80% of the viewport */
+  overflow-y: auto;        /* scroll if reviews overflow the box */
+  background: rgba(255,255,255,0.95);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  z-index: 1000;           /* sit on top of everything */
+}
