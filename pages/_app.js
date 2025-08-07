@@ -5,6 +5,8 @@ import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import ReviewsWidget from '../components/ReviewsWidget'
+import PrivacyBanner from "../components/PrivacyBanner";
+
 
 const lobster = Lobster_Two({ subsets: ['latin'], weight: ['400'] })
 const pacifico = Pacifico({ subsets: ['latin'], weight: ['400'] })
@@ -58,6 +60,7 @@ export default function MyApp({ Component, pageProps }) {
       <main className={`${lobster.className} ${pacifico.className}`}>
         <Component {...pageProps} />
         <ReviewsWidget />
+        <PrivacyBanner />
       </main>
     </>
   )

@@ -1,0 +1,70 @@
+.privacy-banner {
+  position: fixed;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 900px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  gap: 1rem;
+}
+
+.privacy-banner p {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+  line-height: 1.4;
+}
+
+.privacy-banner a {
+  color: #f5877a;
+  text-decoration: underline;
+}
+
+.privacy-banner button {
+  background: #f5877a;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.privacy-banner button:hover {
+  background: #e17366;
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+  .privacy-banner {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 10px 8px;
+    width: 98%;
+    max-width: 98vw;
+    font-size: 13px;
+    gap: 0.5rem;
+  }
+  .privacy-banner p {
+    font-size: 13px;
+    margin-bottom: 0.5rem;
+    text-align: left;
+  }
+  .privacy-banner button {
+    width: 100%;
+    font-size: 15px;
+    margin-top: 0.25rem;
+  }
+}
