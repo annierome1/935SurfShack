@@ -203,12 +203,11 @@ export default function Home({ nextEvent, instaPosts = [] }) {
               prevEl: '#insta-prev',
               nextEl: '#insta-next',
             }}
-            breakpoints={{
-    // super-small phones
-    0:   { slidesPerView: 1, spaceBetween: 8 },  
-    320: { slidesPerView: 1.5,  spaceBetween: 8 },  
-    640: { slidesPerView: 2.2 },
-    1024:{ slidesPerView: 3.2 },
+            breakpoints={{  
+             0:   { slidesPerView: 1, spaceBetween: 8 },  
+            320: { slidesPerView: 1,  spaceBetween: 8 },  
+           640: { slidesPerView: 1 },
+            1024:{ slidesPerView: 3.2 },
   }}
             className={styles.swiperContainer}
             /*
