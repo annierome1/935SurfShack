@@ -104,21 +104,59 @@ export default function Events({ events }) {
             <div className={styles.mobileCenter}>
               <div className={styles.carouselWrapper}>
                 <Swiper
-                  modules={[Navigation, Keyboard, Autoplay, Mousewheel]}
-                  spaceBetween={8}
-                  navigation={{ prevEl: '#list-prev', nextEl: '#list-next' }}
-                  mousewheel={{ forceToAxis: true }}
-                  keyboard={{ enabled: true }}
-                  autoplay={{ delay: 5000 }}
-                  autoHeight={true}
-                  slidesPerGroup={1}
-                  breakpoints={{
-                    320:  { slidesPerView: 1, slidesPerGroup: 1, centeredSlides: true },
-                    640:  { slidesPerView: 2, slidesPerGroup: 1 },
-                    1024: { slidesPerView: 3, slidesPerGroup: 1 },
-                    1440: { slidesPerView: 4, slidesPerGroup: 1 },
-                  }}
-                >
+  spaceBetween={12}
+  loop
+  autoplay={{ delay: 3000, disableOnInteraction: false }}
+  centeredSlides
+  pagination={{ el: '#insta-pagination', clickable: true }}
+  navigation={{ prevEl: '#insta-prev', nextEl: '#insta-next' }}
+  breakpoints={{
+    // Small phones
+    0: {
+      slidesPerView: 1,
+      spaceBetween: 10,
+      centeredSlides: true,
+    },
+    // Regular phones
+    360: {
+      slidesPerView: 1,
+      spaceBetween: 12,
+      centeredSlides: true,
+    },
+    // Large phones / phablets
+    480: {
+      slidesPerView: 1.2,
+      spaceBetween: 14,
+      centeredSlides: true,
+    },
+    // Small tablets (portrait iPad, etc.)
+    640: {
+      slidesPerView: 2,
+      spaceBetween: 16,
+      centeredSlides: false,
+    },
+    // Medium tablets / small laptops
+    768: {
+      slidesPerView: 2.5,
+      spaceBetween: 18,
+      centeredSlides: false,
+    },
+    // Standard desktops
+    1024: {
+      slidesPerView: 3,
+      spaceBetween: 20,
+      centeredSlides: false,
+    },
+    // Large desktops / widescreens
+    1440: {
+      slidesPerView: 4,
+      spaceBetween: 24,
+      centeredSlides: false,
+    },
+  }}
+  className={styles.swiperContainer}
+>
+
                   {futureEvents.map(event => {
                     let src = '/images/placeholder.jpg';
                     let targetHeight = 250;
