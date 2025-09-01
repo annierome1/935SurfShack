@@ -74,9 +74,9 @@ export default function Home({ nextEvent, instaPosts = [] }) {
                 935 Surf Shack is your go-to for live music, fresh lobster rolls, and amazing cocktails.
               </p>
               <ul className={styles.hoursList}>
-                <li><strong>Mon–Fri:</strong> 3–8 pm</li>
-                <li><strong>Sat & Sun:</strong> 12–8 pm</li>
-                <li><strong>Happy Hour:</strong> 3–5 pm (Thu & Fri)</li>
+                <li><strong>Mon–Wed:</strong> Closed</li>
+                <li><strong>Thurs & Fri:</strong> 3–8 pm</li>
+                <li><strong>Sat & Sun:</strong> 12-8pm</li>
               </ul>
               <Link href="/menu" className={styles.ctaButton}>
                 View Our Menu

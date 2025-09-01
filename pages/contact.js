@@ -39,12 +39,12 @@ export default function Contact() {
     <div className={styles.hoursCard}>
       <h3 className={styles.infoTitle}>Hours</h3>
       <ul className={styles.hoursList}>
-        <li>Mon – Fri: 3–8 pm</li>
-        <li>Sat & Sun: 12–8 pm</li>
-        <li>Happy Hour: 3–5 pm (Mon & Fri)</li>
+        <li>Mon – Wed: Closed</li>
+        <li>Thurs & Fri: 3–8 pm</li>
+        <li>Sat & Sun: 12-8pm</li>
       </ul>
       <p className={styles.hoursNote}>
-        Full summer hours after June 22nd!
+        After Labor Day hours!
       </p>
     </div>
 

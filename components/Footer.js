@@ -64,9 +64,9 @@ export default function Footer() {
       <div className={`${styles.footerSection} ${styles.hoursSection}`}>
         <h4>HOURS</h4>
 
-        <span className={styles.breakLine}><strong>Mon–Fri:</strong> 3–8 pm</span>
-        <span className={styles.breakLine}><strong>Sat & Sun:</strong> 12–8 pm</span>
-        <span className={styles.breakLine}><strong>Happy Hour:</strong> 3–5 pm (Thurs & Fri)</span>
+        <span className={styles.breakLine}><strong>Mon–Wed:</strong> Closed</span>
+        <span className={styles.breakLine}><strong>Thurs & Fri:</strong> 3–8 pm</span>
+        <span className={styles.breakLine}><strong>Sat & Sun:</strong> 12-8pm</span>
       </div>
 
       <div className={styles.rightsRes}>© 2025 935 Surf Shack. All rights reserved.</div>
