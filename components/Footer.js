@@ -60,13 +60,11 @@ export default function Footer() {
         </Link> */}
       </div>
 
-      {/* Hours */}
+      {/* Seasonal Status */}
       <div className={`${styles.footerSection} ${styles.hoursSection}`}>
-        <h4>HOURS</h4>
-
-        <span className={styles.breakLine}><strong>Mon–Wed:</strong> Closed</span>
-        <span className={styles.breakLine}><strong>Thurs & Fri:</strong> 3–8 pm</span>
-        <span className={styles.breakLine}><strong>Sat & Sun:</strong> 12-8pm</span>
+        <h4>STATUS</h4>
+        <span className={styles.breakLine}><strong>🏖️ Closed for Winter</strong></span>
+        <span className={styles.breakLine}><strong>Check back in 2026!</strong></span>
       </div>
 
       <div className={styles.rightsRes}>© 2025 935 Surf Shack. All rights reserved.</div>

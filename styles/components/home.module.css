@@ -110,13 +110,38 @@
   font-weight: 500;
 }
 
+/* Seasonal Message Styles */
+.seasonalMessage {
+  background: rgba(245, 135, 122, 0.1);
+  border: 2px solid #f5877a;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.seasonalMessage h3 {
+  font-family: 'Lobster Two', cursive;
+  font-size: 1.5rem;
+  color: #f5877a;
+  margin: 0 0 0.75rem 0;
+  font-weight: 400;
+}
+
+.seasonalMessage p {
+  margin: 0.5rem 0;
+  color: #333;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
 /* ─────────────────────────────────────────────────────────────────────────
    SECTION 2
 ───────────────────────────────────────────────────────────────────────── */
 .section2 {
   background: #c2e4e7;
   padding: 4rem 2rem;
-  height: 90vh;
+  height: 60vh;
   
 }
 .section2Content {
@@ -267,6 +292,16 @@
   height: 100vh;
 }
 
+/* Dynamic spacing when Instagram feed is not available */
+.section4Placeholder {
+  height: auto;
+  min-height: 60vh;
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .section4Title {
   font-family: 'Lobster Two', cursive;
   font-size: 2.5rem;
@@ -353,12 +388,78 @@
 
 .mediaWrapper video {
   /* controls: none by default; we'll autoplay/pause in JS */
+  outline: none;
 }
 
 .swiperWrapper {
   position: relative;
   overflow: visible  !important;
-  
+}
+
+/* Instagram Placeholder Styles */
+.instagramPlaceholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  padding: 2rem;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.placeholderContent {
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 3rem 2rem;
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.placeholderIcon {
+  margin-bottom: 1.5rem;
+  color: #c2e4e7;
+  opacity: 0.8;
+}
+
+.placeholderTitle {
+  font-family: 'Lobster Two', cursive;
+  font-size: 2rem;
+  color: #f5877a;
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+
+.placeholderText {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 2rem;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "Segoe UI", Roboto, sans-serif;
+}
+
+.instagramCTA {
+  display: inline-block;
+  background: #f5877a;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-family: 'Lobster Two', cursive;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(245, 135, 122, 0.3);
+}
+
+.instagramCTA:hover {
+  background: #d76a60;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(245, 135, 122, 0.4);
 }
 
 
@@ -467,6 +568,25 @@
   .section4Title{
     font-size: 2.25rem;
   }
+
+  /* Instagram placeholder responsive adjustments */
+  .section4Placeholder {
+    height: auto;
+    min-height: 50vh;
+    padding: 2rem 1.5rem;
+  }
+
+  .placeholderContent {
+    padding: 2rem 1.5rem;
+  }
+
+  .placeholderTitle {
+    font-size: 1.75rem;
+  }
+
+  .placeholderText {
+    font-size: 1rem;
+  }
   
   .cards3 {
     grid-template-columns: 1fr 1fr;
@@ -483,6 +603,20 @@
 @media (max-width: 768px) {
   .section1 { padding: 3rem 1rem; }
   .section1Title { font-size: 2.25rem; }
+  
+  /* Seasonal message mobile adjustments */
+  .seasonalMessage {
+    padding: 1.25rem;
+    margin: 1.25rem 0;
+  }
+  
+  .seasonalMessage h3 {
+    font-size: 1.25rem;
+  }
+  
+  .seasonalMessage p {
+    font-size: 0.9rem;
+  }
   .section2Title { font-size: 1.75rem; }
   .features { flex-direction: column; gap: 1rem; }
   .featureIcon { font-size: 1.1rem; }
@@ -499,16 +633,38 @@
     padding: 0.2rem 0.8rem;  
     border-radius: 6px;       
     line-height: 1; 
-    
-    
- 
   }
   .section5Overlay{
     justify-content: right;
-    
   }
 
+  /* Instagram placeholder tablet adjustments */
+  .section4Placeholder {
+    min-height: 45vh;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 
+  .placeholderContent {
+    padding: 2.5rem 1.5rem;
+    max-width: 85%;
+  }
+
+  .placeholderTitle {
+    font-size: 1.75rem;
+  }
+
+  .placeholderText {
+    font-size: 1rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .instagramCTA {
+    font-size: 1.05rem;
+    padding: 0.7rem 1.4rem;
+  }
 }
 
 /* Small phones */
@@ -520,6 +676,45 @@
   .section2Image { max-height: 250px; max-width: 300px; }
   .section4{
     height:70vh;
+  }
+
+  /* Instagram placeholder mobile adjustments */
+  .section4Placeholder {
+    min-height: auto;
+    height: auto;
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .placeholderContent {
+    padding: 1.5rem 1rem;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .placeholderIcon svg {
+    width: 48px;
+    height: 48px;
+  }
+
+  .placeholderTitle {
+    font-size: 1.5rem;
+  }
+
+  .placeholderText {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+  }
+
+  .instagramCTA {
+    font-size: 1rem;
+    padding: 0.6rem 1.2rem;
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
   }
   
   .features {
@@ -537,7 +732,117 @@
   
   .section5Desc { font-size: 0.85rem; }
   .section5Button { font-size: 0.9rem; padding: 0.5rem 1rem; margin: 4rem; }
- 
+}
 
+/* Extra small phones */
+@media (max-width: 360px) {
+  .section1 { padding: 2rem 0.75rem; }
+  .section2 { padding: 1.5rem 0.75rem; }
+  .section3 { padding: 2rem 0.75rem; }
+  
+  /* Instagram placeholder extra small mobile adjustments */
+  .section4Placeholder {
+    min-height: auto;
+    height: auto;
+    padding: 1rem 0.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .placeholderContent {
+    padding: 1.25rem 0.75rem;
+    max-width: 95%;
+    border-radius: 10px;
+    margin: 0 auto;
+  }
+
+  .placeholderIcon svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  .placeholderTitle {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .placeholderText {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+  }
+
+  .instagramCTA {
+    font-size: 0.95rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .section4Title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Mobile viewport height fixes */
+@media (max-height: 600px) {
+  .section4Placeholder {
+    min-height: auto;
+    height: auto;
+    padding: 1rem 1rem;
+  }
+  
+  .placeholderContent {
+    padding: 1.5rem 1rem;
+    max-width: 90%;
+  }
+  
+  .placeholderTitle {
+    font-size: 1.4rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .placeholderText {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+  
+  .instagramCTA {
+    font-size: 0.95rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
+/* Mobile landscape orientation */
+@media (max-height: 500px) and (orientation: landscape) {
+  .section4Placeholder {
+    min-height: auto;
+    height: auto;
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .placeholderContent {
+    padding: 1.5rem 2rem;
+    max-width: 70%;
+  }
+
+  .placeholderTitle {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .placeholderText {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .instagramCTA {
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
+  }
 }
 

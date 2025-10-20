@@ -73,11 +73,9 @@ export default function Home({ nextEvent, instaPosts = [] }) {
                 North Beach’s newest beach bar is here. Located in the backyard of the historic 935 Ocean Hotel,
                 935 Surf Shack is your go-to for live music, fresh lobster rolls, and amazing cocktails.
               </p>
-              <ul className={styles.hoursList}>
-                <li><strong>Mon–Wed:</strong> Closed</li>
-                <li><strong>Thurs & Fri:</strong> 3–8 pm</li>
-                <li><strong>Sat & Sun:</strong> 12-8pm</li>
-              </ul>
+              <div className={styles.seasonalMessage}>
+                <p><strong>We're closed for the winter season!</strong></p>
+              </div>
               <Link href="/menu" className={styles.ctaButton}>
                 View Our Menu
               </Link>
@@ -183,104 +181,112 @@ export default function Home({ nextEvent, instaPosts = [] }) {
         </section>
 
         {/* SECTION 4: Instagram */}
-        <section className={styles.section4}>
-      <h2 className={styles.section4Title}>Our Instagram Feed</h2>
+        <section className={`${styles.section4} ${instaPosts.length === 0 ? styles.section4Placeholder : ''}`}>
+          <h2 className={styles.section4Title}>Our Instagram Feed</h2>
 
-      {isMounted && (
-        <div className={styles.swiperWrapper}>
+          {isMounted && instaPosts.length > 0 ? (
+            <div className={styles.swiperWrapper}>
+              <Swiper
+                spaceBetween={12}
+                slidesPerView={1.2}
+                centeredSlides
+                loop
+                autoplay={{ delay: 3000, disableOnInteraction: false }}
+                pagination={{
+                  el: '#insta-pagination',
+                  clickable: true,
+                }}
+                navigation={{
+                  prevEl: '#insta-prev',
+                  nextEl: '#insta-next',
+                }}
+                breakpoints={{  
+                 0:   { slidesPerView: 1, spaceBetween: 8 },  
+                320: { slidesPerView: 1,  spaceBetween: 8 },  
+               640: { slidesPerView: 1 },
+                1024:{ slidesPerView: 3.2 },
+      }}
+                className={styles.swiperContainer}
+                onSwiper={(swiper) => {
+                swiper.on('slideChange', () => {
+                  const activeSlide = swiper.slides[swiper.activeIndex];
+                  const video = activeSlide?.querySelector('video');
+                  video?.play().catch(() => {});
+                });
 
-          <Swiper
-            spaceBetween={12}
-            slidesPerView={1.2}
-            centeredSlides
-            loop
-            autoplay={{ delay: 3000, disableOnInteraction: false }}
-            pagination={{
-              el: '#insta-pagination',
-              clickable: true,
-            }}
-            navigation={{
-              prevEl: '#insta-prev',
-              nextEl: '#insta-next',
-            }}
-            breakpoints={{  
-             0:   { slidesPerView: 1, spaceBetween: 8 },  
-            320: { slidesPerView: 1,  spaceBetween: 8 },  
-           640: { slidesPerView: 1 },
-            1024:{ slidesPerView: 3.2 },
-  }}
-            className={styles.swiperContainer}
-            /*
-            onSlideChange={(swiper) => {
-              document.querySelectorAll('video').forEach((vid) => {
-                if (swiper.slides[swiper.activeIndex].contains(vid)) {
-                  vid.play().catch(() => {});
-                } else {
-                  vid.pause();
-                }
-              });
-            }}
-            onInit={(swiper) => {
-              swiper.slides[0].querySelector('video')?.play().catch(() => {});
-            }}
-          > */
-          onSwiper={(swiper) => {
-          swiper.on('slideChange', () => {
-            const activeSlide = swiper.slides[swiper.activeIndex];
-            const video = activeSlide?.querySelector('video');
-            video?.play().catch(() => {});
-          });
-
-          setTimeout(() => {
-            const firstSlide = swiper.slides[0];
-            const video = firstSlide?.querySelector('video');
-            video?.play().catch(() => {});
-          }, 0);
-        }}>
-            {instaPosts.map((post) => (
-              <SwiperSlide key={post.id}>
-                <a
-                  href={post.permalink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.instaLink}
-                >
-                  <div className={styles.mediaWrapper}>
-                    {post.media_type === 'VIDEO' ? (
-                      <video
-                        src={post.media_url}
-                        muted
-                        playsInline
-                        loop
-                        className={styles.video}
-                      />
-                    ) : (
-                      <Image
-                        src={post.media_url}
-                        alt={post.caption?.slice(0, 80) || 'Instagram post'}
-                        width={300}
-                        height={250}
-                        objectFit="cover"
-                        unoptimized
-                        className={styles.galleryImage}
-                      />
-                    )}
-                    {post.caption && (
-                      <div className={styles.captionOverlay}>
-                        {post.caption}
+                setTimeout(() => {
+                  const firstSlide = swiper.slides[0];
+                  const video = firstSlide?.querySelector('video');
+                  video?.play().catch(() => {});
+                }, 0);
+              }}>
+                {instaPosts.map((post) => (
+                  <SwiperSlide key={post.id}>
+                    <a
+                      href={post.permalink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.instaLink}
+                    >
+                      <div className={styles.mediaWrapper}>
+                        {post.media_type === 'VIDEO' ? (
+                          <video
+                            src={post.media_url}
+                            muted
+                            playsInline
+                            loop
+                            className={styles.video}
+                          />
+                        ) : (
+                          <Image
+                            src={post.media_url}
+                            alt={post.caption?.slice(0, 80) || 'Instagram post'}
+                            width={300}
+                            height={250}
+                            objectFit="cover"
+                            unoptimized
+                            className={styles.galleryImage}
+                          />
+                        )}
+                        {post.caption && (
+                          <div className={styles.captionOverlay}>
+                            {post.caption}
+                          </div>
+                        )}
                       </div>
-                    )}
-                  </div>
-                </a>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+                    </a>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
 
-          {/* Custom pagination container */}
-          <div id="insta-pagination" className={styles.customPagination} />
-        </div>
-      )}
-    </section>
+              {/* Custom pagination container */}
+              <div id="insta-pagination" className={styles.customPagination} />
+            </div>
+          ) : (
+            <div className={styles.instagramPlaceholder}>
+              <div className={styles.placeholderContent}>
+                <div className={styles.placeholderIcon}>
+                  <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" fill="currentColor"/>
+                  </svg>
+                </div>
+                <h3 className={styles.placeholderTitle}>Follow Our Journey</h3>
+                <p className={styles.placeholderText}>
+                  Check out our latest posts and stories on Instagram for behind-the-scenes content, 
+                  special events, and the freshest updates from the Surf Shack!
+                </p>
+                <a 
+                  href="https://www.instagram.com/935surfshack/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className={styles.instagramCTA}
+                >
+                  Visit Our Instagram
+                </a>
+              </div>
+            </div>
+          )}
+        </section>
 
 
 
@@ -326,27 +332,44 @@ export async function getStaticProps() {
   // Instagram Basic Display API call
   const accessToken = process.env.INSTAGRAM_ACCESS_TOKEN;
   let instaPosts = [];
-  try {
-    const fields = ['id','caption','media_url','permalink','media_type','timestamp']
-      .join(',');
-    const res = await fetch(
-      `https://graph.instagram.com/me/media?fields=${fields}&access_token=${accessToken}`
-    );
+  
+  // Only attempt Instagram API call if access token is available
+  if (accessToken) {
+    try {
+      const fields = ['id','caption','media_url','permalink','media_type','timestamp']
+        .join(',');
+      const res = await fetch(
+        `https://graph.instagram.com/me/media?fields=${fields}&access_token=${accessToken}`
+      );
 
-    if (!res.ok) {
-      const errText = await res.text();
-      console.error('Instagram API error:', errText);
-    } else {
-      const { data } = await res.json();
-      instaPosts = data
-      .filter(p =>
-        ['IMAGE','CAROUSEL_ALBUM','VIDEO'].includes(p.media_type)
-      )
-      .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
-      .slice(0, 6);
+      if (!res.ok) {
+        const errText = await res.text();
+        console.error('Instagram API error:', {
+          status: res.status,
+          statusText: res.statusText,
+          error: errText
+        });
+      } else {
+        const { data } = await res.json();
+        if (data && Array.isArray(data)) {
+          instaPosts = data
+            .filter(p =>
+              ['IMAGE','CAROUSEL_ALBUM','VIDEO'].includes(p.media_type)
+            )
+            .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
+            .slice(0, 6);
+        } else {
+          console.warn('Instagram API returned unexpected data format:', data);
+        }
+      }
+    } catch (err) {
+      console.error('Instagram fetch failed:', {
+        error: err.message,
+        stack: err.stack
+      });
     }
-  } catch (err) {
-    console.error('Instagram fetch failed:', err);
+  } else {
+    console.warn('Instagram access token not configured - showing placeholder content');
   }
 
   return {

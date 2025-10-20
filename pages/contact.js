@@ -35,17 +35,13 @@ export default function Contact() {
         </p>
         <section className={styles.infoSection}>
   <div className={styles.infoGrid}>
-    {/* ─── Hours Card ─────────────────────────── */}
+    {/* ─── Seasonal Status Card ─────────────────────────── */}
     <div className={styles.hoursCard}>
-      <h3 className={styles.infoTitle}>Hours</h3>
-      <ul className={styles.hoursList}>
-        <li>Mon – Wed: Closed</li>
-        <li>Thurs & Fri: 3–8 pm</li>
-        <li>Sat & Sun: 12-8pm</li>
-      </ul>
-      <p className={styles.hoursNote}>
-        After Labor Day hours!
-      </p>
+      <h3 className={styles.infoTitle}>🏖️ Seasonal Status</h3>
+      <div className={styles.seasonalStatus}>
+        <p className={styles.closedMessage}><strong>We're closed for the winter season!</strong></p>
+        <p className={styles.reopeningMessage}>Check back in 2026 for our hours!</p>
+      </div>
     </div>
 
     {/* ─── Social Media Card ──────────────────── */}
