@@ -1,54 +1,71 @@
+/* gallery.module.css */
 .masonryContainer {
-  margin-top:5rem;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 0 12px;
-  }
-  
-  .myMasonryGrid {
-    display: flex;
-    margin-left: -12px; 
-    width: 100%;
-  }
-  
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 12px;
+  box-sizing: border-box;
+}
+
+.galleryTitle {
+  text-align: center;
+  font-family: var(--font-lobster, 'Lobster Two', cursive);
+  font-size: 2.5rem;
+  color: var(--primary, #f5877c);
+  margin-bottom: 2rem;
+}
+
+.myMasonryGrid {
+  display: flex;
+  margin-left: -12px;
+  width: 100%;
+}
+
+.myMasonryGridColumn {
+  padding-left: 12px;
+  background-clip: padding-box;
+}
+
+.galleryItem {
+  position: relative;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.galleryItem img {
+  border-radius: 8px;
+  transition: transform 0.4s ease;
+}
+
+.galleryOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  transition: background 0.3s ease;
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.galleryItem:hover img {
+  transform: scale(1.04);
+}
+
+.galleryItem:hover .galleryOverlay {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+@media (min-width: 1100px) {
   .myMasonryGridColumn {
-    padding-left: 12px; 
-    background-clip: padding-box;
+    flex: 1;
   }
-  
+}
 
-  .galleryItem {
-    margin-bottom: 12px;
+@media (max-width: 700px) {
+  .masonryContainer {
+    padding: 1rem 8px;
   }
-  
-  .galleryItem img {
-    width: 100%;
-    display: block;
-    object-fit: cover;
-    border-radius: 6px;
-    transition: transform 0.3s ease;
+  .galleryTitle {
+    font-size: 2rem;
   }
-  
-
-  .galleryItem:not(.filler):hover img {
-    transform: scale(1.05);
-  }
-
-  .filler {
-    visibility: hidden;
-
-  }
-  
-
-  @media (min-width: 1100px) {
-    .myMasonryGridColumn {
-      flex: 1;
-    }
-
-  }
-  @media (max-width: 1100px) {
-    .masonryContainer {
-      margin-top: 3rem;
-    }
-
-  }
+}

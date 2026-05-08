@@ -41,18 +41,12 @@
 /* =========================
    EVENTS SECTION IMAGE FIX + SMALL CARDS
 ========================= */
-.events-module__eventsSection {
-  padding-top: 0 !important;
-  padding-bottom: 0;
-}
-
-.eventsSection{
-  padding-top: 1.5rem !important;
-  gap: 0.75rem; 
+.eventsSection {
+  padding-top: 1.5rem;
+  gap: 0.75rem;
 }
 
 .carouselWrapper {
-  padding-top: 0;
   max-width: 90vw;
   justify-self: center;
   height: 500px;
@@ -89,7 +83,7 @@
 
 /* Small event cards */
 .eventCard {
-  width: 300px !important;
+  width: 300px;
   height: auto;
   background: #fff;
   border: 1px solid #eee;
@@ -97,15 +91,21 @@
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0,0,0,0.08);
   flex-direction: column;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.eventCard:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  transform: translateY(-3px);
 }
 
 .eventImageWrapper {
   position: relative;
   width: 100%;
-  height: 300px  !important;
+  height: 300px;
   aspect-ratio: 4 / 3;
   overflow: hidden;
-  border-radius: 8px 8px 0 0;  
+  border-radius: 8px 8px 0 0;
   background: #f0f0f0;
 }
 
@@ -206,16 +206,25 @@
 .viewToggle button {
   padding: 0.5rem 1.25rem;
   margin: 0 0.5rem;
-  border: none;
+  border: 2px solid transparent;
   cursor: pointer;
   border-radius: 999px;
   font-size: 1rem;
-  transition: background-color 0.3s ease;
+  background: none;
+  color: #555;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
 }
 
 .viewToggle button:hover {
   background-color: #f5877a;
   color: #fff;
+  transform: translateY(-1px);
+}
+
+.activeToggle {
+  background-color: #f5877a;
+  color: #fff;
+  border-color: #f5877a;
 }
 
 
@@ -420,6 +429,7 @@
   flex: 1 1 auto;
   max-width: 90vw;
 }
+
 /* ==============
    RESPONSIVE
 =============== */
@@ -428,71 +438,46 @@
     font-size: 1.5rem;
   }
 
-  
-  .viewToggle button {
-    padding: 0.5rem 1.25rem;
-    margin: 0 0.5rem;
-    border: none;
-    cursor: pointer;
-    border-radius: 999px;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-    color: #f5877a
+  .mobileCenter {
+    align-items: center;
   }
-  .mobileCenter{
-    align-items: center !important;
-  }
+
   .eventsSection {
-    display: grid !important;
-    grid-template-columns: 1fr;      
-    justify-content: center;        
-    justify-items: center;           
-    gap: 1rem;                     
-  }
-
-  .heroGallery {
-    grid-template-columns: 1fr;
-  }
-  .container{
-    margin-top: 0rem;
-  }
-  .galleryItem:not(:first-child) {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .eventCard {
-    width: auto !important;       
-    max-width: 350px;
-    height: 100% !important;            
-    margin: 0 auto;              
-  }
-
-
-  .contentWrapper {
-    height: auto !important;    
-  }
-
-
-  .carouselWrapper,
-  .swiper,
-  .swiper-wrapper,
-  .swiper-slide {
-    height: auto !important;     
-  }
-
- 
-  .eventsSection {
-    display: grid !important;
+    display: grid;
     grid-template-columns: 1fr;
     justify-content: center;
     justify-items: center;
     gap: 1.5rem;
   }
-}
-@media (max-width: 768px) {
+
+  .heroGallery {
+    grid-template-columns: 1fr;
+  }
+
+  .container {
+    margin-top: 0;
+  }
+
+  .galleryItem:not(:first-child) {
+    display: none;
+  }
+
+  .eventCard {
+    width: auto;
+    max-width: 350px;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .contentWrapper {
+    height: auto;
+  }
+
+  .carouselWrapper {
+    height: auto;
+  }
+
   .arrowButton {
-    display: none !important;
+    display: none;
   }
 }

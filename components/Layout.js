@@ -2,26 +2,21 @@
 import Header from './Header';
 import Footer from './Footer';
 import { useRouter } from 'next/router';
+import styles from '../styles/components/layout.module.css';
 
 export default function Layout({ children }) {
   const router = useRouter();
-  
   const isHomePage = router.pathname === '/';
 
-  const mainStyle = {
-    backgroundColor: '#fff',
-    width: '100%',
-    minHeight: '100vh',
-    margin: '0 auto',
-    fontFamily: 'Pacifico, cursive',
-    overflowX: 'hidden',
-    paddingTop: isHomePage ? '0' : '80px' 
-  };
+  const wrapperClass = [
+    styles.siteWrapper,
+    isHomePage ? styles.siteWrapperHome : styles.siteWrapperInner,
+  ].join(' ');
 
   return (
     <>
       <Header />
-      <main style={mainStyle}>{children}</main>
+      <div className={wrapperClass}>{children}</div>
       <Footer />
     </>
   );

@@ -55,14 +55,20 @@
   display: flex;
   gap: clamp(0.5rem, 2vw, 1rem);
 }
+.socialIconLink {
+  display: inline-flex;
+  transition: transform 0.2s ease;
+}
+.socialIconLink:hover {
+  transform: scale(1.15) translateY(-2px);
+}
 .socialIcon {
   font-size: clamp(1.5rem, 3vw, 2rem);
   color: white;
-  transition: transform 0.2s ease, color 0.2s ease;
+  transition: color 0.2s ease;
 }
-.socialIcon:hover {
-  transform: scale(1.1);
-  color: black;
+.socialIconLink:hover .socialIcon {
+  color: #222;
 }
 
 /* Section headings */
@@ -125,7 +131,7 @@
 
   /* shrink headings */
   .footerSection h4 {
-    font-size: 1.rem;
+    font-size: 1rem;
     margin-bottom: 0.5rem;
   }
 

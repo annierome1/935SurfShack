@@ -19,12 +19,22 @@
   border-radius: 999px;
   background: none;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s;
+  font-weight: 500;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
-.tabButton:hover,
+.tabButton:hover {
+  background: #f5877a;
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(245, 135, 122, 0.3);
+}
+.tabButton:active {
+  transform: translateY(0);
+}
 .activeTab {
   background: #f5877a;
   color: #fff;
+  box-shadow: 0 2px 8px rgba(245, 135, 122, 0.25);
 }
 
 .title {
@@ -86,8 +96,13 @@
   border-radius: 8px;
   padding: 1rem;
   margin-bottom: 1.5rem;
-  overflow: visible;  
-  
+  overflow: visible;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.menuItem:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
 }
 
 .DrinkMenuItem {
@@ -210,13 +225,18 @@
   padding: 0.75rem 1.5rem;
   background: #f5877a;
   color: #fff;
-  border-radius: 6px;
+  border-radius: 8px;
   text-decoration: none;
-  transition: background 0.2s;
-  font-family: "Lobster Two", cursive;
+  font-family: var(--font-lobster, "Lobster Two", cursive);
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 .downloadButton:hover {
   background: #e17366;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(245, 135, 122, 0.35);
+}
+.downloadButton:active {
+  transform: translateY(0);
 }
 /* ────────────────────────────────────────
    Drinks Section (fully horizontal cards)

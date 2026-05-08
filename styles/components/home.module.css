@@ -4,17 +4,10 @@
 .scrollContainer {
   height: 100%;
   overflow-y: auto;
-  scroll-snap-type: y mandatory;
-  scroll-padding-top: 4rem; /* header height */
   scroll-behavior: smooth;
 }
 .scrollContainer section {
-  scroll-snap-align: start;
   padding-top: 0;
-  min-height: calc(100vh - 4rem);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 
@@ -24,13 +17,18 @@
   padding:          0.75rem 1.5rem;
   border-radius:    8px;
   text-decoration:  none;
-  transition:       transform 0.2s, background 0.2s;
+  transition:       transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
   cursor:           pointer;
-  font-family: 'Lobster Two', cursive;
+  font-family: var(--font-lobster, 'Lobster Two', cursive);
 }
 .ctaButton:hover {
-  transform:        scale(1.05);
+  transform:        translateY(-2px);
   background:       var(--cta-hover);
+  box-shadow:       0 4px 15px rgba(245, 135, 122, 0.35);
+}
+.ctaButton:active {
+  transform:        translateY(0);
+  box-shadow:       0 2px 6px rgba(245, 135, 122, 0.2);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────
@@ -235,17 +233,27 @@
 }
 
 .card3 {
-  position: relative;      /* for Next.js Image layout="fill" */
-  width: 100%;             /* fill its grid cell */
-  aspect-ratio: 4 / 3;     /* maintain your 4:3 ratio automatically */
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* ensure the Next <Image> covers the wrapper fully */
+.card3:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
 .card3 :global(img) {
   object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.card3:hover :global(img) {
+  transform: scale(1.05);
 }
 
 .card3Overlay {
@@ -253,16 +261,20 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  /* let the height expand to fit the content */
   height: auto;
-  padding: 0.5rem 0.75rem;
-  background: rgba(0, 0, 0, 0.7);        /* darker so the white text really pops */
-  backdrop-filter: blur(4px);           /* optional: blur the image behind */
+  padding: 0.75rem 1rem;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 1rem;
+  gap: 0.5rem;
   color: white;
+  transition: background 0.3s ease;
+}
+
+.card3:hover .card3Overlay {
+  background: rgba(0, 0, 0, 0.75);
 }
 
 .card3Overlay h3 {
@@ -393,7 +405,7 @@
 
 .swiperWrapper {
   position: relative;
-  overflow: visible  !important;
+  overflow: visible;
 }
 
 /* Instagram Placeholder Styles */
@@ -534,14 +546,20 @@
 }
 .section5Button {
   background-color: rgba(245,135,124,0.9);
-  color: black;
+  color: #fff;
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
   text-decoration: none;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  font-family: var(--font-lobster, 'Lobster Two', cursive);
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 .section5Button:hover {
   background-color: #d76a60;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(245, 135, 124, 0.4);
+}
+.section5Button:active {
+  transform: translateY(0);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────

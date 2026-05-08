@@ -2,77 +2,64 @@
 import fs from 'fs'
 import path from 'path'
 import { useState, useEffect, useMemo } from 'react'
+import Head from 'next/head'
+import Image from 'next/image'
 import Layout from '../components/Layout'
+import FadeIn from '../components/FadeIn'
 import Masonry from 'react-masonry-css'
 import styles from '../styles/components/gallery.module.css'
+
+const breakpointColumnsObj = {
+  default: 3,
+  1100: 2,
+  700: 1,
+}
 
 export async function getStaticProps() {
   const imagesDirectory = path.join(process.cwd(), 'public/gallery')
   const filenames = fs.readdirSync(imagesDirectory)
-  const images = filenames.map((name) => `/gallery/${name}`)
+  const images = filenames
+    .filter((name) => /\.(jpe?g|png|webp|gif)$/i.test(name))
+    .map((name) => `/gallery/${name}`)
   return { props: { images } }
 }
 
 export default function Gallery({ images }) {
-
-  const breakpointColumnsObj = useMemo(() => ({
-    default: 3,
-    1100: 2,
-    700: 1,
-  }), [])
-
-  const [columns, setColumns] = useState(breakpointColumnsObj.default)
-
-
-  useEffect(() => {
-    const updateColumns = () => {
-      const w = window.innerWidth
-      // find the first breakpoint <= w
-      const bp = Object.entries(breakpointColumnsObj)
-        .sort((a, b) => b[0] - a[0])
-        .find(([breakAt]) => breakAt === 'default' || w <= +breakAt)
-      setColumns(bp ? bp[1] : breakpointColumnsObj.default)
-    }
-    window.addEventListener('resize', updateColumns)
-    updateColumns()
-    return () => window.removeEventListener('resize', updateColumns)
-  }, [breakpointColumnsObj])
-
-
   const [shuffled, setShuffled] = useState(images)
+
   useEffect(() => {
     setShuffled((imgs) => [...imgs].sort(() => Math.random() - 0.5))
   }, [])
 
-
-  const fillerCount = useMemo(() => {
-    const rem = shuffled.length % columns
-    return rem === 0 ? 0 : columns - rem
-  }, [shuffled.length, columns])
-
   return (
     <Layout>
-      <div className={styles.masonryContainer}>
-        <Masonry
-          breakpointCols={breakpointColumnsObj}
-          className={styles.myMasonryGrid}
-          columnClassName={styles.myMasonryGridColumn}
-        >
-          {shuffled.map((src, i) => (
-            <div key={i} className={styles.galleryItem}>
-              <img src={src} alt={`Gallery ${i+1}`} />
-            </div>
-          ))}
-
-
-          {Array.from({ length: fillerCount }).map((_, i) => (
-            <div
-              key={`filler-${i}`}
-              className={styles.galleryItem + ' ' + styles.filler}
-            />
-          ))}
-        </Masonry>
-      </div>
+      <Head>
+        <title>Gallery — 935 Surf Shack</title>
+      </Head>
+      <FadeIn>
+        <div className={styles.masonryContainer}>
+          <h1 className={styles.galleryTitle}>Gallery</h1>
+          <Masonry
+            breakpointCols={breakpointColumnsObj}
+            className={styles.myMasonryGrid}
+            columnClassName={styles.myMasonryGridColumn}
+          >
+            {shuffled.map((src, i) => (
+              <div key={src} className={styles.galleryItem}>
+                <Image
+                  src={src}
+                  alt={`935 Surf Shack gallery photo ${i + 1}`}
+                  width={600}
+                  height={450}
+                  sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"
+                  style={{ width: '100%', height: 'auto', display: 'block' }}
+                />
+                <div className={styles.galleryOverlay} />
+              </div>
+            ))}
+          </Masonry>
+        </div>
+      </FadeIn>
     </Layout>
   )
 }

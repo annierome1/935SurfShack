@@ -1,18 +1,17 @@
-'use client';
-
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Layout from '../components/Layout';
+import Head from 'next/head';
 import Faq from '../components/FAQ';
-import styles from '../styles/components/faq.module.css'; 
+import styles from '../styles/components/faq.module.css';
 
 export default function FAQPage() {
   return (
-    <>
-      <Header />
-      <main className={styles.faqWrapper}>
+    <Layout>
+      <Head>
+        <title>FAQ — 935 Surf Shack</title>
+      </Head>
+      <div className={styles.faqWrapper}>
         <Faq />
-      </main>
-      <Footer />
-    </>
+      </div>
+    </Layout>
   );
 }

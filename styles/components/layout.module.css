@@ -1,0 +1,16 @@
+/* Layout.module.css */
+.siteWrapper {
+  background-color: #fff;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+  overflow-x: clip;
+}
+
+.siteWrapperInner {
+  padding-top: 80px;
+}
+
+.siteWrapperHome {
+  padding-top: 0;
+}

@@ -1,34 +1,44 @@
 /* globals.css */
 
-@import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-
-
 :root {
-  /* CTA color variables */
+  /* Brand colors */
   --cta-bg:           #f5877a;
   --cta-hover:        #d76a60;
   --cta-text-color:   #fff;
-  --card-bg:       #f9fafb;
-  --card-radius:   12px;
-  --card-shadow:   0 4px 12px rgba(0,0,0,0.04);
-  --primary:       #f5877c;
-  --primary-dark:  #e17366;
-  --text-dark:     #222;
-  --text-muted:    #555;
-  --header-offset: calc(var(--banner-height) + var(--header-height));
+  --primary:          #f5877c;
+  --primary-dark:     #e17366;
+  --accent:           #c2e4e7;
 
+  /* Surfaces */
+  --card-bg:          #f9fafb;
+  --card-radius:      12px;
+  --card-shadow:      0 4px 12px rgba(0,0,0,0.04);
+
+  /* Text */
+  --text-dark:        #222;
+  --text-muted:       #555;
+
+  /* Layout */
+  --header-offset:    calc(var(--banner-height) + var(--header-height));
+
+  /* Fonts (set by next/font CSS variables) */
+  --font-body:        -apple-system, BlinkMacSystemFont, "SF Pro", "Segoe UI", Roboto, sans-serif;
 }
 
-html,
-body {
+html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  overflow-x: hidden;
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "Segoe UI", Roboto, sans-serif;
+  font-family: var(--font-body);
   width: 100%;
   color: var(--text-dark);
-  
+  overscroll-behavior: none;
+}
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overscroll-behavior: none;
 }
 main {
   margin: 0;
@@ -58,7 +68,7 @@ main {
 
 
 html, body, #__next {
-  height: 100%;
+  min-height: 100%;
   margin: 0;
 }
 

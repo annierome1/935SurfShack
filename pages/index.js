@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Hero from '../components/Hero';
+import FadeIn from '../components/FadeIn';
 import { FaMusic, FaCalendarAlt } from 'react-icons/fa';
 import styles from '../styles/components/home.module.css';
 import { client } from '../sanity/lib/client';
@@ -19,7 +20,6 @@ import section2Img from '../public/images/section2.jpg';
 import coastalImg from '../public/images/cuisine.jpg';
 import cocktailsImg from '../public/images/craft.jpg';
 import brewsImg from '../public/images/brews.jpg';
-
 
 SwiperCore.use([Pagination, Autoplay, Navigation]);
 const builder = imageUrlBuilder(client);
@@ -50,31 +50,33 @@ export default function Home({ nextEvent, instaPosts = [] }) {
         <title>935 Surf Shack</title>
       </Head>
 
-      {/* Hero */}
-      <main className="scrollContainer">
       <div id="hero">
         <Hero />
       </div>
+
         {/* SECTION 1 */}
+        <FadeIn>
         <section className={styles.section1}>
           <div className={styles.section1Content}>
             <div className={styles.section1Image}>
               <Image
                 src={section1Img}
                 alt="935 Surf Shack Interior"
-                layout="fill"
-                objectFit="cover"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                style={{ objectFit: 'cover' }}
                 priority
               />
             </div>
             <div className={styles.section1Text}>
               <h2 className={styles.section1Title}>Welcome to the Surf Shack at 935 Ocean Beachside Inn</h2>
               <p className={styles.section1Desc}>
-                North Beach’s newest beach bar is here. Located in the backyard of the historic 935 Ocean Hotel,
+                North Beach&apos;s newest beach bar is here. Located in the backyard of the historic 935 Ocean Hotel,
                 935 Surf Shack is your go-to for live music, fresh lobster rolls, and amazing cocktails.
               </p>
               <div className={styles.seasonalMessage}>
-                <p><strong>We're closed for the winter season!</strong></p>
+                <p><strong>Opening May 14th!</strong></p>
+                <p>Friday &amp; Saturday 3&ndash;9 &bull; Sunday 12&ndash;9</p>
               </div>
               <Link href="/menu" className={styles.ctaButton}>
                 View Our Menu
@@ -82,54 +84,48 @@ export default function Home({ nextEvent, instaPosts = [] }) {
             </div>
           </div>
         </section>
+        </FadeIn>
 
         {/* SECTION 2: Next Upcoming Event */}
+        <FadeIn>
         <section className={styles.section2}>
           <div className={styles.section2Content}>
-            {/* TEXT COLUMN */}
             <div className={styles.section2Text}>
               <h2 className={styles.section2Title}>Your Go-to For Live Music</h2>
-
-              
-                  <p className={styles.section2Desc}>
-                    Join us for live music on Friday & Saturday in the spring and fall
-                    and Thursday–Sunday in the summer!
-                  </p>
-                  <div className={styles.features}>
-                    <div className={styles.feature}>
-                      <FaMusic className={styles.featureIcon} />
-                      <span>Local Artists</span>
-                    </div>
-                    <div className={styles.feature}>
-                      <FaCalendarAlt className={styles.featureIcon} />
-                      <span>Weekly Events</span>
-                    </div>
-                  </div>
-         
-           
-
+              <p className={styles.section2Desc}>
+                Join us for live music on Friday &amp; Saturday in the spring and fall
+                and Thursday&ndash;Sunday in the summer!
+              </p>
+              <div className={styles.features}>
+                <div className={styles.feature}>
+                  <FaMusic className={styles.featureIcon} />
+                  <span>Local Artists</span>
+                </div>
+                <div className={styles.feature}>
+                  <FaCalendarAlt className={styles.featureIcon} />
+                  <span>Weekly Events</span>
+                </div>
+              </div>
               <Link href="/events" className={styles.ctaButton}>
                 See The Full Lineup
               </Link>
             </div>
 
-            {/* IMAGE COLUMN (event or fallback) */}
             <div className={styles.section2Image}>
-
-            <Image
-              src={eventImageUrl}
-              alt={nextEvent?.title ?? 'No upcoming shows'}
-              width={600}                
-              height={400}
-              style={{
-                width: '100%',        
-                height: 'auto',       
-                objectFit: 'cover',
-                objectPosition: 'top',
-              }}
-              priority
-            />
-                          <div className={styles.liveTag}>
+              <Image
+                src={eventImageUrl}
+                alt={nextEvent?.title ?? 'No upcoming shows'}
+                width={600}
+                height={400}
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  objectFit: 'cover',
+                  objectPosition: 'top',
+                }}
+                priority
+              />
+              <div className={styles.liveTag}>
                 {nextEvent ? (
                   <>
                     <strong>Next Up:</strong>{' '}
@@ -137,7 +133,7 @@ export default function Home({ nextEvent, instaPosts = [] }) {
                       hour: 'numeric',
                       minute: '2-digit',
                     })}{' '}
-                    — {nextEvent.title}
+                    &mdash; {nextEvent.title}
                   </>
                 ) : (
                   'No Upcoming Events'
@@ -146,10 +142,12 @@ export default function Home({ nextEvent, instaPosts = [] }) {
             </div>
           </div>
         </section>
+        </FadeIn>
 
         {/* SECTION 3 */}
+        <FadeIn>
         <section className={styles.section3}>
-          <h2 className={styles.section3Title}>Beach Bites & Refreshing Drinks</h2>
+          <h2 className={styles.section3Title}>Beach Bites &amp; Refreshing Drinks</h2>
           <p className={styles.section3Desc}>
             From pretzel bites to 2 for $30 lobster rolls, our food menu pairs perfectly
             with crafted cocktails and local brews.
@@ -164,9 +162,9 @@ export default function Home({ nextEvent, instaPosts = [] }) {
                 <Image
                   src={card.img}
                   alt={card.title}
-                  layout="fill"
-                  objectFit="cover"
-                  priority
+                  fill
+                  sizes="(max-width: 480px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  style={{ objectFit: 'cover' }}
                 />
                 <div className={styles.card3Overlay}>
                   <h3>{card.title}</h3>
@@ -179,8 +177,10 @@ export default function Home({ nextEvent, instaPosts = [] }) {
             View Full Menu
           </Link>
         </section>
+        </FadeIn>
 
         {/* SECTION 4: Instagram */}
+        <FadeIn>
         <section className={`${styles.section4} ${instaPosts.length === 0 ? styles.section4Placeholder : ''}`}>
           <h2 className={styles.section4Title}>Our Instagram Feed</h2>
 
@@ -287,17 +287,19 @@ export default function Home({ nextEvent, instaPosts = [] }) {
             </div>
           )}
         </section>
-
-
-
+        </FadeIn>
 
 
         {/* SECTION 5 */}
+        <FadeIn>
         <section className={styles.section5}>
-          <img
+          <Image
             src="/images/map1.png"
             alt="Map to 935 Surf Shack"
+            width={1200}
+            height={600}
             className={styles.section5Image}
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           />
           <div className={styles.section5Overlay}>
             <h2 className={styles.section5Title}>Steer Your Ship to North Beach</h2>
@@ -314,7 +316,7 @@ export default function Home({ nextEvent, instaPosts = [] }) {
             </a>
           </div>
         </section>
-      </main>
+        </FadeIn>
     </Layout>
   );
 }

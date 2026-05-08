@@ -37,10 +37,10 @@ export default function Contact() {
   <div className={styles.infoGrid}>
     {/* ─── Seasonal Status Card ─────────────────────────── */}
     <div className={styles.hoursCard}>
-      <h3 className={styles.infoTitle}>🏖️ Seasonal Status</h3>
+      <h3 className={styles.infoTitle}>🏖️ Hours</h3>
       <div className={styles.seasonalStatus}>
-        <p className={styles.closedMessage}><strong>We're closed for the winter season!</strong></p>
-        <p className={styles.reopeningMessage}>Check back in 2026 for our hours!</p>
+        <p className={styles.closedMessage}><strong>Opening May 14th!</strong></p>
+        <p className={styles.reopeningMessage}>Friday & Saturday 3–9 • Sunday 12–9</p>
       </div>
     </div>
 

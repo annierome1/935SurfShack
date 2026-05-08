@@ -1,7 +1,7 @@
-'use client';
-
 import { useState } from 'react';
 import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
+import FadeIn from './FadeIn';
 import styles from '../styles/components/faq.module.css';
 
 const faqs = [
@@ -11,7 +11,7 @@ const faqs = [
   },
   {
     question: "What are your hours?",
-    answer: "Our hours change seasonally, so be sure to check our website for the most recent hours but in general, we are open Thursday - Saturday 3-8pm/Sunday 12-6pm in the Spring and Fall and Tuesday - Saturday 1-8pm/Sunday 12-6pm in the Summer."
+    answer: "Our hours change seasonally, so be sure to check our website for the most recent hours. Currently we are open Friday & Saturday 3–9 and Sunday 12–9."
   },
   {
     question: "Where is the Surf Shack located?",
@@ -51,7 +51,7 @@ const faqs = [
   },
   {
     question: "What months is the Surf Shack open?",
-    answer: "We will be open from May 1st to October 13th (Columbus Day), weather permitting!"
+    answer: "We open May 14th for the 2026 season! Hours are Friday & Saturday 3–9 and Sunday 12–9. Summer hours may expand, so check back for updates."
   },
   {
     question: "Where can I find the Live Music schedule?",
@@ -98,25 +98,41 @@ export default function Faq() {
   };
 
   return (
-    <section className={styles.faqSection}>
-      <h2 className={styles.faqTitle}>Frequently Asked Questions</h2>
-      <div className={styles.faqList}>
-        {faqs.map((faq, index) => (
-          <div
-            key={index}
-            className={`${styles.faqItem} ${activeIndex === index ? styles.active : ''}`}
-            onClick={() => toggle(index)}
-          >
-            <div className={styles.question}>
-              {faq.question}
-              <span className={styles.icon}>{activeIndex === index ? '−' : '+'}</span>
+    <FadeIn>
+      <section className={styles.faqSection}>
+        <h2 className={styles.faqTitle}>Frequently Asked Questions</h2>
+        <div className={styles.faqList}>
+          {faqs.map((faq, index) => (
+            <div
+              key={index}
+              className={`${styles.faqItem} ${activeIndex === index ? styles.active : ''}`}
+              onClick={() => toggle(index)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') toggle(index); }}
+            >
+              <div className={styles.question}>
+                {faq.question}
+                <span className={`${styles.icon} ${activeIndex === index ? styles.iconOpen : ''}`}>+</span>
+              </div>
+              <AnimatePresence initial={false}>
+                {activeIndex === index && (
+                  <motion.div
+                    key="answer"
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    style={{ overflow: 'hidden' }}
+                  >
+                    <div className={styles.answer}>{faq.answer}</div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
-            {activeIndex === index && (
-              <div className={styles.answer}>{faq.answer}</div>
-            )}
-          </div>
-        ))}
-      </div>
-    </section>
+          ))}
+        </div>
+      </section>
+    </FadeIn>
   );
 }

@@ -1,11 +1,13 @@
 /* styles/components/Faq.module.css */
-.faqSection {
-    padding: 4rem 2rem;
+.faqWrapper {
+    min-height: 60vh;
+  }
+
+  .faqSection {
+    padding: 2rem 2rem 4rem;
     max-width: 900px;
     margin: 0 auto;
     color: #333;
-    margin-top: 5rem;
-
   }
   
   .faqTitle {
@@ -29,41 +31,52 @@
     padding: 1rem 1.25rem;
     background-color: rgba(255, 255, 255, 0.8);
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
   }
-  
+
   .faqItem:hover {
-    background-color: rgba(245, 135, 124, 0.1);
+    background-color: rgba(245, 135, 124, 0.08);
+    box-shadow: 0 2px 8px rgba(245, 135, 124, 0.15);
   }
-  
+
+  .faqItem:focus-visible {
+    box-shadow: 0 0 0 2px #f5877c;
+  }
+
   .question {
     font-weight: 600;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font-size: 1.1rem;
+    gap: 1rem;
   }
-  
+
   .icon {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: #f5877c;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+    display: inline-block;
   }
-  
+
+  .iconOpen {
+    transform: rotate(45deg);
+  }
+
   .answer {
-    margin-top: 0.75rem;
+    padding-top: 0.75rem;
     font-size: 1rem;
-    line-height: 1.5;
+    line-height: 1.6;
   }
-  
+
   .active {
-    background-color: rgba(245, 135, 124, 0.15);
+    background-color: rgba(245, 135, 124, 0.12);
+    box-shadow: 0 2px 12px rgba(245, 135, 124, 0.1);
   }
   @media (max-width: 1024px) {
-
-    .faqSection{
-      margin-top: 7.5rem;
-    }
-
-    .faqTitle{
+    .faqTitle {
       font-size: 2rem;
     }
   }

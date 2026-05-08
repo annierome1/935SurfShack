@@ -4,18 +4,26 @@ import Script from 'next/script'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
+import { AnimatePresence, motion } from 'framer-motion'
 import ReviewsWidget from '../components/ReviewsWidget'
-import PrivacyBanner from "../components/PrivacyBanner";
+import PrivacyBanner from "../components/PrivacyBanner"
 
-const lobster = Lobster_Two({ subsets: ['latin'], weight: ['400'] })
-const pacifico = Pacifico({ subsets: ['latin'], weight: ['400'] })
+const lobster = Lobster_Two({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-lobster',
+})
+const pacifico = Pacifico({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-pacifico',
+})
 
 const GA_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS
 
 export default function MyApp({ Component, pageProps }) {
   const router = useRouter()
 
-  // Prevent browser from restoring scroll on history navigation
   useEffect(() => {
     if (typeof window !== 'undefined' && 'scrollRestoration' in window.history) {
       const prev = window.history.scrollRestoration
@@ -26,13 +34,11 @@ export default function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     const handleRouteChange = (url) => {
-      // Google Analytics pageview
       if (window.gtag && GA_ID) {
         window.gtag('config', GA_ID, { page_path: url })
       }
-      // Start at top for new pages; preserve in-page anchor jumps
       if (!url.includes('#')) {
-        window.scrollTo({ top: 0, left: 0, behavior: 'auto' }) // use 'smooth' if you prefer
+        window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
       }
     }
 
@@ -44,11 +50,17 @@ export default function MyApp({ Component, pageProps }) {
 
   return (
     <>
+      <Head>
+        <link rel="icon" href="/Logo_transparent.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="935 Surf Shack — North Beach's newest beach bar at 935 Ocean Boulevard, Hampton NH. Live music, fresh lobster rolls, craft cocktails & local brews." />
+        <meta property="og:title" content="935 Surf Shack" />
+        <meta property="og:description" content="North Beach's newest beach bar. Live music, fresh lobster rolls, craft cocktails & local brews." />
+        <meta property="og:type" content="website" />
+      </Head>
+
       {GA_ID && (
         <>
-          <Head>
-            <link rel="icon" href="/Logo_transparent.png" />
-          </Head>
           <Script
             strategy="afterInteractive"
             src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
@@ -69,11 +81,22 @@ export default function MyApp({ Component, pageProps }) {
           />
         </>
       )}
-      <main className={`${lobster.className} ${pacifico.className}`}>
-        <Component {...pageProps} />
+
+      <div className={`${lobster.variable} ${pacifico.variable}`}>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={router.asPath}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <Component {...pageProps} />
+          </motion.div>
+        </AnimatePresence>
         <ReviewsWidget />
         <PrivacyBanner />
-      </main>
+      </div>
     </>
   )
 }
