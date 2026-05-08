@@ -14,7 +14,7 @@
     "clsx": "^2.1.1",
     "framer-motion": "^12.7.3",
     "justified-layout": "^4.1.0",
-    "next": "15.2.4",
+    "next": "^16.2.6",
     "next-sanity": "^9.10.2",
     "nodemailer": "^6.10.1",
     "pdfjs-dist": "^2.16.105",
