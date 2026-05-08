@@ -9,11 +9,6 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "scontent.xx.fbcdn.net", pathname: "/**" },
     ],
   },
-
-  eslint: {
-    ignoreDuringBuilds: true,
-    dirs: ["pages", "app", "components", "lib"],
-  },
 };
 
 export default nextConfig;
