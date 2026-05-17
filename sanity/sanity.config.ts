@@ -1,5 +1,5 @@
 import {defineConfig} from 'sanity'
-import {deskTool} from 'sanity/desk'
+import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
 import deskStructure from './deskStructure'
 import {schemaTypes} from './schemaTypes'
@@ -12,7 +12,7 @@ export default defineConfig({
   dataset: 'events',
 
   plugins: [
-    deskTool({ structure: deskStructure }), // ✅ Now works
+    structureTool({ structure: deskStructure }),
     visionTool(),
   ],
 

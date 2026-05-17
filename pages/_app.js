@@ -94,8 +94,12 @@ export default function MyApp({ Component, pageProps }) {
             <Component {...pageProps} />
           </motion.div>
         </AnimatePresence>
-        <ReviewsWidget />
-        <PrivacyBanner />
+        {!router.pathname.startsWith('/studio') && (
+          <>
+            <ReviewsWidget />
+            <PrivacyBanner />
+          </>
+        )}
       </div>
     </>
   )
