@@ -11,7 +11,7 @@ export default function Hero() {
         transition={{ duration: 0.8, delay: 0.2 }}
       >
         <h1 className={styles.title}>
-          Opening May 14th!
+          Open for the season!
         </h1>
       </motion.div>
     </section>
