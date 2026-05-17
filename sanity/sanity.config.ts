@@ -11,6 +11,8 @@ export default defineConfig({
   projectId: 'igpp6z91',
   dataset: 'events',
 
+  basePath: '/studio',
+
   plugins: [
     structureTool({ structure: deskStructure }),
     visionTool(),
