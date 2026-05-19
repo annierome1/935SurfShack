@@ -11,10 +11,10 @@ import FormSubmit from '../components/FormSubmit';
 import { addWeeks } from 'date-fns';
 
 // Images
-import heroImage from '../public/images/performer.jpg';
+import heroImage from '../public/new_photos/use.jpg';
 import privateEventImage from '../public/images/event.jpg';
 import altImage1 from '../public/images/party1.jpg';
-import altImage2 from '../public/images/party2.jpg';
+import altImage2 from '../public/new_photos/use1.jpg';
 import altImage3 from '../public/images/party3.jpg';
 
 // Swiper imports

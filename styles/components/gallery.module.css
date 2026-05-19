@@ -1,8 +1,12 @@
 /* gallery.module.css */
-.masonryContainer {
+
+/*──────────────────────────────────────────────────────────────────────────
+  Container & Title
+──────────────────────────────────────────────────────────────────────────*/
+.galleryContainer {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 2rem 12px;
+  padding: 2rem 1rem;
   box-sizing: border-box;
 }
 
@@ -14,58 +18,156 @@
   margin-bottom: 2rem;
 }
 
-.myMasonryGrid {
-  display: flex;
-  margin-left: -12px;
-  width: 100%;
-}
-
-.myMasonryGridColumn {
-  padding-left: 12px;
-  background-clip: padding-box;
+/*──────────────────────────────────────────────────────────────────────────
+  Grid — 4 columns desktop, 3 tablet, 2 mobile
+──────────────────────────────────────────────────────────────────────────*/
+.grid {
+  columns: 4;
+  column-gap: 12px;
 }
 
 .galleryItem {
-  position: relative;
+  break-inside: avoid;
   margin-bottom: 12px;
   border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
+  position: relative;
 }
 
 .galleryItem img {
   border-radius: 8px;
-  transition: transform 0.4s ease;
-}
-
-.galleryOverlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0);
-  transition: background 0.3s ease;
-  border-radius: 8px;
-  pointer-events: none;
+  transition: transform 0.4s ease, filter 0.4s ease;
 }
 
 .galleryItem:hover img {
-  transform: scale(1.04);
+  transform: scale(1.03);
+  filter: brightness(0.9);
 }
 
-.galleryItem:hover .galleryOverlay {
-  background: rgba(0, 0, 0, 0.15);
+/*──────────────────────────────────────────────────────────────────────────
+  Lightbox
+──────────────────────────────────────────────────────────────────────────*/
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
-@media (min-width: 1100px) {
-  .myMasonryGridColumn {
-    flex: 1;
+.lightboxImageWrapper {
+  max-width: 90vw;
+  max-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+}
+
+.lightboxClose {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 10;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+  padding: 0.5rem;
+}
+.lightboxClose:hover {
+  opacity: 1;
+}
+
+.lightboxArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  font-size: 1.25rem;
+  cursor: pointer;
+  z-index: 10;
+  padding: 0.75rem;
+  border-radius: 50%;
+  opacity: 0.6;
+  transition: opacity 0.2s ease, background 0.2s ease;
+}
+.lightboxArrow:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.2);
+}
+.lightboxPrev {
+  left: 1rem;
+}
+.lightboxNext {
+  right: 1rem;
+}
+
+.lightboxCounter {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+/*──────────────────────────────────────────────────────────────────────────
+  Tablet (≤1100px) — 3 columns
+──────────────────────────────────────────────────────────────────────────*/
+@media (max-width: 1100px) {
+  .grid {
+    columns: 3;
   }
 }
 
-@media (max-width: 700px) {
-  .masonryContainer {
-    padding: 1rem 8px;
+/*──────────────────────────────────────────────────────────────────────────
+  Mobile (≤600px) — 2 columns, tighter gaps
+──────────────────────────────────────────────────────────────────────────*/
+@media (max-width: 600px) {
+  .galleryContainer {
+    padding: 1rem 0.5rem;
   }
   .galleryTitle {
     font-size: 2rem;
+    margin-bottom: 1.25rem;
+  }
+  .grid {
+    columns: 2;
+    column-gap: 8px;
+  }
+  .galleryItem {
+    margin-bottom: 8px;
+    border-radius: 6px;
+  }
+  .galleryItem img {
+    border-radius: 6px;
+  }
+
+  /* Lightbox mobile adjustments */
+  .lightboxArrow {
+    font-size: 1rem;
+    padding: 0.6rem;
+  }
+  .lightboxPrev {
+    left: 0.5rem;
+  }
+  .lightboxNext {
+    right: 0.5rem;
+  }
+  .lightboxClose {
+    top: 0.75rem;
+    right: 0.75rem;
   }
 }

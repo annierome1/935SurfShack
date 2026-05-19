@@ -75,7 +75,6 @@ export default function Home({ nextEvent, instaPosts = [] }) {
                 935 Surf Shack is your go-to for live music, fresh lobster rolls, and amazing cocktails.
               </p>
               <div className={styles.seasonalMessage}>
-                <p><strong>Opening May 14th!</strong></p>
                 <p>Friday &amp; Saturday 3&ndash;9 &bull; Sunday 12&ndash;9</p>
               </div>
               <Link href="/menu" className={styles.ctaButton}>

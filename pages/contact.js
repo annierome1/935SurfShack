@@ -39,7 +39,6 @@ export default function Contact() {
     <div className={styles.hoursCard}>
       <h3 className={styles.infoTitle}>🏖️ Hours</h3>
       <div className={styles.seasonalStatus}>
-        <p className={styles.closedMessage}><strong>Opening May 14th!</strong></p>
         <p className={styles.reopeningMessage}>Friday & Saturday 3–9 • Sunday 12–9</p>
       </div>
     </div>

@@ -41,8 +41,13 @@ export default function Header() {
   const toggleMenu = () => setIsOpen(v => !v);
   const closeMenu = () => setIsOpen(false);
 
+  // Lock body scroll when mobile nav is open
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [isOpen]);
+
   const navLinks = [
-    { href: '/',         label: 'Home' },
     { href: '/events',   label: 'Music & Events' },
     { href: '/menu',     label: 'Food & Drink' },
     { href: '/gallery',  label: 'Gallery' },
@@ -86,9 +91,18 @@ export default function Header() {
 
 
         <nav className={`${styles.nav} ${isOpen ? styles.navOpen : ''}`}>
+          <Link href="/" onClick={closeMenu} className={styles.mobileNavLogo}>
+            <Image
+              src="/combined_logos_transparent_bg.png"
+              alt="935 Surf Shack"
+              width={200}
+              height={130}
+              style={{ height: 'auto', objectFit: 'contain' }}
+            />
+          </Link>
           <ul className={styles.navList}>
-            {navLinks.map(({ href, label }) => (
-              <li key={href}>
+            {navLinks.map(({ href, label }, i) => (
+              <li key={href} className={styles.navItem} style={{ animationDelay: `${i * 0.06}s` }}>
                 <Link href={href} onClick={closeMenu} className={styles.navLink}>
                   {label}
                 </Link>

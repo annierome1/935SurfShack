@@ -51,7 +51,7 @@ const faqs = [
   },
   {
     question: "What months is the Surf Shack open?",
-    answer: "We open May 14th for the 2026 season! Hours are Friday & Saturday 3–9 and Sunday 12–9. Summer hours may expand, so check back for updates."
+    answer: "We're open for the 2026 season! Hours are Friday & Saturday 3–9 and Sunday 12–9. Summer hours may expand, so check back for updates."
   },
   {
     question: "Where can I find the Live Music schedule?",

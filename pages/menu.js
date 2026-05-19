@@ -142,7 +142,7 @@ export default function Menu({ menu }) {
 {activeTab === 'drinks' && (
   <div className={`${styles.menuSection} ${styles.drinkSection}`}>
     {Object.entries(menuData.drink).map(([section, drinks]) => {
-      const isListSection = ['Brews', 'Wine', 'Seltzers & Beyond'].includes(section);
+      const isListSection = ['Brews', 'Wine', 'Seltzers & Beyond', 'Non-Alcoholic'].includes(section);
       const containerClass = isListSection
         ? styles.listWrapper
         : styles.itemGrid;
