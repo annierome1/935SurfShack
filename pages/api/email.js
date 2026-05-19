@@ -1,16 +1,6 @@
-// pages/api/send-email.js
+import { Resend } from 'resend';
 
-import nodemailer from 'nodemailer';
-
-const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,               // e.g. 'smtp.gmail.com'
-  port: Number(process.env.SMTP_PORT),       // e.g. 465
-  secure: true,                              // true for 465, false for other ports
-  auth: {
-    user: process.env.SMTP_USER,             // your SMTP username
-    pass: process.env.SMTP_PASS,             // your SMTP password or app-specific password
-  },
-});
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 function humanize(key) {
   return key
@@ -36,7 +26,6 @@ export default async function handler(req, res) {
     } else if (formType === 'careers') {
       lines.push("I'd like to submit my application for:", '');
     } else {
-      // default → general inquiry
       lines.push('I have a question regarding:', '');
     }
 
@@ -56,15 +45,20 @@ export default async function handler(req, res) {
     const html = lines.map((l) => `<p>${l}</p>`).join('');
     const text = lines.join('\n');
 
-    // 5. Send via SMTP
-    await transporter.sendMail({
-      from: `"${data.name}" <${data.email}>`,
+    // 5. Send via Resend
+    const { error } = await resend.emails.send({
+      from: `935 Website Inquiry <${process.env.RESEND_FROM_EMAIL}>`,
       to,
       subject,
       text,
       html,
-      replyTo: data.email
+      replyTo: email,
     });
+
+    if (error) {
+      console.error('Resend error:', error);
+      return res.status(500).json({ error: 'Failed to send email.' });
+    }
 
     return res.status(200).json({ success: true });
   } catch (err) {

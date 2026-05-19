@@ -1,15 +1,6 @@
-// pages/api/inquiry.js
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
 
-const transporter = nodemailer.createTransport({
-  host:   process.env.SMTP_HOST,
-  port:   Number(process.env.SMTP_PORT),
-  secure: true,
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
-  },
-});
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 // map “formType” → recipient
 const RECIPIENTS = {
@@ -22,11 +13,9 @@ const RECIPIENTS = {
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end();
 
-  // pull formType (and anything else your forms send)
   const { formType = 'general', name, email, message, ...rest } = req.body;
   const to = RECIPIENTS[formType] || RECIPIENTS.general;
 
-  // build a little HTML dynamically from whatever fields you like
   const html = `
     <p><strong>Form:</strong> ${formType}</p>
     ${name      ? `<p><strong>Name:</strong> ${name}</p>`      : ''}
@@ -37,12 +26,18 @@ export default async function handler(req, res) {
   `;
 
   try {
-    await transporter.sendMail({
-      from: `"935 Surf Shack" <${process.env.SMTP_USER}>`,
+    const { error } = await resend.emails.send({
+      from: `935 Website Inquiry <${process.env.RESEND_FROM_EMAIL}>`,
       to,
-      subject: `🔔 New “${formType}” submission`,
+      subject: `New “${formType}” submission`,
       html,
     });
+
+    if (error) {
+      console.error(error);
+      return res.status(500).json({ error: 'Failed to send.' });
+    }
+
     res.status(200).json({ message: 'Sent!' });
   } catch (err) {
     console.error(err);
