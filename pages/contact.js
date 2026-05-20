@@ -78,7 +78,7 @@ export default function Contact() {
             <h2 className={styles.sectionTitle}>Send us a Message</h2>
             <FormSubmit
               formType="inquiry"
-              to="chris@935ocean.com"
+              to="amber@carolina.fitness"
               subject="New Contact Inquiry"
               buttonText="Send Message"
               className={styles.inquiryForm}
@@ -129,7 +129,7 @@ export default function Contact() {
               <h3 className={styles.sectionTitle}>Careers</h3>
               <FormSubmit
                   formType="careers"
-                  to="chris@935ocean.com"
+                  to="amber@carolina.fitness"
                   subject="Career Application"
                   buttonText="Submit Application"
                   className={styles.careerForm}

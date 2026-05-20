@@ -246,7 +246,7 @@ export default function Events({ events }) {
 
               <FormSubmit
                 formType="eventInquiry"
-                to="chris@935ocean.com"
+                to="amber@carolina.fitness"
                 subject="New Event Inquiry"
                 buttonText="Submit Inquiry"
                 className={styles.inquiryForm}

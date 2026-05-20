@@ -28,21 +28,37 @@ function urlFor(source) {
   return builder.image(source);
 }
 
-export default function Home({ nextEvent, instaPosts = [] }) {
+export default function Home({ nextEvent, instaPosts: serverPosts = [] }) {
   const eventImageUrl = nextEvent?.image
   ? urlFor(nextEvent.image)
       .width(600)
       .height(400)
-      .fit('fill')       
-      .crop('top')      
+      .fit('fill')
+      .crop('top')
       .url()
   : section2Img;
 
-
     const [isMounted, setIsMounted] = useState(false);
-      useEffect(() => {
-        setIsMounted(true);
-      }, []);
+    const [instaPosts, setInstaPosts] = useState(serverPosts);
+
+    useEffect(() => {
+      setIsMounted(true);
+
+      // If no posts from server, try fetching client-side
+      if (serverPosts.length === 0) {
+        fetch('/api/instagram-feed?limit=12')
+          .then(res => res.ok ? res.json() : Promise.reject())
+          .then(json => {
+            const posts = Array.isArray(json) ? json : json.data || [];
+            const filtered = posts
+              .filter(p => ['IMAGE', 'CAROUSEL_ALBUM', 'VIDEO'].includes(p.media_type))
+              .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
+              .slice(0, 12);
+            if (filtered.length > 0) setInstaPosts(filtered);
+          })
+          .catch(() => {});
+      }
+    }, []);
 
   return (
     <Layout>
