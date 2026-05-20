@@ -330,51 +330,40 @@ export async function getStaticProps() {
   const events = await client.fetch(eventQuery);
   const nextEvent = events[0] || null;
 
-  // Instagram Basic Display API call
-  const accessToken = process.env.INSTAGRAM_ACCESS_TOKEN;
+  // Instagram feed via custom API
+  const apiUrl = process.env.INSTAGRAM_FEED_API_URL;
+  const apiKey = process.env.INSTAGRAM_FEED_API_KEY;
   let instaPosts = [];
-  
-  // Only attempt Instagram API call if access token is available
-  if (accessToken) {
+
+  if (apiUrl && apiKey) {
     try {
-      const fields = ['id','caption','media_url','permalink','media_type','timestamp']
-        .join(',');
-      const res = await fetch(
-        `https://graph.instagram.com/me/media?fields=${fields}&access_token=${accessToken}`
-      );
+      const url = `${apiUrl}${apiUrl.includes('?') ? '&' : '?'}limit=12`;
+      const res = await fetch(url, {
+        headers: { Authorization: `Bearer ${apiKey}` },
+      });
 
       if (!res.ok) {
-        const errText = await res.text();
-        console.error('Instagram API error:', {
-          status: res.status,
-          statusText: res.statusText,
-          error: errText
-        });
+        console.error('Instagram feed API error:', res.status);
       } else {
-        const { data } = await res.json();
-        if (data && Array.isArray(data)) {
-          instaPosts = data
-            .filter(p =>
-              ['IMAGE','CAROUSEL_ALBUM','VIDEO'].includes(p.media_type)
-            )
-            .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
-            .slice(0, 6);
-        } else {
-          console.warn('Instagram API returned unexpected data format:', data);
-        }
+        const json = await res.json();
+        // Support both { data: [...] } and direct array responses
+        const posts = Array.isArray(json) ? json : json.data || [];
+        instaPosts = posts
+          .filter(p =>
+            ['IMAGE', 'CAROUSEL_ALBUM', 'VIDEO'].includes(p.media_type)
+          )
+          .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
+          .slice(0, 12);
       }
     } catch (err) {
-      console.error('Instagram fetch failed:', {
-        error: err.message,
-        stack: err.stack
-      });
+      console.error('Instagram feed fetch failed:', err.message);
     }
   } else {
-    console.warn('Instagram access token not configured - showing placeholder content');
+    console.warn('Instagram feed not configured - showing placeholder content');
   }
 
   return {
     props: { nextEvent, instaPosts },
-    revalidate: 300, // refresh every 5min
+    revalidate: 300,
   };
 }
