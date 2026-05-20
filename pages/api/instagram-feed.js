@@ -23,10 +23,21 @@ export default async function handler(req, res) {
       },
     })
 
-    const data = await upstream.json()
+    const json = await upstream.json()
+
+    // Normalize field names from upstream API to match frontend expectations
+    const posts = (json.media || []).map(item => ({
+      id: item.id,
+      media_type: item.mediaType,
+      media_url: item.mediaUrl,
+      thumbnail_url: item.thumbnailUrl,
+      permalink: item.permalink,
+      caption: item.caption,
+      timestamp: item.timestamp,
+    }))
 
     res.setHeader('Cache-Control', 'public, max-age=1800, s-maxage=1800, stale-while-revalidate=300')
-    return res.status(upstream.status).json(data)
+    return res.status(upstream.status).json({ data: posts })
   } catch (err) {
     console.error('[instagram-feed] upstream error:', err)
     return res.status(502).json({ ok: false, error: 'UPSTREAM_ERROR' })

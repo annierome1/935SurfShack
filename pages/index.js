@@ -362,8 +362,17 @@ export async function getStaticProps() {
         console.error('Instagram feed API error:', res.status);
       } else {
         const json = await res.json();
-        // Support both { data: [...] } and direct array responses
-        const posts = Array.isArray(json) ? json : json.data || [];
+        // Normalize from upstream API field names (mediaType → media_type, etc.)
+        const raw = json.media || json.data || [];
+        const posts = raw.map(item => ({
+          id: item.id,
+          media_type: item.mediaType || item.media_type,
+          media_url: item.mediaUrl || item.media_url,
+          thumbnail_url: item.thumbnailUrl || item.thumbnail_url,
+          permalink: item.permalink,
+          caption: item.caption,
+          timestamp: item.timestamp,
+        }));
         instaPosts = posts
           .filter(p =>
             ['IMAGE', 'CAROUSEL_ALBUM', 'VIDEO'].includes(p.media_type)
