@@ -215,11 +215,11 @@ export default function Home({ nextEvent, instaPosts: serverPosts = [] }) {
                   prevEl: '#insta-prev',
                   nextEl: '#insta-next',
                 }}
-                breakpoints={{  
-                 0:   { slidesPerView: 1, spaceBetween: 8 },  
-                320: { slidesPerView: 1,  spaceBetween: 8 },  
-               640: { slidesPerView: 1 },
-                1024:{ slidesPerView: 3.2 },
+                breakpoints={{
+                 0:   { slidesPerView: 1.3, spaceBetween: 10, centeredSlides: true },
+                480: { slidesPerView: 2.2, spaceBetween: 10 },
+                768: { slidesPerView: 3.2, spaceBetween: 12 },
+                1024: { slidesPerView: 4.2, spaceBetween: 14 },
       }}
                 className={styles.swiperContainer}
                 onSwiper={(swiper) => {
@@ -256,9 +256,9 @@ export default function Home({ nextEvent, instaPosts: serverPosts = [] }) {
                           <Image
                             src={post.media_url}
                             alt={post.caption?.slice(0, 80) || 'Instagram post'}
-                            width={300}
-                            height={250}
-                            objectFit="cover"
+                            fill
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 30vw"
+                            style={{ objectFit: 'cover' }}
                             unoptimized
                             className={styles.galleryImage}
                           />
@@ -368,9 +368,9 @@ export async function getStaticProps() {
           id: item.id,
           media_type: item.mediaType || item.media_type,
           media_url: item.mediaUrl || item.media_url,
-          thumbnail_url: item.thumbnailUrl || item.thumbnail_url,
+          thumbnail_url: item.thumbnailUrl || item.thumbnail_url || null,
           permalink: item.permalink,
-          caption: item.caption,
+          caption: item.caption || null,
           timestamp: item.timestamp,
         }));
         instaPosts = posts
