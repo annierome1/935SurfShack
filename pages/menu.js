@@ -39,7 +39,7 @@ export default function Menu({ menu }) {
                 </div>
               )}
               <span className={styles.itemPrice}>
-                ${item.price.toFixed(isImageItems ? 2 : 0)}
+                ${(item.price ?? 0).toFixed(isImageItems ? 2 : 0)}
               </span>
             </div>
           </div>
@@ -106,11 +106,11 @@ export default function Menu({ menu }) {
                       {item.priceOptions ? (
                         item.priceOptions.map((opt, i) => (
                           <div key={i} className={styles.priceOption}>
-                            {opt.label}: ${opt.price.toFixed(2)}
+                            {opt.label}: ${(opt.price ?? 0).toFixed(2)}
                           </div>
                         ))
                       ) : (
-                        <>${item.price.toFixed(2)}</>
+                        <>${(item.price ?? 0).toFixed(2)}</>
                       )}
                     </div>
                   </div>
@@ -172,7 +172,7 @@ export default function Menu({ menu }) {
                       <div className={styles.drinkCardHeader}>
                         <h4 className={styles.itemName}>{drink.name}</h4>
                         <span className={styles.itemPriceHigh}>
-                          ${drink.price.toFixed()}
+                          ${(drink.price ?? 0).toFixed()}
                         </span>
                       </div>
                       {drink.description && (
@@ -204,7 +204,7 @@ export default function Menu({ menu }) {
                   </div>
                   <div className={styles.menuItemDetails}>
                     <span className={styles.itemPrice}>
-                      ${drink.price.toFixed()}
+                      ${(drink.price ?? 0).toFixed()}
                     </span>
                   </div>
                 </div>
@@ -253,7 +253,7 @@ export default function Menu({ menu }) {
                     {item.description && <p className={styles.itemDesc}>{item.description}</p>}
                   </div>
                     <span className={styles.itemPrice}>
-                      ${item.price.toFixed(2)}
+                      ${(item.price ?? 0).toFixed(2)}
                     </span>
                   </div>
               
