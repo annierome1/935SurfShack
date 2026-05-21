@@ -9,7 +9,6 @@ import { client } from '../sanity/lib/client';
 export default function Menu({ menu }) {
   const [activeTab, setActiveTab] = useState('food');
   const foodDownloadUrl = menu.menuPdf?.asset?.url;
-  const drinkDownloadUrl = menu.drinkPdf?.asset?.url;
 
   const tabs = [
     { key: 'food', label: 'Food' },
@@ -279,8 +278,7 @@ export default function Menu({ menu }) {
 
 export async function getStaticProps() {
   const menuQuery = `*[_type == "menu"][0]{
-    menuPdf { asset->{ url } },
-    drinkPdf { asset->{ url } }
+    menuPdf { asset->{ url } }
   }`;
   const specialsQuery = `*[_type == "specials"][0]{
     foodSpecials[]{

@@ -7,13 +7,7 @@ export const menuType = defineType({
   fields: [
     defineField({
       name: 'menuPdf',
-      title: 'Food Menu PDF',
-      type: 'file',
-      options: { accept: '.pdf' },
-    }),
-    defineField({
-      name: 'drinkPdf',
-      title: 'Drink Menu PDF',
+      title: 'Menu PDF',
       type: 'file',
       options: { accept: '.pdf' },
     }),
@@ -23,7 +17,7 @@ export const menuType = defineType({
     prepare() {
       return {
         title: 'Surf Shack Menu',
-        subtitle: 'Menu PDFs',
+        subtitle: 'Menu PDF',
       }
     },
   },
