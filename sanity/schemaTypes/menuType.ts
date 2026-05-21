@@ -1,8 +1,8 @@
-import { defineArrayMember, defineField, defineType } from 'sanity'
+import { defineField, defineType } from 'sanity'
 
 export const menuType = defineType({
   name: 'menu',
-  title: 'Menu',
+  title: 'Surf Shack Menu',
   type: 'document',
   fields: [
     defineField({
@@ -12,46 +12,19 @@ export const menuType = defineType({
       options: { accept: '.pdf' },
     }),
     defineField({
-      name: 'foodSpecials',
-      title: 'Food Specials',
-      type: 'array',
-      of: [
-        defineArrayMember({
-          type: 'object',
-          fields: [
-            defineField({ name: 'name', title: 'Name', type: 'string' }),
-            defineField({ name: 'description', title: 'Description', type: 'string' }),
-            defineField({ name: 'price', title: 'Price', type: 'number' }),
-            defineField({ name: 'image', title: 'Image', type: 'image' }),
-          ],
-        }),
-      ],
-    }),
-    defineField({
-      name: 'drinkSpecials',
-      title: 'Drink Specials',
-      type: 'array',
-      of: [
-        defineArrayMember({
-          type: 'object',
-          fields: [
-            defineField({ name: 'name', title: 'Name', type: 'string' }),
-            defineField({ name: 'description', title: 'Description', type: 'string' }),
-            defineField({ name: 'price', title: 'Price', type: 'number' }),
-            defineField({ name: 'image', title: 'Image', type: 'image' }),
-          ],
-        }),
-      ],
+      name: 'drinkPdf',
+      title: 'Drink Menu PDF',
+      type: 'file',
+      options: { accept: '.pdf' },
     }),
   ],
 
-  // --- Custom clean preview ---
   preview: {
     prepare() {
       return {
         title: 'Surf Shack Menu',
-        subtitle: 'Food & Drinks PDFs + Specials',
+        subtitle: 'Menu PDFs',
       }
-    }
-  }
+    },
+  },
 })

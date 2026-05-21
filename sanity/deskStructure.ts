@@ -17,9 +17,34 @@ const deskStructure: StructureResolver = (S) => {
             .params({ now: nowISOString })
         ),
 
-      // Include other types except 'event' to avoid duplication
+      // Menu folder with Surf Shack Menu + Food & Drink Specials
+      S.listItem()
+        .title('Menu')
+        .child(
+          S.list()
+            .title('Menu')
+            .items([
+              S.listItem()
+                .title('Surf Shack Menu')
+                .child(
+                  S.documentList()
+                    .title('Surf Shack Menu')
+                    .filter('_type == "menu"')
+                ),
+              S.listItem()
+                .title('Food & Drink Specials')
+                .child(
+                  S.documentList()
+                    .title('Food & Drink Specials')
+                    .filter('_type == "specials"')
+                ),
+            ])
+        ),
+
+      // Include other types except ones we've manually placed
       ...S.documentTypeListItems().filter(
-        (listItem) => listItem.getId() !== 'event'
+        (listItem) =>
+          !['event', 'menu', 'specials'].includes(listItem.getId() ?? '')
       ),
     ])
 }

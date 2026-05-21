@@ -278,9 +278,11 @@ export default function Menu({ menu }) {
 // pages/menu.js
 
 export async function getStaticProps() {
-  const query = `*[_type == "menu"][0]{
+  const menuQuery = `*[_type == "menu"][0]{
     menuPdf { asset->{ url } },
-    drinkPdf { asset->{ url } },
+    drinkPdf { asset->{ url } }
+  }`;
+  const specialsQuery = `*[_type == "specials"][0]{
     foodSpecials[]{
       name,
       price,
@@ -302,7 +304,15 @@ export async function getStaticProps() {
       }
     }
   }`;
-  const menu = await client.fetch(query);
+  const [menuData, specials] = await Promise.all([
+    client.fetch(menuQuery),
+    client.fetch(specialsQuery),
+  ]);
+  const menu = {
+    ...menuData,
+    foodSpecials: specials?.foodSpecials || [],
+    drinkSpecials: specials?.drinkSpecials || [],
+  };
   return { props: { menu }, revalidate: 60 };
 }
 
