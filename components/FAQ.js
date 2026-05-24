@@ -11,7 +11,7 @@ const faqs = [
   },
   {
     question: "What are your hours?",
-    answer: "Our hours change seasonally, so be sure to check our website for the most recent hours. Currently we are open Friday & Saturday 3–9 and Sunday 12–9."
+    answer: "Our hours change seasonally, so be sure to check our website for the most recent hours. Currently we are open Thursday & Friday 3–8 and Saturday & Sunday 12–8."
   },
   {
     question: "Where is the Surf Shack located?",
@@ -51,7 +51,7 @@ const faqs = [
   },
   {
     question: "What months is the Surf Shack open?",
-    answer: "We're open for the 2026 season! Hours are Friday & Saturday 3–9 and Sunday 12–9. Summer hours may expand, so check back for updates."
+    answer: "We're open for the 2026 season! Hours are Thursday & Friday 3–8 and Saturday & Sunday 12–8."
   },
   {
     question: "Where can I find the Live Music schedule?",

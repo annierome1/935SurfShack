@@ -91,7 +91,7 @@ export default function Home({ nextEvent, instaPosts: serverPosts = [] }) {
                 935 Surf Shack is your go-to for live music, fresh lobster rolls, and amazing cocktails.
               </p>
               <div className={styles.seasonalMessage}>
-                <p>Friday &amp; Saturday 3&ndash;9 &bull; Sunday 12&ndash;9</p>
+                <p>Thu &amp; Fri 3&ndash;8 &bull; Sat &amp; Sun 12&ndash;8</p>
               </div>
               <Link href="/menu" className={styles.ctaButton}>
                 View Our Menu
@@ -108,7 +108,7 @@ export default function Home({ nextEvent, instaPosts: serverPosts = [] }) {
             <div className={styles.section2Text}>
               <h2 className={styles.section2Title}>Your Go-to For Live Music</h2>
               <p className={styles.section2Desc}>
-                Join us for live music on Friday &amp; Saturday in the spring and fall
+                Join us for live music on Thursday &amp; Friday in the spring and fall
                 and Thursday&ndash;Sunday in the summer!
               </p>
               <div className={styles.features}>

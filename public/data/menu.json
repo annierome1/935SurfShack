@@ -50,7 +50,7 @@
         "description": "Fresh, sweet lobster meat, bacon'd on a buttered roll with chips and liquid butter.",
         "priceOptions": [
           { "label": "Single", "price": 26.00 },
-          { "label": "Two Rolls", "price": 38.00 }
+          { "label": "Two Rolls", "price": 36.00 }
         ],
         "image": {
           "asset": {
