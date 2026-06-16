@@ -64,6 +64,7 @@ export default function Footer() {
       {/* Hours */}
       <div className={`${styles.footerSection} ${styles.hoursSection}`}>
         <h4>HOURS</h4>
+        <span className={styles.breakLine}><strong>Mon & Wed:</strong> 3–8</span>
         <span className={styles.breakLine}><strong>Thu & Fri:</strong> 3–8</span>
         <span className={styles.breakLine}><strong>Sat & Sun:</strong> 12–8</span>
       </div>
