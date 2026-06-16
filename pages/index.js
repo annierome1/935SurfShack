@@ -8,6 +8,7 @@ import FadeIn from '../components/FadeIn';
 import { FaMusic, FaCalendarAlt } from 'react-icons/fa';
 import styles from '../styles/components/home.module.css';
 import { client } from '../sanity/lib/client';
+import { getHours } from '../lib/getHours';
 import imageUrlBuilder from '@sanity/image-url';
 import SwiperCore, { Navigation, Autoplay, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -28,7 +29,7 @@ function urlFor(source) {
   return builder.image(source);
 }
 
-export default function Home({ nextEvent, instaPosts: serverPosts = [] }) {
+export default function Home({ nextEvent, instaPosts: serverPosts = [], hours = [] }) {
   const eventImageUrl = nextEvent?.image
   ? urlFor(nextEvent.image)
       .width(600)
@@ -93,18 +94,12 @@ export default function Home({ nextEvent, instaPosts: serverPosts = [] }) {
               <div className={styles.hoursBlock}>
                 <p className={styles.hoursLabel}>Hours</p>
                 <div className={styles.hoursPills}>
-                  <div className={styles.hoursPill}>
-                    <span className={styles.pillDay}>Mon</span>
-                    <span className={styles.pillTime}>3–8pm</span>
-                  </div>
-                  <div className={styles.hoursPill}>
-                    <span className={styles.pillDay}>Wed–Fri</span>
-                    <span className={styles.pillTime}>3–8pm</span>
-                  </div>
-                  <div className={styles.hoursPill}>
-                    <span className={styles.pillDay}>Sat–Sun</span>
-                    <span className={styles.pillTime}>12–8pm</span>
-                  </div>
+                  {hours.map(h => (
+                    <div key={h._key || h.days} className={styles.hoursPill}>
+                      <span className={styles.pillDay}>{h.days}</span>
+                      <span className={styles.pillTime}>{h.time}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
               <Link href="/menu" className={styles.ctaButton}>
@@ -401,8 +396,10 @@ export async function getStaticProps() {
     console.warn('Instagram feed not configured - showing placeholder content');
   }
 
+  const hours = await getHours();
+
   return {
-    props: { nextEvent, instaPosts },
+    props: { nextEvent, instaPosts, hours },
     revalidate: 300,
   };
 }

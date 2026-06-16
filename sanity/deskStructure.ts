@@ -41,10 +41,21 @@ const deskStructure: StructureResolver = (S) => {
             ])
         ),
 
+      // Hours singleton
+      S.listItem()
+        .title('Hours')
+        .id('siteSettings')
+        .child(
+          S.document()
+            .title('Hours')
+            .schemaType('siteSettings')
+            .documentId('siteSettings')
+        ),
+
       // Include other types except ones we've manually placed
       ...S.documentTypeListItems().filter(
         (listItem) =>
-          !['event', 'menu', 'specials'].includes(listItem.getId() ?? '')
+          !['event', 'menu', 'specials', 'siteSettings'].includes(listItem.getId() ?? '')
       ),
     ])
 }

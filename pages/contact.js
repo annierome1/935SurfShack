@@ -7,8 +7,15 @@ import Image from 'next/image';
 import FormSubmit from '../components/FormSubmit';
 import careersImg from '../public/images/careers-hero.jpg';
 import { FaFacebookF, FaInstagram } from 'react-icons/fa'
+import React from 'react';
+import { getHours } from '../lib/getHours';
 
-export default function Contact() {
+export async function getStaticProps() {
+  const hours = await getHours();
+  return { props: { hours }, revalidate: 300 };
+}
+
+export default function Contact({ hours = [] }) {
   // State hooks
   const [resumeFile, setResumeFile] = useState(null);
   const [selectedPosition, setSelectedPosition] = useState('');
@@ -40,9 +47,12 @@ export default function Contact() {
       <h3 className={styles.infoTitle}>🏖️ Hours</h3>
       <div className={styles.seasonalStatus}>
         <div className={styles.hoursGrid}>
-          <span>Mon</span><span>3–8pm</span>
-          <span>Wed–Fri</span><span>3–8pm</span>
-          <span>Sat–Sun</span><span>12–8pm</span>
+          {hours.map(h => (
+            <React.Fragment key={h._key || h.days}>
+              <span>{h.days}</span>
+              <span>{h.time}</span>
+            </React.Fragment>
+          ))}
         </div>
       </div>
     </div>

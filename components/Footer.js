@@ -1,10 +1,25 @@
 // components/Footer.js
 import Image from 'next/image';
+import { useState, useEffect } from 'react';
 import styles from "../styles/components/Footer.module.css";
 import { FaInstagram, FaFacebook } from 'react-icons/fa';
 
+const FALLBACK_HOURS = [
+  { _key: 'mon',    days: 'Mon',     time: '3–8pm'  },
+  { _key: 'wf',     days: 'Wed–Fri', time: '3–8pm'  },
+  { _key: 'ss',     days: 'Sat–Sun', time: '12–8pm' },
+];
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const [hours, setHours] = useState(FALLBACK_HOURS);
+
+  useEffect(() => {
+    fetch('/api/hours')
+      .then(r => r.ok ? r.json() : null)
+      .then(data => { if (data && data.length > 0) setHours(data); })
+      .catch(() => {});
+  }, []);
 
   return (
     <footer className={styles.footer}>
@@ -64,9 +79,11 @@ export default function Footer() {
       {/* Hours */}
       <div className={`${styles.footerSection} ${styles.hoursSection}`}>
         <h4>HOURS</h4>
-        <span className={styles.breakLine}><strong>Mon:</strong> 3–8pm</span>
-        <span className={styles.breakLine}><strong>Wed–Fri:</strong> 3–8pm</span>
-        <span className={styles.breakLine}><strong>Sat–Sun:</strong> 12–8pm</span>
+        {hours.map(h => (
+          <span key={h._key || h.days} className={styles.breakLine}>
+            <strong>{h.days}:</strong> {h.time}
+          </span>
+        ))}
       </div>
 
       <div className={styles.rightsRes}>
