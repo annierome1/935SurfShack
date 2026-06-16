@@ -10,9 +10,9 @@ import { FaFacebookF, FaInstagram } from 'react-icons/fa'
 import React from 'react';
 import { getHours } from '../lib/getHours';
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const hours = await getHours();
-  return { props: { hours }, revalidate: 300 };
+  return { props: { hours } };
 }
 
 export default function Contact({ hours = [] }) {
