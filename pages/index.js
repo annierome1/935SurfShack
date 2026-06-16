@@ -90,8 +90,22 @@ export default function Home({ nextEvent, instaPosts: serverPosts = [] }) {
                 North Beach&apos;s newest beach bar is here. Located in the backyard of the historic 935 Ocean Hotel,
                 935 Surf Shack is your go-to for live music, fresh lobster rolls, and amazing cocktails.
               </p>
-              <div className={styles.seasonalMessage}>
-                <p>Mon &amp; Wed 3&ndash;8 &bull; Thu &amp; Fri 3&ndash;8 &bull; Sat &amp; Sun 12&ndash;8</p>
+              <div className={styles.hoursBlock}>
+                <p className={styles.hoursLabel}>Hours</p>
+                <div className={styles.hoursPills}>
+                  <div className={styles.hoursPill}>
+                    <span className={styles.pillDay}>Mon</span>
+                    <span className={styles.pillTime}>3–8pm</span>
+                  </div>
+                  <div className={styles.hoursPill}>
+                    <span className={styles.pillDay}>Wed–Fri</span>
+                    <span className={styles.pillTime}>3–8pm</span>
+                  </div>
+                  <div className={styles.hoursPill}>
+                    <span className={styles.pillDay}>Sat–Sun</span>
+                    <span className={styles.pillTime}>12–8pm</span>
+                  </div>
+                </div>
               </div>
               <Link href="/menu" className={styles.ctaButton}>
                 View Our Menu

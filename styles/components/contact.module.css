@@ -81,6 +81,24 @@
   font-style: italic;
 }
 
+.hoursGrid {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 0.25rem 1.25rem;
+  justify-content: center;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.hoursGrid span:nth-child(odd) {
+  font-weight: 600;
+  text-align: right;
+}
+
+.hoursGrid span:nth-child(even) {
+  text-align: left;
+}
+
 /* =========================
    SOCIAL CARD
 ========================= */
